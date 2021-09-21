@@ -1,10 +1,17 @@
+html {
+	scroll-behavior: smooth;
+}
+
 body {
 	margin: 0;
 
 	font-family: 'Roboto', sans-serif;
 	font-size: 22px;
-	color: #000;
 	line-height: 38px;
+
+	color: #000;
+
+	/* background-color: #030303; */
 }
 
 *,
@@ -33,6 +40,7 @@ a {
 	margin: 0 auto;
 	width: 1440px;
 	max-width: 1440px;
+	background-color: inherit;
 }
 
 /* Header */
@@ -100,4 +108,70 @@ a {
 
 .nav__link.active {
 	color: #7E6C51;
+}
+/* Sections */
+.section-dark {
+	background-color: #030303;
+}
+
+/* Section title */
+
+.section__title {
+	font-family: 'Forum', cursive;
+	font-weight: 400;
+	font-size: 80px;
+	line-height: 90px;
+	/* or 112% */
+
+	letter-spacing: 5px;
+	text-transform: uppercase;
+
+	color: #9D8665;
+}
+
+.section__title-dark {
+	color: #fff;
+}
+
+/* Welcome */
+.welcome__header {
+	padding-top: 180px;
+	max-width: 600px;
+}
+.welcome__title span{
+	display: block;
+}
+.welcome__text {
+	font-weight: 300;
+	font-size: 28px;
+	line-height: 33px;
+
+	letter-spacing: 2px;
+	color: #fff;
+	margin-top: 25px;
+}
+.welcome__btn {
+	margin-top: 75px;
+}
+
+
+/* Button */
+
+.btn {
+	display: inline-block;
+	padding: 25px 64px;
+
+	font-weight: 300;
+	font-size: 22px;
+	line-height: 25px;
+	letter-spacing: 2px;
+
+	background-color: #710707;
+	color: #fff;
+	border-radius: 10px;
+	transition: .2s;
+}
+
+.btn:hover {
+	background-color: #9D8665;
 }
