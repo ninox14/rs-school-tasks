@@ -1,0 +1,36 @@
+body {
+	margin: 0;
+
+	font-family: 'Roboto', sans-serif;
+	font-size: 22px;
+	color: #000;
+	line-height: 38px;
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+h1, h2, h3, h4, h5, h6, p {
+	margin: 0;
+}
+
+/* Container */
+
+.container {
+	margin: 0 auto;
+	width: 1440px;
+	max-width: 1440px;
+}
+
+/* Header */
+
+.header {
+	background-color: #030303;
+}
+.header__wrapper {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
