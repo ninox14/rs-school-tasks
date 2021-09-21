@@ -91,4 +91,13 @@ a {
 	letter-spacing: 2px;
 
 	color: #fff;
+	transition: .2s;
+}
+
+.nav__link:hover {
+	color:  #9D8665;
+}
+
+.nav__link.active {
+	color: #7E6C51;
 }
