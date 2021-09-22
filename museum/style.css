@@ -43,6 +43,10 @@ a {
 	background-color: inherit;
 }
 
+.container-flex {
+  display: flex;
+}
+
 /* Button */
 
 .btn {
@@ -280,8 +284,12 @@ a {
   transform: rotate(-180deg);
   margin-left: 20px;
 }
+.welcome-slider__controls--arr:hover {
+  cursor: pointer;
+}
 
 /* Visiting */
+
 .visiting {
   margin-bottom: 75px;
 }
@@ -340,4 +348,30 @@ a {
   margin-top: 10px;
   font-size: 18px;
   line-height: 21px;
+}
+
+
+/* Explore  */
+
+.explore__left {
+  padding-top: 75px;
+  margin-right: 60px;
+}
+.explore__header {
+  margin-bottom: 103px;
+}
+.explore__text {
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 38px;
+
+  margin-bottom: 25px;
+}
+.explore__text span {
+  color: #CAAA7D;
+}
+
+.explore__right {
+  margin-top: 90px;
+  margin-bottom: 75px;
 }
