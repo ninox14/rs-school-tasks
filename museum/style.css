@@ -130,7 +130,9 @@ a {
 .nav__link.active {
 	color: #7E6C51;
 }
+
 /* Sections */
+
 .section-dark {
 	background-color: #030303;
   color: #fff;
@@ -143,7 +145,6 @@ a {
 	font-weight: 400;
 	font-size: 80px;
 	line-height: 90px;
-	/* or 112% */
 
 	letter-spacing: 5px;
 	text-transform: uppercase;
@@ -155,7 +156,21 @@ a {
 	color: #fff;
 }
 
+.section__title--underline {
+  position: relative;
+}
+.section__title--underline::after {
+  content: "";
+  position: absolute;
+  bottom: -25px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: #710707;
+}
+
 /* Welcome */
+
 .welcome__wrapper {
 	position: relative;
 }
@@ -185,14 +200,15 @@ a {
 }
 
 /* Welcome Slider */
+
 .welcome-slider {
   position: absolute;
   z-index: 1;
   top: 0;
   right: 0;
 }
-.welcome-slider__items {
-}
+/* .welcome-slider__items {
+} */
 
 .welcome-slider__item {
  position: relative;
@@ -227,10 +243,12 @@ a {
   margin-right: 55px;
 }
 .welcome-slider__controls--counter {
+  display: inline-block;
   font-size: 22px;
   line-height: 40px;
   font-weight: 300;
-  display: inline-block;
+
+  margin-right: 5px;
 }
 
 .welcome-slider__controls--squares  {
@@ -254,7 +272,6 @@ a {
   margin-left: 60px;
 }
 .welcome-slider__controls--arr {
-  /* background-image: url("./assets/svg/arrow-left.svg"); */
   width: 30px;
   height: 40px;
   content: url("./assets/svg/arrow-left.svg");
@@ -262,4 +279,65 @@ a {
 .welcome-slider__controls--arr.right {
   transform: rotate(-180deg);
   margin-left: 20px;
+}
+
+/* Visiting */
+.visiting {
+  margin-bottom: 75px;
+}
+.visiting__title {
+  margin-top: 75px;
+}
+.visiting__cards {
+  margin-top: 103px;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 60px;
+  row-gap: 75px;
+
+}
+.visiting__link {
+  color: inherit;
+  display: block;
+}
+.visiting__link:hover .visting__item_title--underline::after {
+  width: 100%;
+}
+.visiting__item_img {
+  max-width: 100%;
+  height: auto;
+}
+.visting__item_title {
+  margin-top: 25px;
+  font-family: 'Forum', cursive;
+  font-size: 32px;
+  line-height: 35px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+.visting__item_title--underline {
+  position: relative;
+}
+.visting__item_title--underline::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+
+  width: 69.99999%;
+  height: 2px;
+  background-color: #710707;
+  transition: .2s;
+}
+.visting__text {
+  margin-top: 22px;
+  font-weight: 100;
+  font-size: 22px;
+  line-height: 26px;
+}
+
+.visting__text-small {
+  margin-top: 10px;
+  font-size: 18px;
+  line-height: 21px;
 }

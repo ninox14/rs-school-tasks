@@ -12,79 +12,136 @@
 	<link href="https://fonts.googleapis.com/css2?family=Forum&family=Roboto:wght@100;300;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-	<header class="header"><!-- header -->
-		<div class="container">
-			<div class="header__wrapper">
-				<a class="header__logo" href="./index.html">
-					<div class="header__logo--svg"></div>
-					<div class="header__logo--text">Louvre</div>
-				</a>
-				<nav class="nav">
-					<ul>
-						<li class="nav__item">
-							<a href="#visiting" class="nav__link">Visiting</a>
-						</li>
-						<li class="nav__item">
-							<a href="#explore" class="nav__link">Explore</a>
-						</li>
-						<li class="nav__item">
-							<a href="#video" class="nav__link">Video</a>
-						</li>
-						<li class="nav__item">
-							<a href="#gallery" class="nav__link">Gallery</a>
-						</li>
-						<li class="nav__item">
-							<a href="#tickets" class="nav__link">Tickets</a>
-						</li>
-						<li class="nav__item">
-							<a href="#contacts" class="nav__link">Contacts</a>
-						</li>
-					</ul>
-				</nav>
-			</div>
+<header class="header"><!-- header -->
+	<div class="container">
+		<div class="header__wrapper">
+			<a class="header__logo" href="./index.html">
+				<div class="header__logo--svg"></div>
+				<div class="header__logo--text">Louvre</div>
+			</a>
+			<nav class="nav">
+				<ul>
+					<li class="nav__item">
+						<a href="#visiting" class="nav__link">Visiting</a>
+					</li>
+					<li class="nav__item">
+						<a href="#explore" class="nav__link">Explore</a>
+					</li>
+					<li class="nav__item">
+						<a href="#video" class="nav__link">Video</a>
+					</li>
+					<li class="nav__item">
+						<a href="#gallery" class="nav__link">Gallery</a>
+					</li>
+					<li class="nav__item">
+						<a href="#tickets" class="nav__link">Tickets</a>
+					</li>
+					<li class="nav__item">
+						<a href="#contacts" class="nav__link">Contacts</a>
+					</li>
+				</ul>
+			</nav>
 		</div>
-	</header><!-- /header -->
-	<main>
-		<section class="welcome section-dark"> <!-- Welcome -->
-			<div class="container">
-				<div class="welcome__wrapper">
-					<div class="welcome__header">
-					<h1 class="welcome__title section__title section__title-dark"><span>Welcome</span>
-						to the Louvre</h1>
-					<p class="welcome__text">From the castle to the museum</p>
-					<a class="btn welcome__btn" href="#" target="_blank">Discover the Louvre</a>
+	</div>
+</header><!-- /header -->
+<main>
+	<section class="welcome section-dark"> <!-- Welcome -->
+		<div class="container">
+			<div class="welcome__wrapper">
+				<div class="welcome__header">
+				<h1 class="welcome__title section__title section__title-dark"><span>Welcome</span>
+					to the Louvre</h1>
+				<p class="welcome__text">From the castle to the museum</p>
+				<a class="btn welcome__btn" href="#" target="_blank">Discover the Louvre</a>
+				</div>
+
+				<div class="welcome-slider">
+
+					<div class="welcome-slider__items">
+						<div class="welcome-slider__item">
+							<img class="welcome-slider__img" src="assets/img/welcome-slider/1.jpg" alt="01">
+						</div>
 					</div>
 
-					<div class="welcome-slider">
-
-						<div class="welcome-slider__items">
-							<div class="welcome-slider__item">
-								<img class="welcome-slider__img" src="assets/img/welcome-slider/1.jpg" alt="01">
-							</div>
+					<div class="welcome-slider__controls">
+						<div class="welcome-slider__controls--numbers">
+							<span class="welcome-slider__controls--counter" id="welcome-slider__controls--current">01</span>
+							<span class="welcome-slider__controls--counter">|</span>
+							<span class="welcome-slider__controls--counter">05</span>
 						</div>
-
-						<div class="welcome-slider__controls">
-							<div class="welcome-slider__controls--numbers">
-								<span class="welcome-slider__controls--counter" id="welcome-slider__controls--current">01</span>
-								<span class="welcome-slider__controls--counter">|</span>
-								<span class="welcome-slider__controls--counter">05</span>
-							</div>
-							<div class="welcome-slider__controls--squares">
-								<div class="welcome-slider__controls--square active"></div>
-								<div class="welcome-slider__controls--square"></div>
-								<div class="welcome-slider__controls--square"></div>
-								<div class="welcome-slider__controls--square"></div>
-								<div class="welcome-slider__controls--square"></div>
-							</div>
-							<div class="welcome-slider__controls--arrows">
-								<div class="welcome-slider__controls--arr"></div>
-								<div class="welcome-slider__controls--arr right"></div>
-							</div>
+						<div class="welcome-slider__controls--squares">
+							<div class="welcome-slider__controls--square active"></div>
+							<div class="welcome-slider__controls--square"></div>
+							<div class="welcome-slider__controls--square"></div>
+							<div class="welcome-slider__controls--square"></div>
+							<div class="welcome-slider__controls--square"></div>
+						</div>
+						<div class="welcome-slider__controls--arrows">
+							<div class="welcome-slider__controls--arr"></div>
+							<div class="welcome-slider__controls--arr right"></div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</section>
-	</main>
+		</div>
+	</section><!-- /Welcome -->
+	<section class="visiting">
+		<div class="container">
+			<div class="visiting__header">
+				<h2 class="visiting__title section__title section__title--underline">Virtual tour</h2>
+			</div>
+			<div class="visiting__cards">
+				<div class="visiting__item">
+					<a class="visiting__link" href="#" target="_blank">
+						<img class="visiting__item_img" src="./assets/img/visiting/card1.jpg" alt="">
+						<h3 class="visting__item_title visting__item_title--underline">Royal Palace</h3>
+						<p class="visting__text">360° Virtual Tour</p>
+						<p class="visting__text visting__text-small">Google Street Panorama View</p>
+					</a>
+				</div>
+				<div class="visiting__item">
+					<a class="visiting__link" href="#" target="_blank">
+						<img class="visiting__item_img" src="./assets/img/visiting/card2.jpg" alt="">
+						<h3 class="visting__item_title visting__item_title--underline">Denon Wing</h3>
+						<p class="visting__text">360° Virtual Tour</p>
+						<p class="visting__text visting__text-small">Google Street Panorama View</p>
+					</a>
+				</div>
+				<div class="visiting__item">
+					<a class="visiting__link" href="#" target="_blank">
+						<img class="visiting__item_img" src="./assets/img/visiting/card3.jpg" alt="">
+						<h3 class="visting__item_title visting__item_title--underline">Colonnade Perrault</h3>
+						<p class="visting__text">360° Virtual Tour</p>
+						<p class="visting__text visting__text-small">Google Street Panorama View</p>
+					</a>
+				</div>
+				<div class="visiting__item">
+					<a class="visiting__link" href="#" target="_blank">
+						<img class="visiting__item_img" src="./assets/img/visiting/card4.jpg" alt="">
+						<h3 class="visting__item_title visting__item_title--underline">Greek hall</h3>
+						<p class="visting__text">360° Virtual Tour</p>
+						<p class="visting__text visting__text-small">Google Street Panorama View</p>
+					</a>
+				</div>
+				<div class="visiting__item">
+					<a class="visiting__link" href="#" target="_blank">
+						<img class="visiting__item_img" src="./assets/img/visiting/card5.jpg" alt="">
+						<h3 class="visting__item_title visting__item_title--underline">Mona Lisa</h3>
+						<p class="visting__text">360° Virtual Tour</p>
+						<p class="visting__text visting__text-small">Google Street Panorama View</p>
+					</a>
+				</div>
+				<div class="visiting__item">
+					<a class="visiting__link" href="#" target="_blank">
+						<img class="visiting__item_img" src="./assets/img/visiting/card6.jpg" alt="">
+						<h3 class="visting__item_title visting__item_title--underline">Night Palace</h3>
+						<p class="visting__text">360° Virtual Tour</p>
+						<p class="visting__text visting__text-small">Google Street Panorama View</p>
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+</main>
 </body>
 </html>
