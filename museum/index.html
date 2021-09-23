@@ -178,7 +178,11 @@
 				<img class="video__video" src="./assets/video/poster0.jpg" alt="video">
 				<button class="video__play-button"></button>
 				<div class="video__controls">
-
+					<button class="video__play"></button>
+					<input class="video__progress video__controls_progress" type="range" value="0" min="0" max="100" step="1" >
+					<button class="video__volume"></button>
+					<input class="video__volume_level video__controls_progress" type="range" value="20" min="0" max="100" step="1">
+					<button class="video__fullscreen"></button>
 				</div>
 			</div>
 			<div class="video-slider">
@@ -191,5 +195,6 @@
 		</div>
 	</section>
 </main>
+<script src="./index.js"></script>
 </body>
 </html>
