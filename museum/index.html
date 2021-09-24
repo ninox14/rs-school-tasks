@@ -251,8 +251,31 @@
 	</section>
 
 
-	<section>
+	<section class="tickets">
+		<div class="container">
+			<h2 class="tickets__title section__title section__title--underline">Buy Tickets</h2>
 
+			<div class="tickets__content">
+				<img class="tickets__img" src="./assets/img/tickets.jpg" alt="Tickets">
+				<form class="tickets__form" action="/" method="post">
+					<div class="tickets__type">
+						<h3 class="tickets__type_title">Ticket Type</h3>
+						<label class="tickets__radio_container">Permanent exhibition
+							<input type="radio" checked="checked" name="radio">
+							<span class="tickets__checkmark"></span>
+						</label>
+						<label class="tickets__radio_container">Temporary exhibition
+							<input type="radio" name="radio">
+							<span class="tickets__checkmark"></span>
+						</label>
+						<label class="tickets__radio_container">Combined Admission
+							<input type="radio" name="radio">
+							<span class="tickets__checkmark"></span>
+						</label>
+					</div>
+				</form>
+			</div>
+		</div>
 	</section>
 
 </main>

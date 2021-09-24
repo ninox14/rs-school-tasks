@@ -623,4 +623,77 @@ button:hover {
 }
 
 
-/*  */
+/* Tickets */
+
+.tickets {
+  padding: 75px 0;
+}
+
+.tickets__content {
+  margin-top: 103px;
+  display: flex;
+}
+
+/* Tickets form */
+.tickets__form {
+  margin-left: 60px;
+}
+.tickets__type {
+  display: flex;
+  flex-direction: column;
+}
+.tickets__type_title {
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 33px;
+  margin-bottom: 50px;
+}
+.tickets__radio_container {
+  margin-bottom: 25px;
+  padding-left: 40px;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 26px;
+
+  display: block;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.tickets__radio_container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+.tickets__checkmark {
+  position: absolute;
+  top: 5px;
+  left: 0;
+  height: 17px;
+  width: 17px;
+  border:  2px solid #000;
+  border-radius: 50%;
+}
+.tickets__radio_container:hover input ~ .tickets__checkmark {
+  background-color: #71070765;
+}
+
+.tickets__checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.tickets__radio_container input:checked ~ .tickets__checkmark:after {
+  display: block;
+}
+.tickets__radio_container .tickets__checkmark:after {
+ 	top: 3px;
+	left: 3px;
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	background: #000;
+}
