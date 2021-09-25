@@ -26,23 +26,36 @@ h3,
 h4,
 h5,
 h6,
-p {
+p,
+fieldset {
 	margin: 0;
 }
 
 a {
 	text-decoration: none;
 }
+
 button {
   background-color: transparent;
   display: block;
   border: none;
   padding: 0;
 }
+
 button:hover {
   cursor: pointer;
 }
 
+fieldset {
+  padding: 0;
+  border: none;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
 /* Container */
 
 .container {
@@ -75,6 +88,17 @@ button:hover {
 
 .btn:hover {
 	background-color: #9D8665;
+}
+
+.btn--black {
+  font-weight: 100 !important;
+  font-size: 22px;
+  line-height: 26px;
+  letter-spacing: 2px;
+
+  border-radius: 3px;
+  padding: 12px 38px;
+  background-color: #000;
 }
 
 /* Header */
@@ -636,24 +660,34 @@ button:hover {
 
 /* Tickets form */
 .tickets__form {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
   margin-left: 60px;
 }
 .tickets__type {
   display: flex;
   flex-direction: column;
 }
-.tickets__type_title {
+.tickets__group_title {
   font-weight: 700;
   font-size: 28px;
   line-height: 33px;
+}
+
+.tickets__caption {
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 26px;
+}
+/* tickets type */
+
+.tickets__type_title {
   margin-bottom: 50px;
 }
 .tickets__radio_container {
   margin-bottom: 25px;
   padding-left: 40px;
-  font-weight: 300;
-  font-size: 22px;
-  line-height: 26px;
 
   display: block;
   position: relative;
@@ -674,7 +708,7 @@ button:hover {
   left: 0;
   height: 17px;
   width: 17px;
-  border:  2px solid #000;
+  border: 2px solid #000;
   border-radius: 50%;
 }
 .tickets__radio_container:hover input ~ .tickets__checkmark {
@@ -696,4 +730,41 @@ button:hover {
 	height: 7px;
 	border-radius: 50%;
 	background: #000;
+}
+
+/* tickets amount */
+.tickets__amount_title {
+  margin-bottom: 25px;
+  text-align: end;
+}
+
+.tickets__amount_caption {
+  margin-bottom: 15px;
+}
+.tickets__amount_number {
+  display: flex;
+  margin-bottom: 10px;
+  justify-content: space-between;
+  width: 150px;
+  height: 50px;
+  border: 3px solid #000;
+}
+.tickets__number {
+  all: unset;
+  padding: 0;
+  border: none;
+  text-align: center;
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 26px;
+}
+.tickets__button {
+  user-select:none;
+  padding: 0 14px;
+  font-size: 32px;
+  line-height: 37px;
+}
+.tickets__count_caption {
+  margin-top: 50px;
+  margin-bottom: 52px;
 }

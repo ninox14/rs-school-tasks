@@ -258,21 +258,43 @@
 			<div class="tickets__content">
 				<img class="tickets__img" src="./assets/img/tickets.jpg" alt="Tickets">
 				<form class="tickets__form" action="/" method="post">
-					<div class="tickets__type">
-						<h3 class="tickets__type_title">Ticket Type</h3>
-						<label class="tickets__radio_container">Permanent exhibition
+					<fieldset class="tickets__type">
+						<h3 class="tickets__type_title tickets__group_title">Ticket Type</h3>
+						<label class="tickets__radio_container tickets__caption">Permanent exhibition
 							<input type="radio" checked="checked" name="radio">
 							<span class="tickets__checkmark"></span>
 						</label>
-						<label class="tickets__radio_container">Temporary exhibition
+						<label class="tickets__radio_container tickets__caption">Temporary exhibition
 							<input type="radio" name="radio">
 							<span class="tickets__checkmark"></span>
 						</label>
-						<label class="tickets__radio_container">Combined Admission
+						<label class="tickets__radio_container tickets__caption">Combined Admission
 							<input type="radio" name="radio">
 							<span class="tickets__checkmark"></span>
 						</label>
-					</div>
+					</fieldset>
+          <fieldset class="tickets__amount">
+            <h3 class="tickets__amount_title tickets__group_title">Amount</h3>
+            <div class="tickets__amount_caption tickets__caption">Basic 18+</div>
+            <label class="tickets__amount_number">
+              <button class="tickets__button" type="button" unselectable="on" onselectstart="return false;"
+              onmousedown="return false;" onclick="this.nextElementSibling.stepDown()">‒</button>
+              <input class="tickets__number" type="number" min="0" max="20" value="1" readonly>
+              <button class="tickets__button" type="button" unselectable="on" onselectstart="return false;"
+              onmousedown="return false;" onclick="this.previousElementSibling.stepUp()">+</button>
+            </label>
+
+            <div class="tickets__amount_caption tickets__caption">Senior 65+</div>
+            <label class="tickets__amount_number">
+              <button class="tickets__button" type="button" unselectable="on" onselectstart="return false;"
+              onmousedown="return false;" onclick="this.nextElementSibling.stepDown()">‒</button>
+              <input class="tickets__number" type="number" min="0" max="20" value="1" readonly>
+              <button class="tickets__button" type="button" unselectable="on" onselectstart="return false;"
+              onmousedown="return false;" onclick="this.previousElementSibling.stepUp()">+</button>
+            </label>
+            <h3 class="tickets__count_caption tickets__group_title">Total €<span id="amount_count">220</span></h3>
+            <button class="btn btn--black" type="button">Buy Now</button>
+          </fieldset>
 				</form>
 			</div>
 		</div>
