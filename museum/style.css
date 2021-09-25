@@ -358,7 +358,7 @@ input[type='number']::-webkit-outer-spin-button {
   height: auto;
 }
 .visting__item_title {
-  margin-top: 25px;
+  margin-top: 5px;
   font-family: 'Forum', cursive;
   font-size: 32px;
   line-height: 35px;
@@ -394,6 +394,9 @@ input[type='number']::-webkit-outer-spin-button {
 
 
 /* Explore  */
+.explore {
+  padding-bottom: 70px;
+}
 
 .explore__left {
   padding-top: 75px;
@@ -415,7 +418,6 @@ input[type='number']::-webkit-outer-spin-button {
 
 .explore__right {
   margin-top: 90px;
-  margin-bottom: 75px;
 }
 
 
@@ -440,7 +442,7 @@ input[type='number']::-webkit-outer-spin-button {
   line-height: 38px;
 }
 .video__video-container {
-  margin-top: 75px;
+  margin-top: 65px;
   position: relative;
   z-index: 1;
 
@@ -483,9 +485,9 @@ input[type='number']::-webkit-outer-spin-button {
 
   position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: 10px;
   background-color: #000;
-  padding: 27px 30px;
+  padding: 25px 30px;
 }
 .video__play {
   width: 23px;
@@ -534,7 +536,7 @@ input[type='number']::-webkit-outer-spin-button {
 
 /* Video Slider */
 .video-slider {
-  margin-top: 40px;
+  margin-top: 35px;
 }
 
 .video-slider__item {
