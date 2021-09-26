@@ -299,7 +299,7 @@
 				</form>
 			</div>
 		</div>
-    <form class="book" action="#" method="post">
+    <form class="book active_form" action="#" method="post">
       <div class="book__container container">
         <a href="#" class="book__close"></a>
         <div class="book__left">
@@ -376,12 +376,12 @@
                 <span class="overview__count">2</span>
                 Basic (20 €)
               </p>
-              <span class="oveview__count_total">40 €</span>
+              <span class="overview__count_total">40 €</span>
               <p class="oveview__type">
                 <span class="overview__count">2</span>
                 Senior (10 €)
               </p>
-              <span class="oveview__count_total">20 €</span>
+              <span class="overview__count_total">20 €</span>
             </div>
             <div class="overview__total_wrapper">
               <span class="overview__total_caption">Total:</span>
@@ -392,11 +392,27 @@
                 <div class="card__caption">Card number</div>
                 <input class="card__input" type="number" name="card__number" id="card__number">
                 <div class="card__caption">Expiration date</div>
-                <input class="card__input card__input--small" type="number" name="expiration__month" id="expiration__month">
-                <input class="card__input card__input--small" type="number" name="expiration__month" id="expiration__month">
+                <input class="card__input card__input--small" placeholder="03" type="number" name="expiration__month" id="expiration__month">
+                <input class="card__input card__input--small" placeholder="2024" type="number" name="expiration__year" id="expiration__year">
+                <div class="card__caption">Cardholder name</div>
+                <input class="card__input card__input--name" type="text" name="card__number" id="card__number">
+                <div class="card__logos">
+                  <img class="visa" src="./assets/img/Visa.png" alt="">
+                  <img class="mastercard" src="./assets/img/Mastercard.png" alt="">
+                </div>
+              </div>
+              <div class="card__bottom card">
+                <div class="card__text">
+                  <div class="card__caption">CVC/CVV</div>
+                  <input class="card__input card__input--smaller" type="cvv" name="card__vv" id="card__cvv">
+                  <div class="card__caption card__caption--smaller"><span>The last</span>
+                  3 or 4 digits
+                  on back
+                  of the card</div>
+                </div>
               </div>
             </div>
-
+            <button class="book__btn btn">Book</button>
           </div>
         </div>
       </div>
