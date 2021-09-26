@@ -952,6 +952,8 @@ input[type='number']::-webkit-outer-spin-button {
   position: relative;
   background-color: #fff;
   padding: 90px 235px;
+  display: flex;
+  justify-content: space-between;
 }
 .book__close {
   position: absolute;
@@ -986,9 +988,6 @@ input[type='number']::-webkit-outer-spin-button {
 /* Booking left */
 .book__left {
   width: 400px;
-}
-.book__header {
-
 }
 .book__svg {
   background-image: url("assets/svg/Frame.svg");
@@ -1150,4 +1149,157 @@ input[type='number']::-webkit-outer-spin-button {
   font-size: 20px;
   line-height: 10px;
   padding: 0 12px;
+}
+/* Book right */
+
+.book__right {
+  border: 1px solid #030303;
+  padding: 25px 30px;
+  width: 530px;
+}
+
+/* overview */
+.overview__top_text {
+  position: relative;
+}
+
+.overview__title {
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 37px;
+
+  color: #272727;
+}
+.overview__subtitle {
+  margin-bottom: 10px;
+
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 26px;
+  /* identical to box height */
+
+
+  color: #740C11;
+
+  opacity: 0.9;
+}
+.overview__info {
+  margin-bottom: 5px;
+  display: block;
+  position: relative;
+  padding-left: 30px;
+
+  font-weight: 100;
+  font-size: 18px;
+  line-height: 21px;
+
+  color: #030303;
+}
+
+.overview__info::before {
+  position: absolute;
+  top: 2px;
+  left: 0;
+}
+.overview__date::before {
+  content: url("./assets/svg/booking/date.svg");
+}
+.overview__time::before {
+  content: url("./assets/svg/booking/time.svg");
+}
+.overview__type::before {
+  content: url("./assets/svg/booking/checkmark.svg");
+}
+
+.overview__img {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.overview__bot {
+  display: grid;
+  position: relative;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+}
+
+.overview__bot::after {
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 2px;
+
+  background: #740C11;
+  opacity: 0.9;
+}
+.oveview__type {
+  font-size: 22px;
+  line-height: 26px;
+
+  color: #030303;
+
+}
+.overview__count {
+  padding-top: 5px;
+  padding: 0 11px;
+  font-weight: 100;
+  font-size: 18px;
+  line-height: 21px;
+
+  color: #A4A4A3;
+  border-radius: 5px;
+  background-color: #030303;
+}
+.oveview__count_total {
+  justify-self: end;
+}
+.overview__total_wrapper{
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.overview__total_caption {
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 37px;
+}
+.overview__total {
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 37px;
+}
+
+/* Cards */
+
+.card {
+  padding: 15px 20px;
+  border-radius: 3px;
+  width: 360px;
+  background-color: #BCBCBC;
+}
+.card__caption {
+  margin-bottom: 5px;
+  font-size: 12px;
+  line-height: 14px;
+  /* identical to box height */
+
+  color: #161615;
+}
+
+.card__input {
+  margin-bottom: 10px;
+  padding: 0 10px;
+  display: block;
+  width: 215px;
+  height: 35px;
+  border: 0.5px solid #A4A4A3;
+}
+.card__input:focus {
+  outline: none;
+}
+.card__input--small {
+  width: 100px;
 }
