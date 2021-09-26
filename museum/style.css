@@ -118,7 +118,7 @@ input[type='number']::-webkit-outer-spin-button {
 	/* justify-content: space-between; */
 }
 .header__logo--svg {
-	background-image: url("assets/svg/Logo.svg");
+	background-image: url("assets/svg/Frame.svg");
 	width: 49px;
 	height: 26px;
 }
@@ -924,4 +924,230 @@ input[type='number']::-webkit-outer-spin-button {
   /* identical to box height, or 100% */
 
   letter-spacing: 2px;
+}
+
+
+
+
+/* book tickets form */
+
+.book {
+  position:relative;
+  top:0;
+  /* left:50vh; */
+  left: 0;
+  width: 100%;
+  height:100vh;
+  background:rgba(0, 0, 0, 0.25);
+
+  /* z-index:-1; */
+  /* opacity:0; */
+  overflow:hidden;
+  box-sizing:border-box;
+  transition: top 500ms ease-in-out,
+              opacity 500ms ease-in-out,
+              height 0ms ease-in-out 500ms;
+}
+.book__container {
+  position: relative;
+  background-color: #fff;
+  padding: 90px 235px;
+}
+.book__close {
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  width: 32px;
+  height: 32px;
+}
+.book__close::before,
+.book__close::after {
+  position: absolute;
+  left: 15px;
+  content: ' ';
+  height: 33px;
+  width: 2px;
+  background-color: #030303;
+  transition: .3s;
+}
+.book__close:before {
+  transform: rotate(45deg);
+}
+.book__close:after {
+  transform: rotate(-45deg);
+}
+
+.book__close:hover::before,
+.book__close:hover::after {
+  background-color: #9D8665;
+}
+
+
+/* Booking left */
+.book__left {
+  width: 400px;
+}
+.book__header {
+
+}
+.book__svg {
+  background-image: url("assets/svg/Frame.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 85px;
+  height: 41px;
+  filter: invert(55%) sepia(28%) saturate(428%) hue-rotate(356deg) brightness(94%) contrast(85%);
+}
+.book__title {
+  font-family: 'Forum', cursive;
+  font-weight: 400;
+  font-size: 50px;
+  line-height: 55px;
+  text-transform: uppercase;
+
+  color: #9D8665;
+}
+
+.book__subtitle {
+  position: relative;
+  font-size: 18px;
+  line-height: 21px;
+  /* identical to box height */
+
+
+  color: #710707;
+}
+
+.book__subtitle::after {
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 3px;
+  background-color: #740C11;
+  opacity: 0.9;
+}
+
+.book__inputs {
+
+  margin-top: 70px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.book__input {
+  width: 100%;
+  border: 1px solid #030303;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.book__input--small {
+  width: 190px;
+}
+.book__icon {
+
+}
+
+.input {
+  margin-left: 15px;
+  border: none;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;
+  background-color: transparent;
+  line-height: 21px;
+  color: #030303;
+}
+.input::placeholder {
+  font-family: 'Roboto', sans-serif;
+  background-color: transparent;
+  font-size: 18px;
+  line-height: 21px;
+  color: #030303;
+}
+.input:focus {
+  outline: none;
+}
+.input__date {
+  width: 110px;
+}
+.book__select {
+  appearance: none;
+}
+.book__arrow {
+  position: absolute;
+  right: 14px;
+  z-index: 2;
+  background-image: url("./assets/svg/booking/arrow.svg");
+  background-size: cover;
+  height: 17px;
+  width: 17px;
+}
+
+
+
+.book__caption {
+  display: block;
+  width: 100%;
+  position: relative;
+  font-family: 'Forum', cursive;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 20px;
+  text-transform: capitalize;
+
+  color: #9D8665;
+}
+.book__caption::after {
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  content: "";
+  width: 100%;
+  height: 2px;
+
+  background: #740C11;
+  opacity: 0.9;
+}
+.book__amount {
+  width: 100%;
+  border: 1px solid #030303;
+  padding: 10px 15px;
+}
+
+.book__amount_wrapp {
+  margin-top: 22px;
+  display: grid;
+  justify-content: space-between;
+  row-gap: 18px;
+  grid-template-columns: 1fr 1fr;
+}
+.book__amount_name {
+  font-size: 18px;
+  line-height: 21px;
+
+  color: #030303;
+}
+
+.book__amount_number {
+  width: 105px;
+  height: 25px;
+  margin-left: 0;
+  border: 1px solid #030303;
+  justify-self: end;
+}
+.book__number {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  width: 35px;
+}
+.book__amount_button {
+  background-color: #030303;
+  color: #fff;
+  font-size: 20px;
+  line-height: 10px;
+  padding: 0 12px;
 }

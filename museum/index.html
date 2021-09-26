@@ -299,6 +299,70 @@
 				</form>
 			</div>
 		</div>
+    <form class="book" action="#" method="post">
+      <div class="book__container container">
+        <a href="#" class="book__close"></a>
+        <div class="book__left">
+          <div class="book__header">
+            <div class="book__svg"></div>
+            <h2 class="book__title">Booking tickets</h2>
+            <p class="book__subtitle">Tour to Louvre</p>
+          </div>
+          <fieldset class="book__inputs">
+            <div class="book__input book__input--small">
+              <img class="book__icon" src="./assets/svg/booking/date.svg" alt="">
+              <input  class="input__date input" placeholder="Date" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date" />
+              <label class="book__arrow" for="date" ></label>
+            </div>
+            <div class="book__input book__input--small">
+              <img class="book__icon" src="./assets/svg/booking/time.svg" alt="">
+              <input  class="input__time input" placeholder="Time" type="text" onfocus="(this.type='time')" onblur="(this.type='text')" id="time" />
+              <label class="book__arrow" for="time"></label>
+            </div>
+            <div class="book__input">
+              <img class="book__icon" src="./assets/svg/booking/name.svg" alt="">
+              <input  class="input" placeholder="Name" type="text" id="time" />
+            </div>
+            <div class="book__input">
+              <img class="book__icon" src="./assets/svg/booking/email.svg" alt="">
+              <input  class="input" placeholder="E-mail" type="email" id="email" />
+            </div>
+            <div class="book__input">
+              <img class="book__icon" src="./assets/svg/booking/tel.svg" alt="">
+              <input  class="input" placeholder="Phone" type="tel" id="phone" />
+            </div>
+            <div class="book__input">
+              <img class="book__icon" src="./assets/svg/booking/ballot.svg" alt="">
+              <select class="book__select input" id="type" required>
+                <option value="" disabled selected hidden>Ticket Type</option>
+              </select>
+              <label class="book__arrow" for="type"></label>
+            </div>
+            <div class="book__amount">
+              <h4 class="book__caption">Entry ticket</h4>
+              <div class="book__amount_wrapp">
+                <span class="book__amount_name">Basic 18+ (20 €)</span>
+                <label class="book__amount_number tickets__amount_number">
+                  <button class="book__amount_button tickets__button" type="button" unselectable="on" onselectstart="return false;"
+                  onmousedown="return false;" onclick="this.nextElementSibling.stepDown()">‒</button>
+                  <input class="book__number tickets__number" type="number" min="0" max="20" value="1" readonly>
+                  <button class="book__amount_button tickets__button" type="button" unselectable="on" onselectstart="return false;"
+                  onmousedown="return false;" onclick="this.previousElementSibling.stepUp()">+</button>
+                </label>
+                <span class="book__amount_name">Senior 65+ (10 €)</span>
+                <label class="book__amount_number tickets__amount_number">
+                  <button class="book__amount_button tickets__button" type="button" unselectable="on" onselectstart="return false;"
+                  onmousedown="return false;" onclick="this.nextElementSibling.stepDown()">‒</button>
+                  <input class="book__number tickets__number" type="number" min="0" max="20" value="1" readonly>
+                  <button class="book__amount_button tickets__button" type="button" unselectable="on" onselectstart="return false;"
+                  onmousedown="return false;" onclick="this.previousElementSibling.stepUp()">+</button>
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+    </form>
 	</section>
 
   <section class="parallax">
