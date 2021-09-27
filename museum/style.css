@@ -659,6 +659,7 @@ input[type='number']::-webkit-outer-spin-button {
 /* Tickets */
 
 .tickets {
+  position: relative;
   padding: 75px 0;
 }
 
@@ -861,6 +862,7 @@ input[type='number']::-webkit-outer-spin-button {
   display: grid;
   width: 363px;
   column-gap: 150px;
+  row-gap: 20px;
   grid-template-columns: 1fr 1fr;
   margin: 0;
   padding: 0;
@@ -872,12 +874,12 @@ input[type='number']::-webkit-outer-spin-button {
 /* socials */
 
 .socials {
+  margin-bottom: 20px;
   display: flex;
   align-self: end;
   justify-self: end;
   gap: 25px;
   list-style: none;
-  margin: 0;
   padding: 0;
 }
 .socials__item a{
@@ -936,21 +938,31 @@ input[type='number']::-webkit-outer-spin-button {
 /* book tickets form */
 
 .book {
-  position:relative;
+  padding-top: 60px;
+  position:fixed;
   top:0;
-  /* left:50vh; */
-  left: 0;
-  width: 100%;
+  right:50vh;
+  /* left: 0; */
+  width: 100vw;
   height:100vh;
   background:rgba(0, 0, 0, 0.25);
 
-  /* z-index:-1; */
-  /* opacity:0; */
+  z-index:-1;
+  opacity:0;
   overflow:hidden;
   box-sizing:border-box;
-  transition: top 500ms ease-in-out,
+  transition: right 500ms ease-in-out,
               opacity 500ms ease-in-out,
               height 0ms ease-in-out 500ms;
+}
+body.active_form .book {
+  z-index: 99999;
+  opacity: 1;
+  right: 0;
+  height: 100vh;
+  transition: right 500ms ease-in-out,
+              opacity 500ms ease-in-out,
+              height 0ms ease-in-out 0ms;
 }
 .book__container {
   position: relative;

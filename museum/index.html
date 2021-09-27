@@ -46,7 +46,7 @@
 	</div>
 </header><!-- /header -->
 <main>
-	<section class="welcome section-dark"> <!-- Welcome -->
+	<section class="welcome section-dark" > <!-- Welcome -->
 		<div class="container">
 			<div class="welcome__wrapper">
 				<div class="welcome__header">
@@ -89,7 +89,7 @@
 	</section><!-- /Welcome -->
 
 
-	<section class="visiting">
+	<section class="visiting" id="visiting">
 		<div class="container">
 			<div class="visiting__header">
 				<h2 class="visiting__title section__title section__title--underline">Virtual tour</h2>
@@ -148,7 +148,7 @@
 	</section>
 
 
-	<section class="explore section-dark">
+	<section class="explore section-dark" id="explore">
 		<div class="container container-flex">
 			<div class="explore__left">
 				<div class="explore__header">
@@ -173,7 +173,7 @@
 	</section>
 
 
-	<section class="video">
+	<section class="video" id="video">
 		<div class="container">
 			<div class="video__header">
 				<h2 class="video__title section__title">Video journey</h2>
@@ -226,7 +226,7 @@
 	</section>
 
 
-	<section class="gallery section-dark">
+	<section class="gallery section-dark" id="gallery">
 		<div class="container">
 			<h2 class="gallery__title section__title section__title-dark">Art Gallery</h2>
 			<div class="gallery__container">
@@ -252,7 +252,7 @@
 	</section>
 
 
-	<section class="tickets">
+	<section class="tickets" id="tickets">
 		<div class="container">
 			<h2 class="tickets__title section__title section__title--underline">Buy Tickets</h2>
 
@@ -294,14 +294,14 @@
               onmousedown="return false;" onclick="this.previousElementSibling.stepUp()">+</button>
             </label>
             <h3 class="tickets__count_caption tickets__group_title">Total €<span id="amount_count">220</span></h3>
-            <button class="btn btn--black" type="button">Buy Now</button>
+            <button class="btn btn--black" type="button" onclick="toggleForm()">Buy Now</button>
           </fieldset>
 				</form>
 			</div>
 		</div>
-    <form class="book active_form" action="#" method="post">
+    <form class="book" action="./index.html" method="POST">
       <div class="book__container container">
-        <a href="#" class="book__close"></a>
+        <button class="book__close" onclick="toggleForm()"></button>
         <div class="book__left">
           <div class="book__header">
             <div class="book__svg"></div>
@@ -333,7 +333,7 @@
             </div>
             <div class="book__input">
               <img class="book__icon" src="./assets/svg/booking/ballot.svg" alt="">
-              <select class="book__select input" id="type" required>
+              <select class="book__select input" id="type">
                 <option value="" disabled selected hidden>Ticket Type</option>
               </select>
               <label class="book__arrow" for="type"></label>
@@ -412,7 +412,7 @@
                 </div>
               </div>
             </div>
-            <button class="book__btn btn">Book</button>
+            <button class="book__btn btn" onclick="toggleForm()">Book</button>
           </div>
         </div>
       </div>
@@ -423,7 +423,7 @@
     <div class="parallax__img"></div>
   </section>
 
-  <section class="contacts">
+  <section class="contacts" id="contacts">
     <div class="container">
       <h2 class="tickets__title section__title section__title--underline">Contacts</h2>
       <div class="contacts__content">
