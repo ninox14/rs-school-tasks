@@ -71,3 +71,17 @@ function gallery() {
 document.addEventListener("DOMContentLoaded", function () {
     gallery();
 });
+
+
+
+
+console.log('https://github.com/rolling-scopes-school/ninox14-JSFE2021Q3/pull/1');
+console.log('[+] Вёрстка семантическая. В коде страницы присутствуют следующие элементы (указано минимальное количество, может быть больше) +24');
+console.log('[±] Вёрстка соответствует макету +42');
+console.log('блок <footer> +2');
+console.log('[±] Форма покупки билетов +21');
+console.log('форма открывается при клике по кнопке Buy Now в секции Tickets и закрывается кликом по иконке с крестиком в верхнем правом углу или кликом по overlay +1');
+console.log('[+] Требования к css + 18');
+console.log('[+] Интерактивность, реализуемая через css +24');
+console.log('[±] Интерактивность, реализуемая через js +14');
+console.log('кнопке "Book" в форме покупки билетов добавлен ripple-эффект Демо 0');
