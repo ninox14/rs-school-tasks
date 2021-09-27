@@ -638,7 +638,7 @@ input[type='number']::-webkit-outer-spin-button {
   width: 456px;
 }
 .gallery__img:first-child,
-.gallery__img:nth-child(11)  {
+.gallery__img:nth-child(11) {
   padding-top: 50px;
 }
 .gallery__container::after {
@@ -941,13 +941,12 @@ input[type='number']::-webkit-outer-spin-button {
   padding-top: 60px;
   position:fixed;
   top:0;
-  right:50vh;
+  right:50vw;
   /* left: 0; */
   width: 100vw;
   height:100vh;
   background:rgba(0, 0, 0, 0.25);
 
-  z-index:-1;
   opacity:0;
   overflow:hidden;
   box-sizing:border-box;
@@ -981,6 +980,7 @@ body.active_form .book {
 .book__close::before,
 .book__close::after {
   position: absolute;
+  top: 0;
   left: 15px;
   content: ' ';
   height: 33px;
