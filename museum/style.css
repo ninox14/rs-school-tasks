@@ -544,6 +544,7 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 .video-slider__item {
+  border: none;
   width: 448px;
   height: 254px;
   margin: 0px 21px;
@@ -785,6 +786,7 @@ input[type='number']::-webkit-outer-spin-button {
 /* Parallax */
 
 .parallax__img {
+  font-size: 0;
   width: 100%;
   height: 400px;
   background-image: url("./assets/img/parallax.jpg");

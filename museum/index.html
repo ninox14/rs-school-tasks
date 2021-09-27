@@ -194,10 +194,10 @@
 			</div>
 			<div class="video-slider">
 				<div class="video-slider__container">
-					<iframe class="video-slider__item" src="https://www.youtube.com/embed/aWmJ5DgyWPI" loading="lazy" title="Exposition - Le Corps et l'Âme. De Donatello à Michel-Ange. Sculptures italiennes de la Renaissance"	frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-					<iframe class="video-slider__item" src="https://www.youtube.com/embed/Vi5D6FKhRmo" loading="lazy" title="Au Louvre ! La Vénus de Milo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					<iframe class="video-slider__item" src="https://www.youtube.com/embed/aWmJ5DgyWPI" loading="lazy" title="Exposition - Le Corps et l'Âme. De Donatello à Michel-Ange. Sculptures italiennes de la Renaissance" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					<iframe class="video-slider__item" src="https://www.youtube.com/embed/Vi5D6FKhRmo" loading="lazy" title="Au Louvre ! La Vénus de Milo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 					allowfullscreen></iframe>
-					<iframe class="video-slider__item" src="https://www.youtube.com/embed/NOhDysLnTvY" loading="lazy" title="Promenade dans les collections mésopotamiennes avec Ariane Thomas" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					<iframe class="video-slider__item" src="https://www.youtube.com/embed/NOhDysLnTvY" loading="lazy" title="Promenade dans les collections mésopotamiennes avec Ariane Thomas"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 					allowfullscreen></iframe>
 				</div>
 				<div class="video-slider__controls">
@@ -277,22 +277,22 @@
           <fieldset class="tickets__amount">
             <h3 class="tickets__amount_title tickets__group_title">Amount</h3>
             <div class="tickets__amount_caption tickets__caption">Basic 18+</div>
-            <label class="tickets__amount_number">
-              <button class="tickets__button" type="button" unselectable="on" onselectstart="return false;"
+            <div class="tickets__amount_number">
+              <button class="tickets__button" type="button"
               onmousedown="return false;" onclick="this.nextElementSibling.stepDown()">‒</button>
               <input class="tickets__number" type="number" min="0" max="20" value="1" readonly>
-              <button class="tickets__button" type="button" unselectable="on" onselectstart="return false;"
+              <button class="tickets__button" type="button"
               onmousedown="return false;" onclick="this.previousElementSibling.stepUp()">+</button>
-            </label>
+            </div>
 
             <div class="tickets__amount_caption tickets__caption">Senior 65+</div>
-            <label class="tickets__amount_number">
-              <button class="tickets__button" type="button" unselectable="on" onselectstart="return false;"
+            <div class="tickets__amount_number">
+              <button class="tickets__button" type="button"
               onmousedown="return false;" onclick="this.nextElementSibling.stepDown()">‒</button>
               <input class="tickets__number" type="number" min="0" max="20" value="1" readonly>
-              <button class="tickets__button" type="button" unselectable="on" onselectstart="return false;"
+              <button class="tickets__button" type="button"
               onmousedown="return false;" onclick="this.previousElementSibling.stepUp()">+</button>
-            </label>
+            </div>
             <h3 class="tickets__count_caption tickets__group_title">Total €<span id="amount_count">220</span></h3>
             <button class="btn btn--black" type="button" onclick="toggleForm()">Buy Now</button>
           </fieldset>
@@ -321,7 +321,7 @@
             </div>
             <div class="book__input">
               <img class="book__icon" src="./assets/svg/booking/name.svg" alt="">
-              <input  class="input" placeholder="Name" type="text" id="time" />
+              <input  class="input" placeholder="Name" type="text" id="name" />
             </div>
             <div class="book__input">
               <img class="book__icon" src="./assets/svg/booking/email.svg" alt="">
@@ -342,21 +342,21 @@
               <h4 class="book__caption">Entry ticket</h4>
               <div class="book__amount_wrapp">
                 <span class="book__amount_name">Basic 18+ (20 €)</span>
-                <label class="book__amount_number tickets__amount_number">
-                  <button class="book__amount_button tickets__button" type="button" unselectable="on" onselectstart="return false;"
+                <div class="book__amount_number tickets__amount_number">
+                  <button class="book__amount_button tickets__button" type="button"
                   onmousedown="return false;" onclick="this.nextElementSibling.stepDown()">‒</button>
                   <input class="book__number tickets__number" type="number" min="0" max="20" value="1" readonly>
-                  <button class="book__amount_button tickets__button" type="button" unselectable="on" onselectstart="return false;"
+                  <button class="book__amount_button tickets__button" type="button"
                   onmousedown="return false;" onclick="this.previousElementSibling.stepUp()">+</button>
-                </label>
+                </div>
                 <span class="book__amount_name">Senior 65+ (10 €)</span>
-                <label class="book__amount_number tickets__amount_number">
-                  <button class="book__amount_button tickets__button" type="button" unselectable="on" onselectstart="return false;"
+                <div class="book__amount_number tickets__amount_number">
+                  <button class="book__amount_button tickets__button" type="button"
                   onmousedown="return false;" onclick="this.nextElementSibling.stepDown()">‒</button>
                   <input class="book__number tickets__number" type="number" min="0" max="20" value="1" readonly>
-                  <button class="book__amount_button tickets__button" type="button" unselectable="on" onselectstart="return false;"
+                  <button class="book__amount_button tickets__button" type="button"
                   onmousedown="return false;" onclick="this.previousElementSibling.stepUp()">+</button>
-                </label>
+                </div>
               </div>
             </div>
           </fieldset>
@@ -395,7 +395,7 @@
                 <input class="card__input card__input--small" placeholder="03" type="number" name="expiration__month" id="expiration__month">
                 <input class="card__input card__input--small" placeholder="2024" type="number" name="expiration__year" id="expiration__year">
                 <div class="card__caption">Cardholder name</div>
-                <input class="card__input card__input--name" type="text" name="card__number" id="card__number">
+                <input class="card__input card__input--name" type="text" name="card__name" id="card__name">
                 <div class="card__logos">
                   <img class="visa" src="./assets/img/Visa.png" alt="">
                   <img class="mastercard" src="./assets/img/Mastercard.png" alt="">
@@ -404,7 +404,7 @@
               <div class="card__bottom card">
                 <div class="card__text">
                   <div class="card__caption">CVC/CVV</div>
-                  <input class="card__input card__input--smaller" type="cvv" name="card__vv" id="card__cvv">
+                  <input class="card__input card__input--smaller" type="number" name="card__vv" id="card__cvv">
                   <div class="card__caption card__caption--smaller"><span>The last</span>
                   3 or 4 digits
                   on back
@@ -419,9 +419,9 @@
     </form>
 	</section>
 
-  <section class="parallax">
+  <div class="parallax">
     <div class="parallax__img"></div>
-  </section>
+	</div>
 
   <section class="contacts" id="contacts">
     <div class="container">
@@ -433,7 +433,7 @@
             <address>75001 Paris, France</address>
           </div>
           <div class="contacts__item">phone:
-            <a href="tel:+33(0) 1 40 20 50 50">+33(0) 1 40 20 50 50</a>
+            <a href="tel:+330140205050">+33(0) 1 40 20 50 50</a>
           </div>
           <div class="contacts__item">mail:
             <a href="mailto:info@louvre.fr">info@louvre.fr</a>
