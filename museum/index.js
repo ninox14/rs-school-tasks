@@ -1,21 +1,33 @@
 const progress = document.querySelector('.video__controls_progress');
 
+const progressSound = document.querySelector('.video__volume_level');
+
+
+
 progress.addEventListener('input', function () {
     const value = this.value;
     this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #fff ${value}%, white 100%)`
 })
-
-const progressSound = document.querySelector('.video__volume_level');
-
 progressSound.addEventListener('input', function () {
     const value = this.value;
     this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #fff ${value}%, white 100%)`
 })
 
 
+
+const nav = document.querySelector(".nav");
+
 function toggleForm() {
     document.body.classList.toggle('active_form');
 }
+
+function toggleBurger() {
+    document.querySelector(".welcome__header").classList.toggle('active');
+    document.querySelector(".nav-toggle").classList.toggle('active');
+    nav.classList.toggle('active');
+    /* document.querySelector(".nav.active").style.left='0'; */
+}
+
 
 function shuffle(array) {
     let currentIndex = array.length, randomIndex;
@@ -33,6 +45,7 @@ function shuffle(array) {
     }
     return array;
 }
+
 
 function gallery() {
     const pictureInnerContainer = document.querySelector('.gallery__inner');
@@ -75,13 +88,3 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-console.log('https://github.com/rolling-scopes-school/ninox14-JSFE2021Q3/pull/1');
-console.log('[+] Вёрстка семантическая. В коде страницы присутствуют следующие элементы (указано минимальное количество, может быть больше) +24');
-console.log('[±] Вёрстка соответствует макету +42');
-console.log('блок <footer> +2');
-console.log('[±] Форма покупки билетов +21');
-console.log('форма открывается при клике по кнопке Buy Now в секции Tickets и закрывается кликом по иконке с крестиком в верхнем правом углу или кликом по overlay +1');
-console.log('[+] Требования к css + 18');
-console.log('[+] Интерактивность, реализуемая через css +24');
-console.log('[±] Интерактивность, реализуемая через js +14');
-console.log('кнопке "Book" в форме покупки билетов добавлен ripple-эффект Демо 0');

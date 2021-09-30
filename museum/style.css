@@ -183,10 +183,8 @@ input[type='number']::-webkit-outer-spin-button {
   display: block;
   width: 30px;
   padding: 10px 0;
-  position: absolute;
-  top: 52px;
-  right: 0;
-  z-index: 1;
+  position: relative;
+
 
   cursor: pointer;
   border: 0;
@@ -194,20 +192,11 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 .nav-toggle__item {
-  color: transparent;
-  font-size: 0;
 
   display: block;
   width: 100%;
   height: 3px;
   background-color: #fff;
-
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
 
   transition: background .2s linear;
 }
@@ -215,8 +204,8 @@ input[type='number']::-webkit-outer-spin-button {
   background: none;
 }
 
-.nav-toggle__item:before,
-.nav-toggle__item:after {
+.nav-toggle:before,
+.nav-toggle:after {
   content: "";
   height: 3px;
   width: 100%;
@@ -224,25 +213,26 @@ input[type='number']::-webkit-outer-spin-button {
   left: 0;
   z-index: 1;
   background-color: #fff;
+  border-radius: 1px;
 
   transition: transform .2s linear;
 }
 
-.nav-toggle__item:before {
-  top: -8px;
+.nav-toggle:before {
+  top: 0px;
 }
-.nav-toggle__item:after {
-  bottom: -8px;
+.nav-toggle:after {
+  bottom: 0px;
 }
 
-.nav-toggle.active .nav-toggle__item:before {
+.nav-toggle.active:before {
   transform-origin: left top;
-  transform: rotate(45deg) translate3d(0px, -2px, 0);
+  transform: rotate(45deg);
 }
 
-.nav-toggle.active .nav-toggle__item:after {
+.nav-toggle.active:after {
   transform-origin: left bottom;
-  transform: rotate(-45deg) translate3d(0px, 3px, 0);
+  transform: rotate(-45deg);
 }
 
 
@@ -291,17 +281,27 @@ input[type='number']::-webkit-outer-spin-button {
 /* Welcome */
 
 .welcome__wrapper {
+  padding-bottom: 60px;
+  display: flex;
+  justify-content: flex-end;
 	position: relative;
 }
 
 .welcome__header {
-	position: relative;
+	position: absolute;
+  top: 0;
+  left: 0;
 	padding-top: 150px;
-	padding-bottom: 270px;
 	max-width: 600px;
-	z-index: 1000;
-
+	z-index: 30;
+  opacity: 1;
+  transition: opacity .5s linear;
 }
+
+.welcome__header.active {
+  opacity: 0;
+}
+
 .welcome__title span{
 	display: block;
 }
@@ -321,10 +321,10 @@ input[type='number']::-webkit-outer-spin-button {
 /* Welcome Slider */
 
 .welcome-slider {
-  position: absolute;
-  z-index: 1;
+  position: static;
+  /* z-index: 1;
   top: 0;
-  right: 0;
+  right: 0; */
 }
 /* .welcome-slider__items {
 } */
@@ -354,7 +354,7 @@ input[type='number']::-webkit-outer-spin-button {
 
   position: absolute;
   right: 0;
-  bottom: -40px;
+  bottom: 0;
   z-index: 2;
 }
 .welcome-slider__controls--numbers {
@@ -408,11 +408,9 @@ input[type='number']::-webkit-outer-spin-button {
 /* Visiting */
 
 .visiting {
-  margin-bottom: 75px;
+  padding: 75px 0;
 }
-.visiting__title {
-  margin-top: 75px;
-}
+
 .visiting__cards {
   margin-top: 103px;
   display: flex;
@@ -1497,17 +1495,97 @@ body.active_form .book {
   /* Container */
 
   .container {
-    width: 1024px;
-    max-width: 1024px;
+    width: 984px;
+    max-width: 984px;
   }
   /* Header  */
+  .header__wrapper {
+    justify-content: space-between;
+  }
   .header__logo {
     margin: 50px 0;
   }
 
-  /* burger */
+  /* Navigation */
   .nav {
+    opacity: 0;
+    z-index: 300;
     display: none;
+    padding-top: 35px;
+    padding-left: 55px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #030303;
+    transition: left .3s linear;
+  }
+  .nav.active {
+    display: block;
+    opacity: 1;
+  }
+  .nav ul {
+    margin: 0;
+    flex-direction: column;
+    row-gap: 25px;
+  }
+  .nav__item {
+    padding: 0;
+  }
+  .nav__link {
+    display: block;
+    position: relative;
+  }
+  .nav__link:after {
+    content: "";
+    position: absolute;
+    left: 115px;
+    top: 9px;
+    background-image: url("./assets/svg/navArrow.svg");
+    width: 8px;
+    height: 12px;
   }
 
+
+
+  /* Sections */
+  .section__title {
+    font-size: 50px;
+  }
+
+
+  /* Welcome  */
+  .welcome__wrapper {
+    padding-bottom: 60px;
+  }
+  .welcome__header {
+    padding-top: 50px;
+    padding-bottom: 0;
+  }
+
+  .welcome__text {
+    font-size: 24px;
+    line-height: 28px;
+    letter-spacing: 2px;
+  }
+  .welcome__btn {
+    font-size: 20px;
+    line-height: 20px;
+
+    margin-top: 50px;
+    padding: 20px 45px;
+  }
+
+  /* Welcome Slider */
+  .welcome-slider__controls {
+    width: 100%;
+    justify-content: flex-end;
+  }
+  .welcome-slider__item:before {
+    width: 40%;
+  }
+  .welcome-slider__img {
+    display: block;
+    width: 700px;
+    height: auto;
+  }
 }
