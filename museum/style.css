@@ -66,8 +66,9 @@ input[type='number']::-webkit-outer-spin-button {
 
 }
 
-.container-flex {
+.container--explore {
   display: flex;
+  column-gap: 60px;
 }
 
 /* Button */
@@ -180,7 +181,7 @@ input[type='number']::-webkit-outer-spin-button {
 /* Nav burger */
 
 .nav-toggle {
-  display: block;
+  display: none;
   width: 30px;
   padding: 10px 0;
   position: relative;
@@ -241,6 +242,9 @@ input[type='number']::-webkit-outer-spin-button {
 
 
 /* Sections */
+.section {
+  padding: 75px 0;
+}
 
 .section-dark {
 	background-color: #030303;
@@ -279,6 +283,9 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 /* Welcome */
+.welcome {
+  padding: 0;
+}
 
 .welcome__wrapper {
   padding-bottom: 60px;
@@ -407,9 +414,6 @@ input[type='number']::-webkit-outer-spin-button {
 
 /* Visiting */
 
-.visiting {
-  padding: 75px 0;
-}
 
 .visiting__cards {
   margin-top: 103px;
@@ -476,8 +480,7 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 .explore__left {
-  padding-top: 75px;
-  margin-right: 60px;
+  /* margin-right: 60px; */
 }
 .explore__header {
   margin-bottom: 103px;
@@ -494,14 +497,12 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 .explore__right {
-  margin-top: 90px;
+  margin-top: 20px;
 }
 
 
 /* Video */
-.video {
-  padding: 75px 0;
-}
+
 .video__header {
 
   display: flex;
@@ -688,7 +689,7 @@ input[type='number']::-webkit-outer-spin-button {
 /* Gallery */
 
 .gallery {
-  padding-top: 75px;
+  padding-bottom: 0px;
 }
 
 .gallery__container {
@@ -734,7 +735,6 @@ input[type='number']::-webkit-outer-spin-button {
 
 .tickets {
   position: relative;
-  padding: 75px 0;
 }
 
 .tickets__content {
@@ -869,9 +869,7 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 /* Contacts */
-.contacts {
-  padding: 75px 0;
-}
+
 .contacts__content {
   display: flex;
   width: 100%;
@@ -1507,21 +1505,23 @@ body.active_form .book {
   }
 
   /* Navigation */
+  .nav-toggle {
+    display: block;
+  }
   .nav {
-    opacity: 0;
     z-index: 300;
-    display: none;
+    /* display: none; */
     padding-top: 35px;
     padding-left: 55px;
     position: absolute;
     top: 100%;
-    left: 0;
+    left: -100%;
     background-color: #030303;
     transition: left .3s linear;
   }
   .nav.active {
     display: block;
-    opacity: 1;
+    left: 0;
   }
   .nav ul {
     margin: 0;
@@ -1548,18 +1548,34 @@ body.active_form .book {
 
 
   /* Sections */
+  .section {
+    padding: 60px 0;
+  }
+
   .section__title {
     font-size: 50px;
+    line-height: 75px;
+
+  }
+
+  .section__title--underline::after {
+    bottom: -20px;
   }
 
 
   /* Welcome  */
+  .welcome {
+    padding: 0;
+  }
   .welcome__wrapper {
     padding-bottom: 60px;
   }
   .welcome__header {
     padding-top: 50px;
     padding-bottom: 0;
+  }
+  .welcome__title  {
+    line-height: 90px;
   }
 
   .welcome__text {
@@ -1587,5 +1603,10 @@ body.active_form .book {
     display: block;
     width: 700px;
     height: auto;
+  }
+
+  /* Visiting */
+  .visiting__cards {
+    margin-top: 83px;
   }
 }

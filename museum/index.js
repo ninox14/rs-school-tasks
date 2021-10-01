@@ -4,7 +4,7 @@ const progressSound = document.querySelector('.video__volume_level');
 
 
 
-progress.addEventListener('input', function () {
+/* progress.addEventListener('input', function () {
     const value = this.value;
     this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #fff ${value}%, white 100%)`
 })
@@ -12,16 +12,18 @@ progressSound.addEventListener('input', function () {
     const value = this.value;
     this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #fff ${value}%, white 100%)`
 })
+ */
 
 
 
-const nav = document.querySelector(".nav");
 
 function toggleForm() {
     document.body.classList.toggle('active_form');
 }
 
 function toggleBurger() {
+    const nav = document.querySelector(".nav");
+
     document.querySelector(".welcome__header").classList.toggle('active');
     document.querySelector(".nav-toggle").classList.toggle('active');
     nav.classList.toggle('active');
@@ -85,6 +87,13 @@ document.addEventListener("DOMContentLoaded", function () {
     gallery();
 });
 
+document.querySelector('.nav ul').addEventListener('click', () => {
+    const nav = document.querySelector(".nav");
+
+    document.querySelector(".welcome__header").classList.remove('active');
+    document.querySelector(".nav-toggle").classList.remove('active');
+    nav.classList.remove('active');
+});
 
 
 
