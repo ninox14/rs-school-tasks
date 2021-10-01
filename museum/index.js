@@ -21,16 +21,6 @@ function toggleForm() {
     document.body.classList.toggle('active_form');
 }
 
-function toggleBurger() {
-    const nav = document.querySelector(".nav");
-
-    document.querySelector(".welcome__header").classList.toggle('active');
-    document.querySelector(".nav-toggle").classList.toggle('active');
-    nav.classList.toggle('active');
-    /* document.querySelector(".nav.active").style.left='0'; */
-}
-
-
 function shuffle(array) {
     let currentIndex = array.length, randomIndex;
 
@@ -87,13 +77,6 @@ document.addEventListener("DOMContentLoaded", function () {
     gallery();
 });
 
-document.querySelector('.nav ul').addEventListener('click', () => {
-    const nav = document.querySelector(".nav");
-
-    document.querySelector(".welcome__header").classList.remove('active');
-    document.querySelector(".nav-toggle").classList.remove('active');
-    nav.classList.remove('active');
-});
 
 
 
