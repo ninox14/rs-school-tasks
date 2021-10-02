@@ -524,10 +524,11 @@ input[type='number']::-webkit-outer-spin-button {
 /* .explore__left {
   margin-right: 60px;
 } */
-.explore__header {
-  margin-bottom: 103px;
-}
+/* .explore__header {
+
+} */
 .explore__title {
+  margin-bottom: 103px;
   width: 660px;
 }
 .explore__text {
@@ -545,8 +546,6 @@ input[type='number']::-webkit-outer-spin-button {
 
 .explore__right {
   margin-top: 20px;
-  width: 100%;
-  height: 100%;
 }
 
 /* EXPLORE SLIDER  */
@@ -1642,6 +1641,13 @@ body.active_form .book {
     width: 984px;
     max-width: 984px;
   }
+
+  .container--explore {
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+
   /* Header  */
   .header__wrapper {
     justify-content: space-between;
@@ -1811,6 +1817,25 @@ body.active_form .book {
     line-height: 19px;
   }
 
+
+
+  /* Explore */
+  .explore__title {
+    width: auto;
+    margin-bottom: 83px;
+  }
+  .explore__text {
+    font-size: 20px;
+    line-height: 35px;
+    margin: 0;
+  }
+  .explore__text:last-child {
+    display: none;
+  }
+  .explore__right {
+    align-self: center;
+    margin-top: 60px;
+  }
 }
 
 
@@ -1946,6 +1971,26 @@ body.active_form .book {
   }
 
 
+
+  /* Explore */
+  .explore {
+    margin-top: 40px;
+  }
+  .explore__title {
+    margin-bottom: 63px;
+  }
+  .explore__text {
+    display: none;
+  }
+  .explore__right {
+    margin: 0;
+  }
+
+  .explore__slider {
+    width: 728px;
+    height: 705px;
+  }
+
 }
 
 
@@ -2052,6 +2097,9 @@ body.active_form .book {
   .welcome__header {
     padding-top: 7px;
   }
+  .welcome__title span {
+    padding-right: 13px;
+  }
   .welcome__text {
     font-size: 16px;
     line-height: 19px;
@@ -2100,8 +2148,6 @@ body.active_form .book {
     width: 20px;
   }
 
-
-
   /* Visiting */
 
   .visting__item_title {
@@ -2121,4 +2167,33 @@ body.active_form .book {
     letter-spacing: 5px;
   }
 
+
+  /* Explore */
+  .explore {
+    margin-top: 0;
+  }
+  .explore__slider {
+    width: 380px;
+    height: 368px;
+  }
+  .explore__scroller {
+    left: 240px;
+  }
+  .explore__after {
+    width: 220px;
+  }
+
+  .explore__scroller {
+
+    top: 51.5%;
+    transform: translateY(-48.5%);
+    width: 20px;
+    height: 20px;
+    border: 3px solid #fff;
+  }
+  .explore__scroller:before,
+  .explore__scroller:after {
+    width: 3px;
+    margin-left: -1.5px;
+  }
 }

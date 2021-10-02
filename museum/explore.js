@@ -40,12 +40,14 @@ document.body.addEventListener('mousemove', function (e) {
 function scrollIt(x) {
   let transform = Math.max(0, (Math.min(x, wrapper.offsetWidth)));
   document.querySelector('.explore__after').style.width = transform + "px";
-  scroller.style.left = transform - 20 + "px";
+  scroller.style.left = transform - scroller.offsetWidth/2 + "px";
 }
 
 // Let's set our opening state based off the width,
 // we want to show a bit of both images so the user can see what's going on
-scrollIt(440);
+if (document.documentElement.clientWidth < 768) {
+  scrollIt(230);
+} else scrollIt(440);
 
 // And finally let's repeat the process for touch events
 // first our middle scroller...
