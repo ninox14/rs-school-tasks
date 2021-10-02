@@ -422,19 +422,16 @@ input[type='number']::-webkit-outer-spin-button {
 
 .welcome-slider__controls--squares  {
   display: flex;
+  column-gap: 25px;
 }
 
 .welcome-slider__controls--square {
   width: 16px;
   height: 16px;
   background-color: #fff;
-  margin-right: 25px;
 }
 .welcome-slider__controls--square.active {
   background-color: #D2B183;
-}
-.welcome-slider__controls--square:last-child {
-  margin-right: 0;
 }
 .welcome-slider__controls--arrows {
   display: flex;
@@ -478,11 +475,12 @@ input[type='number']::-webkit-outer-spin-button {
   color: #9D8665;
 }
 .visiting__item_img {
+  display: block;
   max-width: 100%;
   height: auto;
 }
 .visting__item_title {
-  margin-top: 5px;
+  margin-top: 25px;
   font-family: 'Forum', cursive;
   font-size: 32px;
   line-height: 35px;
@@ -522,9 +520,9 @@ input[type='number']::-webkit-outer-spin-button {
   padding-bottom: 70px;
 }
 
-.explore__left {
-  /* margin-right: 60px; */
-}
+/* .explore__left {
+  margin-right: 60px;
+} */
 .explore__header {
   margin-bottom: 103px;
 }
@@ -1534,6 +1532,13 @@ body.active_form .book {
 
 @media (max-width: 1430px) {
 
+  body {
+    font-size: 20px;
+    line-height: 23px;
+  }
+
+
+
   /* Container */
 
   .container {
@@ -1640,10 +1645,7 @@ body.active_form .book {
 
 
   /* Welcome Slider */
-  .welcome-slider__controls {
-    width: 100%;
-    justify-content: flex-end;
-  }
+
   .welcome-slider__item:before {
     width: 40%;
   }
@@ -1653,13 +1655,80 @@ body.active_form .book {
     height: auto;
   }
 
+  .welcome-slider__controls {
+    width: 100%;
+    justify-content: flex-end;
+  }
+  .welcome-slider__controls--numbers {
+    margin-right: 45px;
+    column-gap: 10px;
+  }
+
+
+  .welcome-slider__controls--arrows {
+    margin-left: 45px;
+  }
+
+  .welcome-slider__controls--square {
+    width: 12px;
+    height: 12px;
+  }
+
+
+
   /* Visiting */
   .visiting__cards {
+    justify-content: center;
     margin-top: 83px;
+    column-gap: 108px;
+    row-gap: 60px;
   }
+
+  .visiting__item_img {
+    max-width: 330px;
+  }
+
+  .visting__item_title {
+    font-size: 28px;
+    line-height: 31px;
+    /* identical to box height */
+
+    letter-spacing: 5px;
+  }
+  .visiting__item:nth-child(3) .visting__item_title,
+  .visiting__item:nth-child(5) .visting__item_title,
+  .visiting__item:nth-child(6) .visting__item_title {
+    letter-spacing: 3px;
+  }
+
+  .visting__item_title--underline::after {
+    width: 46%;
+  }
+  .visting__text {
+    font-size: 20px;
+    line-height: 23px;
+  }
+
+  .visting__text-small {
+    font-size: 16px;
+    line-height: 19px;
+  }
+
 }
 
+
+
+
+
 @media (max-width: 768px) {
+
+  body {
+    font-size: 18px;
+    line-height: 21px;
+  }
+
+
+
   /* Container */
 
   .container {
@@ -1670,6 +1739,9 @@ body.active_form .book {
 
 
   /* Section */
+  .section {
+    padding: 40px 0;
+  }
 
   .section__title {
     font-size: 40px;
@@ -1747,13 +1819,44 @@ body.active_form .book {
     justify-content: center;
   }
 
+
+
+  /* Visiting */
+
+  .visiting__cards {
+    margin-top: 63px;
+    column-gap: 56px;
+    row-gap: 38px;
+  }
+  .visiting__item_img {
+    max-width: 280px;
+  }
+  .visting__item_title {
+    font-size: 22px;
+    line-height: 24px;
+    letter-spacing: 3px;
+  }
+  .visting__item_title--underline::after {
+    width: 53%;
+  }
+  .visting__text {
+    font-size: 18px;
+    line-height: 21px;
+  }
+  .visting__text-small {
+    font-size: 16px;
+    line-height: 19px;
+  }
+
+
 }
 
 
 
-@media (max-width: 420px) {
+@media (max-width: 425px) {
   body {
     font-size: 16px;
+    line-height: 19px;
   }
 
 
@@ -1876,13 +1979,18 @@ body.active_form .book {
     padding: 20px 0;
 
   }
+  .welcome-slider__controls--numbers {
+    column-gap: 5px;
+  }
   .welcome-slider__controls--counter {
     font-size: 16px;
+  }
+  .welcome-slider__controls--squares {
+    column-gap: 10px;
   }
   .welcome-slider__controls--square {
     width: 7px;
     height: 7px;
-    margin-right: 10px;
   }
   .welcome-slider__controls--numbers {
     margin-right: 25px;
@@ -1894,4 +2002,26 @@ body.active_form .book {
   .welcome-slider__controls--arr {
     width: 20px;
   }
+
+
+
+  /* Visiting */
+
+  .visting__item_title {
+    font-size: 18px;
+    line-height: 20px;
+    /* identical to box height */
+
+    letter-spacing: 5px;
+  }
+  .visting__text {
+    font-size: 16px;
+    line-height: 19px;
+  }
+  .visiting__item:nth-child(3) .visting__item_title,
+  .visiting__item:nth-child(5) .visting__item_title,
+  .visiting__item:nth-child(6) .visting__item_title {
+    letter-spacing: 5px;
+  }
+
 }
