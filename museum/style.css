@@ -68,7 +68,6 @@ input[type='number']::-webkit-outer-spin-button {
 
 .container--explore {
   display: flex;
-
   column-gap: 60px;
 }
 
@@ -545,14 +544,17 @@ input[type='number']::-webkit-outer-spin-button {
 
 
 .explore__right {
+  width: 100%;
   margin-top: 20px;
 }
 
 /* EXPLORE SLIDER  */
 
 .explore__slider {
-  width: 720px;
-  height: 700px;
+  width: 100%;
+  height: 100%;
+  max-width: 720px;
+  max-height: 700px;
   position: relative;
 /*   left:50%;
   top:50%;
@@ -883,6 +885,7 @@ input[type='number']::-webkit-outer-spin-button {
 .tickets__content {
   margin-top: 103px;
   display: flex;
+  flex-wrap: wrap;
 }
 .tickets__img {
   display: block;
@@ -1026,6 +1029,7 @@ input[type='number']::-webkit-outer-spin-button {
 
 .contacts__content {
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
   justify-content: space-between;
   margin-top: 103px;
@@ -1643,9 +1647,14 @@ body.active_form .book {
   border-radius: 0;
 }
 
+@media (max-width:1430px) {
+  .container {
+    width: 1300px;
+  }
 
+}
 
-@media (max-width: 1430px) {
+@media (max-width: 1024px) {
 
   body {
     font-size: 20px;
@@ -2004,8 +2013,9 @@ body.active_form .book {
   }
   .contacts__map {
     align-self: center;
-    width: 695px;
-    height: 455px;
+    width: 100%;
+    max-width: 695px;
+    max-height: 455px;
   }
 
 
@@ -2034,6 +2044,35 @@ body.active_form .book {
   }
   .socials__item a {
     padding-top: 10px;
+  }
+
+
+
+
+
+  /* Book form */
+
+  .book__container {
+    max-width: 100%;
+    width: 100%;
+    padding: 30px;
+    padding-top: 75px;
+  }
+  .book__subtitle {
+    margin-top: 15px;
+  }
+  .book__amount_number {
+    width: 105px;
+  }
+  .overview__bot {
+    margin-top: 22px;
+    row-gap: 5px;
+  }
+  .overview__bot::after {
+    bottom: -10px;
+  }
+  .card__bottom {
+    bottom: -20px;
   }
 }
 
@@ -2186,8 +2225,10 @@ body.active_form .book {
   }
 
   .explore__slider {
-    width: 728px;
-    height: 705px;
+    height: 100%;
+    width: 100%;
+    max-width: 728px;
+    max-height: 705px;
   }
 
 
@@ -2336,7 +2377,7 @@ body.active_form .book {
   }
   .contacts__map {
     width: 100%;
-    height: 476px;
+    max-height: 476px;
   }
 
 
@@ -2374,6 +2415,44 @@ body.active_form .book {
     margin-top: 50px;
     margin-left: auto;
     margin-right: 90px;
+  }
+
+
+  /* Tickets form */
+
+
+  body.active_form .book {
+    overflow-y: scroll;
+  }
+  .book {
+    padding-top: 20px;
+
+  }
+  .book__container {
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 590px;
+    row-gap: 50px ;
+  }
+
+  .book__left {
+    width: 100%;
+  }
+  .book__right {
+    padding: 25px 15px;
+  }
+  .book__header {
+    margin-top: 10px;
+  }
+
+  .book__inputs {
+    margin-top: 50px;
+  }
+  .book__input--small {
+    width: 255px;
+  }
+  .cards {
+    margin-top: 5px;
   }
 }
 
@@ -2564,11 +2643,11 @@ body.active_form .book {
     left: 240px;
   }
   .explore__after {
-    width: 220px;
+    width: 230px;
   }
 
   .explore__scroller {
-
+    left: 220px;
     top: 51.5%;
     transform: translateY(-48.5%);
     width: 20px;
@@ -2707,8 +2786,8 @@ body.active_form .book {
     line-height: 19px;
   }
   .contacts__map {
-    width: 380px;
-    height: 248px;
+    max-width: 380px;
+    max-height: 248px;
   }
 
 
@@ -2745,4 +2824,47 @@ body.active_form .book {
     display: none;
   }
 
+
+
+  /* Boooking tickets */
+  .book {
+    padding-top: 0;
+  }
+  .book__container {
+    width: 100%;
+    max-width: 100%;
+  }
+  .book__title {
+    font-size: 32px;
+    line-height: 35px;
+  }
+  .book__input--small {
+    width: 100%;
+  }
+  .overview__img {
+    width: 100%;
+    max-width: 120px;
+  }
+  .overview__bot {
+    grid-template-columns: 1.1fr 1fr;
+  }
+  .overview__count_total {
+    font-size: 22px;
+    line-height: 26px;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 330px;
+    position: static;
+  }
+  .card__top {
+    margin-bottom: 5px;
+  }
+  .card__input--name {
+    margin-bottom: 0;
+  }
+  .card__bottom  {
+    position: relative;
+  }
 }
