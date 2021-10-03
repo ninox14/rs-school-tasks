@@ -1980,6 +1980,31 @@ body.active_form .book {
   .tickets__amount_caption {
     padding: 0;
   }
+
+
+  /* Contacts */
+
+  .contacts__content {
+    margin-top: 83px;
+    flex-wrap: wrap;
+  }
+  .contacts__caption {
+    font-size: 24px;
+    line-height: 28px;
+
+    margin-bottom: 34px;
+
+  }
+  .contacts__item {
+    font-size: 20px;
+    line-height: 23px;
+    margin-bottom: 15px;
+  }
+  .contacts__map {
+    align-self: center;
+    width: 695px;
+    height: 455px;
+  }
 }
 
 
@@ -2256,6 +2281,31 @@ body.active_form .book {
   /* Parallax */
   .parallax__img {
     height: 300px;
+  }
+
+
+  /* Contacts */
+  .contacts {
+    margin-bottom: 30px;
+  }
+  .contacts__content {
+    margin-top: 63px;
+    row-gap: 20px;
+  }
+
+
+  .contacts__caption {
+    font-size: 20px;
+    line-height: 23px;
+    margin-bottom: 41px;
+  }
+  .contacts__item {
+    font-size: 18px;
+    line-height: 21px;
+  }
+  .contacts__map {
+    width: 100%;
+    height: 476px;
   }
 }
 
@@ -2574,6 +2624,20 @@ body.active_form .book {
   .btn--black  {
     font-size: 16px;
     padding: 12px 50px;
+  }
+
+  /* Contacts */
+  .contacts__caption {
+    font-size: 16px;
+    line-height: 19px;
+  }
+  .contacts__item {
+    font-size: 16px;
+    line-height: 19px;
+  }
+  .contacts__map {
+    width: 380px;
+    height: 248px;
   }
 
 
