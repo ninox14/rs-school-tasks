@@ -8,7 +8,7 @@ const wrapper = document.querySelector('.explore__slider');
 // First we'll have to set up our event listeners
 // We want to watch for clicks on our scroller
 
-scroller.addEventListener('mousedown touchstart', function () {
+scroller.addEventListener('mousedown', function () {
   active = true;
   console.log('active');
   // Add our scrolling class so the scroller has full opacity while active
@@ -17,7 +17,7 @@ scroller.addEventListener('mousedown touchstart', function () {
 // We also want to watch the body for changes to the state,
 // like moving around and releasing the click
 // so let's set up our event listeners
-document.body.addEventListener('mouseup touchend touchcancel', function () {
+document.body.addEventListener('mouseup', function () {
   active = false;
   scroller.classList.remove('scrolling');
 });
@@ -27,7 +27,7 @@ document.body.addEventListener('mouseleave', function () {
 });
 
 // Let's figure out where their mouse is at
-document.body.addEventListener('mousemove touchmove', function (e) {
+document.body.addEventListener('mousemove', function (e) {
   if (!active) return;
   // Their mouse is here...
   console.log('figue out')
@@ -53,7 +53,7 @@ if (document.documentElement.clientWidth < 768) {
 
 // And finally let's repeat the process for touch events
 // first our middle scroller...
-scroller.addEventListener('touchstart mousedown', function () {
+scroller.addEventListener('touchstart', function () {
   active = true;
   scroller.classList.add('scrolling');
 });
