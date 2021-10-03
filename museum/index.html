@@ -309,7 +309,9 @@
 			<h2 class="tickets__title section__title section__title--underline">Buy Tickets</h2>
 
 			<div class="tickets__content">
-				<img class="tickets__img" src="./assets/img/tickets.jpg" alt="Tickets">
+				<div class="tickets__img_wrap">
+					<img class="tickets__img" src="./assets/img/tickets.jpg" alt="Tickets">
+				</div>
 				<form class="tickets__form" action="/" method="post">
 					<fieldset class="tickets__type">
 						<h3 class="tickets__type_title tickets__group_title">Ticket Type</h3>
@@ -328,25 +330,28 @@
 					</fieldset>
           <fieldset class="tickets__amount">
             <h3 class="tickets__amount_title tickets__group_title">Amount</h3>
-            <div class="tickets__amount_caption tickets__caption">Basic 18+</div>
-            <div class="tickets__amount_number">
-              <button class="tickets__button" type="button"
-              onmousedown="return false;" onclick="this.nextElementSibling.stepDown()">‒</button>
-              <input class="tickets__number" type="number" min="0" max="20" value="1" readonly>
-              <button class="tickets__button" type="button"
-              onmousedown="return false;" onclick="this.previousElementSibling.stepUp()">+</button>
-            </div>
-
-            <div class="tickets__amount_caption tickets__caption">Senior 65+</div>
-            <div class="tickets__amount_number">
-              <button class="tickets__button" type="button"
-              onmousedown="return false;" onclick="this.nextElementSibling.stepDown()">‒</button>
-              <input class="tickets__number" type="number" min="0" max="20" value="1" readonly>
-              <button class="tickets__button" type="button"
-              onmousedown="return false;" onclick="this.previousElementSibling.stepUp()">+</button>
-            </div>
-            <h3 class="tickets__count_caption tickets__group_title">Total €<span id="amount_count">220</span></h3>
-            <button class="btn btn--black" type="button" onclick="toggleForm()">Buy Now</button>
+						<div class="tickets__amount_basic">
+							<div class="tickets__amount_caption tickets__caption">Basic 18+</div>
+							<div class="tickets__amount_input">
+								<button class="tickets__button" type="button"
+								onmousedown="return false;" onclick="this.nextElementSibling.stepDown()">‒</button>
+								<input class="tickets__number" type="number" min="0" max="20" value="1" readonly>
+								<button class="tickets__button" type="button"
+								onmousedown="return false;" onclick="this.previousElementSibling.stepUp()">+</button>
+							</div>
+						</div>
+						<div class="tickets__amount_senior">
+							<div class="tickets__amount_caption tickets__caption">Senior 65+</div>
+							<div class="tickets__amount_input">
+								<button class="tickets__button" type="button"
+								onmousedown="return false;" onclick="this.nextElementSibling.stepDown()">‒</button>
+								<input class="tickets__number" type="number" min="0" max="20" value="1" readonly>
+								<button class="tickets__button" type="button"
+								onmousedown="return false;" onclick="this.previousElementSibling.stepUp()">+</button>
+							</div>
+						</div>
+            <h3 class="tickets__count_caption tickets__group_title">Total €<span class="tickets__count" id="amount_count">220</span></h3>
+						<button class="btn btn--black" type="button" onclick="toggleForm()">Buy Now</button>
           </fieldset>
 				</form>
 			</div>
@@ -472,9 +477,9 @@
 
 	</section>
 
-		<!--   <div class="parallax">
+	<div class="parallax">
     <div class="parallax__img"></div>
-	</div> -->
+	</div>
 
 		<!--   <section class="contacts section" id="contacts">
     <div class="container">
