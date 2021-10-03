@@ -4,7 +4,7 @@ const progressSound = document.querySelector('.video__volume_level');
 
 
 
-/* progress.addEventListener('input', function () {
+progress.addEventListener('input', function () {
     const value = this.value;
     this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #fff ${value}%, white 100%)`
 })
@@ -12,7 +12,7 @@ progressSound.addEventListener('input', function () {
     const value = this.value;
     this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #fff ${value}%, white 100%)`
 })
- */
+
 
 
 
@@ -39,7 +39,7 @@ function shuffle(array) {
 }
 
 
-/* function gallery() {
+function gallery() {
     const pictureInnerContainer = document.querySelector('.gallery__inner');
     console.log(pictureInnerContainer)
     while (pictureInnerContainer.firstChild) {
@@ -71,12 +71,12 @@ function shuffle(array) {
         img.alt = elem.replace(/^.*[\\\/]/, '');
         pictureInnerContainer.append(img)
     }
-} */
+}
 
-/* document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
     gallery();
 });
 
- */
+
 
 
