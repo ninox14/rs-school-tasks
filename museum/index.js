@@ -4,7 +4,7 @@ const progressSound = document.querySelector('.video__volume_level');
 
 
 
-/* progress.addEventListener('input', function () {
+progress.addEventListener('input', function () {
     const value = this.value;
     this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #fff ${value}%, white 100%)`
 })
@@ -12,7 +12,7 @@ progressSound.addEventListener('input', function () {
     const value = this.value;
     this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #fff ${value}%, white 100%)`
 })
- */
+
 
 
 
