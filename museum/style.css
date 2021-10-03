@@ -251,7 +251,7 @@ input[type='number']::-webkit-outer-spin-button {
 }
 .nav__picture_wraper {
   position: relative;
-  width: 48.33333333%;
+  width: 48.23333333%;
 }
 .nav__img {
   display: block;
@@ -2113,7 +2113,7 @@ body.active_form .book {
 
 
 
-@media (max-width: 768px) {
+@media (max-width: 950px) {
 
   body {
     font-size: 18px;
@@ -2166,6 +2166,9 @@ body.active_form .book {
   }
   .nav__pictures {
     display: flex;
+  }
+  .nav__img {
+    width: 100%;
   }
 
   .nav .socials {
@@ -2572,6 +2575,7 @@ body.active_form .book {
   }
 
   .nav__img {
+    width: auto;
     height: 95px;
     position: absolute;
     left: 50%;
