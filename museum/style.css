@@ -2001,6 +2001,7 @@ body.active_form .book {
   .tickets__form {
     width: auto;
     padding-left: 80px;
+    /* justify-self: flex-end; */
   }
   .tickets__amount_basic {
     margin-bottom: 25px;
@@ -2496,7 +2497,7 @@ body.active_form .book {
 
 
 
-@media (max-width: 425px) {
+@media (max-width: 550px) {
   body {
     font-size: 16px;
     line-height: 19px;
