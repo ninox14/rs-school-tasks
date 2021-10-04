@@ -41,7 +41,6 @@ function shuffle(array) {
 
 function gallery() {
     const pictureInnerContainer = document.querySelector('.gallery__inner');
-    console.log(pictureInnerContainer)
     while (pictureInnerContainer.firstChild) {
         pictureInnerContainer.removeChild(pictureInnerContainer.firstChild);
     }
@@ -80,3 +79,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+console.log('[x] Вёрстка соответствует макету. Ширина экрана 1024px +40');
+console.log('[x] Вёрстка соответствует макету. Ширина экрана 768px +40');
+console.log('[x] Вёрстка соответствует макету. Ширина экрана 420px +40');
+console.log('[x] Ни на одном из разрешений до 320px включительно не появляется горизонтальная полоса прокрутки +6');
+console.log('[±] Совмещается адаптивная и респонсивная (резиновая) вёрстка +10 ');
+console.log('   При изменении ширины экрана плавно изменяются размеры:');
+console.log('       [±] слайдера в секции `Video` +1');
+console.log('       [ ] YouTube-видео в плейлисте в секции `Video`, маленькие видео выровнены по краям большого 0');
+console.log('       [±] галереи изображений и изображений в ней +1');
+console.log('[x] На ширине экрана 1024рх и меньше реализовано адаптивное меню +12 ');
+console.log('[±]  Оптимизация скорости загрузки страницы +4');
+console.log('   [x] 50 to 89 (orange): Needs Improvement - частично выполнено +4');
