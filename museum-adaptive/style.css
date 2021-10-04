@@ -1719,7 +1719,7 @@ body.active_form .book {
     z-index: 300;
     /* display: none; */
     padding-top: 35px;
-    padding-left: 55px;
+    padding-left: 35px;
     position: absolute;
     top: 100%;
     left: -120%;
@@ -1733,7 +1733,7 @@ body.active_form .book {
   .nav ul {
     margin: 0;
     flex-direction: column;
-    row-gap: 25px;
+    row-gap: 21px;
   }
   .nav__item {
     padding: 0;
@@ -2156,6 +2156,9 @@ body.active_form .book {
   .header .nav {
     width: 100%;
     padding: 35px 30px;
+  }
+  .nav ul {
+    row-gap: 25px;
   }
 
   .nav__link {
