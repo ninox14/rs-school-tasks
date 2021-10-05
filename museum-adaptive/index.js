@@ -17,9 +17,6 @@ progressSound.addEventListener('input', function () {
 
 
 
-function toggleForm() {
-    document.body.classList.toggle('active_form');
-}
 
 function shuffle(array) {
     let currentIndex = array.length, randomIndex;

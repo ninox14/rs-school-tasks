@@ -1228,6 +1228,9 @@ body.active_form .book {
   position: relative;
   background-color: #fff;
   padding: 90px 235px;
+/*   padding: 90px 0;
+  padding-left: calc((100vw - 1440px)/2);
+  padding-right: calc((100vw - 1440px)/2); */
   display: flex;
   justify-content: space-between;
 }
@@ -1321,13 +1324,16 @@ body.active_form .book {
   position: relative;
 }
 .book__input--small {
-  width: 190px;
+  width: 47.5%;
+  padding-right: 0;
 }
+
 /* .book__icon {
 
 } */
 
 .input {
+  width: 100%;
   margin-left: 15px;
   border: none;
   font-family: 'Roboto', sans-serif;
@@ -1336,7 +1342,8 @@ body.active_form .book {
   line-height: 21px;
   color: #030303;
 }
-.input::placeholder {
+.input::placeholder,
+.input__mask {
   font-family: 'Roboto', sans-serif;
   background-color: transparent;
   font-size: 18px;
@@ -1346,12 +1353,48 @@ body.active_form .book {
 .input:focus {
   outline: none;
 }
+.input__date,
+.input__time {
+  width: 100%;
+  color: transparent;
+}
+.input__mask {
+  position: absolute;
+  left: 45px;
+}
+
 .input__date {
-  width: 110px;
+  font-size: 16px;
+
 }
+
+
+
+.input__date::-webkit-calendar-picker-indicator,
+.input__time::-webkit-calendar-picker-indicator {
+  background-color: transparent;
+  color: transparent;
+  background-image: url("./assets/svg/booking/arrow.svg");
+  background-size: cover;
+  height: 17px;
+  width: 17px;
+  padding-right: 14px;
+}
+
+
+
+
+
 .book__select {
+  margin: 0;
+  padding-left: 30px;
   appearance: none;
+  background-image: url("./assets/svg/booking/ballot.svg");
+  background-repeat: no-repeat;
+  background-size: 15px 15px;
+  background-position: 0 center;
 }
+
 .book__arrow {
   position: absolute;
   right: 14px;
@@ -1360,7 +1403,67 @@ body.active_form .book {
   background-size: cover;
   height: 17px;
   width: 17px;
+  transition: transform .4s linear;
 }
+.book__arrow.active {
+  transform: rotate(180deg);
+}
+
+
+/* Select */
+
+
+.book__input--select {
+  position: relative;
+  /* overflow: hidden; */
+}
+.book__input--select:hover {
+  cursor: pointer;
+}
+.select.active {
+  display: block;
+}
+.select {
+  margin: 0;
+  padding-left: 30px;
+  background-image: url("./assets/svg/booking/ballot.svg");
+  background-repeat: no-repeat;
+  background-size: 15px 15px;
+  background-position: 0 center;
+}
+.select__list {
+  /* visibility: hidden; */
+  display: none;
+  list-style-type: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  left: 0;
+  top: 42px;
+  z-index: 1;
+  /* height: 138px; */
+  width: 100%;
+  border: 1px solid #030303;
+  border-top: none;
+}
+.select__list.active {
+  display: block;
+}
+.select__list_item {
+  padding: 12px 0;
+  padding-left: 45px;
+  font-weight: 300;
+  background-color: #fff;
+
+}
+.select__list_item:hover {
+  cursor: pointer;
+  background-color: #e7e7e7;
+}
+
+
+
 
 
 
@@ -1411,7 +1514,7 @@ body.active_form .book {
   width: 105px;
   height: 25px;
   margin-left: 0;
-  border: 1px solid #030303;
+  border: none;
   justify-self: end;
 }
 .book__number {
@@ -1419,6 +1522,8 @@ body.active_form .book {
   font-size: 18px;
   line-height: 21px;
   width: 35px;
+  border-top: 1px solid #030303;
+  border-bottom: 1px solid #030303;
 }
 .book__amount_button {
   background-color: #030303;
@@ -1426,7 +1531,19 @@ body.active_form .book {
   font-size: 20px;
   line-height: 10px;
   padding: 0 12px;
+  transition: color .2s linear
+              background-color .2s linear;
+
 }
+.book__amount_button:hover {
+  background-color: #9d8665;
+  color: #030303;
+}
+
+
+
+
+
 /* Book right */
 
 .book__right {
@@ -1603,6 +1720,45 @@ body.active_form .book {
   margin-right: 13px;
   display: inline;
 }
+.card__dates {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 67%;
+}
+
+.card__input_container  {
+  position: relative;
+}
+
+
+.card__btn {
+  position: absolute;
+  bottom: 11px;
+  right: 0;
+  width: 28px;
+  height: 17px;
+  background-color: #fff;
+  border: none;
+  border-left: 1px solid #666666;
+  color: #a4a4a3;
+  font-size: 7px;
+}
+.card__btn.up {
+  bottom: 27px;
+  padding-top: 8px;
+}
+.card__btn.down {
+  padding-bottom: 8px;
+}
+.card__counter {
+  font-size: 12px;
+  width: 100px;
+}
+
+
+
+
 .card__input--smaller {
   display: block;
   width: 75px;
@@ -2491,7 +2647,7 @@ body.active_form .book {
     margin-top: 50px;
   }
   .book__input--small {
-    width: 255px;
+    width: 47.5%;
   }
   .cards {
     margin-top: 5px;
@@ -2911,6 +3067,9 @@ body.active_form .book {
   }
   .card__input--name {
     margin-bottom: 0;
+  }
+  .card__dates {
+    width: 73%;
   }
   .card__bottom  {
     position: relative;
