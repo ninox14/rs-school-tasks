@@ -373,6 +373,7 @@ input[type='number']::-webkit-outer-spin-button {
 /* Welcome Slider */
 
 .welcome-slider {
+  width: 70%;
   position: static;
   /* z-index: 1;
   top: 0;
@@ -382,10 +383,13 @@ input[type='number']::-webkit-outer-spin-button {
 } */
 
 .welcome-slider__item {
+  width: 100%;
  position: relative;
  height: auto;
 }
 .welcome-slider__img {
+  width: 100%;
+  height: auto;
   display: block;
   position: relative;
 }
@@ -435,8 +439,13 @@ input[type='number']::-webkit-outer-spin-button {
   width: 16px;
   height: 16px;
   background-color: #fff;
+  transition: background-color .2s  linear;
 }
-.welcome-slider__controls--square.active {
+.welcome-slider__controls--square:hover {
+  background-color: #9D8665;
+  cursor: pointer;
+}
+.welcome-slider__controls--square.tns-nav-active {
   background-color: #D2B183;
 }
 .welcome-slider__controls--arrows {
@@ -450,13 +459,21 @@ input[type='number']::-webkit-outer-spin-button {
   content: url("./assets/svg/arrow-left.svg");
   transition: .4s;
 }
-.welcome-slider__controls--arr.right {
+.welcome-slider--right {
   transform: rotate(-180deg);
 }
 .welcome-slider__controls--arr:hover {
   cursor: pointer;
+  /* background-color: #fff; */
   filter: invert(55%) sepia(18%) saturate(657%) hue-rotate(356deg) brightness(95%) contrast(85%);
 }
+
+
+
+
+
+
+
 
 /* Visiting */
 
@@ -2834,10 +2851,10 @@ body.active_form .book {
   .explore {
     margin-top: 0;
   }
-  .explore__slider {
-/*     width: 380px;
-    height: 368px; */
-  }
+/*   .explore__slider {
+    width: 380px;
+    height: 368px;
+  } */
   .explore__scroller {
     left: 240px;
   }
@@ -3074,4 +3091,4 @@ body.active_form .book {
   .card__bottom  {
     position: relative;
   }
-}
+  }

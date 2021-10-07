@@ -7,17 +7,23 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>museum</title>
 	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/tiny-slider.css">
+
+
+
 	<link rel="icon" href="assets/favicon.ico">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Forum&family=Roboto:wght@100;300;500;700&display=swap"
 		rel="stylesheet">
 	<script src="https://kit.fontawesome.com/6492e7f2a8.js" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
+
 </head>
 
 <body class="">
+
 	<header class="header">
-		<!-- header -->
 		<div class="container">
 			<div class="header__wrapper">
 				<a class="header__logo" href="./index.html">
@@ -90,49 +96,77 @@
 				</button>
 			</div>
 		</div>
-	</header><!-- /header -->
+	</header>
+
 	<main>
+
 	<section class="welcome section-dark">
-			<div class="container">
-				<div class="welcome__wrapper">
-					<div class="welcome__header" id="welcome__header">
-						<h1 class="welcome__title section__title section__title-dark">
-							<span>Welcome</span>to the Louvre
-						</h1>
-						<p class="welcome__text">From the castle to the museum</p>
-						<a class="btn welcome__btn" href="./tours/tour1.html" target="_blank">Discover the Louvre</a>
-					</div>
+		<div class="container">
+			<div class="welcome__wrapper">
+				<div class="welcome__header" id="welcome__header">
+					<h1 class="welcome__title section__title section__title-dark">
+						<span>Welcome</span>to the Louvre
+					</h1>
+					<p class="welcome__text">From the castle to the museum</p>
+					<a class="btn welcome__btn" href="./tours/tour1.html" target="_blank">Discover the Louvre</a>
+				</div>
 
-					<div class="welcome-slider">
+				<div class="welcome-slider ">
 
-						<div class="welcome-slider__container">
-							<div class="welcome-slider__item">
-								<img class="welcome-slider__img" src="assets/img/welcome-slider/1.jpg" alt="01">
-							</div>
+					<div class="welcome-slider__container my_slider">
+						<div class="welcome-slider__item">
+							<img class="welcome-slider__img" src="assets/img/welcome-slider/1.jpg" alt="01">
+						</div>
+						<div class="welcome-slider__item">
+							<img class="welcome-slider__img" src="assets/img/welcome-slider/2.jpg" alt="02">
+						</div>
+						<div class="welcome-slider__item">
+							<img class="welcome-slider__img" src="assets/img/welcome-slider/3.jpg" alt="03">
+						</div>
+						<div class="welcome-slider__item">
+							<img class="welcome-slider__img" src="assets/img/welcome-slider/4.jpg" alt="04">
+						</div>
+						<div class="welcome-slider__item">
+							<img class="welcome-slider__img" src="assets/img/welcome-slider/5.jpg" alt="05">
 						</div>
 
-						<div class="welcome-slider__controls">
-							<div class="welcome-slider__controls--numbers">
-								<span class="welcome-slider__controls--counter" id="welcome-slider__controls--current">01</span>
-								<span class="welcome-slider__controls--counter">|</span>
-								<span class="welcome-slider__controls--counter">05</span>
-							</div>
-							<div class="welcome-slider__controls--squares">
-								<div class="welcome-slider__controls--square active"></div>
-								<div class="welcome-slider__controls--square"></div>
-								<div class="welcome-slider__controls--square"></div>
-								<div class="welcome-slider__controls--square"></div>
-								<div class="welcome-slider__controls--square"></div>
-							</div>
-							<div class="welcome-slider__controls--arrows">
-								<div class="welcome-slider__controls--arr"></div>
-								<div class="welcome-slider__controls--arr right"></div>
-							</div>
-						</div>
 					</div>
+
+					<div class="welcome-slider__controls">
+						<div class="welcome-slider__controls--numbers">
+							<span class="welcome-slider__controls--counter" id="welcome-slider__controls--current">01</span>
+							<span class="welcome-slider__controls--counter">|</span>
+							<span class="welcome-slider__controls--counter">05</span>
+						</div>
+
+
+
+						<div class="welcome-slider__controls--squares">
+							<div class="welcome-slider__controls--square active"></div>
+							<div class="welcome-slider__controls--square"></div>
+							<div class="welcome-slider__controls--square"></div>
+							<div class="welcome-slider__controls--square"></div>
+							<div class="welcome-slider__controls--square"></div>
+						</div>
+
+
+
+
+						<div class="welcome-slider__controls--arrows" data-glide-el="controls">
+							<div class="welcome-slider__controls--arr welcome-slider--left" data-glide-dir="<"></div>
+							<div class="welcome-slider__controls--arr welcome-slider--right" data-glide-dir=">"></div>
+						</div>
+
+
+
+
+					</div>
+
+
 				</div>
 			</div>
-		</section><!-- /Welcome -->
+		</div>
+	</section>
 
 
 <!-- 	<section class="visiting section" id="visiting">
@@ -603,6 +637,11 @@
 
 	</main>
 
+
+
+
+
+	<script type="module" src="./welcome.js"></script>
 	<!-- <script src="./index.js"></script> -->
 	<!-- <script src="./select.js"></script> -->
 	<!-- <script src="./form.js"></script> -->
