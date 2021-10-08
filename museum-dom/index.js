@@ -1,22 +1,3 @@
-const progress = document.querySelector('.video__controls_progress');
-
-const progressSound = document.querySelector('.video__volume_level');
-
-
-
-progress.addEventListener('input', function () {
-    const value = this.value;
-    this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #fff ${value}%, white 100%)`
-})
-progressSound.addEventListener('input', function () {
-    const value = this.value;
-    this.style.background = `linear-gradient(to right, #710707 0%, #710707 ${value}%, #fff ${value}%, white 100%)`
-})
-
-
-
-
-
 
 function shuffle(array) {
     let currentIndex = array.length, randomIndex;
@@ -76,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-console.log('[x] Вёрстка соответствует макету. Ширина экрана 1024px +40');
+/* console.log('[x] Вёрстка соответствует макету. Ширина экрана 1024px +40');
 console.log('[x] Вёрстка соответствует макету. Ширина экрана 768px +40');
 console.log('[x] Вёрстка соответствует макету. Ширина экрана 420px +40');
 console.log('[x] Ни на одном из разрешений до 320px включительно не появляется горизонтальная полоса прокрутки +6');
@@ -87,4 +68,4 @@ console.log('       [ ] YouTube-видео в плейлисте в секции
 console.log('       [±] галереи изображений и изображений в ней +1');
 console.log('[x] На ширине экрана 1024рх и меньше реализовано адаптивное меню +12 ');
 console.log('[±]  Оптимизация скорости загрузки страницы +4');
-console.log('   [x] 50 to 89 (orange): Needs Improvement - частично выполнено +4');
+console.log('   [x] 50 to 89 (orange): Needs Improvement - частично выполнено +4'); */
