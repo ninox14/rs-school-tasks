@@ -72,7 +72,7 @@ function toggleFlscr() {
   if (isFullscreen) {
     document.exitFullscreen();
     updateFlscrnBtn();
-    video.setAttribute('style', `object-fit: cover; height: ${oldHeight}px`);
+    video.setAttribute('style', `object-fit: fill; height: ${oldHeight}px`);
     player.style.display='block';
     isFullscreen = false;
   } else {
