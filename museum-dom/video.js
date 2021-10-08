@@ -91,7 +91,7 @@ video.addEventListener('click', togglePlay);
 video.addEventListener('play', updateBtn);
 video.addEventListener('pause', updateBtn);
 video.addEventListener('timeupdate', handleProgress);
-
+video.addEventListener('dblclick', toggleFlscr)
 
 playBig.addEventListener('click', togglePlay);
 play.addEventListener('click', togglePlay);
@@ -126,10 +126,18 @@ window.addEventListener('load', () => {
 
 
 // Hotkeys
-document.addEventListener('keyup', event => {
+document.addEventListener('keyup', e => {
   if (videoStated) {
-    if (event.code === 'Space') {
+    if (e.code === 'Space') {
       togglePlay();
+    } else if(e.ctrlKey && e.code === 'Comma') {
+      video.playbackRate -= 0.1;
+    } else if (e.ctrlKey && e.code === 'Period') {
+      video.playbackRate += 0.1;
+    } else if (e.code === 'KeyF') {
+      toggleFlscr();
+    } else if (e.code === 'KeyM') {
+      mute();
     }
   }
-})
+}, false)
