@@ -1,14 +1,35 @@
 const player = document.querySelector('.video__video-container');
-const video = player.querySelector('.video__video');
+let video = player.querySelector('.video__video');
 const playBig = player.querySelector('.video__play-button');
 const play = player.querySelector('.video__play');
 const progressBar = player.querySelector('.video__progress');
 const volumeLvl = player.querySelector('.video__volume_level');
 const volumeBtn = player.querySelector('.video__volume');
 const fullscreen = player.querySelector('.video__fullscreen');
+let videoSliderItems = document.querySelectorAll('.video-slider__item');
 let isFullscreen = false;
 let videoStated = false;
 let oldHeight;
+let videoSrc; //const videoSrc = document.querySelector('.video__source');
+
+// slider
+
+let videoSlider = tns({
+  container: '.video_tns',
+  slideBy: 1,
+  items: 3,
+  navAsThumbnails: true,
+  loop: true,
+  gutter: 42,
+  slideBy: '1',
+  mouseDrag: true,
+  prevButton: '.video-slider__arr--left',
+  nextButton: '.video-slider__arr--right',
+  navContainer: '.video-slider__dots'
+})
+
+const videoSliderControls = document.querySelector('.video-slider__controls');
+const videoSliderButtons = videoSliderControls.getElementsByTagName('button');
 /* functions */
 
 function togglePlay () {
@@ -59,7 +80,9 @@ function drawRange(element, currValue) {
 
 function handleProgress() {
   const value =  video.currentTime / video.duration;
+  if (isNaN(value)) return;
   const percent = value * 100;
+
   // change progressBar on page also
   drawRange(progressBar, percent);
 }
@@ -128,6 +151,7 @@ window.addEventListener('load', () => {
 // Hotkeys
 document.addEventListener('keyup', e => {
   if (videoStated) {
+    e.preventDefault();
     if (e.code === 'Space') {
       togglePlay();
     } else if(e.ctrlKey && e.code === 'Comma') {
@@ -141,3 +165,35 @@ document.addEventListener('keyup', e => {
     }
   }
 }, false)
+
+// Video slider
+
+videoSlider.events.on('indexChanged', function () {
+  let infoGet = videoSlider.getInfo();
+  let index = infoGet.navCurrentIndex;
+  videoSrc = document.querySelector('.video__source')
+
+  video.poster = `./assets/video/poster${index}.jpg`
+  video.src = `./assets/video/video${index}.mp4`
+
+  // draw range and update buttons
+  drawRange(progressBar, 0);
+  play.classList.remove('active');
+  playBig.classList.remove('active');
+  video = player.querySelector('.video__video');
+});
+
+
+videoSliderItems.forEach((i) => {
+  i.contentWindow.addEventListener('click', () => {
+    console.log('qweqewqwewqeqweqwewq');
+    videoSliderItems.forEach(i => i.contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*'));
+  })
+});
+
+for (let i of videoSliderButtons) {
+  i.addEventListener('click', function (e) {
+    videoSliderItems = document.querySelectorAll('.video-slider__item')
+    videoSliderItems.forEach(i => i.contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*'));
+  });
+}
