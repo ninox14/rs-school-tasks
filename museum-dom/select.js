@@ -1,18 +1,27 @@
 const select = document.querySelector(".book__select");
 const options = document.querySelectorAll("option");
 const selectArrow = document.querySelector(".book__arrow");
+const dateContainer = document.querySelector('.book__input--date');
+const timeContainer = document.querySelector('.book__input--time');
 
 let selectDiv;
+let selectSpan;
 let selectList;
 
 function customizeSelect() {
   select.style.display = "none";
 
   let div = document.createElement('div');
-  div.innerText = options[0].innerText;
+
+  let span = document.createElement('span'); //1
+
+  span.innerText = options[0].innerText; //div.inner....
+  span.classList.add('select__name_dispay'); //2
+  div.append(span);
   div.classList.add("select", "input");
   select.after(div);
 
+  selectSpan = document.querySelector('.select__name_dispay');
   selectDiv = document.querySelector(".select");
 
   let ul = document.createElement('ul');
@@ -35,10 +44,25 @@ function toggleSelect() {
 }
 
 function pickOption(e) {
-  selectDiv.innerText = e.target.innerText;
-  selectDiv.append(selectList);
+  selectSpan.innerText = e.target.innerText;
+  // selectDiv.append(selectList);
+}
+
+function hideMask(e) {
+  e.currentTarget.children[1].style.display = "none";
+  e.currentTarget.children[2].style.color = "inherit";
+  e.removeEventListener('click', hideMask);
 }
 
 customizeSelect();
+
+
+
+
+// Event listeners
+dateContainer.addEventListener('click', hideMask);
+timeContainer.addEventListener('click', hideMask);
+
 selectList.addEventListener("click", pickOption);
 document.querySelector('.book__input--select').addEventListener("click", toggleSelect);
+

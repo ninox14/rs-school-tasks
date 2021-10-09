@@ -6,7 +6,7 @@ const progressBar = player.querySelector('.video__progress');
 const volumeLvl = player.querySelector('.video__volume_level');
 const volumeBtn = player.querySelector('.video__volume');
 const fullscreen = player.querySelector('.video__fullscreen');
-let videoSliderItems = document.querySelectorAll('.video-slider__item');
+let videoSliderItems = document.querySelectorAll('iframe') ;
 let isFullscreen = false;
 let videoStated = false;
 let oldHeight;
@@ -183,13 +183,15 @@ videoSlider.events.on('indexChanged', function () {
   video = player.querySelector('.video__video');
 });
 
-
-videoSliderItems.forEach((i) => {
-  i.contentWindow.addEventListener('click', () => {
+/* console.log(typeof videoSliderItems); */
+// videoSliderItems.forEach((i) => {
+/* for (let i of videoSliderItems){
+  console.log(i);
+  i.addEventListener('click', () => {
     console.log('qweqewqwewqeqweqwewq');
     videoSliderItems.forEach(i => i.contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*'));
   })
-});
+}; */
 
 for (let i of videoSliderButtons) {
   i.addEventListener('click', function (e) {

@@ -21,7 +21,7 @@
 
 </head>
 
-<body class="">
+<body class="active_form">
 
 	<header class="header">
 		<div class="container">
@@ -258,7 +258,7 @@
 	</section>
  -->
 
-	<section class="video section" id="video">
+<!-- 	<section class="video section" id="video">
 		<div class="container">
 			<div class="video__header">
 				<h2 class="video__title section__title">Video journey</h2>
@@ -335,7 +335,7 @@
 
 
 		</div>
-	</section>
+	</section> -->
 
 
 <!-- 	<section class="gallery section-dark section" id="gallery">
@@ -364,7 +364,7 @@
 	</section> -->
 
 
-<!-- 	<section class="tickets section" id="tickets">
+	<section class="tickets section" id="tickets">
 		<div class="container">
 			<h2 class="tickets__title section__title section__title--underline">Buy Tickets</h2>
 
@@ -375,16 +375,19 @@
 				<form class="tickets__form" action="/" method="post">
 					<fieldset class="tickets__type">
 						<h3 class="tickets__type_title tickets__group_title">Ticket Type</h3>
-						<label class="tickets__radio_container tickets__caption">Permanent exhibition
-							<input type="radio" checked="checked" name="radio">
+						<label class="tickets__radio_container tickets__caption">
+							<span onclick="event.stopPropagation()">Permanent exhibition</span>
+							<input type="radio" checked="checked" name="radio" value="permanent">
 							<span class="tickets__checkmark"></span>
 						</label>
-						<label class="tickets__radio_container tickets__caption">Temporary exhibition
-							<input type="radio" name="radio">
+						<label class="tickets__radio_container tickets__caption">
+							<span onclick="event.stopPropagation()">Temporary exhibition</span>
+							<input type="radio" name="radio" value="temporary">
 							<span class="tickets__checkmark"></span>
 						</label>
-						<label class="tickets__radio_container tickets__caption">Combined Admission
-							<input type="radio" name="radio">
+						<label class="tickets__radio_container tickets__caption">
+							<span onclick="event.stopPropagation()">Combined Admission</span>
+							<input type="radio" name="radio" value="combined">
 							<span class="tickets__checkmark"></span>
 						</label>
 					</fieldset>
@@ -395,7 +398,7 @@
 							<div class="tickets__amount_input">
 								<button class="tickets__button" type="button"
 								onmousedown="return false;" onclick="this.nextElementSibling.stepDown()">‒</button>
-								<input class="tickets__number" type="number" min="0" max="20" value="1" readonly>
+								<input class="tickets__number" type="number" min="0" max="20" value="1" readonly name="basicAmont">
 								<button class="tickets__button" type="button"
 								onmousedown="return false;" onclick="this.previousElementSibling.stepUp()">+</button>
 							</div>
@@ -405,7 +408,7 @@
 							<div class="tickets__amount_input">
 								<button class="tickets__button" type="button"
 								onmousedown="return false;" onclick="this.nextElementSibling.stepDown()">‒</button>
-								<input class="tickets__number" type="number" min="0" max="20" value="1" readonly>
+								<input class="tickets__number" type="number" min="0" max="20" value="1" readonly name="seniorAmont">
 								<button class="tickets__button" type="button"
 								onmousedown="return false;" onclick="this.previousElementSibling.stepUp()">+</button>
 							</div>
@@ -468,19 +471,19 @@
            <div class="book__amount">
               <h4 class="book__caption">Entry ticket</h4>
               <div class="book__amount_wrapp">
-                <span class="book__amount_name">Basic 18+ (20 €)</span>
+                <span class="book__amount_name">Basic 18+ (<span class="price_basic">20</span> €)</span>
                 <div class="book__amount_number tickets__amount_input">
                   <button class="book__amount_button tickets__button" type="button"
                   onmousedown="return false;" onclick="this.nextElementSibling.stepDown()">‒</button>
-                  <input class="book__number tickets__number" type="number" min="0" max="20" value="1" readonly>
+                  <input class="book__number tickets__number" type="number" min="0" max="20" value="1" readonly name="amount_inner">
                   <button class="book__amount_button tickets__button" type="button"
                   onmousedown="return false;" onclick="this.previousElementSibling.stepUp()">+</button>
                 </div>
-                <span class="book__amount_name">Senior 65+ (10 €)</span>
+                <span class="book__amount_name">Senior 65+ (<span class="price_senior">10</span> €)</span>
                 <div class="book__amount_number tickets__amount_input">
                   <button class="book__amount_button tickets__button" type="button"
                   onmousedown="return false;" onclick="this.nextElementSibling.stepDown()">‒</button>
-                  <input class="book__number tickets__number" type="number" min="0" max="20" value="1" readonly>
+                  <input class="book__number tickets__number" type="number" min="0" max="20" value="1" readonly name="amount_inner">
                   <button class="book__amount_button tickets__button" type="button"
                   onmousedown="return false;" onclick="this.previousElementSibling.stepUp()">+</button>
                 </div>
@@ -501,14 +504,14 @@
             <div class="overview__bot">
               <p class="oveview__type">
                 <span class="overview__count">2</span>
-                Basic (20 €)
+                Basic (<span class="price_basic">20</span> €)
               </p>
-              <span class="overview__count_total">40 €</span>
+              <span class="overview__count_total price__total--basic">40 €</span>
               <p class="oveview__type">
                 <span class="overview__count">2</span>
-                Senior (10 €)
+                Senior (<span class="price_senior">10</span> €)
               </p>
-              <span class="overview__count_total">20 €</span>
+              <span class="overview__count_total price__total--senior">20 €</span>
             </div>
             <div class="overview__total_wrapper">
               <span class="overview__total_caption">Total:</span>
@@ -565,7 +568,8 @@
     </form>
 
 	</section>
- -->
+
+
 <!-- 	<div class="parallax">
     <div class="parallax__img"></div>
 	</div> -->
@@ -664,11 +668,11 @@
 
 
 
-	<script type="module" src="./sliders.js"></script>
-	<script src="./video.js"></script>
+	<!-- <script type="module" src="./sliders.js"></script> -->
+	<!-- <script src="./video.js"></script> -->
 	<!-- <script src="./index.js"></script> -->
-	<!-- <script src="./select.js"></script> -->
-	<!-- <script src="./form.js"></script> -->
+	<script src="./select.js"></script>
+	<script src="./form.js"></script>
 	<!-- <script src="./menu.js"></script> -->
 	<!-- <script src="./explore.js"></script> -->
 </body>
