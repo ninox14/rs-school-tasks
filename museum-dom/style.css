@@ -1369,10 +1369,18 @@ body.active_form .book {
   width: 47.5%;
   padding-right: 0;
 }
-
-/* .book__icon {
-
-} */
+.book__input.invalid {
+  border: 2px solid red;
+}
+.book__input.invalid::after {
+  position: absolute;
+  color: red;
+  font-size: 15px;
+  line-height: 15px;
+  bottom: -20px;
+  left: 45px;
+  content: 'invalid value';
+}
 
 .input {
   width: 100%;
@@ -1407,7 +1415,8 @@ body.active_form .book {
 
 .input__date {
   font-size: 16px;
-
+  margin-left: 0;
+  padding-left: 15px;
 }
 
 
@@ -1423,7 +1432,9 @@ body.active_form .book {
   padding-right: 14px;
 }
 
-
+.book__input--time:hover {
+  cursor: pointer;
+}
 
 
 
@@ -1503,7 +1514,15 @@ body.active_form .book {
   cursor: pointer;
   background-color: #e7e7e7;
 }
+.select__time {
+  background-image: none;
+  padding-left: 16px;
+}
 
+.select__time .select__list {
+  height: 225px;
+  overflow-y: scroll;
+}
 
 
 
@@ -2673,6 +2692,7 @@ body.active_form .book {
 
   }
   .book__container {
+    padding: 30px;
     flex-wrap: wrap;
     width: 100%;
     max-width: 590px;

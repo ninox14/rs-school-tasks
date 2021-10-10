@@ -21,7 +21,7 @@
 
 </head>
 
-<body class="active_form">
+<body class="">
 
 	<header class="header">
 		<div class="container">
@@ -441,32 +441,71 @@
             <div class="book__input book__input--small book__input--time">
 
               <img class="book__icon" src="./assets/svg/booking/time.svg" alt="">
-							<span class="input__date_mask input__mask">Time</span>
-							<input class="input__time input" placeholder="Time" type="time" id="time" />
-
+							<!-- <span class="input__date_mask input__mask">Time</span> -->
+							<!-- <input class="input__time input" placeholder="Time" type="time" id="time" /> -->
+							<span class="book__arrow"></span>
+							<div class="select input select__time"><span class="select__time_display select__dispaly">Time</span>
+								<ul class="select__list select__time_list">
+									<li class="select__list_item ">9:00</li>
+									<li class="select__list_item ">9:30</li>
+									<li class="select__list_item ">10:00</li>
+									<li class="select__list_item ">10:30</li>
+									<li class="select__list_item ">11:00</li>
+									<li class="select__list_item ">11:30</li>
+									<li class="select__list_item ">12:00</li>
+									<li class="select__list_item ">12:30</li>
+									<li class="select__list_item ">13:00</li>
+									<li class="select__list_item ">13:30</li>
+									<li class="select__list_item ">14:00</li>
+									<li class="select__list_item ">14:30</li>
+									<li class="select__list_item ">15:00</li>
+									<li class="select__list_item ">15:30</li>
+									<li class="select__list_item ">16:00</li>
+									<li class="select__list_item ">16:30</li>
+									<li class="select__list_item ">17:00</li>
+									<li class="select__list_item ">17:30</li>
+									<li class="select__list_item ">18:00</li>
+								</ul>
+							</div>
 
             </div>
-            <div class="book__input">
+
+
+
+            <div class="book__input ">
               <img class="book__icon" src="./assets/svg/booking/name.svg" alt="">
-              <input  class="input" placeholder="Name" type="text" id="name" />
+              <input  class="input input__name" placeholder="Name" type="text" id="name" />
             </div>
-            <div class="book__input">
+
+
+            <div class="book__input ">
               <img class="book__icon" src="./assets/svg/booking/email.svg" alt="">
-              <input  class="input" placeholder="E-mail" type="email" id="email" />
+              <input  class="input input__email" placeholder="E-mail" type="email" id="email" />
             </div>
+
+
             <div class="book__input">
               <img class="book__icon" src="./assets/svg/booking/tel.svg" alt="">
-              <input  class="input" placeholder="Phone" type="tel" id="phone" />
+              <input  class="input input__phone" placeholder="Phone" type="tel" id="phone" />
             </div>
+
+
+
             <div class="book__input book__input--select">
 							<span class="book__arrow"></span>
-							<select class="book__select input" id="type">
+							<!-- <select class="book__select input" id="type">
 								<option value="" disabled selected hidden>Ticket Type</option>
 								<option value="permanent">Permanent exhibition</option>
 								<option value="temporary">Temporary exhibition</option>
 								<option value="combined">Combined Admission</option>
-							</select>
-
+							</select> -->
+							<div class="select input select__type"><span class="select__name_dispay select__dispaly">Ticket Type</span>
+								<ul class="select__list select__type_list">
+									<li class="select__list_item type_item">Permanent exhibition</li>
+									<li class="select__list_item type_item">Temporary exhibition</li>
+									<li class="select__list_item type_item">Combined Admission</li>
+								</ul>
+							</div>
             </div>
            <div class="book__amount">
               <h4 class="book__caption">Entry ticket</h4>
@@ -496,9 +535,9 @@
             <div class="overview__top_text">
               <h3 class="overview__title">Overview</h3>
               <h4 class="overview__subtitle">Tour to Louvre</h4>
-              <span class="overview__date overview__info">Friday, August 19</span>
-              <span class="overview__time overview__info">16 : 30</span>
-              <span class="overview__type overview__info">Temporary exhibition</span>
+              <span class="overview__date overview__info">Day, Month YY</span>
+              <span class="overview__time overview__info">-- : --</span>
+              <span class="overview__type overview__info">Exhibition type</span>
               <img class="overview__img" src="./assets/img/boook.jpg" alt="">
             </div>
             <div class="overview__bot">

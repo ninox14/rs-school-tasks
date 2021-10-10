@@ -35,6 +35,18 @@ const seniorPriceSpan = innerForm.querySelectorAll('.price_senior');
 const priceTotalBasic = innerForm.querySelector('.price__total--basic');
 const priceTotalSenior = innerForm.querySelector('.price__total--senior');
 const priceTotal = innerForm.querySelector('.overview__total');
+const overviewType = innerForm.querySelector('.overview__type');
+const bookAmountBtns = innerForm.querySelectorAll('.book__amount_button')
+
+const selectTypeItems = innerForm.querySelectorAll('.type_item');
+
+const nameInput = innerForm.querySelector('.input__name');
+const emailInput = innerForm.querySelector('.input__email');
+const phoneInput = innerForm.querySelector('.input__phone');
+
+
+
+
 
 
 // Functions
@@ -54,16 +66,18 @@ function updatePrices () {
 }
 
 function updateBookForm(bsAm, snAm, typ) {
+  let price = prices[typ];
   ticketsType.innerText = typeNames[typ];
   amountInner[0].value = bsAm;
   amountInner[1].value = snAm;
   overviewAmount[0].innerText = bsAm;
   overviewAmount[1].innerText = snAm;
-  basicPriceSpan.forEach(i => i.innerText = prices[typ]);
-  seniorPriceSpan.forEach(i => i.innerText = prices[typ]/2);
-  priceTotalBasic.innerText = `${prices[typ] * bsAm} €`;
-  priceTotalSenior.innerText = `${prices[typ]/2 * snAm} €`;
-  priceTotal.innerText = `${(prices[typ] * bsAm) + (prices[typ] / 2 * snAm)} €`;
+  basicPriceSpan.forEach((i) => (i.innerText = price));
+  seniorPriceSpan.forEach((i) => (i.innerText = price / 2));
+  priceTotalBasic.innerText = `${price * bsAm} €`;
+  priceTotalSenior.innerText = `${(price / 2) * snAm} €`;
+  priceTotal.innerText = `${price * bsAm + (price / 2) * snAm} €`;
+  overviewType.innerHTML = typeNames[typ];
 }
 
 
@@ -86,4 +100,46 @@ window.addEventListener('load', updatePrices());
 
 formCallBtn.addEventListener('click', () => {
   updateBookForm(basicAmont, seniorAmont, type);
+});
+
+selectTypeItems.forEach(i => i.addEventListener('click', (e) => {
+  type = e.target.innerText.split(' ')[0].toLowerCase();
+  basicAmont = amountInner[0].value;
+  seniorAmont = amountInner[1].value;
+
+  updateBookForm(basicAmont, seniorAmont, type);
+}));
+
+bookAmountBtns.forEach(i => i.addEventListener('click', () => {
+  type = ticketsType.innerText.split(' ')[0].toLowerCase();
+  basicAmont = amountInner[0].value;
+  seniorAmont = amountInner[1].value;
+
+  updateBookForm(basicAmont, seniorAmont, type);
+}));
+
+nameInput.addEventListener('input', e => {
+  if (!/^[a-zа-я ]{3,15}$/gi.test(nameInput.value)) {
+    nameInput.parentElement.classList.add('invalid');
+  } else {
+    nameInput.parentElement.classList.remove('invalid');
+  }
+})
+emailInput.addEventListener('input', e => {
+  if (!/^[\w-_]+@([\w-]{4,}\.)+[\w-]{2,}$/g.test(emailInput.value)) {
+    emailInput.parentElement.classList.add('invalid');
+  } else {
+    emailInput.parentElement.classList.remove('invalid');
+  }
+})
+phoneInput.addEventListener("input", (e) => {
+  if (
+    !/^[0-9]{3}[-\s]?[0-9]{3}[-\s]?[0-9]{2}[-\s]?[0-9]{2}$/g.test(
+      phoneInput.value
+    )
+  ) {
+    phoneInput.parentElement.classList.add("invalid");
+  } else {
+    phoneInput.parentElement.classList.remove("invalid");
+  }
 });
