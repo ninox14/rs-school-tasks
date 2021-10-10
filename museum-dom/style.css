@@ -906,6 +906,7 @@ input[type='number']::-webkit-outer-spin-button {
 }
 .gallery__inner {
   overflow-x: hidden;
+  overflow-y: hidden;
   height: 2900px;
 /*   column-count: 3;
   column-width: auto;
@@ -920,7 +921,16 @@ input[type='number']::-webkit-outer-spin-button {
   /* width: 456px; */
   width: 100%;
   max-width: 456px;
+  opacity: 0;
+  transform: translateY(30%) scale(0.9333);
+  transition: transform .3s linear,
+              opacity .3s linear;
 }
+.gallery__img.active {
+  transform: translateY(0%) scale(1);
+  opacity: 1;
+}
+
 .gallery__img:first-child,
 .gallery__img:nth-child(11) {
   padding-top: 50px;
