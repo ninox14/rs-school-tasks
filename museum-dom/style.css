@@ -1122,6 +1122,10 @@ input[type='number']::-webkit-outer-spin-button {
   display: inline;
   font-style: normal;
 }
+.contacts__map {
+  width: 70%;
+  min-height: 620px;
+}
 
 /* Footer */
 
@@ -2641,6 +2645,7 @@ body.active_form .book {
     width: 100%;
     max-height: 476px;
     max-width: 100%;
+    min-height: 300px;
   }
 
 

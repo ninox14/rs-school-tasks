@@ -8,7 +8,7 @@
 	<title>museum</title>
 	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/tiny-slider.css">
-
+	<link href='https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.css' rel='stylesheet' />
 
 
 	<link rel="icon" href="assets/favicon.ico">
@@ -18,6 +18,8 @@
 		rel="stylesheet">
 	<script src="https://kit.fontawesome.com/6492e7f2a8.js" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
+	<script src='https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.js'></script>
+
 
 </head>
 
@@ -338,7 +340,7 @@
 	</section> -->
 
 
-<!-- 	<section class="gallery section-dark section" id="gallery">
+	<section class="gallery section-dark section" id="gallery">
 		<div class="container">
 			<h2 class="gallery__title section__title section__title-dark">Art Gallery</h2>
 			<div class="gallery__container">
@@ -361,10 +363,10 @@
 				</div>
 			</div>
 		</div>
-	</section> -->
+	</section>
 
 
-	<section class="tickets section" id="tickets">
+<!-- 	<section class="tickets section" id="tickets">
 		<div class="container">
 			<h2 class="tickets__title section__title section__title--underline">Buy Tickets</h2>
 
@@ -441,8 +443,6 @@
             <div class="book__input book__input--small book__input--time">
 
               <img class="book__icon" src="./assets/svg/booking/time.svg" alt="">
-							<!-- <span class="input__date_mask input__mask">Time</span> -->
-							<!-- <input class="input__time input" placeholder="Time" type="time" id="time" /> -->
 							<span class="book__arrow"></span>
 							<div class="select input select__time"><span class="select__time_display select__dispaly">Time</span>
 								<ul class="select__list select__time_list">
@@ -493,12 +493,6 @@
 
             <div class="book__input book__input--select">
 							<span class="book__arrow"></span>
-							<!-- <select class="book__select input" id="type">
-								<option value="" disabled selected hidden>Ticket Type</option>
-								<option value="permanent">Permanent exhibition</option>
-								<option value="temporary">Temporary exhibition</option>
-								<option value="combined">Combined Admission</option>
-							</select> -->
 							<div class="select input select__type"><span class="select__name_dispay select__dispaly">Ticket Type</span>
 								<ul class="select__list select__type_list">
 									<li class="select__list_item type_item">Permanent exhibition</li>
@@ -606,7 +600,7 @@
       </div>
     </form>
 
-	</section>
+	</section> -->
 
 
 <!-- 	<div class="parallax">
@@ -629,11 +623,11 @@
             <a href="mailto:info@louvre.fr">info@louvre.fr</a>
           </div>
         </div>
-        <img class="contacts__map" src="./assets/img/map.jpg" alt="map">
+				<div class="contacts__map" id="map"></div>
       </div>
     </div>
-  </section>
- -->
+  </section> -->
+
 
 <!-- 	<footer class="footer section-dark">
     <div class="container">
@@ -710,10 +704,11 @@
 	<!-- <script type="module" src="./sliders.js"></script> -->
 	<!-- <script src="./video.js"></script> -->
 	<!-- <script src="./index.js"></script> -->
-	<script src="./select.js"></script>
-	<script src="./form.js"></script>
+	<!-- <script src="./select.js"></script> -->
+	<!-- <script src="./form.js"></script> -->
 	<!-- <script src="./menu.js"></script> -->
 	<!-- <script src="./explore.js"></script> -->
+	<script src="./map.js"></script>
 </body>
 
 </html>
