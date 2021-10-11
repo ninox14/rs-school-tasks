@@ -151,7 +151,6 @@ window.addEventListener('load', () => {
 // Hotkeys
 document.addEventListener('keyup', e => {
   if (videoStated) {
-    e.preventDefault();
     if (e.code === 'Space') {
       togglePlay();
     } else if(e.ctrlKey && e.code === 'Comma') {
@@ -166,6 +165,11 @@ document.addEventListener('keyup', e => {
   }
 }, false)
 
+window.onkeydown = function (e) {
+  if (videoStated) {
+    return !(e.code === "Space" && e.target == document.body);
+  }
+};
 // Video slider
 
 videoSlider.events.on('indexChanged', function () {
