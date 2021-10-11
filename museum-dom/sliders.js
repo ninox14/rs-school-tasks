@@ -6,6 +6,8 @@ let slider = tns({
   items: 1,
   slideBy: 'page',
   mode: 'carousel',
+  autoplay: true,
+  speed: 500,
   mouseDrag: true,
   controlsContainer: '.welcome-slider__controls--arrows',
   navContainer: '.welcome-slider__controls--squares'

@@ -1,4 +1,6 @@
 let images;
+const scrollToTopBtn = document.querySelector(".scroll_top__btn");
+const rootElement = document.documentElement;
 
 
 
@@ -71,12 +73,11 @@ function gallery() {
 }
 
 function checkSlide (e) {
-	console.count(e);
 
 	images.forEach(item => {
 
 		const slideInAt =
-      window.scrollY + window.innerHeight - item.height / 3;
+      window.scrollY + window.innerHeight - item.height / 5;
 
 		const imageBottom = item.parentNode.parentNode.offsetTop + item.offsetTop + item.height;
 		const isHalfShown =
@@ -90,16 +91,42 @@ function checkSlide (e) {
 	});
 }
 
+function handleScroll() {
+  // Do something on scroll
+  let scrollTotal = rootElement.scrollHeight - rootElement.clientHeight;
+  if (rootElement.scrollTop / scrollTotal > 0.3) {
+    // Show button
+    scrollToTopBtn.classList.add("active");
+  } else {
+    // Hide button
+    scrollToTopBtn.classList.remove("active");
+  }
+}
+
+function scrollToTop() {
+  // Scroll to top logic
+  rootElement.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+  scrollToTopBtn.classList.remove("active");
+}
+
+
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
   gallery();
 	setTimeout( () => {
 		images = document.querySelectorAll(".gallery__img");
-		console.log(images);
 	}, 1000)
 });
 window.addEventListener("scroll", debounce(checkSlide));
 
 
+scrollToTopBtn.addEventListener("click", scrollToTop);
+document.addEventListener("scroll", debounce(handleScroll, 200));
 
 
 
