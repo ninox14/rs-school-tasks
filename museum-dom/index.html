@@ -7,17 +7,25 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>museum</title>
 	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.3/tiny-slider.css">
+	<link href='https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.css' rel='stylesheet' />
+
+
 	<link rel="icon" href="assets/favicon.ico">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Forum&family=Roboto:wght@100;300;500;700&display=swap"
 		rel="stylesheet">
 	<script src="https://kit.fontawesome.com/6492e7f2a8.js" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
+	<script src='https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.js'></script>
+
+
 </head>
 
-<body>
+<body class="">
+
 	<header class="header">
-		<!-- header -->
 		<div class="container">
 			<div class="header__wrapper">
 				<a class="header__logo" href="./index.html">
@@ -90,50 +98,82 @@
 				</button>
 			</div>
 		</div>
-	</header><!-- /header -->
+	</header>
+
 	<main>
+
+		<button class="scroll_top__btn" type="button">
+			<div class="scroll_top__arrow_up"></div>
+		</button>
+
+
 	<section class="welcome section-dark">
-			<!-- Welcome -->
-			<div class="container">
-				<div class="welcome__wrapper">
-					<div class="welcome__header" id="welcome__header">
-						<h1 class="welcome__title section__title section__title-dark">
-							<span>Welcome</span>to the Louvre
-						</h1>
-						<p class="welcome__text">From the castle to the museum</p>
-						<a class="btn welcome__btn" href="./tours/tour1.html" target="_blank">Discover the Louvre</a>
-					</div>
+		<div class="container">
+			<div class="welcome__wrapper">
+				<div class="welcome__header" id="welcome__header">
+					<h1 class="welcome__title section__title section__title-dark">
+						<span>Welcome</span>to the Louvre
+					</h1>
+					<p class="welcome__text">From the castle to the museum</p>
+					<a class="btn welcome__btn" href="./tours/tour1.html" target="_blank">Discover the Louvre</a>
+				</div>
 
-					<div class="welcome-slider">
+				<div class="welcome-slider ">
 
-						<div class="welcome-slider__container">
-							<div class="welcome-slider__item">
-								<img class="welcome-slider__img" src="assets/img/welcome-slider/1.jpg" alt="01">
-							</div>
+					<div class="welcome-slider__container my_slider">
+						<div class="welcome-slider__item">
+							<img class="welcome-slider__img" src="assets/img/welcome-slider/1.jpg" alt="01">
+						</div>
+						<div class="welcome-slider__item">
+							<img class="welcome-slider__img" src="assets/img/welcome-slider/2.jpg" alt="02">
+						</div>
+						<div class="welcome-slider__item">
+							<img class="welcome-slider__img" src="assets/img/welcome-slider/3.jpg" alt="03">
+						</div>
+						<div class="welcome-slider__item">
+							<img class="welcome-slider__img" src="assets/img/welcome-slider/4.jpg" alt="04">
+						</div>
+						<div class="welcome-slider__item">
+							<img class="welcome-slider__img" src="assets/img/welcome-slider/5.jpg" alt="05">
 						</div>
 
-						<div class="welcome-slider__controls">
-							<div class="welcome-slider__controls--numbers">
-								<span class="welcome-slider__controls--counter" id="welcome-slider__controls--current">01</span>
-								<span class="welcome-slider__controls--counter">|</span>
-								<span class="welcome-slider__controls--counter">05</span>
-							</div>
-							<div class="welcome-slider__controls--squares">
-								<div class="welcome-slider__controls--square active"></div>
-								<div class="welcome-slider__controls--square"></div>
-								<div class="welcome-slider__controls--square"></div>
-								<div class="welcome-slider__controls--square"></div>
-								<div class="welcome-slider__controls--square"></div>
-							</div>
-							<div class="welcome-slider__controls--arrows">
-								<div class="welcome-slider__controls--arr"></div>
-								<div class="welcome-slider__controls--arr right"></div>
-							</div>
-						</div>
 					</div>
+
+					<div class="welcome-slider__controls">
+						<div class="welcome-slider__controls--numbers">
+							<span class="welcome-slider__controls--counter" id="welcome-slider__controls--current">01</span>
+							<span class="welcome-slider__controls--counter">|</span>
+							<span class="welcome-slider__controls--counter">05</span>
+						</div>
+
+
+
+						<div class="welcome-slider__controls--squares">
+							<div class="welcome-slider__controls--square active"></div>
+							<div class="welcome-slider__controls--square"></div>
+							<div class="welcome-slider__controls--square"></div>
+							<div class="welcome-slider__controls--square"></div>
+							<div class="welcome-slider__controls--square"></div>
+						</div>
+
+
+
+
+						<div class="welcome-slider__controls--arrows" data-glide-el="controls">
+							<div class="welcome-slider__controls--arr welcome-slider--left" data-glide-dir="<" onmousedown="return false;"></div>
+							<div class="welcome-slider__controls--arr welcome-slider--right" data-glide-dir=">"onmousedown="return false;"></div>
+						</div>
+
+
+
+
+					</div>
+
+
 				</div>
 			</div>
-		</section><!-- /Welcome -->
+		</div>
+	</section>
 
 
 	<section class="visiting section" id="visiting">
@@ -233,31 +273,50 @@
 					Enter and visit one of the most famous museums in the world and enjoy masterpieces such as Mona Lisa or Hammurabi's Code
 				</p>
 			</div>
+
+
+
 			<div class="video__video-container">
-				<img class="video__video" src="./assets/video/poster0.jpg" alt="video">
+				<video class="video__video" poster="./assets/video/poster0.jpg">
+					<source class="video__source" src="./assets/video/video0.mp4">
+				</video>
 				<button class="video__play-button"></button>
 				<div class="video__controls">
 					<button class="video__play"></button>
-					<input class="video__progress video__controls_progress" type="range" value="0" min="0" max="100" step="1" >
+					<input class="video__progress video__controls_progress" type="range" value="0" min="0" max="100" step="0.2" >
 					<button class="video__volume"></button>
-					<input class="video__volume_level video__controls_progress" type="range" value="20" min="0" max="100" step="1">
+					<input class="video__volume_level video__controls_progress" name="volume" type="range" min="0" max="1" step="0.05" value="0.20">
 					<button class="video__fullscreen"></button>
 				</div>
 			</div>
+
+
+
 			<div class="video-slider">
-				<div class="video-slider__container">
+
+				<div class="video-slider__container video_tns">
+					<iframe class="video-slider__item" src="https://www.youtube.com/embed/zp1BXPX8jcU"
+					srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style><a  href=https://www.youtube.com/embed/zp1BXPX8jcU?autoplay=1&enablejsapi=1><img src=https://img.youtube.com/vi/zp1BXPX8jcU/hqdefault.jpg alt=''draggable=false><span>▶</span></a>" loading="lazy" title="Au Louvre ! La Vénus de Milo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					allowfullscreen></iframe>
 					<iframe class="video-slider__item" src="https://www.youtube.com/embed/aWmJ5DgyWPI"
-					  srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style><a href=https://www.youtube.com/embed/aWmJ5DgyWPI?autoplay=1><img src=https://img.youtube.com/vi/aWmJ5DgyWPI/hqdefault.jpg alt='Exposition - Le Corps et l'Âme. De Donatello à Michel-Ange. Sculptures italiennes de la Renaissance'><span>▶</span></a>"
-						loading="lazy" title="Exposition - Le Corps et l'Âme. De Donatello à Michel-Ange. Sculptures italiennes de la Renaissance" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style><a  href=https://www.youtube.com/embed/aWmJ5DgyWPI?autoplay=1&enablejsapi=1 draggable=false><img src=https://img.youtube.com/vi/aWmJ5DgyWPI/hqdefault.jpg alt='' draggable=false><span>▶</span></a>"
+					loading="lazy" title="Exposition - Le Corps et l'Âme. De Donatello à Michel-Ange. Sculptures italiennes de la Renaissance" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 					<iframe class="video-slider__item" src="https://www.youtube.com/embed/Vi5D6FKhRmo"
-					srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style><a href=https://www.youtube.com/embed/Vi5D6FKhRmo?autoplay=1><img src=https://img.youtube.com/vi/Vi5D6FKhRmo/hqdefault.jpg alt='Au Louvre ! La Vénus de Milo'><span>▶</span></a>" loading="lazy" title="Au Louvre ! La Vénus de Milo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style><a  href=https://www.youtube.com/embed/Vi5D6FKhRmo?autoplay=1&enablejsapi=1><img src=https://img.youtube.com/vi/Vi5D6FKhRmo/hqdefault.jpg alt=''draggable=false><span>▶</span></a>" loading="lazy" title="Au Louvre ! La Vénus de Milo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 					allowfullscreen></iframe>
 					<iframe class="video-slider__item" src="https://www.youtube.com/embed/NOhDysLnTvY"
-					srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style><a href=https://www.youtube.com/embed/NOhDysLnTvY?autoplay=1><img src=https://img.youtube.com/vi/NOhDysLnTvY/hqdefault.jpg alt='Promenade dans les collections mésopotamiennes avec Ariane Thomas'><span>▶</span></a>" loading="lazy" title="Promenade dans les collections mésopotamiennes avec Ariane Thomas"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+					srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style><a  href=https://www.youtube.com/embed/NOhDysLnTvY?autoplay=1&enablejsapi=1><img src=https://img.youtube.com/vi/NOhDysLnTvY/hqdefault.jpg alt=''draggable=false><span>▶</span></a>" loading="lazy" title="Promenade dans les collections mésopotamiennes avec Ariane Thomas"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 					allowfullscreen></iframe>
+					<iframe class="video-slider__item" src="https://www.youtube.com/embed/2OR0OCr6uRE"
+					srcdoc="<style>*{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}span{height:1.5em;text-align:center;font:48px/1.5 sans-serif;color:white;text-shadow:0 0 0.5em black}</style><a  href=https://www.youtube.com/embed/2OR0OCr6uRE?autoplay=1&enablejsapi=1><img src=https://img.youtube.com/vi/2OR0OCr6uRE/hqdefault.jpg alt='' draggable=false><span>▶</span></a>"
+					loading="lazy" title="Petits contes de Printemps - La ruse du Renard 🦊" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 				</div>
+
+
 				<div class="video-slider__controls">
-					<button class="video-slider__arr"></button>
+					<button class="video-slider__arr video-slider__arr--left"></button>
+
 					<ul class="video-slider__dots">
 						<li class="active">
 							<button class="video-slider__dot"></button>
@@ -275,9 +334,13 @@
 							<button class="video-slider__dot"></button>
 						</li>
 					</ul>
+
 					<button class="video-slider__arr video-slider__arr--right"></button>
 				</div>
 			</div>
+
+
+
 		</div>
 	</section>
 
@@ -287,7 +350,7 @@
 			<h2 class="gallery__title section__title section__title-dark">Art Gallery</h2>
 			<div class="gallery__container">
 				<div class="gallery__inner">
-					<img class="gallery__img" src="./assets/img/galery/galery1.jpg" alt="">
+					<img class="gallery__img active" src="./assets/img/galery/galery1.jpg" alt="">
 					<img class="gallery__img" src="./assets/img/galery/galery2.jpg" alt="">
 					<img class="gallery__img" src="./assets/img/galery/galery3.jpg" alt="">
 					<img class="gallery__img" src="./assets/img/galery/galery4.jpg" alt="">
@@ -319,16 +382,19 @@
 				<form class="tickets__form" action="/" method="post">
 					<fieldset class="tickets__type">
 						<h3 class="tickets__type_title tickets__group_title">Ticket Type</h3>
-						<label class="tickets__radio_container tickets__caption">Permanent exhibition
-							<input type="radio" checked="checked" name="radio">
+						<label class="tickets__radio_container tickets__caption">
+							<span onclick="event.stopPropagation()">Permanent exhibition</span>
+							<input type="radio" checked="checked" name="radio" value="permanent">
 							<span class="tickets__checkmark"></span>
 						</label>
-						<label class="tickets__radio_container tickets__caption">Temporary exhibition
-							<input type="radio" name="radio">
+						<label class="tickets__radio_container tickets__caption">
+							<span onclick="event.stopPropagation()">Temporary exhibition</span>
+							<input type="radio" name="radio" value="temporary">
 							<span class="tickets__checkmark"></span>
 						</label>
-						<label class="tickets__radio_container tickets__caption">Combined Admission
-							<input type="radio" name="radio">
+						<label class="tickets__radio_container tickets__caption">
+							<span onclick="event.stopPropagation()">Combined Admission</span>
+							<input type="radio" name="radio" value="combined">
 							<span class="tickets__checkmark"></span>
 						</label>
 					</fieldset>
@@ -339,7 +405,7 @@
 							<div class="tickets__amount_input">
 								<button class="tickets__button" type="button"
 								onmousedown="return false;" onclick="this.nextElementSibling.stepDown()">‒</button>
-								<input class="tickets__number" type="number" min="0" max="20" value="1" readonly>
+								<input class="tickets__number" type="number" min="0" max="20" value="1" readonly name="basicAmont">
 								<button class="tickets__button" type="button"
 								onmousedown="return false;" onclick="this.previousElementSibling.stepUp()">+</button>
 							</div>
@@ -349,7 +415,7 @@
 							<div class="tickets__amount_input">
 								<button class="tickets__button" type="button"
 								onmousedown="return false;" onclick="this.nextElementSibling.stepDown()">‒</button>
-								<input class="tickets__number" type="number" min="0" max="20" value="1" readonly>
+								<input class="tickets__number" type="number" min="0" max="20" value="1" readonly name="seniorAmont">
 								<button class="tickets__button" type="button"
 								onmousedown="return false;" onclick="this.previousElementSibling.stepUp()">+</button>
 							</div>
@@ -370,51 +436,92 @@
             <p class="book__subtitle">Tour to Louvre</p>
           </div>
           <fieldset class="book__inputs">
-            <div class="book__input book__input--small">
+
+            <div class="book__input book__input--small book__input--date">
+
               <img class="book__icon" src="./assets/svg/booking/date.svg" alt="">
-              <input  class="input__date input" placeholder="Date" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" id="date" />
-              <label class="book__arrow" for="date" ></label>
+							<span class="input__date_mask input__mask">Date</span>
+							<input class="input__date input" placeholder="Date" type="date"	id="date"/>
+
+
             </div>
-            <div class="book__input book__input--small">
+            <div class="book__input book__input--small book__input--time">
+
               <img class="book__icon" src="./assets/svg/booking/time.svg" alt="">
-              <input  class="input__time input" placeholder="Time" type="text" onfocus="(this.type='time')" onblur="(this.type='text')" id="time" />
-              <label class="book__arrow" for="time"></label>
+							<span class="book__arrow"></span>
+							<div class="select input select__time"><span class="select__time_display select__dispaly">Time</span>
+								<ul class="select__list select__time_list">
+									<li class="select__list_item ">9:00</li>
+									<li class="select__list_item ">9:30</li>
+									<li class="select__list_item ">10:00</li>
+									<li class="select__list_item ">10:30</li>
+									<li class="select__list_item ">11:00</li>
+									<li class="select__list_item ">11:30</li>
+									<li class="select__list_item ">12:00</li>
+									<li class="select__list_item ">12:30</li>
+									<li class="select__list_item ">13:00</li>
+									<li class="select__list_item ">13:30</li>
+									<li class="select__list_item ">14:00</li>
+									<li class="select__list_item ">14:30</li>
+									<li class="select__list_item ">15:00</li>
+									<li class="select__list_item ">15:30</li>
+									<li class="select__list_item ">16:00</li>
+									<li class="select__list_item ">16:30</li>
+									<li class="select__list_item ">17:00</li>
+									<li class="select__list_item ">17:30</li>
+									<li class="select__list_item ">18:00</li>
+								</ul>
+							</div>
+
             </div>
-            <div class="book__input">
+
+
+
+            <div class="book__input ">
               <img class="book__icon" src="./assets/svg/booking/name.svg" alt="">
-              <input  class="input" placeholder="Name" type="text" id="name" />
+              <input  class="input input__name" placeholder="Name" type="text" id="name" />
             </div>
-            <div class="book__input">
+
+
+            <div class="book__input ">
               <img class="book__icon" src="./assets/svg/booking/email.svg" alt="">
-              <input  class="input" placeholder="E-mail" type="email" id="email" />
+              <input  class="input input__email" placeholder="E-mail" type="email" id="email" />
             </div>
+
+
             <div class="book__input">
               <img class="book__icon" src="./assets/svg/booking/tel.svg" alt="">
-              <input  class="input" placeholder="Phone" type="tel" id="phone" />
+              <input  class="input input__phone" placeholder="Phone" type="tel" id="phone" />
             </div>
-            <div class="book__input">
-              <img class="book__icon" src="./assets/svg/booking/ballot.svg" alt="">
-              <select class="book__select input" id="type">
-                <option value="" disabled selected hidden>Ticket Type</option>
-              </select>
-              <label class="book__arrow" for="type"></label>
+
+
+
+            <div class="book__input book__input--select">
+							<span class="book__arrow"></span>
+							<div class="select input select__type"><span class="select__name_dispay select__dispaly">Ticket Type</span>
+								<ul class="select__list select__type_list">
+									<li class="select__list_item type_item">Permanent exhibition</li>
+									<li class="select__list_item type_item">Temporary exhibition</li>
+									<li class="select__list_item type_item">Combined Admission</li>
+								</ul>
+							</div>
             </div>
-            <div class="book__amount">
+           <div class="book__amount">
               <h4 class="book__caption">Entry ticket</h4>
               <div class="book__amount_wrapp">
-                <span class="book__amount_name">Basic 18+ (20 €)</span>
+                <span class="book__amount_name">Basic 18+ (<span class="price_basic">20</span> €)</span>
                 <div class="book__amount_number tickets__amount_input">
                   <button class="book__amount_button tickets__button" type="button"
                   onmousedown="return false;" onclick="this.nextElementSibling.stepDown()">‒</button>
-                  <input class="book__number tickets__number" type="number" min="0" max="20" value="1" readonly>
+                  <input class="book__number tickets__number" type="number" min="0" max="20" value="1" readonly name="amount_inner">
                   <button class="book__amount_button tickets__button" type="button"
                   onmousedown="return false;" onclick="this.previousElementSibling.stepUp()">+</button>
                 </div>
-                <span class="book__amount_name">Senior 65+ (10 €)</span>
+                <span class="book__amount_name">Senior 65+ (<span class="price_senior">10</span> €)</span>
                 <div class="book__amount_number tickets__amount_input">
                   <button class="book__amount_button tickets__button" type="button"
                   onmousedown="return false;" onclick="this.nextElementSibling.stepDown()">‒</button>
-                  <input class="book__number tickets__number" type="number" min="0" max="20" value="1" readonly>
+                  <input class="book__number tickets__number" type="number" min="0" max="20" value="1" readonly name="amount_inner">
                   <button class="book__amount_button tickets__button" type="button"
                   onmousedown="return false;" onclick="this.previousElementSibling.stepUp()">+</button>
                 </div>
@@ -427,22 +534,22 @@
             <div class="overview__top_text">
               <h3 class="overview__title">Overview</h3>
               <h4 class="overview__subtitle">Tour to Louvre</h4>
-              <span class="overview__date overview__info">Friday, August 19</span>
-              <span class="overview__time overview__info">16 : 30</span>
-              <span class="overview__type overview__info">Temporary exhibition</span>
+              <span class="overview__date overview__info">Day, Month YY</span>
+              <span class="overview__time overview__info">-- : --</span>
+              <span class="overview__type overview__info">Exhibition type</span>
               <img class="overview__img" src="./assets/img/boook.jpg" alt="">
             </div>
             <div class="overview__bot">
               <p class="oveview__type">
                 <span class="overview__count">2</span>
-                Basic (20 €)
+                Basic (<span class="price_basic">20</span> €)
               </p>
-              <span class="overview__count_total">40 €</span>
+              <span class="overview__count_total price__total--basic">40 €</span>
               <p class="oveview__type">
                 <span class="overview__count">2</span>
-                Senior (10 €)
+                Senior (<span class="price_senior">10</span> €)
               </p>
-              <span class="overview__count_total">20 €</span>
+              <span class="overview__count_total price__total--senior">20 €</span>
             </div>
             <div class="overview__total_wrapper">
               <span class="overview__total_caption">Total:</span>
@@ -450,12 +557,31 @@
             </div>
             <div class="cards">
               <div class="card__top card">
-                <div class="card__caption">Card number</div>
+                <p class="card__caption">Card number</p>
                 <input class="card__input" type="number" name="card__number" id="card__number">
-                <div class="card__caption">Expiration date</div>
-                <input class="card__input card__input--small" placeholder="03" type="number" name="expiration__month" id="expiration__month">
-                <input class="card__input card__input--small" placeholder="2024" type="number" name="expiration__year" id="expiration__year">
-                <div class="card__caption">Cardholder name</div>
+								<div class="card__dates">
+										<div class="card__month card__input_container">
+												<p class="card__caption">Expiration date</p>
+												<button class="card__btn down" type="button"  onclick="this.nextElementSibling.stepDown()">
+														▼
+												</button>
+												<input class="card__input  card__counter" type="number" id="card-month" name="card-date" min="01" max="12" value="03">
+												<button class="card__btn up" type="button"  onclick="this.previousElementSibling.stepUp()">
+														▲
+												</button>
+										</div>
+										<div class="card__year card__input_container">
+												<button class="card__btn down" type="button"  onclick="this.nextElementSibling.stepDown()">
+														▼
+												</button>
+												<input class="card__input card__counter" type="number" id="card-year" name="card-date" min="2021" max="2030" value="2024">
+												<button class="card__btn up" type="button"  onclick="this.previousElementSibling.stepUp()">
+														▲
+												</button>
+										</div>
+								</div>
+
+                <p class="card__caption">Cardholder name</p>
                 <input class="card__input card__input--name" type="text" name="card__name" id="card__name">
                 <div class="card__logos">
                   <img class="visa" src="./assets/img/Visa.png" alt="">
@@ -481,6 +607,7 @@
 
 	</section>
 
+
 	<div class="parallax">
     <div class="parallax__img"></div>
 	</div>
@@ -501,7 +628,7 @@
             <a href="mailto:info@louvre.fr">info@louvre.fr</a>
           </div>
         </div>
-        <img class="contacts__map" src="./assets/img/map.jpg" alt="map">
+				<div class="contacts__map" id="map"></div>
       </div>
     </div>
   </section>
@@ -576,9 +703,17 @@
 	</main>
 
 
+
+
+
+	<script type="module" src="./sliders.js"></script>
+	<script src="./video.js"></script>
 	<script src="./index.js"></script>
+	<script src="./select.js"></script>
+	<script src="./form.js"></script>
 	<script src="./menu.js"></script>
 	<script src="./explore.js"></script>
+	<script src="./map.js"></script>
 </body>
 
 </html>
