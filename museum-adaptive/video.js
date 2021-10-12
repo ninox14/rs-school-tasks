@@ -153,13 +153,13 @@ document.addEventListener('keyup', e => {
   if (videoStated) {
     if (e.code === 'Space') {
       togglePlay();
-    } else if(e.ctrlKey && e.code === 'Comma') {
+    } else if(e.shiftKey && e.code === 'Comma') {
       video.playbackRate -= 0.1;
-    } else if (e.ctrlKey && e.code === 'Period') {
+    } else if (e.shiftKey && e.code === "Period") {
       video.playbackRate += 0.1;
-    } else if (e.code === 'KeyF') {
+    } else if (e.code === "KeyF") {
       toggleFlscr();
-    } else if (e.code === 'KeyM') {
+    } else if (e.code === "KeyM") {
       mute();
     }
   }
