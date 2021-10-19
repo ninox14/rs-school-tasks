@@ -121,9 +121,10 @@ document.addEventListener("DOMContentLoaded", function () {
 	setTimeout( () => {
 		images = document.querySelectorAll(".gallery__img");
 	}, 1000)
+  checkSlide();
 });
 window.addEventListener("scroll", debounce(checkSlide));
-
+window.onload = () => checkSlide;
 
 scrollToTopBtn.addEventListener("click", scrollToTop);
 document.addEventListener("scroll", debounce(handleScroll, 200));
