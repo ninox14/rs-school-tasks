@@ -52,16 +52,12 @@ prevButton.addEventListener('click', function (e) {
   prevButton.disabled = true;
   setTimeout(function () {
     prevButton.disabled = false;
-    console.log('undisabled');
   }, 1000);
-  console.log(timeOfDay, bgNum);
 });
 nextButton.addEventListener("click", function (e) {
   getSlideNext();
   nextButton.disabled = true;
   setTimeout(function () {
     nextButton.disabled = false;
-    console.log("undisabled");
   }, 1000);
-  console.log(timeOfDay, bgNum);
 });
