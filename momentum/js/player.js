@@ -154,11 +154,12 @@ window.onload = () => {
   duration.textContent = playlist[playIndex].duration;
   audio.volume = 0.4;
 }
-setInterval(() => {
+
+
+audio.ontimeupdate = () => {
   progressBar.style.width = (audio.currentTime / audio.duration) * 100 + "%";
   currentTime.textContent = getTimeCodeFromNum(audio.currentTime);
-}, 1000);
-
+}
 
 
 playlistCildern.forEach((el, index) => {
@@ -167,12 +168,10 @@ playlistCildern.forEach((el, index) => {
     updateListBtn();
     playIndex = index;
     this.classList.add("item-active");
-
     if (audio.src.match(/[ \w-]+\./)[0] == playlist[playIndex].src.match(/[ \w-]+\./)[0]) {
       return;
     }
     audio.src = playlist[playIndex].src;
-
   });
 })
 
