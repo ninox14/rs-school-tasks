@@ -1,7 +1,9 @@
 @font-face {
   font-family: 'Arial-MT';
   src: url("../assets/fonts/Arial-MT.woff"); /* Путь к файлу со шрифтом */
- }
+}
+
+
 
 * {
   box-sizing: border-box;
@@ -30,23 +32,99 @@ body {
   min-height: 220px;
   padding: 20px;
 }
+/* Player */
 
 .player-controls {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 120px;
-  margin-bottom: 28px;
+  /* width: 120px; */
+  margin-bottom: 20px;
+
+
+  position: relative;
+  column-gap: 10px;
+  padding-bottom: 35px;
 }
+
+.player-time {
+  display: flex;
+  column-gap: 5px;
+}
+
+.volume-container {
+  position: relative;
+  z-index: 2;
+}
+
+.volume-button {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity .3s;
+
+}
+.volume {
+  color: #fff;
+}
+.volume-button:hover {
+  opacity: 1;
+}
+.volume-slider {
+  cursor: pointer;
+  margin: 10px 0;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  z-index: -1;
+  width: 0;
+  height: 15px;
+  background: white;
+  transition: .25s;
+}
+.volume-percentage {
+  background: #5a99eb;
+  height: 100%;
+  width: 40%;
+}
+.volume-container:hover .volume-slider {
+  right: -120px;
+  width: 120px;
+}
+.song-name {
+  position: absolute;
+  bottom: 15px;
+  text-align: center;
+}
+
+.progress {
+  /* flex: 10; */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  /* flex-basis: 100%; */
+  height: 10px;
+  width: 100%;
+  background-color: #fff;
+  opacity: .8;
+}
+.progress-filled {
+  width: 0%;
+  background: #ffc600;
+}
+
 
 .play-list {
   text-align: left;
 }
 
 .play-item {
+  --playButton: url("../assets/svg/play.svg");
   position: relative;
   padding: 5px;
-  padding-left: 20px;
+  padding-left: 25px;
   list-style: none;
   opacity: .8;
   cursor: pointer;
@@ -58,15 +136,29 @@ body {
 }
 
 .play-item::before {
-  content: "\2713";
+  /* content: "\2713"; */
+  content: "";
   position: absolute;
   left: 0;
-  top: 2px;
+  top: 4px;
   font-weight: 900;
+  width: 1.1em;
+  height: 1.1em;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-image: var(--playButton);
 }
-
+.play-item-mask {
+  position: absolute;
+  background: transparent;
+  width: 1.2em;
+  left: 0px;
+  top: 4px;
+  height: 1.2em;
+  z-index: 3;
+}
 .item-active::before {
-  color: #C5B358;
+  filter: invert(74%) sepia(61%) saturate(345%) hue-rotate(9deg) brightness(200%) contrast(230%);
 }
 
 .player-icon,
@@ -117,6 +209,13 @@ body {
 .play-next {
   background-image: url("../assets/svg/play-next.svg");
 }
+
+
+
+
+
+/* Weather */
+
 
 .weather {
   display: flex;
