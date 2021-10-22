@@ -1,29 +1,37 @@
 const quote = document.querySelector(".quote");
 const author = document.querySelector(".author");
 const quoteBtn = document.querySelector(".change-quote");
-async function getQuote(lang='en') {
-  if (lang == 'en') {
-    const url = "https://favqs.com/api/qotd";
-    const res = await fetch(url);
-    const data = await res.json();
-    // console.log(data);
-    return new Promise(resolve => {
-      resolve(data);
-    })
-  }
-}
-function printQuote(data) {
-  quote.textContent = data.quote.body;
-  author.textContent = data.quote.author;
+
+function getRandomInt (max) {
+  return Math.floor(Math.random() * max);
 }
 
-async function printOnResponse() {
+async function getQuote() {
+  const url = "../assets/quotes/quotes.json";
+  const res = await fetch(url);
+  const data = await res.json();
+  return new Promise((resolve) => {
+    resolve(data);
+  });
+}
+function printQuote(data) {
+  quote.textContent =
+    data[window.langSelected][
+      getRandomInt(data[window.langSelected].length)
+    ].text;
+  author.textContent =
+    data[window.langSelected][
+      getRandomInt(data[window.langSelected].length)
+    ].author;
+}
+
+export async function printOnResponse() {
   const data = await getQuote();
   printQuote(data);
 }
 printOnResponse();
 
-quoteBtn.onclick =  function () {
+quoteBtn.onclick = function () {
   printOnResponse();
   quoteBtn.disabled = true;
   setTimeout(function () {

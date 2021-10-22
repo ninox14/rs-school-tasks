@@ -1,7 +1,5 @@
 import { printGreeting } from "./greeting.js";
 
-
-
 const timeElem = document.querySelector('.time');
 const dateElem = document.querySelector('.date');
 
@@ -10,7 +8,7 @@ export function showTime () {
   const currentTime = date.toLocaleTimeString();
   timeElem.textContent = currentTime;
   showDate();
-  printGreeting();
+  printGreeting(window.langSelected);
   setTimeout(showTime, 1000);
 }
 showTime();
@@ -23,6 +21,12 @@ function showDate () {
     day: "numeric",
     timeZone: "UTC",
   };
-  const currentDate = date.toLocaleDateString("en-US", options);
+  let lang;
+  if (!window.langSelected) {
+    lang = 'en-US';
+  } else {
+    lang = window.langSelected == "en" ? "en-US" : "ru-RU";
+  }
+  const currentDate = date.toLocaleDateString(lang, options);
   dateElem.textContent = currentDate;
 }

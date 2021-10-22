@@ -21,6 +21,9 @@ body {
   background: url("../assets/img/bg.jpg") center/cover, rgba(0, 0, 0, 0.5);
   background-blend-mode: multiply;
   transition: background-image 1s ease-in-out;
+
+
+  overflow: hidden;
 }
 
 .header {
@@ -75,21 +78,24 @@ body {
   cursor: pointer;
   margin: 10px 0;
   position: absolute;
-  right: 0px;
+  right: 2px;
   top: 0px;
   z-index: -1;
   width: 0;
   height: 15px;
   background: white;
   transition: .25s;
+  border-radius: 4px;
+  overflow: hidden;
+  opacity: .8;
 }
 .volume-percentage {
-  background: #5a99eb;
+  background: #5a99ebd5;
   height: 100%;
   width: 40%;
 }
 .volume-container:hover .volume-slider {
-  right: -120px;
+  right: -122px;
   width: 120px;
 }
 .song-name {
@@ -100,6 +106,7 @@ body {
 
 .progress {
   /* flex: 10; */
+  cursor: pointer;
   position: absolute;
   bottom: 0;
   left: 0;
@@ -109,10 +116,12 @@ body {
   width: 100%;
   background-color: #fff;
   opacity: .8;
+  border-radius: 3px;
+  overflow: hidden;
 }
 .progress-filled {
   width: 0%;
-  background: #ffc600;
+  background: #ffc800dc;
 }
 
 
@@ -304,6 +313,7 @@ body {
   min-height: 28px;
   font-size: 24px;
   margin-bottom: 20px;
+  text-transform: capitalize;
 }
 
 .greeting-container {
@@ -362,6 +372,48 @@ body {
 .author {
   min-height: 20px;
 }
+
+/* Options */
+
+.options-button {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+}
+.option-icon {
+  color: #fff;
+  opacity: .8;
+  transition: opacity .2s ease-in-out;
+}
+.options-button:hover .option-icon {
+  opacity: 1;
+  cursor: pointer;
+}
+.options-panel {
+  padding: 15px;
+  position: absolute;
+
+  background: #030303e3;
+  right: 20px;
+  bottom: 60px;
+  border-radius: 10px;
+  transform: translateX(150%);
+  transition: transform .3s linear;
+
+  display: flex;
+  flex-direction: column;
+}
+.options-option {
+  margin-bottom: 10px;
+}
+.options-option:last-child {
+  margin-bottom: 0;
+}
+.options-panel.active {
+  transform: translateX(0);
+}
+
+
 
 @media (max-width: 768px) {
   .time {

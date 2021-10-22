@@ -23,8 +23,8 @@
           <div class="duration"></div>
         </div>
         <div class="volume-container">
-          <div class="volume-button">
-            <div class="volume icono-volumeMedium"></div>
+          <div class="volume-button" draggable="false">
+            <div class="volume icono-volumeMedium" draggable="false"></div>
           </div>
 
           <div class="volume-slider">
@@ -73,6 +73,19 @@
     <div>
       <div class="quote"></div>
       <div class="author"></div>
+    </div>
+    <div class="options-button">
+      <div class="option-icon icono-gear"></div>
+    </div>
+    <div class="options-panel">
+      <div class="options-option">
+        <span class="caption">Language</span>
+        <select class="language" name="langueage" id="langueage">
+          <option value="en">En</option>
+          <option value="ru">Ru</option>
+        </select>
+      </div>
+
     </div>
   </footer>
   <script src="js/script.js" type="module"></script>

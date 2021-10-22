@@ -1,4 +1,4 @@
-const cityInput = document.querySelector('.city');
+export const cityInput = document.querySelector('.city');
 const weatherIcon = document.querySelector(".weather-icon");
 const temperature = document.querySelector(".temperature");
 const weatherDescription = document.querySelector(".weather-description");
@@ -7,6 +7,8 @@ const humidity = document.querySelector(".humidity");
 const weatherError = document.querySelector(".weather-error");
 
 async function getWeather(lang = 'en') {
+
+  console.log(cityInput.value);
   let city = cityInput.value ? cityInput.value : 'Minsk';
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=${lang}&appid=39f22f01cd236dc4f5f50624afc22468&units=metric`;
   const res = await fetch(url);
@@ -32,29 +34,20 @@ function drawWeather(data) {
   weatherIcon.classList.add(`owf-${data.weather[0].id}`);
   temperature.textContent = `${Math.ceil(data.main.temp)} °C`;
   weatherDescription.textContent = data.weather[0].description;
-  cityInput.value = data.name;
+  // cityInput.value = data.name;
   wind.textContent = `${Math.ceil(data.wind.speed)} m/s`;
   humidity.textContent = `${data.main.humidity} %`;
 }
 
-function setLocalStorage() {
-  localStorage.setItem("city", cityInput.value);
-}
-function getLocalStorage() {
-  if (localStorage.getItem("city")) {
-    cityInput.value = localStorage.getItem("city");
-  }
-}
 
-async function drawOnResponse() {
-  let data = await getWeather();
+
+export async function drawOnResponse() {
+  let data = await getWeather(window.langSelected);
   drawWeather(data);
 }
 
 
-window.addEventListener("beforeunload", setLocalStorage);
 window.addEventListener("load", () => {
-  getLocalStorage();
   drawOnResponse();
 });
 
