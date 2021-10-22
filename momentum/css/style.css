@@ -406,14 +406,20 @@ body {
 .options-option {
   margin-bottom: 10px;
 }
+
 .options-option:last-child {
   margin-bottom: 0;
 }
 .options-panel.active {
   transform: translateX(0);
 }
-
-
+.option-tags {
+  display: flex;
+  flex-direction: column;
+}
+.tags {
+  margin-top: 5px;
+}
 
 @media (max-width: 768px) {
   .time {

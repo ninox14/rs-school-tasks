@@ -37,10 +37,6 @@
           <div class="progress-filled"></div>
         </div>
       </div>
-
-
-
-
       <ul class="play-list">
       </ul>
     </div>
@@ -85,7 +81,19 @@
           <option value="ru">Ru</option>
         </select>
       </div>
-
+      <div class="options-option">
+        <span class="caption">Image Source</span>
+        <select class="image-api" name="image-api" id="image-api">
+          <option value="git">GitHub</option>
+          <option value="usplash">Unsplash</option>
+          <option value="flickr">Flickr</option>
+        </select>
+      </div>
+      <div class="options-option option-tags">
+        <span class="caption">Image tags</span>
+        <span class="caption">(english only separated by coma)</span>
+        <input class="tags" type="text" name="tags" id="tags" placeholder="nature, morning, sunny">
+      </div>
     </div>
   </footer>
   <script src="js/script.js" type="module"></script>
