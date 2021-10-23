@@ -57,8 +57,11 @@ export function hideElem(elem) {
   }, 500);
 }
 export function showElem(elem) {
-  elem.style.visibility = "visible";
-  elem.style.opacity = "1";
+  elem.style.opacity = "0";
+  setTimeout(() => {
+    elem.style.visibility = "visible";
+    elem.style.opacity = "1";
+  }, 500);
 }
 
 export function translateOptions() {
