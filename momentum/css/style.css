@@ -36,7 +36,9 @@ body {
   padding: 20px;
 }
 /* Player */
-
+.player {
+  transition: opacity .5s ease-in-out;
+}
 .player-controls {
   display: flex;
   align-items: center;
@@ -235,6 +237,9 @@ body {
   width: 180px;
   min-height: 180px;
   text-align: left;
+
+
+  transition: opacity .5s ease-in-out;
 }
 
 .weather-error {
@@ -307,6 +312,8 @@ body {
   font-family: 'Arial-MT';
   font-size: 100px;
   letter-spacing: -4px;
+
+  transition: opacity .5s ease-in-out;
 }
 
 .date {
@@ -314,6 +321,8 @@ body {
   font-size: 24px;
   margin-bottom: 20px;
   text-transform: capitalize;
+
+  transition: opacity .5s ease-in-out;
 }
 
 .greeting-container {
@@ -324,6 +333,8 @@ body {
   min-height: 48px;
   width: 100vw;
   font-size: 40px;
+
+  transition: opacity .5s ease-in-out;
 }
 
 .greeting {
@@ -358,6 +369,10 @@ body {
   height: 30vh;
   min-height: 160px;
   padding: 20px;
+}
+
+.quotes {
+  transition: opacity .5s ease-in-out;
 }
 
 .change-quote {
@@ -406,7 +421,9 @@ body {
 .options-option {
   margin-bottom: 10px;
 }
-
+.elem-visibility {
+  font-weight: 700;
+}
 .options-option:last-child {
   margin-bottom: 0;
 }
@@ -420,6 +437,91 @@ body {
 .tags {
   margin-top: 5px;
 }
+.elements {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.switches,
+.element-names {
+  display: flex;
+  flex-direction: column;
+}
+.element-names {
+  row-gap: 12px;
+}
+.element-names .caption {
+  text-align: start;
+}
+.switches {
+  row-gap: 5px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 24px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left:  4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(16px);
+  -ms-transform: translateX(16px);
+  transform: translateX(16px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+
 
 @media (max-width: 768px) {
   .time {

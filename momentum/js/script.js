@@ -17,6 +17,9 @@ function setLocalStorage() {
   localStorage.setItem("imageTags", options.tagsInput.value);
   localStorage.setItem("imageApi", options.imageApiSelect.value);
 
+  options.elemVisibilityInputs.forEach((elem, index) => {
+    localStorage.setItem(options.elementNames[index], elem.checked)
+  })
 }
 function getLocalStorage() {
   if (localStorage.getItem("city")) {
@@ -37,6 +40,18 @@ function getLocalStorage() {
     window.imgApi = options.imageApiSelect.value;
   }
 
+  options.elemVisibilityInputs.forEach((elem, index) => {
+    if (localStorage.getItem(options.elementNames[index])){
+      let checked = JSON.parse(
+        localStorage.getItem(options.elementNames[index])
+      );
+      elem.checked = checked;
+      if (!checked) {
+        document.querySelector(options.elementNames[index]).style.visibility =
+          "hidden";
+      }
+    }
+  });
 }
 
 

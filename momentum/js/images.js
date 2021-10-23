@@ -10,11 +10,11 @@ let timeOfDay = getTimeOfDay();
 let bgNum = getRandomNum().toString().padStart(2, "0");
 
 export function getRandomNum(max = 20) {
-  return Math.floor(Math.random() * max)+1;
+  return Math.floor(Math.random() * max) + 1;
 }
 
 async function getLinkToImageUsplash() {
-  let query = `${timeOfDay},${constructQuerry()}`
+  let query = `${timeOfDay},${constructQuerry()}`;
   const url = `https://api.unsplash.com/photos/random?orientation=landscape&query=${query}&client_id=zOHIq58LlPlqR_BJTYWmw_Rh6m616AHHDL0OnRTEoVc`;
   const res = await fetch(url);
   const data = await res.json();
@@ -28,9 +28,6 @@ async function getFlickrColection() {
   const data = await res.json();
   return data.photos.photo;
 }
-
-
-
 
 export async function setBg(bgNum) {
   let link;
@@ -71,7 +68,7 @@ export async function setBg(bgNum) {
 setBg(bgNum);
 
 function getSlidePrev() {
-  let bgNumInt = parseInt(bgNum)-1;
+  let bgNumInt = parseInt(bgNum) - 1;
   if (bgNumInt == 0) {
     bgNum = `20`;
     setBg(bgNum);
@@ -81,7 +78,7 @@ function getSlidePrev() {
   setBg(bgNum);
 }
 function getSlideNext() {
-  let bgNumInt = parseInt(bgNum)+1;
+  let bgNumInt = parseInt(bgNum) + 1;
   if (bgNumInt == 20) {
     bgNum = `01`;
     setBg(bgNum);
@@ -91,8 +88,7 @@ function getSlideNext() {
   setBg(bgNum);
 }
 
-// getSlidePrev();
-prevButton.addEventListener('click', function (e) {
+prevButton.addEventListener("click", function (e) {
   getSlidePrev();
   prevButton.disabled = true;
   setTimeout(function () {
@@ -106,4 +102,3 @@ nextButton.addEventListener("click", function (e) {
     nextButton.disabled = false;
   }, 1000);
 });
-

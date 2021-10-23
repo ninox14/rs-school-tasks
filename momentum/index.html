@@ -41,7 +41,7 @@
       </ul>
     </div>
     <div class="weather">
-      <input type="text" class="city" />
+      <input type="text" class="city" placeholder="[Enter city]"/>
       <i class="weather-icon owf"></i>
       <div class="weather-error"></div>
       <div class="description-container">
@@ -61,12 +61,12 @@
     <date class="date"></date>
     <div class="greeting-container">
       <span class="greeting"></span>
-      <input type="text" class="name" />
+      <input type="text" class="name" placeholder="[Enter mame]"/>
     </div>
   </main>
   <footer class="footer">
-    <button class="change-quote"></button>
-    <div>
+    <div class="quotes">
+      <button class="change-quote"></button>
       <div class="quote"></div>
       <div class="author"></div>
     </div>
@@ -93,6 +93,43 @@
         <span class="caption">Image tags</span>
         <span class="caption">(english only separated by coma)</span>
         <input class="tags" type="text" name="tags" id="tags" placeholder="nature, morning, sunny">
+      </div>
+      <span class="caption elem-visibility">Elements visibility</span>
+      <div class="options-option elements">
+        <div class="element-names">
+          <span class="caption">Player</span>
+          <span class="caption">Weather</span>
+          <span class="caption">Time</span>
+          <span class="caption">Date</span>
+          <span class="caption">Greeting</span>
+          <span class="caption">Quotes</span>
+        </div>
+        <div class="switches">
+          <label class="switch">
+            <input class="visibility" type="checkbox" checked>
+            <span class="slider round"></span>
+          </label>
+          <label class="switch">
+            <input class="visibility" type="checkbox" checked>
+            <span class="slider round"></span>
+          </label>
+          <label class="switch">
+            <input class="visibility" type="checkbox" checked>
+            <span class="slider round"></span>
+          </label>
+          <label class="switch">
+            <input class="visibility" type="checkbox" checked>
+            <span class="slider round"></span>
+          </label>
+          <label class="switch">
+            <input class="visibility" type="checkbox" checked>
+            <span class="slider round"></span>
+          </label>
+          <label class="switch">
+            <input class="visibility" type="checkbox" checked>
+            <span class="slider round"></span>
+          </label>
+        </div>
       </div>
     </div>
   </footer>

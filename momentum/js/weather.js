@@ -17,9 +17,9 @@ async function getWeather(lang = 'en') {
 }
 
 function drawWeather(data) {
-  if (data.cod == "404") {
+  if (data.cod == "404" || !data.name) {
     weatherIcon.className = "weather-icon owf";
-    weatherError.textContent = data.message;
+    weatherError.textContent = !cityInput.value ? `${window.langSelected == 'en'? 'Type in your city' : 'Укажите ваш город'}` : data.message;
     temperature.textContent = ``;
     weatherDescription.textContent = "";
     wind.textContent = ``;
@@ -31,9 +31,15 @@ function drawWeather(data) {
   weatherIcon.classList.add(`owf-${data.weather[0].id}`);
   temperature.textContent = `${Math.ceil(data.main.temp)} °C`;
   weatherDescription.textContent = data.weather[0].description;
-  // cityInput.value = data.name;
-  wind.textContent = `${Math.ceil(data.wind.speed)} ${window.langSelected == 'en'? 'm/s' : 'м/с'}`;
-  humidity.textContent = `${data.main.humidity} %`;
+  cityInput.value = data.name;
+  wind.textContent = `${
+    window.langSelected == "en" ? "Wind speed" : "Скорость ветра"
+  }: ${Math.ceil(data.wind.speed)} ${
+    window.langSelected == "en" ? "m/s" : "м/с"
+  }`;
+  humidity.textContent = `${
+    window.langSelected == "en" ? "Humidity" : "Влажность"
+  }: ${data.main.humidity} %`;
 }
 
 
@@ -49,6 +55,10 @@ window.addEventListener("load", () => {
 });
 
 cityInput.addEventListener('change', function (e) {
+  if (!cityInput.value) {
+    drawWeather({ cod: "404" });
+    return;
+  }
   drawOnResponse();
 });
 
