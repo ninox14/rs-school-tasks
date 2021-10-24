@@ -58,7 +58,9 @@ function getLocalStorage() {
 window.addEventListener("beforeunload", setLocalStorage);
 window.addEventListener("load", () => {
   getLocalStorage();
-  weather.drawOnResponse();
+  setTimeout(() => {
+    weather.drawOnResponse();
+  }, 500);
   quotes.printOnResponse();
   options.translateOptions();
   images.setBg();

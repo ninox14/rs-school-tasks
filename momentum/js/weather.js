@@ -7,7 +7,11 @@ const humidity = document.querySelector(".humidity");
 const weatherError = document.querySelector(".weather-error");
 
 async function getWeather(lang = 'en') {
-  let city = cityInput.value ? cityInput.value : 'Minsk';
+  let city = cityInput.value;
+  if (localStorage.getItem('city') === null && !cityInput.value) {
+    city = cityInput.dataset.city;
+  }
+
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=${lang}&appid=39f22f01cd236dc4f5f50624afc22468&units=metric`;
   const res = await fetch(url);
   const data = await res.json();
@@ -50,9 +54,9 @@ export async function drawOnResponse() {
 }
 
 
-window.addEventListener("load", () => {
-  drawOnResponse();
-});
+// window.addEventListener("load", () => {
+//   drawOnResponse();
+// });
 
 cityInput.addEventListener('change', function (e) {
   if (!cityInput.value) {

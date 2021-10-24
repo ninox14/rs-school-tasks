@@ -14,7 +14,8 @@
 body {
   min-width: 480px;
   min-height: 100vh;
-  font-family: 'Arial', sans-serif;
+  /* font-family: 'Arial', sans-serif; */
+  font-family: 'Nunito', sans-serif;
   font-size: 16px;
   color: #fff;
   text-align: center;
@@ -310,6 +311,7 @@ body {
   min-height: 124px;
   margin-bottom: 10px;
   font-family: 'Arial-MT';
+  /* font-weight: 700; */
   font-size: 100px;
   letter-spacing: -4px;
 
@@ -449,13 +451,13 @@ body {
   flex-direction: column;
 }
 .element-names {
-  row-gap: 12px;
+  row-gap: 11px;
 }
 .element-names .caption {
   text-align: start;
 }
 .switches {
-  row-gap: 5px;
+  row-gap: 9px;
 }
 
 .switch {

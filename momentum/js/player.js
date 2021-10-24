@@ -50,6 +50,7 @@ function playNext() {
   }
   playlistNode(playIndex).classList.add("item-active");
   audio.src = playlist[playIndex].src;
+  progressBar.style.width ='0px';
 }
 function playPrev() {
   updateListBtn();
@@ -60,6 +61,7 @@ function playPrev() {
   }
   playlistNode(playIndex).classList.add("item-active");
   audio.src = playlist[playIndex].src;
+  progressBar.style.width = "0px";
 }
 function updateButton() {
   const icon = audio.paused
@@ -102,8 +104,15 @@ function handleVolumeBtn() {
     volumeEl.classList.remove("icono-volumeMute");
   }
 }
-
-
+function handleProgress(e) {
+  const timelineWidth = window.getComputedStyle(progress).width;
+  const timeToSeek = (e.offsetX / parseInt(timelineWidth)) * audio.duration;
+  audio.currentTime = timeToSeek;
+}
+function updateProgressBar() {
+  progressBar.style.width = (audio.currentTime / audio.duration) * 100 + "%";
+  currentTime.textContent = getTimeCodeFromNum(audio.currentTime);
+}
 playNextBtn.onclick = () => {
   playNext();
   playBtn.classList.remove("active");
@@ -138,9 +147,7 @@ volumeBtn.onclick = () => {
 progress.addEventListener(
   "click",
   (e) => {
-    const timelineWidth = window.getComputedStyle(progress).width;
-    const timeToSeek = (e.offsetX / parseInt(timelineWidth)) * audio.duration;
-    audio.currentTime = timeToSeek;
+    handleProgress(e);
   },
   false
 );
@@ -157,21 +164,25 @@ window.onload = () => {
 
 
 audio.ontimeupdate = () => {
-  progressBar.style.width = (audio.currentTime / audio.duration) * 100 + "%";
-  currentTime.textContent = getTimeCodeFromNum(audio.currentTime);
+  updateProgressBar();
 }
 
 
 playlistCildern.forEach((el, index) => {
   el.addEventListener('click', function (e) {
+    if (
+      audio.src.match(/[ \w-]+\./)[0] ==
+      playlist[index].src.match(/[ \w-]+\./)[0]
+    ) {
+      return;
+    }
     playlistCildern[playIndex].classList.remove('item-active');
     updateListBtn();
     playIndex = index;
     this.classList.add("item-active");
-    if (audio.src.match(/[ \w-]+\./)[0] == playlist[playIndex].src.match(/[ \w-]+\./)[0]) {
-      return;
-    }
     audio.src = playlist[playIndex].src;
+    playBtn.classList.remove('active');
+    progressBar.style.width = '0px';
   });
 })
 
