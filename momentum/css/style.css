@@ -291,6 +291,7 @@ body {
   height: 40vh;
   min-height: 260px;
   padding: 20px;
+  z-index: -1;
 }
 
 .slider-icon {

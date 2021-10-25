@@ -51,6 +51,7 @@ function playNext() {
   playlistNode(playIndex).classList.add("item-active");
   audio.src = playlist[playIndex].src;
   progressBar.style.width ='0px';
+  toggleAudio();
 }
 function playPrev() {
   updateListBtn();
@@ -62,6 +63,7 @@ function playPrev() {
   playlistNode(playIndex).classList.add("item-active");
   audio.src = playlist[playIndex].src;
   progressBar.style.width = "0px";
+  toggleAudio();
 }
 function updateButton() {
   const icon = audio.paused
@@ -112,6 +114,9 @@ function handleProgress(e) {
 function updateProgressBar() {
   progressBar.style.width = (audio.currentTime / audio.duration) * 100 + "%";
   currentTime.textContent = getTimeCodeFromNum(audio.currentTime);
+  if (audio.currentTime == audio.duration) {
+    playNext();
+  }
 }
 playNextBtn.onclick = () => {
   playNext();
@@ -177,6 +182,7 @@ playlistCildern.forEach((el, index) => {
       if (maskStart) {
         toggleAudio();
         maskStart = !maskStart;
+        this.classList.add("item-active");
       }
       return;
     }
