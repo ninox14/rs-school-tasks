@@ -10,6 +10,9 @@
   margin: 0;
   padding: 0;
 }
+input {
+  font-family: 'Nunito', sans-serif;
+}
 
 body {
   min-width: 480px;
@@ -23,7 +26,7 @@ body {
   background-blend-mode: multiply;
   transition: background-image 1s ease-in-out;
 
-
+  position: relative;
   overflow: hidden;
 }
 
@@ -152,7 +155,7 @@ body {
   content: "";
   position: absolute;
   left: 0;
-  top: 4px;
+  top: 6px;
   font-weight: 900;
   width: 1.1em;
   height: 1.1em;
@@ -165,7 +168,7 @@ body {
   background: transparent;
   width: 1.2em;
   left: 0px;
-  top: 4px;
+  top: 6px;
   height: 1.2em;
   z-index: 3;
 }
@@ -372,7 +375,6 @@ body {
   min-height: 160px;
   padding: 20px;
 }
-
 .quotes {
   transition: opacity .5s ease-in-out;
 }
@@ -407,14 +409,15 @@ body {
   cursor: pointer;
 }
 .options-panel {
+
   padding: 15px;
   position: absolute;
-
+  z-index: -1;
   background: #030303e3;
   right: 20px;
   bottom: 60px;
   border-radius: 10px;
-  transform: translateX(150%);
+  transform: translateY(150%);
   transition: transform .3s linear;
 
   display: flex;
@@ -430,7 +433,8 @@ body {
   margin-bottom: 0;
 }
 .options-panel.active {
-  transform: translateX(0);
+  transform: translateY(0);
+  z-index: 3;
 }
 .option-tags {
   display: flex;
@@ -523,7 +527,9 @@ input:checked + .slider:before {
 }
 
 
+@media (max-width: 102) {
 
+}
 
 @media (max-width: 768px) {
   .time {
@@ -543,5 +549,11 @@ input:checked + .slider:before {
   .name {
     font-size: 32px;
     padding: 5px;
+  }
+}
+@media (max-width: 425px) {
+  .play-item {
+    padding: 3px;
+    padding-left: 25px;
   }
 }

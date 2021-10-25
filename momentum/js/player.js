@@ -16,7 +16,7 @@ const currentTime = document.querySelector(".current");
 const songName = document.querySelector(".song-name");
 
 let playIndex = 0;
-
+let maskStart = false;
 playlist.forEach((el) => {
   const li = document.createElement("li");
   li.classList.add("play-item");
@@ -171,9 +171,13 @@ audio.ontimeupdate = () => {
 playlistCildern.forEach((el, index) => {
   el.addEventListener('click', function (e) {
     if (
-      audio.src.match(/[ \w-]+\./)[0] ==
-      playlist[index].src.match(/[ \w-]+\./)[0]
+      audio.src.match(/[^/\\&\?]+\.\w{3,4}(?=([\?&].*$|$))/)[0] ==
+      playlist[index].src.match(/[^/\\&\?]+\.\w{3,4}(?=([\?&].*$|$))/)[0]
     ) {
+      if (maskStart) {
+        toggleAudio();
+        maskStart = !maskStart;
+      }
       return;
     }
     playlistCildern[playIndex].classList.remove('item-active');
@@ -181,15 +185,24 @@ playlistCildern.forEach((el, index) => {
     playIndex = index;
     this.classList.add("item-active");
     audio.src = playlist[playIndex].src;
+    if (maskStart) {
+      toggleAudio();
+      maskStart = !maskStart;
+      this.classList.add("item-active");
+    }
     playBtn.classList.remove('active');
     progressBar.style.width = '0px';
+
   });
 })
 
 playMasks.forEach(el => {
   el.addEventListener('click', function (e) {
-    setTimeout(() => {
-      toggleAudio();
-    }, 100);
+    maskStart = !maskStart;
+    // toggleAudio();
+    // console.log('click');
+    // setTimeout(() => {
+    //   toggleAudio();
+    // }, 100);
   });
 })
