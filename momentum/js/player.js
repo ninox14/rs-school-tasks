@@ -199,10 +199,5 @@ playlistCildern.forEach((el, index) => {
 playMasks.forEach(el => {
   el.addEventListener('click', function (e) {
     maskStart = !maskStart;
-    // toggleAudio();
-    // console.log('click');
-    // setTimeout(() => {
-    //   toggleAudio();
-    // }, 100);
   });
 })
