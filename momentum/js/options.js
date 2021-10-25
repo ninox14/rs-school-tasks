@@ -103,8 +103,6 @@ langSelect.onchange = () => {
 // }
 imageApiSelect.onchange = () => {
   window.imgApi = imageApiSelect.value;
-  unsplashPhotos = null;
-  flickrPhotos = null;
   setBg();
 }
 elemVisibilityInputs.forEach((elem, index) => {
