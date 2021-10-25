@@ -1,6 +1,6 @@
 import { printOnResponse } from "./quotes.js";
 import { drawOnResponse, cityInput } from "./weather.js"
-import { setBg } from "./images.js";
+import { setBg, unsplashPhotos, flickrPhotos } from "./images.js";
 import { name } from "./greeting.js";
 
 
@@ -98,11 +98,13 @@ langSelect.onchange = () => {
   translateOptions();
 }
 
-tagsInput.onchange = () => {
-  console.log(constructQuerry());
-}
+// tagsInput.onchange = () => {
+//   setBg();
+// }
 imageApiSelect.onchange = () => {
   window.imgApi = imageApiSelect.value;
+  unsplashPhotos = null;
+  flickrPhotos = null;
   setBg();
 }
 elemVisibilityInputs.forEach((elem, index) => {

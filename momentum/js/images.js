@@ -1,10 +1,11 @@
 import { getTimeOfDay } from "./greeting.js";
-import { constructQuerry } from "./options.js";
+import { constructQuerry, tagsInput } from "./options.js";
 
 const body = document.querySelector("body");
 const prevButton = document.querySelector(".slide-prev");
 const nextButton = document.querySelector(".slide-next");
-let flickrPhotos;
+export let flickrPhotos;
+export let unsplashPhotos;
 
 let timeOfDay = getTimeOfDay();
 let bgNum = getRandomNum().toString().padStart(2, "0");
@@ -14,11 +15,15 @@ export function getRandomNum(max = 20) {
 }
 
 async function getLinkToImageUsplash() {
+  if (unsplashPhotos) {
+    return unsplashPhotos[getRandomNum(unsplashPhotos.length)].urls.regular;
+  }
   let query = `${timeOfDay},${constructQuerry()}`;
-  const url = `https://api.unsplash.com/photos/random?orientation=landscape&query=${query}&client_id=zOHIq58LlPlqR_BJTYWmw_Rh6m616AHHDL0OnRTEoVc`;
+  const url = `https://api.unsplash.com/photos/random?orientation=landscape&query=${query}&count=30&client_id=zOHIq58LlPlqR_BJTYWmw_Rh6m616AHHDL0OnRTEoVc`;
   const res = await fetch(url);
   const data = await res.json();
-  return data.urls.regular;
+  unsplashPhotos = data;
+  return unsplashPhotos[getRandomNum(unsplashPhotos.length)].urls.regular;
 }
 
 async function getFlickrColection() {
@@ -102,3 +107,8 @@ nextButton.addEventListener("click", function (e) {
     nextButton.disabled = false;
   }, 1000);
 });
+tagsInput.onchange = () => {
+  flickrPhotos = null;
+  unsplashPhotos = null;
+  setBg();
+}
