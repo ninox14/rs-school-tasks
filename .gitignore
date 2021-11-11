@@ -104,3 +104,7 @@ dist
 .tern-port
 momentum/.vscode/launch.json
 art-quiz/.prettierignore
+art-quiz/.vscode/launch.json
+
+# My ignores
+.vscode

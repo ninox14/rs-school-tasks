@@ -1,3 +1,5 @@
+import 'normalize.css'
 import './css/styles.scss'
+import Menu from './components/Menu/index'
 
-console.log("Hello World!");
+document.body.append(Menu);
