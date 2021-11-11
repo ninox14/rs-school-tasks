@@ -18,12 +18,12 @@ const config = {
         path: path.resolve(__dirname, 'dist'),
     },
     devServer: {
-        open: true,
         host: 'localhost',
+        compress: true,
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: 'index.html',
+            template: 'src/index.html',
         }),
 
         // Add your plugins here
@@ -42,7 +42,14 @@ const config = {
             },
             {
                 test: /\.s[ac]ss$/i,
-                use: [stylesHandler, 'css-loader', 'sass-loader'],
+                use: [stylesHandler, 'css-loader', 'sass-loader',
+                {
+                    loader: 'sass-resources-loader',
+                    options: {
+                        resources: 'src/css/vars.scss'
+                    }
+                }
+            ],
             },
             {
                 test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
@@ -56,6 +63,7 @@ const config = {
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
     },
+
 };
 
 module.exports = () => {
