@@ -1,23 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
 
-	<link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-	<script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <link
+      href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Material+Icons&display=block"
+      rel="stylesheet"
+    />
 
-	<title>Document</title>
-</head>
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
 
-<body>
+    <title>Document</title>
+  </head>
 
-</body>
+  <body>
+    <header class="menu">
+      <div class="container menu__container">
+        <h1 class="menu__title">Art <span>Quiz</span></h1>
 
+        <div class="menu__button-container">
+          <div class="mdc-touch-target-wrapper">
+            <button
+              class="mdc-button mdc-button--raised menu__button"
+              data-mdc-auto-init="MDCRipple"
+            >
+              <div class="mdc-button__ripple"></div>
+              <span class="mdc-button__touch"></span>
+              <span class="material-icons mdc-button__icon" aria-hidden="true">
+                person
+              </span>
+              <span class="mdc-button__label">Художники</span>
+            </button>
+          </div>
+          <div class="mdc-touch-target-wrapper">
+            <button
+              class="mdc-button mdc-button--raised menu__button"
+              data-mdc-auto-init="MDCRipple"
+            >
+              <div class="mdc-button__ripple"></div>
+              <span class="mdc-button__touch"></span>
+              <span class="material-icons mdc-button__icon" aria-hidden="true">
+                collections
+              </span>
+              <span class="mdc-button__label">Картины</span>
+            </button>
+          </div>
+          <div class="mdc-touch-target-wrapper">
+            <button
+              class="mdc-button mdc-button--raised menu__button"
+              data-mdc-auto-init="MDCRipple"
+            >
+              <div class="mdc-button__ripple"></div>
+              <span class="mdc-button__touch"></span>
+              <span class="material-icons mdc-button__icon" aria-hidden="true">
+                settings
+              </span>
+              <span class="mdc-button__label">Настройки</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section class="options modal visible">
+        <div class="options__wrapper">
+          <span class="options__caption">Звук</span>
+          <div class="mdc-slider mdc-slider--discrete volume_slider">
+            <input
+              class="mdc-slider__input"
+              type="range"
+              min="0"
+              max="100"
+              value="50"
+              name="volume"
+              step="5"
+              aria-label="Discrete slider demo"
+            />
+            <div class="mdc-slider__track">
+              <div class="mdc-slider__track--inactive"></div>
+              <div class="mdc-slider__track--active">
+                <div class="mdc-slider__track--active_fill"></div>
+              </div>
+            </div>
+            <div class="mdc-slider__thumb">
+              <div
+                class="mdc-slider__value-indicator-container"
+                aria-hidden="true"
+              >
+                <div class="mdc-slider__value-indicator">
+                  <span class="mdc-slider__value-indicator-text"> 50 </span>
+                </div>
+              </div>
+              <div class="mdc-slider__thumb-knob"></div>
+            </div>
+          </div>
+          <span class="options__caption">Игра на время</span>
+          <button
+            id="basic-switch"
+            class="mdc-switch mdc-switch--unselected options__time-game_switch"
+            type="button"
+            role="switch"
+            aria-checked="false"
+          >
+            <div class="mdc-switch__track"></div>
+            <div class="mdc-switch__handle-track">
+              <div class="mdc-switch__handle">
+                <div class="mdc-switch__shadow">
+                  <div class="mdc-elevation-overlay"></div>
+                </div>
+                <div class="mdc-switch__ripple"></div>
+                <div class="mdc-switch__icons">
+                  <svg
+                    class="mdc-switch__icon mdc-switch__icon--on"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M19.69,5.23L8.96,15.96l-4.23-4.23L2.96,13.5l6,6L21.46,7L19.69,5.23z"
+                    />
+                  </svg>
+                  <svg
+                    class="mdc-switch__icon mdc-switch__icon--off"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M20 13H4v-2h16v2z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </button>
+          <div class="options__number-input">
+            <span class="options__caption">Секунд на ответ</span>
+            <div class="number-input-container">
+              <button
+                type="button"
+                class="button-decrement input-button"
+                data-input-id="hue"
+                data-operation="decrement"
+              ></button>
+              <div class="number-input">
+                <input
+                  type="number"
+                  id="hue"
+                  name="hue"
+                  class="number-input-text-box"
+                  value="10"
+                  min="10"
+                  max="30"
+                  data-step="10"
+                  readonly
+                />
+              </div>
+              <button
+                type="button"
+                class="button-increment input-button"
+                data-input-id="hue"
+                data-operation="increment"
+              ></button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>
