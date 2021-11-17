@@ -1,88 +1,85 @@
-// Generated using webpack-cli https://github.com/webpack/webpack-cli
-
 const path = require('path');
+
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer');
 
-const isProduction = process.env.NODE_ENV == 'production';
+const nothing = () => {};
 
+module.exports = (env, options) => {
+  const isProduction = options.mode === 'production';
+  const isAnalyze = env.analyze;
 
-const stylesHandler = isProduction ? MiniCssExtractPlugin.loader : 'style-loader';
-
-
-
-const config = {
-    entry: './src/index.ts',
-    devtool: 'source-map',
+  return {
+    mode: isProduction ? 'production' : 'development',
+    devtool: isProduction ? 'source-map' : 'eval',
+    entry: ['./src/index.js'],
     output: {
-        path: path.resolve(__dirname, 'dist'),
-    },
-    devServer: {
-        host: 'localhost',
-        compress: true,
-        liveReload: true,
-    },
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: 'src/index.html',
-        }),
-
-        // Add your plugins here
-        // Learn more about plugins from https://webpack.js.org/configuration/plugins/
-    ],
-    module: {
-        rules: [
-            {
-                test: /\.(ts|tsx)$/i,
-                loader: 'ts-loader',
-                exclude: ['/node_modules/'],
-            },
-            {
-                test: /\.css$/i,
-                use: [stylesHandler,"css-loader"],
-            },
-            {
-                test: /\.s[ac]ss$/i,
-                use: [stylesHandler,
-                {
-                    loader: "css-loader",
-                },
-                'sass-loader',
-                {
-                    loader: 'sass-resources-loader',
-                    options: {
-                        resources: 'src/css/vars.scss'
-                    }
-                },
-            ],
-            },
-            {
-                test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
-                type: 'asset/resource',
-            },
-            {
-                test: /\.(m.html)$/i,
-                type: 'asset/source',
-            },
-            // Add your rules for custom modules here
-            // Learn more about loaders from https://webpack.js.org/loaders/
-        ],
+      filename: 'bundle.js',
+      path: path.join(__dirname, '/build'),
     },
     resolve: {
-        extensions: ['.tsx', '.ts', '.js'],
+      extensions: ['.js', '.json', '.mjs'],
+      alias: {
+        '@': path.join(__dirname, 'src'),
+      },
     },
-
-};
-
-module.exports = () => {
-    if (isProduction) {
-        config.mode = 'production';
-
-        config.plugins.push(new MiniCssExtractPlugin());
-
-
-    } else {
-        config.mode = 'development';
-    }
-    return config;
+    module: {
+      rules: [
+        {
+          test: /\.js$/,
+          exclude: /(node_modules)/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env'],
+            },
+          },
+        },
+        {
+          test: /\.(sa|sc|c)ss$/,
+          use: [
+            'style-loader',
+            'css-loader',
+            'sass-loader',
+            {
+              loader: 'sass-resources-loader',
+              options: {
+                resources: 'src/styles/vars.scss',
+              },
+            },
+          ],
+        },
+        {
+          test: /\.(png|svg|jpe?g|gif|ttf)$/,
+          use: {
+            loader: 'file-loader',
+          },
+        },
+        {
+          test: /\.html$/,
+          use: {
+            loader: 'html-loader',
+          },
+        },
+      ],
+    },
+    devServer: {
+      static: './src/',
+      port: 8080,
+      compress: true,
+      liveReload: true,
+    },
+    plugins: [
+      isProduction ? new CleanWebpackPlugin({}) : nothing,
+      new HtmlWebpackPlugin({
+        template: './src/index.html',
+      }),
+      isAnalyze ? new BundleAnalyzerPlugin() : nothing,
+      isProduction
+        ? new CopyWebpackPlugin({ patterns: [{ from: './src/static', to: '.' }] })
+        : nothing,
+    ],
+  };
 };
