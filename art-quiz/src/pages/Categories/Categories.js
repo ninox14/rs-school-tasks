@@ -51,55 +51,33 @@ const categoriesToRender = pageCategories.map((pageCategory) => {
 export class Categories {
   constructor(_parent) {
     this.parent = _parent;
-    this.type = {
-      artists: this.renderArtists,
-      images: this.renderImages,
-    };
+
   }
   async render() {
     this.parent.innerHTML = '';
     const request = Utils.parseRequestURL();
 
-    await this.type[request.category](this.parent);
 
-    // this.parent.innerHTML = CategoriesElement;
+    await this.renderCatElem(this.parent, request.category);
+
     return 'Categories rendered';
   }
 
   async after_render() {}
 
-  async renderArtists(parent) {
+  async renderCatElem(parent, type) {
     const catElem = Utils.createElem({ elem: 'div', classes: ['category'] });
+    const questionsBy = (type == 'artists') ? 'questionsByAuthor' : 'questionsByName';
 
-    questions.questionsByAuthor.forEach((_, i) => {
+    questions[questionsBy].forEach((_, i) => {
       const catItemElem = Utils.createElem({
-        elem: 'div',
+        elem: 'a',
         classes: ['category-item'],
       });
-
+      catItemElem.href = `#/category/${type}/${i}`;
       catItemElem.innerHTML = `
       <span class="category-item-type material-icons">
-      person
-      </span>
-      <h5 class="category-item-number">${i+1}</h5>
-      `;
-      catElem.append(catItemElem);
-    });
-
-    parent.append(catElem);
-  }
-
-  async renderImages(parent) {
-    const catElem = Utils.createElem({ elem: 'div', classes: ['category'] });
-
-    questions.questionsByName.forEach((_, i) => {
-      const catItemElem = Utils.createElem({
-        elem: 'div',
-        classes: ['category-item'],
-      });
-      catItemElem.innerHTML = `
-      <span class="category-item-type material-icons">
-      image
+      ${type == 'artists' ? 'person' : 'image'}
       </span>
       <h5 class="category-item-number">${i + 1}</h5>
       `;
