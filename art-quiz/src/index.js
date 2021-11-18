@@ -30,7 +30,8 @@ const footerInstance = new Footer(footer);
 const routes = {
   '/': homeInstance,
   '/settings': settingsSettings,
-  '/categories': categoriesInstance,
+  '/category/:id': categoriesInstance,
+  // '/category/:id/question': questionInstance,
 };
 
 const router = async () => {
@@ -40,10 +41,9 @@ const router = async () => {
 
   await footerInstance.render();
   await footerInstance.after_render();
-
   const request = Utils.parseRequestURL();
 
-  const parsedURL = (request.resource ? `/${request.resource}` : '/') + (request.id ? '/:id' : '') + (request.verb ? `/${request.verb}` : '');
+  const parsedURL = (request.resource ? `/${request.resource}` : '/') + (request.category ? '/:id' : '') + (request.verb ? `/${request.verb}` : '');
 
   const page = routes[parsedURL] ? routes[parsedURL] : error404Instance;
 
