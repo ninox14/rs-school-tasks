@@ -142,10 +142,10 @@ export class Question {
       //     parseInt(this.questionsIndex) + 1
       //   }`
       // : `#/${request.resource}/${request.category}`;
-      popUpElem.innerHTML = `
-      <span class="material-icons modal-${answer ? 'correct' : 'wrong'}">
-        ${answer ? 'check' : 'clear'}
-      </span>
+    popUpElem.innerHTML = `
+    <span class="material-icons modal-${answer ? 'correct' : 'wrong'}">
+      ${answer ? 'check' : 'clear'}
+    </span>
     `;
     const imgDiv = Utils.createElem({ elem: 'div', classes: ['modal-image'] })
     popUpElem.append(await this.preloadImage(this.currQuestion.imageNum, imgDiv))
@@ -163,9 +163,12 @@ export class Question {
 
   async constructScorePopup () {
     const popContentElem = Utils.createElem({ elem: 'div', classes: ['modal-content'] });
-    const nextLink = parseInt(this.currRequest.categoryIndex) + 1 < 12
-    ? `#/${this.currRequest.category}/${parseInt(this.currRequest.categoryIndex) + 1}/0`
-    : `#/category` ;
+    const nextLink =
+      parseInt(this.currRequest.categoryIndex) + 1 < 12
+        ? `#/${this.currRequest.resource}/${this.currRequest.category}/${
+            parseInt(this.currRequest.categoryIndex) + 1
+          }/0`
+        : `#/category`;
     const countedAnswers = await this.countAnswers();
     popContentElem.innerHTML = `
     <p class="modal-caption nice">Nice!</p>
