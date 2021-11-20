@@ -1,30 +1,32 @@
-<div class="container">
-  <div class="settings">
-    <div class="settings-item settings-volume">
-      <h4 class="settings-caption"> Volume</h4>
-      <label class="switch" for="volume">
-        <input class="settings-checkbox settings-volume-switch" type="checkbox" id="volume">
-        <span class="slider round volume"></span>
-      </label>
-      <div class="range-slider settings-range-slider settings-volume-range" style='--min:0; --max:100; --value:30; --text-value:"30"; --suffix:"%"'>
-        <input type="range" min="0" max="100" value="30" step="5" oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
-        <output></output>
-        <div class='range-slider__progress'></div>
-      </div>
-    </div>
+<!-- <div class="container">
 
-    <div class="settings-item setting-time">
-      <h4 class="settings-caption"> Time</h4>
-      <label class="switch">
-        <input class="settings-checkbox settings-time-switch" type="checkbox">
-        <span class="slider round"></span>
-      </label>
-      <div class="range-slider settings-range-slider" style='--min:5; --max:30; --value:10; --text-value:"10"; --suffix:"s"'>
-        <input type="range" min="5" max="30" value="10" step="5" oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
-        <output></output>
-        <div class='range-slider__progress'></div>
-      </div>
+</div> -->
+
+<div class="settings">
+  <div class="settings-item settings-volume">
+    <h4 class="settings-caption"> Volume</h4>
+    <label class="switch" for="volume">
+      <input class="settings-checkbox settings-volume-switch" type="checkbox" id="volume">
+      <span class="slider round volume"></span>
+    </label>
+    <div class="range-slider settings-range-slider settings-volume-range" style='--min:0; --max:100; --value:30; --text-value:"30"; --suffix:"%"'>
+      <input type="range" min="0" max="100" value="30" step="5" oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
+      <output></output>
+      <div class='range-slider__progress'></div>
     </div>
-    <a href="#/settings" class="button settings-button ">Save</a>
   </div>
+
+  <div class="settings-item setting-time">
+    <h4 class="settings-caption"> Time</h4>
+    <label class="switch">
+      <input class="settings-checkbox settings-time-switch" type="checkbox">
+      <span class="slider round"></span>
+    </label>
+    <div class="range-slider settings-range-slider" style='--min:5; --max:30; --value:10; --text-value:"10"; --suffix:"s"'>
+      <input type="range" min="5" max="30" value="10" step="5" oninput="this.parentNode.style.setProperty('--value',this.value); this.parentNode.style.setProperty('--text-value', JSON.stringify(this.value))">
+      <output></output>
+      <div class='range-slider__progress'></div>
+    </div>
+  </div>
+  <a href="#/settings" class="button settings-button ">Save</a>
 </div>

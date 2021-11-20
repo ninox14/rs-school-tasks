@@ -14,9 +14,14 @@
     margin-top: 30px;
     width: 100%;
     opacity: 0.1;
+    transition: opacity .5s linear;
+    &.active {
+      opacity: 1;
+    }
   }
   &-button {
     width: 90px;
+    cursor: pointer;
   }
   &-item {
     width: 100%;
