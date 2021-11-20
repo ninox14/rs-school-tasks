@@ -28,10 +28,38 @@
     position: relative;
     display: block;
     cursor: pointer;
+    overflow: hidden;
+    transition: background-color .3s linear;
 
+    &:hover {
+      background-color: #478fe0;
+    }
     &-type {
       font-size: 70px;
     }
+
+
+    &-score {
+      position: absolute;
+      top: 10px;
+      right: -70px;
+      display: block;
+      transition: right .2s linear;
+
+      & span {
+        font-size: 75px;
+        color: #fcd62d;
+        opacity: .3;
+        transition: opacity .2s linear;
+      }
+      &:hover span {
+        opacity: 1;
+      }
+    }
+    &:hover &-score {
+      right: 10px;
+    }
+
     &-number {
       font-size: 55px;
       text-align: end;
@@ -40,6 +68,14 @@
 
       bottom: 3px;
       right: 6px;
+    }
+    &-complete {
+      position: absolute;
+      display: block;
+      font-size: 35px;
+      left: 10px;
+      bottom: 10px;
+      color: #73bd12;
     }
     &.played {
       background-color: #2e527c;
@@ -54,6 +90,11 @@
         font-size: 25px;
         font-weight: 800;
       }
+
+      &:hover {
+        background-color: #478fe0;
+      }
+
     }
   }
 }
