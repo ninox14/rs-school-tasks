@@ -116,8 +116,6 @@ export class Question {
       });
 
 
-      // console.log();
-
       this.currAnswersElem.append(await this.preloadImage(answer, answerElem));
     }
     this.currQuestionElem.append(this.currAnswersElem);
@@ -152,7 +150,6 @@ export class Question {
     // }
     await this.showPopup(this.currPopupContainer);
     await this.saveProgress(answer);
-    // console.log(this.currQuestion);
   }
 
   async generateRandomAnswers(correctAnswer, answerType) {
@@ -237,8 +234,6 @@ export class Question {
   }
   checkAnswer(answer) {
     const type = this.currRequest.category == 'images' ? 'imageNum' : 'author';
-    console.log(this.currQuestion[type].toLowerCase().trim());
-    console.log(answer.toLowerCase().trim());
     return answer.toLowerCase().trim() == this.currQuestion[type].toLowerCase().trim();
   }
 
@@ -251,7 +246,6 @@ export class Question {
     const lsObject = await this.retrieveLocalStorage();
 
     lsObject.currCatAnswers[parseInt(this.currRequest.questionIndex)] = answer;
-    console.log(lsObject.currCatAnswers);
     // console.log(currCatAnsers[parseInt(this.currRequest.questionIndex)]);
     lsObject.answArr[+this.currRequest.categoryIndex] = lsObject.currCatAnswers;
     window.localStorage.setItem(
