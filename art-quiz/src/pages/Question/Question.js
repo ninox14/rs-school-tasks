@@ -9,7 +9,7 @@ export class Question {
     this.questions = questions;
     this.answers = answers;
 
-    this.categoryIndex = null;
+    // this.categoryIndex = null;
     // this.categoryType = null;
     this.questionsIndex = null;
 
@@ -38,12 +38,11 @@ export class Question {
   async checkCategoryProgress(request) {
     const questionsBy = request.category == 'artists' ? 'questionsByAuthor' : 'questionsByName';
     // const lsItem = window.localStorage[request.category + request.categoryIndex];
-
-    this.categoryIndex = request.categoryIndex;
-    this.curCategoryQuestions = this.questions[questionsBy][parseInt(request.categoryIndex)];
+    // this.categoryIndex = request.categoryIndex;
+    this.curCategoryQuestions = this.questions[questionsBy][+request.categoryIndex];
     // this.questionsIndex = lsItem ? lsItem.index : 0;
-    this.questionsIndex = request.questinIndex;
-
+    this.questionsIndex = request.questionIndex;
+    this.currQuestion = this.curCategoryQuestions[+this.currRequest.questionIndex];
     // let link = `${location.hash.toLowerCase()}`;
     // let newLink = `#/${request.resource}/${request.category}/${request.categoryIndex}/${this.questionsIndex}`;
 
@@ -52,6 +51,8 @@ export class Question {
     // }
     if (request.category == 'artists' && +this.questionsIndex < 10) {
       await this.renderArtistsQuestion(this.parent, this.questionsIndex);
+    } else if (request.category == 'images' && +this.questionsIndex < 10) {
+      await this.renderImagesQuestion();
     } else if (+this.questionsIndex == 10) {
       this.currPopupContainer = Utils.createElem({ elem: 'div', classes: ['modal'] });
       this.parent.append(this.currPopupContainer);
@@ -65,8 +66,8 @@ export class Question {
     this.parent.append(this.currPopupContainer);
   }
 
-  async renderArtistsQuestion(parent, questionIndex = 0) {
-    this.currQuestion = this.curCategoryQuestions[questionIndex];
+  async renderArtistsQuestion() {
+    // this.currQuestion = this.curCategoryQuestions[questionIndex];
     const imgElem = Utils.createElem({ elem: 'div', classes: ['question-image'] });
     const drawnAnswers = await this.generateRandomAnswers(
       this.currQuestion.author,
@@ -88,8 +89,46 @@ export class Question {
     }
     this.currQuestionElem.append(this.currAnswersElem);
     this.addListeners(this.currAnswersElem);
-    parent.append(this.currQuestionElem);
+    this.parent.append(this.currQuestionElem);
   }
+
+
+
+
+
+  async renderImagesQuestion() {
+    // this.parent.innerHTML = QuestionElement;
+    const drawnAnswers = await this.generateRandomAnswers(
+      this.currQuestion.imageNum,
+      'uniqAnswersByName'
+    );
+    this.currQuestionElem = Utils.createElem({ elem: 'div', classes: ['question'] });
+    this.currQuestionElem.innerHTML = `
+      <h3 class="question-wording">What picture did ${this.currQuestion.author} paint?</h3>
+    `;
+    this.currAnswersElem = Utils.createElem({ elem: 'div', classes: ['question-answers-images'] });
+
+    for (let answer of drawnAnswers) {
+      const answerElem = Utils.createElem({
+        elem: 'div',
+        content: answer,
+        classes: ['question-answer-images'],
+      });
+
+
+      // console.log();
+
+      this.currAnswersElem.append(await this.preloadImage(answer, answerElem));
+    }
+    this.currQuestionElem.append(this.currAnswersElem);
+    this.addListeners(this.currAnswersElem);
+
+    this.parent.append(this.currQuestionElem);
+  }
+
+
+
+
 
   async preloadImage(imageIndex, imgElem) {
     const img = new Image();
@@ -106,7 +145,7 @@ export class Question {
     // this.checkAnswer(e.target.textContent);
     const answer = this.checkAnswer(e.target.textContent);
     await this.constructAnswerPopup(answer);
-    // if (parseInt(this.currRequest.questinIndex) == 9){
+    // if (parseInt(this.currRequest.questionIndex) == 9){
     //   await this.constructScorePopup();
     // } else {
     //   await this.constructAnswerPopup(answer);
@@ -128,6 +167,9 @@ export class Question {
     }
     return Utils.shuffle(res);
   }
+
+  async generateRandomImageAnswers() {}
+
 
   async constructAnswerPopup(answer) {
     const popUpElem = Utils.createElem({ elem: 'div', classes: ['modal-content'] });
@@ -164,9 +206,9 @@ export class Question {
   async constructScorePopup () {
     const popContentElem = Utils.createElem({ elem: 'div', classes: ['modal-content'] });
     const nextLink =
-      parseInt(this.currRequest.categoryIndex) + 1 < 12
+      +this.currRequest.categoryIndex + 1 < 12
         ? `#/${this.currRequest.resource}/${this.currRequest.category}/${
-            parseInt(this.currRequest.categoryIndex) + 1
+            +this.currRequest.categoryIndex + 1
           }/0`
         : `#/category`;
     const countedAnswers = await this.countAnswers();
@@ -188,16 +230,16 @@ export class Question {
   }
 
   addListeners(answersElem) {
-    console.log(answersElem);
     const children = answersElem.children;
     for (let i = 0; i < children.length; i++) {
       children[i].addEventListener('click', this.listener.bind(this));
     }
   }
   checkAnswer(answer) {
-    console.log(this.currQuestion.author.toLowerCase().trim());
+    const type = this.currRequest.category == 'images' ? 'imageNum' : 'author';
+    console.log(this.currQuestion[type].toLowerCase().trim());
     console.log(answer.toLowerCase().trim());
-    return answer.toLowerCase().trim() == this.currQuestion.author.toLowerCase().trim();
+    return answer.toLowerCase().trim() == this.currQuestion[type].toLowerCase().trim();
   }
 
   async showPopup (popup) {
@@ -208,10 +250,10 @@ export class Question {
 
     const lsObject = await this.retrieveLocalStorage();
 
-    lsObject.currCatAnswers[parseInt(this.currRequest.questinIndex)] = answer;
+    lsObject.currCatAnswers[parseInt(this.currRequest.questionIndex)] = answer;
     console.log(lsObject.currCatAnswers);
-    // console.log(currCatAnsers[parseInt(this.currRequest.questinIndex)]);
-    lsObject.answArr[parseInt(this.currRequest.categoryIndex)] = lsObject.currCatAnswers;
+    // console.log(currCatAnsers[parseInt(this.currRequest.questionIndex)]);
+    lsObject.answArr[+this.currRequest.categoryIndex] = lsObject.currCatAnswers;
     window.localStorage.setItem(
       this.currRequest.category + 'Answ',
       JSON.stringify(lsObject.answArr)
