@@ -60,7 +60,7 @@ export class Question {
       await Utils.sleep(500);
       await this.showPopup(this.currPopupContainer);
       if (this.currOptions.isSound) {
-        AudioPlayer.playRo(+this.currOptions.volume);
+        AudioPlayer.playRound(+this.currOptions.volume);
       }
       return;
     }
