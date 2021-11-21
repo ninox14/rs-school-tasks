@@ -4,7 +4,7 @@
   "description": "NiNoX",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --open --hot",
+    "dev": "webpack-dev-server --open --hot --static",
     "build": "webpack --mode=production",
     "prettier:format": "prettier --write \"**/*.+(js|(sa|sc)ss)\"",
     "lint": "eslint src/",
