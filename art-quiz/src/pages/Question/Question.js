@@ -2,6 +2,7 @@ import './Question.scss';
 import QuestionElement from './Question.html';
 import { questions, answers } from '../Categories';
 import Utils from '@/utils/Utils';
+import AudioPlayer from '@/utils/audio';
 
 export class Question {
   constructor(_parent) {
@@ -9,8 +10,6 @@ export class Question {
     this.questions = questions;
     this.answers = answers;
 
-    // this.categoryIndex = null;
-    // this.categoryType = null;
     this.questionsIndex = null;
 
     this.curCategoryQuestions = null;
@@ -30,7 +29,6 @@ export class Question {
     this.currOptions = await Utils.getCurrOptions();
     this.currRequest = Utils.parseRequestURL();
 
-    // this.parent.innerHTML = QuestionElement;
 
     await this.checkCategoryProgress(this.currRequest);
     if (this.currOptions.isTime) {
@@ -45,18 +43,11 @@ export class Question {
 
   async checkCategoryProgress(request) {
     const questionsBy = request.category === 'artists' ? 'questionsByAuthor' : 'questionsByName';
-    // const lsItem = window.localStorage[request.category + request.categoryIndex];
-    // this.categoryIndex = request.categoryIndex;
     this.curCategoryQuestions = this.questions[questionsBy][+request.categoryIndex];
-    // this.questionsIndex = lsItem ? lsItem.index : 0;
+
     this.questionsIndex = request.questionIndex;
     this.currQuestion = this.curCategoryQuestions[+this.currRequest.questionIndex];
-    // let link = `${location.hash.toLowerCase()}`;
-    // let newLink = `#/${request.resource}/${request.category}/${request.categoryIndex}/${this.questionsIndex}`;
 
-    // if (!lsItem && link != newLink) {
-    //   history.pushState({}, '', newLink);
-    // }
     if (request.category === 'artists' && +this.questionsIndex < 10) {
       await this.renderArtistsQuestion(this.parent, this.questionsIndex);
     } else if (request.category === 'images' && +this.questionsIndex < 10) {
@@ -68,6 +59,9 @@ export class Question {
       await this.constructScorePopup();
       await Utils.sleep(500);
       await this.showPopup(this.currPopupContainer);
+      if (this.currOptions.isSound) {
+        AudioPlayer.playRo(+this.currOptions.volume);
+      }
       return;
     }
     this.currPopupContainer = Utils.createElem({ elem: 'div', classes: ['modal'] });
@@ -75,7 +69,7 @@ export class Question {
   }
 
   async renderArtistsQuestion() {
-    // this.currQuestion = this.curCategoryQuestions[questionIndex];
+
     const imgElem = Utils.createElem({ elem: 'div', classes: ['question-image'] });
     const drawnAnswers = await this.generateRandomAnswers(
       this.currQuestion.author,
@@ -104,9 +98,8 @@ export class Question {
     this.parent.append(this.currQuestionElem);
   }
 
-
   async renderImagesQuestion() {
-    // this.parent.innerHTML = QuestionElement;
+
     const drawnAnswers = await this.generateRandomAnswers(
       this.currQuestion.imageNum,
       'uniqAnswersByName'
@@ -141,10 +134,6 @@ export class Question {
     this.parent.append(this.currQuestionElem);
   }
 
-
-
-
-
   async preloadImage(imageIndex, imgElem) {
     const img = new Image();
     img.src = `https://raw.githubusercontent.com/ninox14/image-data/master/full/${imageIndex}full.jpg`;
@@ -156,15 +145,13 @@ export class Question {
     return imgElem;
   }
   async listener(e) {
-    // TO DO
-    // this.checkAnswer(e.target.textContent);
+
     const answer = this.checkAnswer(e.target.textContent);
     await this.constructAnswerPopup(answer);
-    // if (parseInt(this.currRequest.questionIndex) === 9){
-    //   await this.constructScorePopup();
-    // } else {
-    //   await this.constructAnswerPopup(answer);
-    // }
+
+    if (this.currOptions.isSound) {
+      AudioPlayer.playAnswer(answer, +this.currOptions.volume);
+    }
     await this.showPopup(this.currPopupContainer);
     await this.saveProgress(answer);
   }
@@ -186,18 +173,15 @@ export class Question {
 
   async constructAnswerPopup(answer) {
     clearInterval(this.interval);
+
     const popUpElem = Utils.createElem({ elem: 'div', classes: ['modal-content'] });
     const request = this.currRequest;
-    // TO DO
+
     const nextPageLink =  `#/${request.resource}/${request.category}/${request.categoryIndex}/${
           parseInt(this.questionsIndex) + 1
         }`
 
-      // this.questionsIndex < this.curCategoryQuestions.length - 1
-      // ? `#/${request.resource}/${request.category}/${request.categoryIndex}/${
-      //     parseInt(this.questionsIndex) + 1
-      //   }`
-      // : `#/${request.resource}/${request.category}`;
+
     popUpElem.innerHTML = `
     <span class="material-icons modal-${answer ? 'correct' : 'wrong'}">
       ${answer ? 'check' : 'clear'}
@@ -211,10 +195,8 @@ export class Question {
       <p class="modal-caption">${this.currQuestion.year}</p>
       <a href="${nextPageLink}" class="modal-btn button" onclick="this.parentElement.parentElement.classList.toggle('visible')">continue</a>
     `;
-    // await this.preloadImage(this.currQuestion.imageNum, popUpElem.querySelector('.modal-image'));
 
     this.currPopupContainer.append(popUpElem);
-    // return popUpElem
   }
 
   async constructScorePopup () {
@@ -262,9 +244,7 @@ export class Question {
   async saveProgress (answer) {
 
     const lsObject = await this.retrieveLocalStorage();
-
     lsObject.currCatAnswers[parseInt(this.currRequest.questionIndex)] = answer;
-    // console.log(currCatAnsers[parseInt(this.currRequest.questionIndex)]);
     lsObject.answArr[+this.currRequest.categoryIndex] = lsObject.currCatAnswers;
     window.localStorage.setItem(
       this.currRequest.category + 'Answ',

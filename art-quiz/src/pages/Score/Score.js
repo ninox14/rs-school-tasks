@@ -18,7 +18,7 @@ export class Score {
     const questionsBy =
       this.request.category === 'artists' ? 'questionsByAuthor' : 'questionsByName';
     this.currQuestionsArr = this.questions[questionsBy][+this.request.categoryIndex];
-    // this.parent.innerHTML = ScoreElement;
+
     this.parent.innerHTML = '';
     console.log(this.request);
     console.log(this.currQuestionsArr);

@@ -1,20 +1,18 @@
 export const Utils = {
   parseRequestURL: () => {
     const url = location.hash.slice(1).toLowerCase() || '/';
-
     const r = url.split('/');
-
     const request = {
       resource: null,
       category: null,
       categoryIndex: null,
-      questinIndex: null,
+      questionIndex: null,
     };
 
     request.resource = r[1];
     request.category = r[2];
     request.categoryIndex = r[3];
-    request.questinIndex = r[4];
+    request.questionIndex = r[4];
 
     return request;
   },
@@ -32,6 +30,17 @@ export const Utils = {
       [array[i], array[j]] = [array[j], array[i]];
     }
     return array;
+  },
+  async getCurrOptions() {
+    const options = window.localStorage['options']
+      ? JSON.parse(window.localStorage['options'])
+      : {
+          isSound: null,
+          isTime: null,
+          volume: 30,
+          time: 10,
+        };
+    return options;
   },
 };
 

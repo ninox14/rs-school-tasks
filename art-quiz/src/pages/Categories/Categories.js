@@ -63,7 +63,9 @@ export class Categories {
     return 'Categories rendered';
   }
 
-  async after_render() {}
+  async after_render() {
+    this.parent.classList.add('show');
+  }
 
   async renderCatElem(parent, type) {
     const catElem = Utils.createElem({ elem: 'div', classes: ['category'] });
@@ -89,7 +91,7 @@ export class Categories {
         <span class="category-item-type material-icons">
         ${type == 'artists' ? 'person' : 'image'}
         </span>
-        <a href="#/" class="category-item-score">
+        <a href="#/score/${type}/${i}" class="category-item-score">
           <span class="material-icons">
           ${isPlayed ? 'stars' : ''}
           </span>

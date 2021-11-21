@@ -27,8 +27,6 @@
     display: block;
     height: 90vw;
     border-radius: 5px;
-    // max-height: 60vh;
-    // background-image: url("/src/static/img/0.jpg");
     background-position: 50%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -42,12 +40,10 @@
     flex-wrap: wrap;
     gap: 10px;
     width: 100%;
-    // max-width: 800px;
+
     justify-content: center;
   }
-  // &-answ-wrapper {
 
-  // }
   &-answer-artists {
     cursor: pointer;
     text-transform: uppercase;
@@ -74,9 +70,9 @@
     align-items: center;
     display: flex;
     flex-wrap: wrap;
-    // height: 650px;
+
     gap: 15px;
-    // justify-content: space-between;
+
   }
   &-answer-images {
     cursor: pointer;
@@ -121,7 +117,7 @@
     align-items: center;
     transform: translate(-50%, -50%);
     border-radius: 5px;
-    // max-height: calc(100vh - 100px);
+
     max-width: 700px;
     max-height: 80vh;
   }
@@ -142,11 +138,11 @@
     border-radius: 5px;
 
     height: 80vw;
-    // max-height: 60vh;
+
     width: 100%;
 
 
-    background-image: url("/src/static/img/0.jpg");
+
     background-position: 50%;
     background-repeat: no-repeat;
     background-size: cover;
@@ -172,7 +168,7 @@
   }
   &-star-wrap {
     font-size: 60px;
-    // color: #dac44d;
+
     & svg {
       width: 70px;
       height: 70px;

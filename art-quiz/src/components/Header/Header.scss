@@ -2,4 +2,15 @@
   padding-top: 30px;
   display: flex;
   justify-content: space-between;
+
+  &-item {
+    &_settings {
+      & span {
+        transition: transform .5s linear;
+      }
+      &:hover span{
+        transform: rotate(180deg);
+      }
+    }
+  }
 }

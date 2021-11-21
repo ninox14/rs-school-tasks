@@ -1,21 +1,18 @@
 import './Settings.scss'
 import SettingsElement from './Settings.html';
 import Utils from '@/utils/Utils'
+import AudioPlayer from '@/utils/audio';
 export class Settings {
   constructor(_parent) {
     this.parent = _parent;
     this.settingsElem = null;
-    // this.switchVolume = null;
-    // this.switchTime= null;
-    // this.sliderVolume = null;
-    // this.sliderTime = null;
+
 
     this.elements = null
-
     this.currentOptions = null;
   }
   async render() {
-    // this.parent.innerHTML = SettingsElement;
+
 
     this.currentOptions = await Utils.getCurrOptions();
     const vVal = this.currentOptions.volume
@@ -43,10 +40,10 @@ export class Settings {
 
       <div class="settings-item setting-time">
         <h4 class="settings-caption"> Time</h4>
-        <label class="switch">
-          <input class="settings-checkbox settings-time-switch" type="checkbox" ${
+        <label class="switch" for="time">
+          <input class="settings-checkbox settings-time-switch" type="checkbox" id="time" ${
             this.currentOptions.isTime ? 'checked' : ''
-          }">
+          }>
           <span class="slider round"></span>
         </label>
         <div class="range-slider settings-range-slider ${
@@ -63,13 +60,12 @@ export class Settings {
     </div>
     `;
 
-
     return 'Settings rendered';
   }
   async after_render() {
     this.elements = await this.getSettingElements();
-    console.log(this.currentOptions);
     await this.setListeners();
+    this.parent.classList.add('show');
   }
 
   async getSettingElements () {
@@ -90,6 +86,9 @@ export class Settings {
       this.elements.sliderTime.disabled = !e.target.checked
       this.elements.sliderTime.parentNode.classList.toggle('active');
     };
+    const volumeInputListener = (e) => {
+      AudioPlayer.playAnswer( true ,+e.target.value);
+    }
     const buttonListener = async (e) => {
       await this.saveOptions();
 
@@ -98,6 +97,7 @@ export class Settings {
     this.elements.switchVolume.addEventListener('input', volumeListener.bind(this));
     this.elements.switchTime.addEventListener('input', timeListener.bind(this));
     this.elements.saveButton.addEventListener('click', buttonListener.bind(this))
+    this.elements.sliderVolume.addEventListener('change', volumeInputListener);
   }
   async saveOptions() {
     const options = {
