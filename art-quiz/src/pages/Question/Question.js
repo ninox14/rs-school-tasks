@@ -204,10 +204,8 @@ export class Question {
     const popContentElem = Utils.createElem({ elem: 'div', classes: ['modal-content'] });
     const nextLink =
       +this.currRequest.categoryIndex + 1 < 12
-        ? `#/${this.currRequest.resource}/${this.currRequest.category}/${
-            +this.currRequest.categoryIndex + 1
-          }/0`
-        : `#/category`;
+        ? `/#/${this.currRequest.resource}/${this.currRequest.category}`
+        : `/#/category`;
     const countedAnswers = await this.countAnswers();
     popContentElem.innerHTML = `
     <p class="modal-caption nice">Nice!</p>
@@ -219,7 +217,7 @@ export class Question {
     <p class="modal-caption question-score">${countedAnswers} / 10</p>
 
     <div class="modal-btn-wrap">
-      <a href="#/" class="modal-btn button"  onclick="this.parentElement.parentElement.classList.toggle('visible')">home</a>
+      <a href="/#/" class="modal-btn button"  onclick="this.parentElement.parentElement.classList.toggle('visible')">home</a>
       <a href="${nextLink}" class="modal-btn button" onclick="this.parentElement.parentElement.classList.toggle('visible')">next quiz</a>
     </div>
     `;
