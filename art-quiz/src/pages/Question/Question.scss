@@ -6,7 +6,21 @@
   align-content: center;
 
   position: relative;
-
+  &-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
+    &-timer {
+      font-size: 30px;
+      font-weight: 800;
+      color: #ffde3f;
+    }
+    &-button {
+      max-width: 125px;
+      display: block;
+    }
+  }
   &-image {
     margin-top: 10px;
     width: 100%;
@@ -18,6 +32,8 @@
     background-position: 50%;
     background-repeat: no-repeat;
     background-size: cover;
+
+    transition: background .5s linear;
 
   }
   &-answers-artists {
@@ -43,6 +59,14 @@
     font-weight: 600;
     word-wrap: break-word;
     vertical-align: middle;
+    transition: transform  .3s linear,
+                background .3s linear,
+                color .3s linear;
+    &:hover {
+      transform: scale(1.1);
+      background-color: #51a2d6;
+      color: #ffe97b;
+    }
   }
   &-answers-images {
     margin-top: 10px;
@@ -80,13 +104,13 @@
   transform: scale(1.15);
 
   transition:
-    transform 0.1s cubic-bezier(0.465, 0.183, 0.153, 0.946),
-    opacity 0.1s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+    transform 0.4s cubic-bezier(0.465, 0.183, 0.153, 0.946),
+    opacity 0.4s cubic-bezier(0.465, 0.183, 0.153, 0.946);
   will-change: transform, opacity;
   text-align: center;
   &-content {
     background: $bg-color;
-    z-index: 2;
+    z-index: 55;
     position: fixed;
     left: 50%;
     top: 50%;
@@ -105,7 +129,7 @@
     pointer-events: auto;
     opacity: 1;
     transform: scale(1);
-
+    z-index: 4;
     transition:
       transform 0.7s cubic-bezier(0.465, 0.183, 0.153, 0.946),
       opacity 0.7s cubic-bezier(0.465, 0.183, 0.153, 0.946);
@@ -117,7 +141,7 @@
     display: block;
     border-radius: 5px;
 
-    height: 50vw;
+    height: 80vw;
     // max-height: 60vh;
     width: 100%;
 
@@ -162,7 +186,7 @@
       width: 119px;
     }
   }
-  & .score {
+  & .question-score {
     font-weight: 700;
     font-size: 70px;
   }

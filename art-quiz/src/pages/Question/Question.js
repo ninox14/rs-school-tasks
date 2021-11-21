@@ -21,22 +21,30 @@ export class Question {
 
 
     this.currRequest = null;
-
-
+    this.currOptions = null;
+    this.interval = null;
   }
   async render() {
-    this.parent.innerHTML = '';
-    // this.parent.innerHTML = QuestionElement;
-    this.currRequest = Utils.parseRequestURL();
-    await this.checkCategoryProgress(this.currRequest);
 
+    this.parent.innerHTML = '';
+    this.currOptions = await Utils.getCurrOptions();
+    this.currRequest = Utils.parseRequestURL();
+
+    // this.parent.innerHTML = QuestionElement;
+
+    await this.checkCategoryProgress(this.currRequest);
+    if (this.currOptions.isTime) {
+      this.startCountdown(+this.currOptions.time);
+    }
     return 'Question rendered';
   }
 
-  async after_render() {}
+  async after_render() {
+    this.parent.classList.add('show');
+  }
 
   async checkCategoryProgress(request) {
-    const questionsBy = request.category == 'artists' ? 'questionsByAuthor' : 'questionsByName';
+    const questionsBy = request.category === 'artists' ? 'questionsByAuthor' : 'questionsByName';
     // const lsItem = window.localStorage[request.category + request.categoryIndex];
     // this.categoryIndex = request.categoryIndex;
     this.curCategoryQuestions = this.questions[questionsBy][+request.categoryIndex];
@@ -49,11 +57,11 @@ export class Question {
     // if (!lsItem && link != newLink) {
     //   history.pushState({}, '', newLink);
     // }
-    if (request.category == 'artists' && +this.questionsIndex < 10) {
+    if (request.category === 'artists' && +this.questionsIndex < 10) {
       await this.renderArtistsQuestion(this.parent, this.questionsIndex);
-    } else if (request.category == 'images' && +this.questionsIndex < 10) {
+    } else if (request.category === 'images' && +this.questionsIndex < 10) {
       await this.renderImagesQuestion();
-    } else if (+this.questionsIndex == 10) {
+    } else if (+this.questionsIndex === 10) {
       this.currPopupContainer = Utils.createElem({ elem: 'div', classes: ['modal'] });
       this.parent.append(this.currPopupContainer);
 
@@ -75,6 +83,10 @@ export class Question {
     );
     this.currQuestionElem = Utils.createElem({ elem: 'div', classes: ['question'] });
     this.currQuestionElem.innerHTML = `
+      <div class="question-bar">
+        <a href="/#/category/${this.currRequest.category}" class="button question-bar-button">category</a>
+        <div class="question-bar-timer q-timer">${this.currOptions.isTime ? this.currOptions.time + ' s' : ''}</div>
+      </div>
       <h3 class="question-wording">Whos the author off this image?</h3>
     `;
     this.currQuestionElem.append(await this.preloadImage(this.currQuestion.imageNum, imgElem));
@@ -93,9 +105,6 @@ export class Question {
   }
 
 
-
-
-
   async renderImagesQuestion() {
     // this.parent.innerHTML = QuestionElement;
     const drawnAnswers = await this.generateRandomAnswers(
@@ -104,6 +113,14 @@ export class Question {
     );
     this.currQuestionElem = Utils.createElem({ elem: 'div', classes: ['question'] });
     this.currQuestionElem.innerHTML = `
+       <div class="question-bar">
+        <a href="/#/category/${
+          this.currRequest.category
+        }" class="button question-bar-button">category</a>
+        <div class="question-bar-timer q-timer">${
+          this.currOptions.isTime ? this.currOptions.time + ' s' : ''
+        }</div>
+      </div>
       <h3 class="question-wording">What picture did ${this.currQuestion.author} paint?</h3>
     `;
     this.currAnswersElem = Utils.createElem({ elem: 'div', classes: ['question-answers-images'] });
@@ -120,7 +137,7 @@ export class Question {
     }
     this.currQuestionElem.append(this.currAnswersElem);
     this.addListeners(this.currAnswersElem);
-
+    await Utils.sleep(500)
     this.parent.append(this.currQuestionElem);
   }
 
@@ -143,7 +160,7 @@ export class Question {
     // this.checkAnswer(e.target.textContent);
     const answer = this.checkAnswer(e.target.textContent);
     await this.constructAnswerPopup(answer);
-    // if (parseInt(this.currRequest.questionIndex) == 9){
+    // if (parseInt(this.currRequest.questionIndex) === 9){
     //   await this.constructScorePopup();
     // } else {
     //   await this.constructAnswerPopup(answer);
@@ -156,7 +173,7 @@ export class Question {
     let res = [correctAnswer];
     const shuffledAnswers = Utils.shuffle(this.answers[answerType]);
     for (let i = 0; i < 3; i++) {
-      if (shuffledAnswers[i].toLowerCase() == correctAnswer.toLowerCase()) {
+      if (shuffledAnswers[i].toLowerCase() === correctAnswer.toLowerCase()) {
         res.push(shuffledAnswers[i + 10]);
       } else {
         res.push(shuffledAnswers[i]);
@@ -165,10 +182,10 @@ export class Question {
     return Utils.shuffle(res);
   }
 
-  async generateRandomImageAnswers() {}
 
 
   async constructAnswerPopup(answer) {
+    clearInterval(this.interval);
     const popUpElem = Utils.createElem({ elem: 'div', classes: ['modal-content'] });
     const request = this.currRequest;
     // TO DO
@@ -192,7 +209,7 @@ export class Question {
       <p class="modal-caption">${this.currQuestion.name}</p>
       <p class="modal-caption">${this.currQuestion.author}</p>
       <p class="modal-caption">${this.currQuestion.year}</p>
-      <a href="${nextPageLink}" class="modal-btn button">continue</a>
+      <a href="${nextPageLink}" class="modal-btn button" onclick="this.parentElement.parentElement.classList.toggle('visible')">continue</a>
     `;
     // await this.preloadImage(this.currQuestion.imageNum, popUpElem.querySelector('.modal-image'));
 
@@ -201,6 +218,7 @@ export class Question {
   }
 
   async constructScorePopup () {
+    this.currPopupContainer.classList.add('modal-questions-score');
     const popContentElem = Utils.createElem({ elem: 'div', classes: ['modal-content'] });
     const nextLink =
       +this.currRequest.categoryIndex + 1 < 12
@@ -216,11 +234,11 @@ export class Question {
       <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
       <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
     </div>
-    <p class="modal-caption score">${countedAnswers} / 10</p>
+    <p class="modal-caption question-score">${countedAnswers} / 10</p>
 
     <div class="modal-btn-wrap">
-      <a href="#/" class="modal-btn button">home</a>
-      <a href="${nextLink}" class="modal-btn button">next quiz</a>
+      <a href="#/" class="modal-btn button"  onclick="this.parentElement.parentElement.classList.toggle('visible')">home</a>
+      <a href="${nextLink}" class="modal-btn button" onclick="this.parentElement.parentElement.classList.toggle('visible')">next quiz</a>
     </div>
     `;
     this.currPopupContainer.append(popContentElem);
@@ -233,8 +251,8 @@ export class Question {
     }
   }
   checkAnswer(answer) {
-    const type = this.currRequest.category == 'images' ? 'imageNum' : 'author';
-    return answer.toLowerCase().trim() == this.currQuestion[type].toLowerCase().trim();
+    const type = this.currRequest.category === 'images' ? 'imageNum' : 'author';
+    return answer.toLowerCase().trim() === this.currQuestion[type].toLowerCase().trim();
   }
 
   async showPopup (popup) {
@@ -261,7 +279,31 @@ export class Question {
     return obj.currCatAnswers.reduce((a, b) => a + b);
 
   }
+  startCountdown(seconds) {
+    this.interval = clearInterval(this.interval);
+    let counter = seconds;
+    const timerElem = this.currQuestionElem.querySelector('.q-timer');
+    const callback = async function () {
+      timerElem.innerHTML = `${counter} s`
+      console.log(counter);
+      counter--;
+      if (counter < 0) {
+        this.interval = clearInterval(this.interval);
+        this.isTimerInProgress = false;
+        const request = Utils.parseRequestURL()
+        const isInQuestion =
+          request.questionIndex && !this.currPopupContainer.classList.contains('visible');
+        console.log(request, isInQuestion);
+        if (isInQuestion) {
+          await this.constructAnswerPopup(false);
+          await this.showPopup(this.currPopupContainer);
+          await this.saveProgress(false);
+        }
+      }
+    }
 
+    this.interval = setInterval(callback.bind(this), 1000);
+  }
   async retrieveLocalStorage () {
     const answArr = window.localStorage[this.currRequest.category + 'Answ']
       ? JSON.parse(window.localStorage[this.currRequest.category + 'Answ'])
