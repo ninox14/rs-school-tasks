@@ -4,6 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer');
+const { dirname } = require('path');
 
 const nothing = () => {};
 
@@ -52,10 +53,12 @@ module.exports = (env, options) => {
           ],
         },
         {
-          test: /\.(png|svg|jpe?g|gif|ttf)$/,
-          use: {
-            loader: 'file-loader',
-          },
+          test: /\.(png|svg|jpg|jpeg|gif)$/i,
+          type: 'asset/resource',
+        },
+        {
+          test: /\.(wav|mp3)$/i,
+          type: 'asset/resource',
         },
         {
           test: /\.html$/,
@@ -66,20 +69,17 @@ module.exports = (env, options) => {
       ],
     },
     devServer: {
-      static: './src/',
+      static: path.resolve(__dirname, '/src/static'),
       port: 8080,
-      compress: true,
       liveReload: true,
     },
     plugins: [
       isProduction ? new CleanWebpackPlugin({}) : nothing,
       new HtmlWebpackPlugin({
         template: './src/index.html',
+        favicon: './src/assets/favicons/favicon-32x32.png'
       }),
       isAnalyze ? new BundleAnalyzerPlugin() : nothing,
-      isProduction
-        ? new CopyWebpackPlugin({ patterns: [{ from: './src/static', to: '.' }] })
-        : nothing,
     ],
   };
 };
