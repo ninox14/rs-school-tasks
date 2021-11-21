@@ -1,0 +1,41 @@
+.score {
+  margin-top: 20px;
+  // display: grid;
+  // grid-template-columns: 1fr 1fr;
+  grid-gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+  grid-auto-rows: 1fr;
+  &::before {
+    content: '';
+    width: 0;
+    padding-bottom: 100%;
+    grid-row: 1 / 1;
+    grid-column: 1 / 1;
+  }
+  & > *:first-child {
+    grid-row: 1 / 1;
+    grid-column: 1 / 1;
+  }
+
+  &-item {
+    font-size: 0;
+    border-radius: 5px;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url("https://raw.githubusercontent.com/ninox14/image-data/master/full/0full.jpg");
+    filter: grayscale(100%);
+
+    transition: transform .3s linear;
+    &.played {
+      filter: grayscale(0);
+      cursor: pointer;
+      &:hover {
+        position: relative;
+        z-index: 2;
+        transform: scale(1.2);
+      }
+    }
+  }
+}
