@@ -1,14 +1,19 @@
-import './Header.scss'
+/* eslint-disable class-methods-use-this */
+/* eslint-disable no-empty-function */
+import './Header.scss';
 import HeaderElement from './Header.html';
+
 export class Header {
   constructor(_parent) {
     this.parent = _parent;
   }
 
-  async render () {
+  async render() {
     this.parent.innerHTML = HeaderElement;
     return 'Header Rendered';
   }
 
-  async after_render () {};
+  async after_render() {
+    return 'renderd';
+  }
 }

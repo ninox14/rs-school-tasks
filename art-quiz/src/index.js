@@ -1,4 +1,4 @@
-import 'normalize.css'
+import 'normalize.css';
 import './styles/style.scss';
 import '@yaireo/ui-range';
 
@@ -9,17 +9,14 @@ import { Question } from './pages/Question';
 import { Error404 } from './pages/Error404';
 import { Score } from './pages/Score';
 
-
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 
 import { Utils } from './utils/Utils';
-import { AudioPlayer } from './utils/audio'
 
 const header = null || document.getElementById('header_container');
 const content = null || document.getElementById('page_container');
 const footer = null || document.getElementById('footer_container');
-
 
 const homeInstance = new Home(content);
 const settingsSettings = new Settings(content);
@@ -41,7 +38,6 @@ const routes = {
 
 let isFirst = true;
 
-
 const router = async () => {
   if (!isFirst) {
     content.classList.add('hide');
@@ -53,9 +49,8 @@ const router = async () => {
   await footerInstance.after_render();
   const request = Utils.parseRequestURL();
 
-  const parsedURL = (request.resource ? `/${request.resource}` : '/') + (request.category ? '/:id' : '') + (request.categoryIndex ?
-    `/question` : '');
-
+  const parsedURL = (request.resource ? `/${request.resource}` : '/') + (request.category ? '/:id' : '') + (request.categoryIndex
+    ? '/question' : '');
 
   const page = routes[parsedURL] ? routes[parsedURL] : error404Instance;
 
@@ -71,7 +66,7 @@ const router = async () => {
   await page.after_render();
 };
 
-content.onanimationend = function () {
+content.onanimationend = () => {
   content.classList.remove('show');
 };
 window.addEventListener('hashchange', router);

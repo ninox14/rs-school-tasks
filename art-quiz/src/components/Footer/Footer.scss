@@ -1,61 +1,56 @@
-#footer_container {
-  position: fixed;
-  left: 50%;
-  bottom: 0;
-  transform: translateX(-50%);
-}
+
 .footer {
-	display: flex;
-	justify-content: space-between;
-	padding: 15px 40px;
-	align-items: center;
+display: flex;
+justify-content: space-between;
+padding: 15px 40px;
+align-items: center;
 }
 
 .footer__svg {
-    width: 40px;
-    height: 40px;
+	width: 40px;
+	height: 40px;
 }
 .footer__svg-rs {
-    margin-top: 5px;
-    width: 80px;
-    height: auto;
+	margin-top: 5px;
+	width: 80px;
+	height: auto;
 }
 .footer__svg svg {
-    fill: #d8d8d8;
+	fill: #d8d8d8;
 
-    transition: fill .2s linear;
+	transition: fill .2s linear;
 }
 .footer__svg-rs svg {
-    stroke: #d8d8d8;
-    transition: stroke .2s linear;
+	stroke: #d8d8d8;
+	transition: stroke .2s linear;
 }
 
 .footer__link:hover svg{
-    fill: #529ce0;
+	fill: #529ce0;
 }
 .footer__svg-rs:hover svg {
-    stroke: #529ce0;
+	stroke: #529ce0;
 }
 
 .st0{
-    fill: transparent;
+	fill: transparent;
 }
 .st1{
-    clip-path:url(#SVGID_2_)
+	clip-path:url(#SVGID_2_)
 }
 .st2{
-    clip-path:url(#SVGID_4_)
+	clip-path:url(#SVGID_4_)
 }
 .st3{
-    clip-path:url(#SVGID_6_)
+	clip-path:url(#SVGID_6_)
 }
 .st4{
-    clip-path:url(#SVGID_8_)
+	clip-path:url(#SVGID_8_)
 }
 
 .st7{
-    fill:none;
-    stroke: inherit;
-    stroke-width:4;
-    stroke-miterlimit:10
+	fill:none;
+	stroke: inherit;
+	stroke-width:4;
+	stroke-miterlimit:10
 }

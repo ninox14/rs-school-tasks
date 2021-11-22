@@ -1,5 +1,5 @@
 .question {
-  margin-top: 20px;
+  padding-top: 20px;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -8,7 +8,7 @@
   position: relative;
   &-bar {
     display: flex;
-
+    margin-bottom: 10px;
     justify-content: space-between;
 
     row-gap: 10px;

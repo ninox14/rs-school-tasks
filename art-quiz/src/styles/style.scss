@@ -38,6 +38,8 @@ a {
   text-decoration: none;
 }
 
+
+
 // Containcer
 .container {
   margin: 0 auto;
@@ -48,15 +50,13 @@ a {
   background-color: inherit;
 }
 
-
+#page_container {
+  min-height: calc(100vh - 150px);
+}
 
 .hide {
   animation-duration: 1s;
   animation-name: hide;
-  & .modal-questions-score {
-    width: 100vw;
-    height: 75vh;
-  }
 }
 
 @keyframes hide {
@@ -65,17 +65,13 @@ a {
   }
 
   to {
-    transform: translateX(200%);
+    transform: translateX(-200%);
   }
 }
 
 .show {
   animation-duration: 1s;
   animation-name: show;
-  & .modal-questions-score {
-    width: 100vw;
-    height: 75vh;
-  }
 }
 
 @keyframes show {
@@ -127,7 +123,7 @@ a {
 }
 
 
-@media (max-width: 1920px ) {
+@media (max-width: 2500px ) {
   .container {
     max-width: 700px;
   }
@@ -157,6 +153,7 @@ a {
   #footer_container {
     position: relative!important;
   }
+
   .footer__item:nth-child(2) {
     display: none;
   }

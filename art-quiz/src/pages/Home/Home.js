@@ -1,5 +1,8 @@
-import './Home.scss'
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/extensions */
+import './Home.scss';
 import HomeElement from './Home.html';
+import Utils from '@/utils/Utils';
 
 export class Home {
   constructor(_parent) {
@@ -7,18 +10,17 @@ export class Home {
     this.isFirst = true;
   }
 
-  async render () {
+  async render() {
     this.parent.innerHTML = HomeElement;
 
-    return "Home rendered";
+    return 'Home rendered';
   }
 
-  async after_render () {
-
+  async after_render() {
     if (!this.isFirst) {
       this.parent.classList.add('show');
-
+      await Utils.sleep(1000);
     }
     this.isFirst = false;
-  };
+  }
 }
