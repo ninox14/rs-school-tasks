@@ -2,9 +2,9 @@ const path = require('path');
 
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+// const CopyWebpackPlugin = require('copy-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer');
-const { dirname } = require('path');
+// const { dirname } = require('path');
 
 const nothing = () => {};
 
@@ -77,7 +77,7 @@ module.exports = (env, options) => {
       isProduction ? new CleanWebpackPlugin({}) : nothing,
       new HtmlWebpackPlugin({
         template: './src/index.html',
-        favicon: './src/assets/favicons/favicon-32x32.png'
+        favicon: './src/assets/favicons/favicon-32x32.png',
       }),
       isAnalyze ? new BundleAnalyzerPlugin() : nothing,
     ],
