@@ -121,7 +121,7 @@ export class Question {
   this.currOptions.isTime ? `${this.currOptions.time} s` : ''
 }</div>
       </div>
-      <h3 class="question-wording">What picture did ${this.currQuestion.author} paint?</h3>
+      <h3 class="question-wording">What picture is called "${this.currQuestion.name}"?</h3>
     `;
     this.currAnswersElem = Utils.createElem({ elem: 'div', classes: ['question-answers-images'] });
 
@@ -140,16 +140,33 @@ export class Question {
     this.parent.append(this.currQuestionElem);
   }
 
-  async preloadImage(imageIndex, imgElem) {
-    const img = new Image();
-    img.src = `https://raw.githubusercontent.com/ninox14/image-data/master/full/${imageIndex}full.jpg`;
-    const addStyle = async function (imgS) {
-      // eslint-disable-next-line no-param-reassign
-      imgElem.style.backgroundImage = `url(${imgS.src})`;
-    };
+  // async preloadImage(imageIndex, imgElem) {
+  //   const img = new Image();
+  //   img.src = `https://raw.githubusercontent.com/ninox14/image-data/master/full/${imageIndex}full.jpg`;
+  //   const addStyle = async function (imgS) {
+  //     // eslint-disable-next-line no-param-reassign
+  //     imgElem.style.backgroundImage = `url(${imgS.src})`;
+  //   };
 
-    img.onload = await addStyle(img);
-    return imgElem;
+  //   img.onload = await addStyle(img);
+  //   return imgElem;
+  // }
+  async preloadImage(num, elem) {
+    // if (num === undefined)
+    //   num = Math.floor(Math.random() * (240 - 1) + 1);
+    const loading = new Promise((resolve) => {
+      const image = new Image();
+      image.src = `https://raw.githubusercontent.com/ninox14/image-data/master/full/${num}full.jpg`;
+      image.onload = () => {
+        resolve(image.src);
+      };
+    });
+    loading.then((src) => {
+      // eslint-disable-next-line no-param-reassign
+      elem.style.backgroundImage = `url("${src}")`;
+    });
+    await Utils.sleep(200);
+    return elem;
   }
 
   async listener(e) {
@@ -192,7 +209,9 @@ export class Question {
     </span>
     `;
     const imgDiv = Utils.createElem({ elem: 'div', classes: ['modal-image'] });
+
     popUpElem.append(await this.preloadImage(this.currQuestion.imageNum, imgDiv));
+
     popUpElem.innerHTML += `
       <p class="modal-caption">${this.currQuestion.name}</p>
       <p class="modal-caption">${this.currQuestion.author}</p>
