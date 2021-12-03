@@ -16,6 +16,17 @@
     "rules": {
         "no-debugger": "off",
         "no-console": 0,
-        "class-methods-use-this": "off"
-    }
+        "class-methods-use-this": "off",
+        "linebreak-style": "off"
+    },
+    "ignorePatterns": [
+        "tsconfig.json"
+    ],
+    "prettier/prettier": [
+        "error",
+        {},
+        {
+            "usePrettierrc": true
+        }
+    ]
 }

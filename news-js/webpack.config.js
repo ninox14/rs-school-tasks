@@ -2,6 +2,12 @@ const path = require('path');
 const { merge } = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+const isProduction = process.env.NODE_ENV == "production";
+
+const stylesHandler = isProduction ? MiniCssExtractPlugin.loader : 'style-loader';
+
 
 const baseConfig = {
     entry: path.resolve(__dirname, './src/index.js'),
@@ -9,13 +15,22 @@ const baseConfig = {
     module: {
         rules: [
             {
+                test: /\.(ts|tsx)$/i,
+                loader: 'ts-loader',
+                exclude: ['/node_modules/'],
+            },
+            {
                 test: /\.css$/i,
-                use: ['style-loader', 'css-loader'],
+                use: [stylesHandler, 'css-loader'],
+            },
+            {
+                test: /\.s[ac]ss$/i,
+                use: [stylesHandler, 'css-loader', 'sass-loader'],
             },
         ],
     },
     resolve: {
-        extensions: ['.js'],
+        extensions: ['.tsx', '.ts', '.js'],
     },
     output: {
         filename: 'index.js',
