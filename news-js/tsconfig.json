@@ -4,7 +4,13 @@
     "noImplicitAny": true,
     "module": "es6",
     "target": "es5",
-    "allowJs": true
+    "allowJs": true,
+    // "strict": true
   },
-  "files": ["src/index.ts"]
+  "files": ["src/index.ts"],
+  "include": [
+    "./**/*"
+  ],
+  "exclude": ["webpack.config.js", "webpack.dev.config.js", "webpack.prod.config.js"],
+  "types": "./src/types/index.d.ts",
 }
