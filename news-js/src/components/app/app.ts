@@ -11,7 +11,7 @@ class App {
 
   start(): void {
     document
-      .querySelector('.sources')
+      .querySelector('.source-tabs')
       .addEventListener('click', (e: Event) => this.controller.getNews(e, (data) => this.view.drawNews(data)));
     this.controller.getSources((data) => this.view.drawSources(data));
   }
