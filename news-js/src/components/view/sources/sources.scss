@@ -61,6 +61,7 @@
   }
   &.active {
     background-color: #11253b;
+    transform: translateY(-0.25em);
   }
 }
 
@@ -74,6 +75,8 @@
     // overflow: auto;
     align-items: center;
     justify-content: center;
+
+    animation: fadeEffect 1s;
   }
 }
 
@@ -83,7 +86,12 @@
     &__tab {
       max-height: 180px;
       overflow: auto;
-
     }
   }
+}
+
+
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
 }

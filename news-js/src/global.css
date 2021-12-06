@@ -1,35 +1,86 @@
 body {
-    color: #fff;
-    background: #17181c;
-    font-family: sans-serif;
+  color: #fff;
+  background: #17181c;
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
 }
 
 header {
-    padding: 10px 30px;
+  padding: 10px 30px;
 }
 
 header h1 {
-    font-size: 40px;
-    font-weight: 800;
+  text-align: center;
+  font-size: 40px;
+  font-weight: 800;
 }
 
-footer {
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.content {
+  min-height: calc(100vh - 198px);
 }
-footer .copyright {
-    font-size: 14px;
-    color: #333;
-    text-align: center;
+
+
+.news {
+  animation: fadeEffect .5s;
 }
-footer .copyright a {
-    color: #444;
+
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
 }
-footer .copyright a:hover {
-    color: #555;
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 40px;
+  align-items: center;
 }
-footer .copyright:before {
-    content: '©';
+
+.footer__svg {
+  width: 40px;
+  height: 40px;
+}
+.footer__svg-rs {
+  margin-top: 5px;
+  width: 80px;
+  height: auto;
+}
+.footer__svg svg {
+  fill: #d8d8d8;
+
+  transition: fill .2s linear;
+}
+.footer__svg-rs svg {
+  stroke: #d8d8d8;
+  transition: stroke .2s linear, fill .2s linear;
+}
+
+.footer__link:hover svg{
+  fill: #529ce0;
+}
+.footer__svg-rs:hover svg {
+  stroke: #529ce0;
+}
+
+.st0{
+  fill: transparent;
+}
+.st1{
+  clip-path:url(#SVGID_2_)
+}
+.st2{
+  clip-path:url(#SVGID_4_)
+}
+.st3{
+  clip-path:url(#SVGID_6_)
+}
+.st4{
+  clip-path:url(#SVGID_8_)
+}
+
+.st7{
+  fill:none;
+  stroke: inherit;
+  stroke-width:4;
+  stroke-miterlimit:10
 }
