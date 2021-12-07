@@ -1,8 +1,8 @@
 import './sources.scss';
 
 class Sources {
-  tabBtnsContainer: HTMLElement;
-  tabContentContainer: HTMLElement;
+  private tabBtnsContainer: HTMLElement;
+  private tabContentContainer: HTMLElement;
   constructor() {
     this.tabBtnsContainer = document.querySelector<HTMLElement>('.tab-buttons');
     this.tabContentContainer = document.querySelector<HTMLElement>('.source-tabs');
@@ -24,7 +24,7 @@ class Sources {
     this.tabBtnsContainer.append(fragments[0]);
     this.tabContentContainer.append(fragments[1]);
   }
-  splitByLetters(data: SourceItem[]) {
+  private splitByLetters(data: SourceItem[]) {
     const dataByLetters: SourcesByLettersInterface = {};
 
     data.map((i) => {
@@ -37,7 +37,7 @@ class Sources {
     });
     return dataByLetters;
   }
-  listener = (e: Event) => {
+  private listener = (e: Event) => {
     const target = e.currentTarget as HTMLElement;
     const tabBtnsElems = this.tabBtnsContainer.children as HTMLCollectionOf<HTMLElement>;
     const tabContentElems = this.tabContentContainer.children as HTMLCollectionOf<HTMLElement>;
@@ -57,7 +57,7 @@ class Sources {
     // this.tabContentContainer.querySelector<HTMLElement>(target.textContent).style.display = 'flex';
     target.classList.add('active');
   };
-  constructFragments(data: SourceItem[]) {
+  private constructFragments(data: SourceItem[]) {
     const dataByLetters = this.splitByLetters(data);
     const tabItemTemplate: HTMLTemplateElement = document.querySelector('#tabItemTemp');
     const sourceItemTemp: HTMLTemplateElement = document.querySelector('#sourceItemTemp');
@@ -80,7 +80,7 @@ class Sources {
     return [tabButtonsFragment, tabContentFragment];
   }
 
-  constructTabContentElem(data: SourceItem[], sourceItemTemp: HTMLTemplateElement, id: string) {
+  private constructTabContentElem(data: SourceItem[], sourceItemTemp: HTMLTemplateElement, id: string) {
     const tabContentElem = document.createElement('div');
     tabContentElem.id = id;
     tabContentElem.classList.add('source-tabs__tab', 'buttons');
