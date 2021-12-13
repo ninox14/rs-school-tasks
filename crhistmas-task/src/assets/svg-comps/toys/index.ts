@@ -1,5 +1,5 @@
 import SvgBall from './Ball';
-import SvgBell from './Ball';
+import SvgBell from './Bell';
 import SvgCone from './Cone';
 import SvgToy from './Toy';
 import SvgSnowflake from './Snowflake';
