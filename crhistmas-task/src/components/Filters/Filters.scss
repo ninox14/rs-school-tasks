@@ -85,4 +85,13 @@
     // &__slider {
     // }
   }
+  .form-wrap {
+    flex-direction: column;
+    &__btns {
+      margin-top: 10px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+    }
+  }
 }

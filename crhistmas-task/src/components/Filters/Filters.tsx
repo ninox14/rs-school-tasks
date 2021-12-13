@@ -6,7 +6,8 @@ import { RangeSlider } from '../RangeSlider/RangeSlider';
 // Assets
 import SearchSvg from '../../assets/svg/search.svg';
 import { Audio, Snow } from '../../assets/svg-comps/index';
-// import { SelectOptionInterface } from '../../react-app-env';
+import { TypeButtons } from '../TypeButtons/TypeButtons';
+import React from 'react';
 
 const sortOptions: SelectOptionInterface[] = [
   { value: 'nameAscending', label: 'По названию от «А» до «Я»' },
@@ -14,6 +15,13 @@ const sortOptions: SelectOptionInterface[] = [
   { value: 'yearAscending', label: 'По году производства по возрастанию' },
   { value: 'yearDescending', label: 'По году производства по убыванию' },
 ];
+
+const formButtonCallback = (
+  e: React.MouseEvent<HTMLButtonElement>,
+  key: string
+) => {
+  console.log(e, key);
+};
 
 export const Filters = () => (
   <div className="filters">
@@ -68,7 +76,9 @@ export const Filters = () => (
     </div>
     <div className="filters__item form-wrap">
       <p className="filters__item_type">Форма</p>
-      <div className="form-wrap__btns">{}</div>
+      <div className="form-wrap__btns">
+        {<TypeButtons callback={formButtonCallback} />}
+      </div>
     </div>
 
     {/* string */}
