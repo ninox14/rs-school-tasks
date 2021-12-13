@@ -1,0 +1,88 @@
+.filters {
+  width: 33%;
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    &_type {
+      font-family: 'Nunito', sans-serif;
+      font-size: 18px;
+    }
+  }
+  &__caption {
+    display: inline-block;
+    font-size: 20px;
+    line-height: 1.1;
+    vertical-align: middle;
+    text-transform: uppercase;
+  }
+  .top-panel {
+    display: grid;
+    grid-template-columns: 36px 36px 1fr;
+    align-items: center;
+    justify-content: space-around;
+    column-gap: 15px;
+    &__btn {
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      width: 36px;
+      height: 36px;
+      &:hover {
+        svg {
+          opacity: 0.7;
+        }
+      }
+    }
+    &__sound,
+    &__snow {
+      transition: opacity 0.3s linear;
+    }
+    .search-block {
+      padding: 6px 10px 6px 14px;
+      display: grid;
+      grid-template-columns: 1fr 24px;
+
+      border: 1px solid #2299eb;
+
+      border-radius: 30px;
+
+      &__search-input {
+        font-size: 16px;
+        background: transparent;
+        border: none;
+        color: #fff;
+        font-family: 'Nunito', sans-serif;
+        &:focus {
+          outline: none;
+        }
+        &::placeholder {
+          color: #fff;
+          font-family: inherit;
+        }
+      }
+      &__img {
+        vertical-align: middle;
+        cursor: pointer;
+      }
+    }
+  }
+  .sort-wrap {
+    margin-top: 20px;
+    flex-direction: column;
+    row-gap: 10px;
+    vertical-align: middle;
+    // align-items: center;
+    &__sort {
+      flex-grow: 0.9;
+      color: #fff;
+    }
+  }
+  .range-wrap {
+    margin-top: 20px;
+    flex-direction: column;
+    row-gap: 10px;
+    // &__slider {
+    // }
+  }
+}
