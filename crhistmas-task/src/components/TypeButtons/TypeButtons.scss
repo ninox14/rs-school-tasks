@@ -1,8 +1,16 @@
 .form-type-button {
   background-color: transparent;
   border: none;
+  padding: 0;
   svg {
     width: 42px;
     height: 42px;
+  }
+  &.active {
+    svg {
+      path {
+        fill: #000 !important;
+      }
+    }
   }
 }
