@@ -9,6 +9,7 @@ export const TypeButtons: FC<FormTypeButtonsInterface> = ({ callback }) => (
         <Button
           className="form-type-button"
           InnerSvg={toys[key]}
+          key={key}
           callback={(e) => {
             callback(e, key);
           }}
