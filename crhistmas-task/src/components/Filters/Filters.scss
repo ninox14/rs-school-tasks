@@ -1,8 +1,12 @@
 .filters {
-  width: 33%;
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
   &__item {
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
     &_type {
       font-family: 'Nunito', sans-serif;
       font-size: 18px;
@@ -16,11 +20,13 @@
     text-transform: uppercase;
   }
   .top-panel {
-    display: grid;
-    grid-template-columns: 36px 36px 1fr;
+    // display: grid;
+    // grid-template-columns: 36px 36px 1fr;
     align-items: center;
+    display: flex;
+    flex-direction: row;
     justify-content: space-around;
-    column-gap: 15px;
+    // column-gap: 15px;
     &__btn {
       background: transparent;
       border: none;
@@ -40,9 +46,10 @@
     }
     .search-block {
       padding: 6px 10px 6px 14px;
-      display: grid;
-      grid-template-columns: 1fr 24px;
-
+      // display: grid;
+      // grid-template-columns: 1fr 24px;
+      display: flex;
+      max-width: 100%;
       border: 1px solid #2299eb;
 
       border-radius: 30px;
@@ -53,6 +60,7 @@
         border: none;
         color: #fff;
         font-family: 'Nunito', sans-serif;
+        max-width: calc(100% - 24px);
         &:focus {
           outline: none;
         }
@@ -68,7 +76,6 @@
     }
   }
   .sort-wrap {
-    margin-top: 20px;
     flex-direction: column;
     row-gap: 10px;
     vertical-align: middle;
@@ -79,16 +86,13 @@
     }
   }
   .range-wrap {
-    margin-top: 20px;
-    flex-direction: column;
     row-gap: 10px;
     // &__slider {
     // }
   }
   .form-wrap {
-    flex-direction: column;
+    row-gap: 10px;
     &__btns {
-      margin-top: 10px;
       width: 100%;
       display: flex;
       justify-content: space-between;
