@@ -9,6 +9,11 @@ export const Shop: FC<ShopPropsInterface> = ({
   activeColorFilters,
   handleAddColorFilter,
   handleDeleteColorFilter,
+  activeSizeFilters,
+  handleAddSizeFilter,
+  handleDeleteSizeFilter,
+  isFavourite,
+  setIsFavourite,
 }) => (
   <main className="content">
     <Filters
@@ -18,6 +23,11 @@ export const Shop: FC<ShopPropsInterface> = ({
       activeColorFilters={activeColorFilters}
       handleAddColorFilter={handleAddColorFilter}
       handleDeleteColorFilter={handleDeleteColorFilter}
+      activeSizeFilters={activeSizeFilters}
+      handleAddSizeFilter={handleAddSizeFilter}
+      handleDeleteSizeFilter={handleDeleteSizeFilter}
+      isFavourite={isFavourite}
+      setIsFavourite={setIsFavourite}
     />
 
     <div className="shop-itmes">

@@ -14,6 +14,7 @@ import SearchSvg from '../../assets/svg/search.svg';
 import { Audio, Snow } from '../../assets/svg-comps/index';
 import { ColorButtons } from '../ColorButtons/ColorButtons';
 import { SizeButtons } from '../SizeButtons/SizeButtons';
+import { Checkbox } from '../CheckBox';
 
 const sortOptions: SelectOptionInterface[] = [
   { value: 'nameAscending', label: 'По названию от «А» до «Я»' },
@@ -29,6 +30,11 @@ export const Filters: FC<FilterPropsInterface> = ({
   activeColorFilters,
   handleAddColorFilter,
   handleDeleteColorFilter,
+  activeSizeFilters,
+  handleAddSizeFilter,
+  handleDeleteSizeFilter,
+  isFavourite,
+  setIsFavourite,
 }) => {
   return (
     <div className="filters">
@@ -110,7 +116,25 @@ export const Filters: FC<FilterPropsInterface> = ({
       <div className="filters__item filter-btns">
         <p className="filters__item_type">Размер</p>
 
-        <div className="filter-btns__btns">{<SizeButtons />}</div>
+        <div className="filter-btns__btns">
+          {
+            <SizeButtons
+              activeSizeFilters={activeSizeFilters}
+              handleAddSizeFilter={handleAddSizeFilter}
+              handleDeleteSizeFilter={handleDeleteSizeFilter}
+            />
+          }
+        </div>
+      </div>
+      <div className="filters__item filter-btns">
+        {/* <p className="filters__item_type">Только любимые </p> */}
+
+        <Checkbox
+          label="Tолько любимые"
+          checked={isFavourite}
+          value={isFavourite}
+          onChange={() => setIsFavourite(!isFavourite)}
+        />
       </div>
       {/* string */}
     </div>
