@@ -3,9 +3,9 @@ import { FC } from 'react';
 export const Button: FC<ButtonPropsInterface> = ({
   className,
   InnerSvg,
-  callback,
+  onClick = () => {},
 }) => (
-  <button className={className} onClick={callback}>
+  <button className={className} onClick={onClick}>
     {InnerSvg ? <InnerSvg /> : null}
   </button>
 );
