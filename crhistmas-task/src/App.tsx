@@ -7,6 +7,8 @@ function App() {
   const [data, setData] = useState<ToyItemInterface[]>([]);
   const [activeFormFilters, setActiveFormFilters] = useState<ToyForm[]>([]);
   const [activeColorFilters, setActiveColorFilters] = useState<ToyColor[]>([]);
+  const [activeSizeFilters, setActiveSizeFilters] = useState<ToySize[]>([]);
+  const [isFavourite, setIsFavourite] = useState(false);
 
   const handleAddFormFilter = (toyForm: ToyForm) => {
     setActiveFormFilters((state) => [...state, toyForm]);
@@ -23,12 +25,19 @@ function App() {
   const handleDeleteColorFilter = (color: ToyColor) => {
     setActiveColorFilters((state) => state.filter((i) => i !== color));
   };
+  const handleAddSizeFilter = (size: ToySize) => {
+    setActiveSizeFilters((state) => [...state, size]);
+  };
+
+  const handleDeleteSizeFilter = (size: ToySize) => {
+    setActiveSizeFilters((state) => state.filter((i) => i !== size));
+  };
 
   useEffect(() => {
     // Создать GetData,
     const data = getData();
     setData(data);
-    console.log(activeFormFilters);
+    // console.log(activeFormFilters);
   }, [activeFormFilters, activeColorFilters]);
 
   useEffect(() => {
@@ -50,6 +59,11 @@ function App() {
         activeColorFilters={activeColorFilters}
         handleAddColorFilter={handleAddColorFilter}
         handleDeleteColorFilter={handleDeleteColorFilter}
+        activeSizeFilters={activeSizeFilters}
+        handleAddSizeFilter={handleAddSizeFilter}
+        handleDeleteSizeFilter={handleDeleteSizeFilter}
+        isFavourite={isFavourite}
+        setIsFavourite={setIsFavourite}
       />
     </>
   );
