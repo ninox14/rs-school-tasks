@@ -5,22 +5,22 @@ import { Shop } from './components/Shop/Shop';
 
 function App() {
   const [data, setData] = useState<ToyItemInterface[]>([]);
-  const [activeFormFilters, setActiveFormFilters] = useState<string[]>([]);
-  const [activeColorFilters, setActiveColorFilters] = useState<string[]>([]);
+  const [activeFormFilters, setActiveFormFilters] = useState<ToyForm[]>([]);
+  const [activeColorFilters, setActiveColorFilters] = useState<ToyColor[]>([]);
 
-  const handleAddFormFilter = (toyForm: string) => {
+  const handleAddFormFilter = (toyForm: ToyForm) => {
     setActiveFormFilters((state) => [...state, toyForm]);
   };
 
-  const handleDeleteFormFilter = (toyForm: string) => {
+  const handleDeleteFormFilter = (toyForm: ToyForm) => {
     setActiveFormFilters((state) => state.filter((i) => i !== toyForm));
   };
 
-  const handleAddColorFilter = (color: string) => {
+  const handleAddColorFilter = (color: ToyColor) => {
     setActiveColorFilters((state) => [...state, color]);
   };
 
-  const handleDeleteColorFilter = (color: string) => {
+  const handleDeleteColorFilter = (color: ToyColor) => {
     setActiveColorFilters((state) => state.filter((i) => i !== color));
   };
 
