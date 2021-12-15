@@ -13,6 +13,7 @@ import { TypeButtons } from '../TypeButtons/TypeButtons';
 import SearchSvg from '../../assets/svg/search.svg';
 import { Audio, Snow } from '../../assets/svg-comps/index';
 import { ColorButtons } from '../ColorButtons/ColorButtons';
+import { SizeButtons } from '../SizeButtons/SizeButtons';
 
 const sortOptions: SelectOptionInterface[] = [
   { value: 'nameAscending', label: 'По названию от «А» до «Я»' },
@@ -21,16 +22,7 @@ const sortOptions: SelectOptionInterface[] = [
   { value: 'yearDescending', label: 'По году производства по убыванию' },
 ];
 
-type OwnPropsFilter = {
-  activeFormFilters: string[];
-  handleAddFormFilter: (typeForm: string) => void;
-  handleDeleteFormFilter: (typeForm: string) => void;
-  activeColorFilters: string[];
-  handleAddColorFilter: (color: string) => void;
-  handleDeleteColorFilter: (color: string) => void;
-};
-
-export const Filters: FC<OwnPropsFilter> = ({
+export const Filters: FC<FilterPropsInterface> = ({
   activeFormFilters,
   handleAddFormFilter,
   handleDeleteFormFilter,
@@ -89,9 +81,9 @@ export const Filters: FC<OwnPropsFilter> = ({
           <RangeSlider max={100} />
         </div>
       </div>
-      <div className="filters__item form-wrap">
+      <div className="filters__item filter-btns">
         <p className="filters__item_type">Форма</p>
-        <div className="form-wrap__btns">
+        <div className="filter-btns__btns">
           {
             <TypeButtons
               activeFormFilters={activeFormFilters}
@@ -101,10 +93,11 @@ export const Filters: FC<OwnPropsFilter> = ({
           }
         </div>
       </div>
-      <div className="filters__item form-wrap">
+
+      <div className="filters__item filter-btns">
         <p className="filters__item_type">Цвет</p>
 
-        <div className="form-wrap__btns">
+        <div className="filter-btns__btns">
           {
             <ColorButtons
               activeColorFilters={activeColorFilters}
@@ -113,6 +106,11 @@ export const Filters: FC<OwnPropsFilter> = ({
             />
           }
         </div>
+      </div>
+      <div className="filters__item filter-btns">
+        <p className="filters__item_type">Размер</p>
+
+        <div className="filter-btns__btns">{<SizeButtons />}</div>
       </div>
       {/* string */}
     </div>

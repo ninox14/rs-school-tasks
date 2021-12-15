@@ -2,16 +2,7 @@ import { FC } from 'react';
 import './Shop.scss';
 import { Filters } from '../Filters/Filters';
 
-type OwnProps = {
-  activeFormFilters: string[];
-  handleAddFormFilter: (typeForm: string) => void;
-  handleDeleteFormFilter: (typeForm: string) => void;
-  activeColorFilters: string[];
-  handleAddColorFilter: (color: string) => void;
-  handleDeleteColorFilter: (color: string) => void;
-};
-
-export const Shop: FC<OwnProps> = ({
+export const Shop: FC<ShopPropsInterface> = ({
   activeFormFilters,
   handleAddFormFilter,
   handleDeleteFormFilter,
