@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FC } from 'react';
 import './Filters.scss';
 
 // Components
@@ -7,7 +7,7 @@ import { RangeSlider } from '../RangeSlider/RangeSlider';
 import { TypeButtons } from '../TypeButtons/TypeButtons';
 
 // Logic
-import { formButtonCallback } from '../logic';
+// import { formButtonCallback } from '../logic';
 
 // Assets
 import SearchSvg from '../../assets/svg/search.svg';
@@ -21,7 +21,23 @@ const sortOptions: SelectOptionInterface[] = [
   { value: 'yearDescending', label: 'По году производства по убыванию' },
 ];
 
-export const Filters = () => {
+type OwnPropsFilter = {
+  activeFormFilters: string[];
+  handleAddFormFilter: (typeForm: string) => void;
+  handleDeleteFormFilter: (typeForm: string) => void;
+  activeColorFilters: string[];
+  handleAddColorFilter: (color: string) => void;
+  handleDeleteColorFilter: (color: string) => void;
+};
+
+export const Filters: FC<OwnPropsFilter> = ({
+  activeFormFilters,
+  handleAddFormFilter,
+  handleDeleteFormFilter,
+  activeColorFilters,
+  handleAddColorFilter,
+  handleDeleteColorFilter,
+}) => {
   return (
     <div className="filters">
       <div className="filters__item top-panel">
@@ -76,13 +92,27 @@ export const Filters = () => {
       <div className="filters__item form-wrap">
         <p className="filters__item_type">Форма</p>
         <div className="form-wrap__btns">
-          {<TypeButtons callback={formButtonCallback} />}
+          {
+            <TypeButtons
+              activeFormFilters={activeFormFilters}
+              handleAddFormFilter={handleAddFormFilter}
+              handleDeleteFormFilter={handleDeleteFormFilter}
+            />
+          }
         </div>
       </div>
       <div className="filters__item form-wrap">
         <p className="filters__item_type">Цвет</p>
 
-        <div className="form-wrap__btns">{<ColorButtons />}</div>
+        <div className="form-wrap__btns">
+          {
+            <ColorButtons
+              activeColorFilters={activeColorFilters}
+              handleAddColorFilter={handleAddColorFilter}
+              handleDeleteColorFilter={handleDeleteColorFilter}
+            />
+          }
+        </div>
       </div>
       {/* string */}
     </div>
