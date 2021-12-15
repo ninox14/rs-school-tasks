@@ -2,12 +2,19 @@ import { FC } from 'react';
 import { Button } from '../Button/Button';
 import './ColorButtons.scss';
 
-export const possibleColors = ['white', 'yellow', 'red', 'blue', 'green'];
-
-type ColorButtonsProps = {
-  activeColorFilters: string[];
-  handleAddColorFilter: (color: string) => void;
-  handleDeleteColorFilter: (color: string) => void;
+export const possibleColors: ToyColor[] = [
+  'белый',
+  'желтый',
+  'красный',
+  'синий',
+  'зелёный',
+];
+export const possibleColorsEng = {
+  белый: 'white',
+  желтый: 'yellow',
+  красный: 'red',
+  синий: 'blue',
+  зелёный: 'green;',
 };
 
 export const ColorButtons: FC<ColorButtonsProps> = ({
@@ -23,7 +30,9 @@ export const ColorButtons: FC<ColorButtonsProps> = ({
         : () => handleAddColorFilter(color);
       return (
         <Button
-          className={`color-button ${color} ${isActive && 'active'}`}
+          className={`color-button ${possibleColorsEng[color]} ${
+            isActive && 'active'
+          }`}
           key={color}
           onClick={onClick}
         />
