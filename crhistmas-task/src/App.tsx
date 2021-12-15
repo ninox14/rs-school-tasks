@@ -1,9 +1,40 @@
-import React from 'react';
-
+import React, { useState, useEffect } from 'react';
+import { getData } from './components/logic';
 //components
 import { Shop } from './components/Shop/Shop';
 
 function App() {
+  const [data, setData] = useState<ToyItemInterface[]>([]);
+  const [activeFormFilters, setActiveFormFilters] = useState<string[]>([]);
+  const [activeColorFilters, setActiveColorFilters] = useState<string[]>([]);
+
+  const handleAddFormFilter = (toyForm: string) => {
+    setActiveFormFilters((state) => [...state, toyForm]);
+  };
+
+  const handleDeleteFormFilter = (toyForm: string) => {
+    setActiveFormFilters((state) => state.filter((i) => i !== toyForm));
+  };
+
+  const handleAddColorFilter = (color: string) => {
+    setActiveColorFilters((state) => [...state, color]);
+  };
+
+  const handleDeleteColorFilter = (color: string) => {
+    setActiveColorFilters((state) => state.filter((i) => i !== color));
+  };
+
+  useEffect(() => {
+    // Создать GetData,
+    const data = getData();
+    setData(data);
+    console.log(activeFormFilters);
+  }, [activeFormFilters, activeColorFilters]);
+
+  useEffect(() => {
+    // set filters from Local Storage
+  }, []);
+
   return (
     <>
       {/* <div className="welcome text-center clear d-flex flex-column justify-center align-center">
@@ -12,7 +43,14 @@ function App() {
         </h1>
         <button className="welcome__button blur-bg">Начать</button>
       </div> */}
-      <Shop />
+      <Shop
+        activeFormFilters={activeFormFilters}
+        handleAddFormFilter={handleAddFormFilter}
+        handleDeleteFormFilter={handleDeleteFormFilter}
+        activeColorFilters={activeColorFilters}
+        handleAddColorFilter={handleAddColorFilter}
+        handleDeleteColorFilter={handleDeleteColorFilter}
+      />
     </>
   );
 }
