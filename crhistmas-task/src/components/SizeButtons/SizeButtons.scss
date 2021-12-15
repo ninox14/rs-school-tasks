@@ -1,0 +1,21 @@
+.size-button {
+  background: none;
+  border: none;
+  &__caption {
+    color: #fff;
+    text-transform: capitalize;
+  }
+  &.medium {
+    width: 62px;
+  }
+  &.small {
+    width: 53px;
+  }
+  &.active {
+    svg {
+      path {
+        fill: #000;
+      }
+    }
+  }
+}
