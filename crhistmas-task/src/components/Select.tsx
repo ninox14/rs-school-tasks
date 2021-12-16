@@ -33,7 +33,7 @@ const customSelectStyles: StylesConfig<SelectOptionInterface> = {
   menu: (styles) => ({
     ...styles,
     background:
-      'radial-gradient(118.88% 606.86% at 0% 0%, #2a5e51 0%, #164d36 100%)',
+      'radial-gradient(118.88% 606.86% at 0% 0%, #265348 0%, #1b4b26 100%)',
   }),
   singleValue: (styles) => ({
     ...styles,
