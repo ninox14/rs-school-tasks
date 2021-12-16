@@ -1,9 +1,10 @@
+import { FC } from 'react';
 import { Button } from '../Button/Button';
 import SvgBall from '../../assets/svg-comps/toys/Ball';
-import './SizeButtons.scss';
-import { FC } from 'react';
 
-export const possibleSizes: ToySize[] = ['большой', 'средний', 'малый'];
+import './SizeButtons.scss';
+
+import { possibleSizes } from '../logic';
 
 const possibleSizesEng = {
   большой: 'big',

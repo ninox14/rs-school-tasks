@@ -1,20 +1,16 @@
 import { FC } from 'react';
 import { Button } from '../Button/Button';
+
 import './ColorButtons.scss';
 
-export const possibleColors: ToyColor[] = [
-  'белый',
-  'желтый',
-  'красный',
-  'синий',
-  'зелёный',
-];
-export const possibleColorsEng = {
+import { possibleColors } from '../logic';
+
+const possibleColorsEng = {
   белый: 'white',
   желтый: 'yellow',
   красный: 'red',
   синий: 'blue',
-  зелёный: 'green;',
+  зелёный: 'green',
 };
 
 export const ColorButtons: FC<ColorButtonsProps> = ({

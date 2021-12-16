@@ -3,7 +3,7 @@ import { Button } from '../Button/Button';
 import { toys } from '../../assets/svg-comps';
 import './TypeButtons.scss';
 
-export const possibleForms: PossibleFormsInterface = {
+const possibleForms: PossibleFormsInterface = {
   SvgBall: 'шар',
   SvgBell: 'колокольчик',
   SvgCone: 'шишка',
