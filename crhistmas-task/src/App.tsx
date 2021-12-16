@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { getData } from './components/logic';
+import {
+  getData,
+  itemYearMin,
+  itemYearMax,
+  itemCountMin,
+  itemCountMax,
+} from './components/logic';
 //components
 import { Shop } from './components/Shop/Shop';
 
@@ -8,7 +14,16 @@ function App() {
   const [activeFormFilters, setActiveFormFilters] = useState<ToyForm[]>([]);
   const [activeColorFilters, setActiveColorFilters] = useState<ToyColor[]>([]);
   const [activeSizeFilters, setActiveSizeFilters] = useState<ToySize[]>([]);
-  const [isFavourite, setIsFavourite] = useState(false);
+  const [onlyFavourite, setOnlyFavourite] = useState(false);
+  const [activeSort, setActiveSort] = useState<SortValue>('');
+  const [itemCountRange, setItemCountRange] = useState([
+    itemCountMin,
+    itemCountMax,
+  ]);
+  const [itemYearRange, setItemYearRange] = useState([
+    itemYearMin,
+    itemYearMax,
+  ]);
 
   const handleAddFormFilter = (toyForm: ToyForm) => {
     setActiveFormFilters((state) => [...state, toyForm]);
@@ -25,12 +40,32 @@ function App() {
   const handleDeleteColorFilter = (color: ToyColor) => {
     setActiveColorFilters((state) => state.filter((i) => i !== color));
   };
+
   const handleAddSizeFilter = (size: ToySize) => {
     setActiveSizeFilters((state) => [...state, size]);
   };
 
   const handleDeleteSizeFilter = (size: ToySize) => {
     setActiveSizeFilters((state) => state.filter((i) => i !== size));
+  };
+
+  const handleSortChange = (sort: SortValue) => {
+    setActiveSort(sort);
+  };
+
+  const handleCountRangeChange = (range: number[]) => {
+    setItemCountRange(range);
+  };
+  const handleYearRangeChange = (range: number[]) => {
+    setItemYearRange(range);
+  };
+
+  const saveFilters = () => {
+    console.log('saved');
+  };
+
+  const setDefaultFilters = () => {
+    console.log('reset filters');
   };
 
   useEffect(() => {
@@ -62,8 +97,16 @@ function App() {
         activeSizeFilters={activeSizeFilters}
         handleAddSizeFilter={handleAddSizeFilter}
         handleDeleteSizeFilter={handleDeleteSizeFilter}
-        isFavourite={isFavourite}
-        setIsFavourite={setIsFavourite}
+        onlyFavourite={onlyFavourite}
+        setOnlyFavourite={setOnlyFavourite}
+        saveFilters={saveFilters}
+        setDefaultFilters={setDefaultFilters}
+        activeSort={activeSort}
+        handleSortChange={handleSortChange}
+        itemCountRange={itemCountRange}
+        handleCountRangeChange={handleCountRangeChange}
+        itemYearRange={itemYearRange}
+        handleYearRangeChange={handleYearRangeChange}
       />
     </>
   );

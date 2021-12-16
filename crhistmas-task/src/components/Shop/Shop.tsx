@@ -12,8 +12,16 @@ export const Shop: FC<ShopPropsInterface> = ({
   activeSizeFilters,
   handleAddSizeFilter,
   handleDeleteSizeFilter,
-  isFavourite,
-  setIsFavourite,
+  onlyFavourite,
+  setOnlyFavourite,
+  saveFilters,
+  setDefaultFilters,
+  activeSort,
+  handleSortChange,
+  itemCountRange,
+  handleCountRangeChange,
+  itemYearRange,
+  handleYearRangeChange,
 }) => (
   <main className="content">
     <Filters
@@ -26,8 +34,16 @@ export const Shop: FC<ShopPropsInterface> = ({
       activeSizeFilters={activeSizeFilters}
       handleAddSizeFilter={handleAddSizeFilter}
       handleDeleteSizeFilter={handleDeleteSizeFilter}
-      isFavourite={isFavourite}
-      setIsFavourite={setIsFavourite}
+      onlyFavourite={onlyFavourite}
+      setOnlyFavourite={setOnlyFavourite}
+      saveFilters={saveFilters}
+      setDefaultFilters={setDefaultFilters}
+      activeSort={activeSort}
+      handleSortChange={handleSortChange}
+      itemCountRange={itemCountRange}
+      handleCountRangeChange={handleCountRangeChange}
+      itemYearRange={itemYearRange}
+      handleYearRangeChange={handleYearRangeChange}
     />
 
     <div className="shop-itmes">
