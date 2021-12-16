@@ -70,10 +70,24 @@ function App() {
 
   useEffect(() => {
     // Создать GetData,
-    const data = getData();
+    const data = getData(
+      activeFormFilters,
+      activeColorFilters,
+      activeSizeFilters,
+      itemCountRange,
+      itemYearRange,
+      onlyFavourite
+    );
     setData(data);
-    // console.log(activeFormFilters);
-  }, [activeFormFilters, activeColorFilters]);
+    console.log(data);
+  }, [
+    activeFormFilters,
+    activeColorFilters,
+    activeSizeFilters,
+    itemCountRange,
+    itemYearRange,
+    onlyFavourite,
+  ]);
 
   useEffect(() => {
     // set filters from Local Storage
