@@ -5,6 +5,10 @@ import './Filters.scss';
 import { CustomSelect } from '../Select';
 import { RangeSlider } from '../RangeSlider/RangeSlider';
 import { TypeButtons } from '../TypeButtons/TypeButtons';
+import { ColorButtons } from '../ColorButtons/ColorButtons';
+import { SizeButtons } from '../SizeButtons/SizeButtons';
+import { Checkbox } from '../CheckBox';
+import { Button } from '../Button/Button';
 
 // Logic
 // import { formButtonCallback } from '../logic';
@@ -12,9 +16,7 @@ import { TypeButtons } from '../TypeButtons/TypeButtons';
 // Assets
 import SearchSvg from '../../assets/svg/search.svg';
 import { Audio, Snow } from '../../assets/svg-comps/index';
-import { ColorButtons } from '../ColorButtons/ColorButtons';
-import { SizeButtons } from '../SizeButtons/SizeButtons';
-import { Checkbox } from '../CheckBox';
+import { itemCountMax, itemCountMin, itemYearMin, itemYearMax } from '../logic';
 
 const sortOptions: SelectOptionInterface[] = [
   { value: 'nameAscending', label: 'По названию от «А» до «Я»' },
@@ -33,8 +35,16 @@ export const Filters: FC<FilterPropsInterface> = ({
   activeSizeFilters,
   handleAddSizeFilter,
   handleDeleteSizeFilter,
-  isFavourite,
-  setIsFavourite,
+  onlyFavourite,
+  setOnlyFavourite,
+  saveFilters,
+  setDefaultFilters,
+  activeSort,
+  handleSortChange,
+  itemCountRange,
+  handleCountRangeChange,
+  itemYearRange,
+  handleYearRangeChange,
 }) => {
   return (
     <div className="filters">
@@ -52,6 +62,9 @@ export const Filters: FC<FilterPropsInterface> = ({
             name="search"
             id="search-input"
             placeholder="Поиск"
+            onChange={(e) => {
+              console.log(e.currentTarget.value);
+            }}
           />
           <label className="search-block__label" htmlFor="search-input">
             <img
@@ -64,7 +77,6 @@ export const Filters: FC<FilterPropsInterface> = ({
           </label>
         </div>
       </div>
-
       <div className="filters__item sort-wrap">
         <span className="filters__caption">Сортировать:</span>
         <CustomSelect
@@ -73,18 +85,32 @@ export const Filters: FC<FilterPropsInterface> = ({
           options={sortOptions}
           // defaultValue={sortOptions[0]}
           placeholder="По ..."
+          onChange={(e) => {
+            const option = e as SelectOptionInterface;
+            handleSortChange(option.value);
+          }}
         />
       </div>
       <div className="filters__item range-wrap">
         <p className="filters__item_type">Количество экземпляров</p>
         <div className="range-wrap__slider">
-          <RangeSlider max={100} />
+          <RangeSlider
+            max={itemCountMax}
+            min={itemCountMin}
+            defaultValue={itemCountRange}
+            onAfterChange={handleCountRangeChange}
+          />
         </div>
       </div>
       <div className="filters__item range-wrap">
         <p className="filters__item_type">Год преобретения</p>
         <div className="range-wrap__slider">
-          <RangeSlider max={100} />
+          <RangeSlider
+            max={itemYearMax}
+            min={itemYearMin}
+            defaultValue={itemYearRange}
+            onAfterChange={handleYearRangeChange}
+          />
         </div>
       </div>
       <div className="filters__item filter-btns">
@@ -99,7 +125,6 @@ export const Filters: FC<FilterPropsInterface> = ({
           }
         </div>
       </div>
-
       <div className="filters__item filter-btns">
         <p className="filters__item_type">Цвет</p>
 
@@ -127,16 +152,25 @@ export const Filters: FC<FilterPropsInterface> = ({
         </div>
       </div>
       <div className="filters__item filter-btns">
-        {/* <p className="filters__item_type">Только любимые </p> */}
-
         <Checkbox
           label="Tолько любимые"
-          checked={isFavourite}
-          value={isFavourite}
-          onChange={() => setIsFavourite(!isFavourite)}
+          checked={onlyFavourite}
+          value={onlyFavourite}
+          onChange={() => setOnlyFavourite(!onlyFavourite)}
         />
       </div>
-      {/* string */}
+      <div className="filters__item setup">
+        <Button
+          className="setup__btn blur-bg"
+          InnerElem={() => <>Сбросить фильты</>}
+          onClick={setDefaultFilters}
+        />
+        <Button
+          className="setup__btn blur-bg"
+          InnerElem={() => <>Сохранить фильты</>}
+          onClick={saveFilters}
+        />
+      </div>
     </div>
   );
 };
