@@ -4,4 +4,72 @@
   min-height: calc(100vh - 50px);
 
   display: flex;
+  column-gap: 40px;
+}
+
+.shop-items {
+  width: 100%;
+  &__title {
+    font-size: 42px;
+    line-height: 46px;
+    text-transform: uppercase;
+  }
+  &__wrapper {
+    margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+  }
+}
+
+.cards {
+  .card {
+    max-width: 300px;
+    min-width: 276px;
+    padding: 10px;
+    column-gap: 10px;
+    display: grid;
+    grid-template-areas:
+      'name name name name name'
+      'img img dsc dsc dsc'
+      'img img dsc dsc dsc'
+      'img img dsc dsc dsc'
+      'btn btn dsc dsc dsc'
+      'btn btn dsc dsc dsc';
+    background: radial-gradient(
+      109.56% 109.56% at 0% -2.94%,
+      rgba(255, 255, 255, 0.5) 0%,
+      rgba(179, 246, 255, 0.5) 100%
+    );
+    backdrop-filter: blur(4px);
+    /* Note: backdrop-filter has minimal browser support */
+
+    border-radius: 10px;
+    &__name {
+      width: 100%;
+      grid-area: name;
+      font-size: 20px;
+      line-height: 20px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    &__image {
+      max-width: 90px;
+      grid-area: img;
+    }
+    &__description {
+      grid-area: dsc;
+      font-family: 'Nunito', sans-serif;
+      display: flex;
+      flex-direction: column;
+      row-gap: 20px;
+    }
+    &__btn {
+      grid-area: btn;
+    }
+    &__caption b {
+      font-weight: 700;
+      color: #94ff51;
+    }
+  }
 }
