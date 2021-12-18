@@ -121,6 +121,7 @@ function App() {
         handleCountRangeChange={handleCountRangeChange}
         itemYearRange={itemYearRange}
         handleYearRangeChange={handleYearRangeChange}
+        toyData={data}
       />
     </>
   );
