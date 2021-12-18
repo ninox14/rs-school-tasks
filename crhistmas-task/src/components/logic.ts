@@ -2,7 +2,7 @@
 import data from '../data';
 
 const initialData = data as ToyItemInterface[];
-
+// const initialData = setInitialData(data);
 const LS_SUFFIX = 'Saved';
 
 const YEAR_RANGE_KEY: keyof ToyItemInterface = 'year';
@@ -62,8 +62,7 @@ export const getData = (
         return isInRange(conutRange, +item[key]);
       } else if (key === FAVOURITE_KEY) {
         return isFavourite ? item[key] : true;
-      } else
-        return valuesArr.includes(item[key] as ToySize | ToyColor | ToyForm);
+      } else return valuesArr.includes(item[key]);
     })
   );
 };
@@ -96,4 +95,19 @@ function getMaxByKey(key: keyof ToyItemInterface) {
     }
   }
   return max;
+}
+function setInitialData(data: ImpoertedDataInterface[]) {
+  const morped = data.map((toy, indx) => {
+    toy.id = indx;
+    return toy;
+  }) as ToyItemInterface[];
+  return morped;
+}
+
+export function importAll(r: __WebpackModuleApi.RequireContext) {
+  let images: ContextImageInterface = {};
+  r.keys().map((item, index) => {
+    images[item.replace('./', '')] = r(item);
+  });
+  return images;
 }
