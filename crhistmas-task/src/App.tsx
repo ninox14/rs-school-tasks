@@ -5,6 +5,7 @@ import {
   itemYearMax,
   itemCountMin,
   itemCountMax,
+  getFavouriteState,
 } from './components/logic';
 //components
 import { Shop } from './components/Shop/Shop';
@@ -24,6 +25,7 @@ function App() {
     itemYearMin,
     itemYearMax,
   ]);
+  const [favourites, setFavourites] = useState<number[]>([]);
 
   const handleAddFormFilter = (toyForm: ToyForm) => {
     setActiveFormFilters((state) => [...state, toyForm]);
@@ -56,8 +58,17 @@ function App() {
   const handleCountRangeChange = (range: number[]) => {
     setItemCountRange(range);
   };
+
   const handleYearRangeChange = (range: number[]) => {
     setItemYearRange(range);
+  };
+
+  const handleAddFavourite = (indx: number) => {
+    setFavourites((state) => [...state, indx]);
+  };
+
+  const handleRemoveFavourite = (indx: number) => {
+    setFavourites((state) => state.filter((i) => i !== indx));
   };
 
   const saveFilters = () => {
@@ -76,10 +87,10 @@ function App() {
       activeSizeFilters,
       itemCountRange,
       itemYearRange,
-      onlyFavourite
+      onlyFavourite,
+      favourites
     );
     setData(data);
-    console.log(data);
   }, [
     activeFormFilters,
     activeColorFilters,
@@ -87,10 +98,14 @@ function App() {
     itemCountRange,
     itemYearRange,
     onlyFavourite,
+    favourites,
   ]);
 
   useEffect(() => {
     // set filters from Local Storage
+    // set favourites from local storage
+    const favouriteState = getFavouriteState();
+    setFavourites(favouriteState);
   }, []);
 
   return (
@@ -122,6 +137,9 @@ function App() {
         itemYearRange={itemYearRange}
         handleYearRangeChange={handleYearRangeChange}
         toyData={data}
+        favourites={favourites}
+        handleAddFavourite={handleAddFavourite}
+        handleRemoveFavourite={handleRemoveFavourite}
       />
     </>
   );

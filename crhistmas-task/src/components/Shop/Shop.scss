@@ -66,6 +66,12 @@
     }
     &__btn {
       grid-area: btn;
+      background: none;
+      padding: 0;
+      border: none;
+      & svg {
+        fill: #d1aa3e;
+      }
     }
     &__caption b {
       font-weight: 700;

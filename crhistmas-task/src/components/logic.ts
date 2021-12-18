@@ -11,6 +11,8 @@ const FAVOURITE_KEY: keyof ToyItemInterface = 'favorite';
 const NUM_KEY: keyof ToyItemInterface = 'num';
 const NAME_KEY: keyof ToyItemInterface = 'name';
 
+const FAVOURITE_STORAGE_NAME = 'favourite' + LS_SUFFIX;
+
 export const possibleColors: ToyColor[] = [
   'белый',
   'желтый',
@@ -36,11 +38,15 @@ export const getData = (
   sizeFilters: ToySize[],
   conutRange: number[],
   yearRange: number[],
-  isFavourite: boolean
+  isFavourite: boolean,
+  favourites: number[]
 ) => {
   const valuesArr: (ToyForm | ToyColor | ToySize)[] = [];
+
   const isInRange = (range: number[], value: number) =>
-    value > range[0] && value < range[1];
+    value >= range[0] && value <= range[1];
+
+  // const data = prepareData(initialData, favourites);
 
   formFilters.length
     ? valuesArr.push(...formFilters)
@@ -52,7 +58,7 @@ export const getData = (
     ? valuesArr.push(...sizeFilters)
     : valuesArr.push(...possibleSizes);
 
-  return initialData.filter((item) =>
+  return initialData.filter((item, dIndex) =>
     (Object.keys(item) as Array<keyof ToyItemInterface>).every((key) => {
       if (key === NUM_KEY || key === NAME_KEY) {
         return true;
@@ -61,7 +67,7 @@ export const getData = (
       } else if (key === COUNT_RANGE_KEY) {
         return isInRange(conutRange, +item[key]);
       } else if (key === FAVOURITE_KEY) {
-        return isFavourite ? item[key] : true;
+        return isFavourite ? favourites.includes(dIndex) : true;
       } else return valuesArr.includes(item[key]);
     })
   );
@@ -96,18 +102,36 @@ function getMaxByKey(key: keyof ToyItemInterface) {
   }
   return max;
 }
-function setInitialData(data: ImpoertedDataInterface[]) {
+function prepareData(data: ToyItemInterface[], favourites: number[]) {
+  console.log('prepare', favourites, initialData[4]);
   const morped = data.map((toy, indx) => {
-    toy.id = indx;
+    favourites.includes(indx) ? (toy.favorite = true) : (toy.favorite = false);
     return toy;
-  }) as ToyItemInterface[];
+  });
   return morped;
 }
 
 export function importAll(r: __WebpackModuleApi.RequireContext) {
   let images: ContextImageInterface = {};
-  r.keys().map((item, index) => {
+  r.keys().map((item) => {
     images[item.replace('./', '')] = r(item);
   });
   return images;
+}
+
+export function getFavouriteState() {
+  // debugger;
+  const lsFavourite = localStorage.getItem(FAVOURITE_STORAGE_NAME);
+
+  if (!lsFavourite) {
+    const favouriteState: number[] = [];
+    initialData.map((toy, indx) => {
+      if (toy.favorite) {
+        favouriteState.push(indx);
+      }
+    });
+    return favouriteState;
+  } else {
+    return JSON.parse(lsFavourite) as number[];
+  }
 }
