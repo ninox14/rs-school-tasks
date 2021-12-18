@@ -6,6 +6,8 @@ import {
   itemCountMin,
   itemCountMax,
   getFavouriteState,
+  saveToLocalStorage,
+  getSavedFilters,
 } from './components/logic';
 //components
 import { Shop } from './components/Shop/Shop';
@@ -102,12 +104,33 @@ function App() {
   ]);
 
   useEffect(() => {
+    const statesObject = getSavedFilters();
+    console.log(statesObject);
+    setActiveFormFilters(statesObject.formFilters);
+    setActiveSizeFilters(statesObject.sizeFilters);
+    setActiveColorFilters(statesObject.colorFilters);
+    setActiveSort(statesObject.sort);
+    setItemYearRange(statesObject.yearRange);
+    setItemCountRange(statesObject.conutRange);
+    setOnlyFavourite(statesObject.isFavourite);
+
     // set filters from Local Storage
     // set favourites from local storage
     const favouriteState = getFavouriteState();
     setFavourites(favouriteState);
   }, []);
-
+  window.addEventListener('beforeunload', () =>
+    saveToLocalStorage({
+      favourite: favourites,
+      conutRange: itemCountRange,
+      yearRange: itemYearRange,
+      isFavourite: onlyFavourite,
+      sort: activeSort,
+      sizeFilters: activeSizeFilters,
+      colorFilters: activeColorFilters,
+      formFilters: activeFormFilters,
+    })
+  );
   return (
     <>
       {/* <div className="welcome text-center clear d-flex flex-column justify-center align-center">

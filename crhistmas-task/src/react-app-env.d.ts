@@ -1,5 +1,5 @@
 /// <reference types="react-scripts" />
-
+/// <reference types="webpack-env" />
 type ToyFormEng = 'SvgBall' | 'SvgBell' | 'SvgCone' | 'SvgToy' | 'SvgSnowflake';
 
 type ToyForm = 'шар' | 'колокольчик' | 'шишка' | 'фигурка' | 'снежинка';
@@ -29,6 +29,7 @@ interface ToyItemInterface {
   color: ToyColor;
   size: ToySize;
   favorite: boolean;
+  // id: number;
 }
 interface ButtonPropsInterface {
   className: string;
@@ -57,7 +58,12 @@ interface ColorButtonsProps {
   handleDeleteColorFilter: (color: ToyColor) => void;
 }
 
-interface ShopPropsInterface extends FilterPropsInterface {}
+interface ShopPropsInterface extends FilterPropsInterface {
+  toyData: ToyItemInterface[];
+  favourites: number[];
+  handleAddFavourite: (indx: number) => void;
+  handleRemoveFavourite: (indx: number) => void;
+}
 
 interface FilterPropsInterface {
   activeFormFilters: ToyForm[];
@@ -95,3 +101,36 @@ interface PossibleColorsInterface {
   синий: ToyColor;
   зелёный: ToyColor;
 }
+
+interface ContextImageInterface {
+  [key: string]: esModuleInterface;
+}
+
+interface esModuleInterface {
+  default: string;
+}
+
+interface ImpoertedDataInterface {
+  num: string;
+  name: string;
+  count: string;
+  year: string;
+  shape: string;
+  color: string;
+  size: string;
+  favorite: boolean;
+  id?: number;
+}
+
+interface LSDataInterface {
+  formFilters: ToyForm[];
+  colorFilters: ToyColor[];
+  sizeFilters: ToySize[];
+  conutRange: number[];
+  yearRange: number[];
+  isFavourite: boolean;
+  favourite: number[];
+  sort: SortValue;
+}
+
+type SaveToLSFunc = (states: LSDataInterface) => void;

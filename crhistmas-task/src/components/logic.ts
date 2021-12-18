@@ -12,6 +12,25 @@ const NUM_KEY: keyof ToyItemInterface = 'num';
 const NAME_KEY: keyof ToyItemInterface = 'name';
 
 const FAVOURITE_STORAGE_NAME = 'favourite' + LS_SUFFIX;
+const [
+  LS_FORM_KEY,
+  LS_COLOR_KEY,
+  LS_SIZE_KEY,
+  LS_COUNT_KEY,
+  LS_YEAR_KEY,
+  LS_IS_FAVOURITE_KEY,
+  LS_FAVOURITES_KEY,
+  LS_SORT_KEY,
+] = [
+  'formFilters' + LS_SUFFIX,
+  'colorFilters' + LS_SUFFIX,
+  'sizeFilters' + LS_SUFFIX,
+  'conutRange' + LS_SUFFIX,
+  'yearRange' + LS_SUFFIX,
+  'isFavourite' + LS_SUFFIX,
+  'favourite' + LS_SUFFIX,
+  'sort' + LS_SUFFIX,
+];
 
 export const possibleColors: ToyColor[] = [
   'белый',
@@ -31,6 +50,17 @@ export const possibleSizes: ToySize[] = ['большой', 'средний', 'м
 
 export const [itemCountMin, itemCountMax] = getItemsRanges('count');
 export const [itemYearMin, itemYearMax] = getItemsRanges('year');
+
+const DEFAULT_FILTERS: LSDataInterface = {
+  formFilters: [],
+  colorFilters: [],
+  sizeFilters: [],
+  conutRange: [itemCountMin, itemCountMax],
+  yearRange: [itemYearMin, itemYearMax],
+  isFavourite: false,
+  favourite: getFavouriteState(),
+  sort: '',
+};
 
 export const getData = (
   formFilters: ToyForm[],
@@ -72,7 +102,39 @@ export const getData = (
     })
   );
 };
+// {
+//   formFilters,
+//   colorFilters,
+//   sizeFilters,
+//   conut,
+//   year,
+//   isFavourite,
+//   favourites,
+//   sort,
+// }
 
+export const saveToLocalStorage: SaveToLSFunc = (statesObj) => {
+  (Object.keys(statesObj) as (keyof LSDataInterface)[]).map((key) => {
+    localStorage[key + LS_SUFFIX] = JSON.stringify(statesObj[key]);
+  });
+};
+export const getSavedFilters = (): LSDataInterface => {
+  const isAnySaved = localStorage.getItem(FAVOURITE_STORAGE_NAME);
+  if (!isAnySaved) {
+    return DEFAULT_FILTERS;
+  } else {
+    return {
+      formFilters: JSON.parse(localStorage[LS_FORM_KEY]),
+      colorFilters: JSON.parse(localStorage[LS_COLOR_KEY]),
+      sizeFilters: JSON.parse(localStorage[LS_SIZE_KEY]),
+      conutRange: JSON.parse(localStorage[LS_COUNT_KEY]),
+      yearRange: JSON.parse(localStorage[LS_YEAR_KEY]),
+      isFavourite: JSON.parse(localStorage[LS_IS_FAVOURITE_KEY]),
+      favourite: JSON.parse(localStorage[LS_FAVOURITES_KEY]),
+      sort: JSON.parse(localStorage[LS_SORT_KEY]),
+    };
+  }
+};
 export function getItemsRanges(key: keyof ToyItemInterface): number[] {
   const lsItem = localStorage.getItem(key + LS_SUFFIX);
   if (!lsItem) {
@@ -102,14 +164,14 @@ function getMaxByKey(key: keyof ToyItemInterface) {
   }
   return max;
 }
-function prepareData(data: ToyItemInterface[], favourites: number[]) {
-  console.log('prepare', favourites, initialData[4]);
-  const morped = data.map((toy, indx) => {
-    favourites.includes(indx) ? (toy.favorite = true) : (toy.favorite = false);
-    return toy;
-  });
-  return morped;
-}
+
+// function prepareData(data: ToyItemInterface[], favourites: number[]) {
+//   const morped = data.map((toy, indx) => {
+//     favourites.includes(indx) ? (toy.favorite = true) : (toy.favorite = false);
+//     return toy;
+//   });
+//   return morped;
+// }
 
 export function importAll(r: __WebpackModuleApi.RequireContext) {
   let images: ContextImageInterface = {};
