@@ -8,6 +8,7 @@ import {
   getFavouriteState,
   saveToLocalStorage,
   getSavedFilters,
+  sortData,
 } from './components/logic';
 //components
 import { Shop } from './components/Shop/Shop';
@@ -92,7 +93,13 @@ function App() {
       onlyFavourite,
       favourites
     );
-    setData(data);
+    if (activeSort.length) {
+      const sortedData = sortData(data, activeSort);
+      setData(sortedData);
+      // console.log(sortedData.map((i) => i.name));
+    } else {
+      setData(data);
+    }
   }, [
     activeFormFilters,
     activeColorFilters,
@@ -101,11 +108,11 @@ function App() {
     itemYearRange,
     onlyFavourite,
     favourites,
+    activeSort,
   ]);
 
   useEffect(() => {
     const statesObject = getSavedFilters();
-    console.log(statesObject);
     setActiveFormFilters(statesObject.formFilters);
     setActiveSizeFilters(statesObject.sizeFilters);
     setActiveColorFilters(statesObject.colorFilters);

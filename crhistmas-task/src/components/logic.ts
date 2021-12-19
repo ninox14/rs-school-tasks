@@ -102,16 +102,6 @@ export const getData = (
     })
   );
 };
-// {
-//   formFilters,
-//   colorFilters,
-//   sizeFilters,
-//   conut,
-//   year,
-//   isFavourite,
-//   favourites,
-//   sort,
-// }
 
 export const saveToLocalStorage: SaveToLSFunc = (statesObj) => {
   (Object.keys(statesObj) as (keyof LSDataInterface)[]).map((key) => {
@@ -165,14 +155,6 @@ function getMaxByKey(key: keyof ToyItemInterface) {
   return max;
 }
 
-// function prepareData(data: ToyItemInterface[], favourites: number[]) {
-//   const morped = data.map((toy, indx) => {
-//     favourites.includes(indx) ? (toy.favorite = true) : (toy.favorite = false);
-//     return toy;
-//   });
-//   return morped;
-// }
-
 export function importAll(r: __WebpackModuleApi.RequireContext) {
   let images: ContextImageInterface = {};
   r.keys().map((item) => {
@@ -197,3 +179,18 @@ export function getFavouriteState() {
     return JSON.parse(lsFavourite) as number[];
   }
 }
+
+export const sortData = (data: ToyItemInterface[], sort: SortValue) => {
+  switch (sort) {
+    case 'yearAscending':
+      return data.sort((a, b) => +a.year - +b.year);
+    case 'yearDescending':
+      return data.sort((a, b) => +b.year - +a.year);
+    case 'nameAscending':
+      return data.sort((a, b) => a.name.localeCompare(b.name));
+    case 'nameDescending':
+      return data.sort((a, b) => b.name.localeCompare(a.name));
+    default:
+      return data;
+  }
+};
