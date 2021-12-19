@@ -21,8 +21,8 @@ import { itemCountMax, itemCountMin, itemYearMin, itemYearMax } from '../logic';
 const sortOptions: SelectOptionInterface[] = [
   { value: 'nameAscending', label: 'По названию от «А» до «Я»' },
   { value: 'nameDescending', label: 'По названию от «Я» до «А»' },
-  { value: 'yearAscending', label: 'По году производства по возрастанию' },
-  { value: 'yearDescending', label: 'По году производства по убыванию' },
+  { value: 'yearAscending', label: 'По году покупки по возрастанию' },
+  { value: 'yearDescending', label: 'По году покупки по убыванию' },
 ];
 
 export const Filters: FC<FilterPropsInterface> = ({
@@ -46,6 +46,14 @@ export const Filters: FC<FilterPropsInterface> = ({
   itemYearRange,
   handleYearRangeChange,
 }) => {
+  const findDefaultSortValue = () => {
+    for (let i = 0; i < sortOptions.length; i++) {
+      if (sortOptions[i].value === activeSort) {
+        return sortOptions[i];
+      }
+    }
+  };
+  const defaultSort = findDefaultSortValue();
   return (
     <div className="filters">
       <div className="filters__item top-panel">
@@ -83,7 +91,7 @@ export const Filters: FC<FilterPropsInterface> = ({
           className="sort-wrap__sort"
           classNamePrefix="select"
           options={sortOptions}
-          // defaultValue={sortOptions[0]}
+          value={defaultSort}
           placeholder="По ..."
           onChange={(e) => {
             const option = e as SelectOptionInterface;
@@ -97,8 +105,10 @@ export const Filters: FC<FilterPropsInterface> = ({
           <RangeSlider
             max={itemCountMax}
             min={itemCountMin}
+            filterState={itemCountRange}
             defaultValue={itemCountRange}
-            onAfterChange={handleCountRangeChange}
+            value={itemCountRange}
+            onChange={handleCountRangeChange}
           />
         </div>
       </div>
@@ -108,8 +118,10 @@ export const Filters: FC<FilterPropsInterface> = ({
           <RangeSlider
             max={itemYearMax}
             min={itemYearMin}
+            filterState={itemYearRange}
             defaultValue={itemYearRange}
-            onAfterChange={handleYearRangeChange}
+            value={itemYearRange}
+            onChange={handleYearRangeChange}
           />
         </div>
       </div>
