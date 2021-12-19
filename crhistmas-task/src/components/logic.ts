@@ -194,3 +194,13 @@ export const sortData = (data: ToyItemInterface[], sort: SortValue) => {
       return data;
   }
 };
+
+export const searchData = (data: ToyItemInterface[], activeSearch: string) => {
+  if (activeSearch.length) {
+    return data.filter((i) =>
+      i.name.toLowerCase().includes(activeSearch.toLowerCase())
+    );
+  } else {
+    return data;
+  }
+};

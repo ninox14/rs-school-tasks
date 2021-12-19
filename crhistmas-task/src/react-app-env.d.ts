@@ -85,6 +85,7 @@ interface FilterPropsInterface {
   handleCountRangeChange: (range: number[]) => void;
   itemYearRange: number[];
   handleYearRangeChange: (range: number[]) => void;
+  handleSearchChange: (search: string) => void;
 }
 
 interface PossibleFormsInterface {

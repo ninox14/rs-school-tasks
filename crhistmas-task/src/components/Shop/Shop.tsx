@@ -34,6 +34,7 @@ export const Shop: FC<ShopPropsInterface> = ({
   handleAddFavourite,
   handleRemoveFavourite,
   favourites,
+  handleSearchChange,
 }) => (
   <main className="content">
     <Filters
@@ -56,6 +57,7 @@ export const Shop: FC<ShopPropsInterface> = ({
       handleCountRangeChange={handleCountRangeChange}
       itemYearRange={itemYearRange}
       handleYearRangeChange={handleYearRangeChange}
+      handleSearchChange={handleSearchChange}
     />
 
     <div className="shop-items">

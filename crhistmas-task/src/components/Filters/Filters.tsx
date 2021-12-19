@@ -45,6 +45,7 @@ export const Filters: FC<FilterPropsInterface> = ({
   handleCountRangeChange,
   itemYearRange,
   handleYearRangeChange,
+  handleSearchChange,
 }) => {
   const findDefaultSortValue = () => {
     for (let i = 0; i < sortOptions.length; i++) {
@@ -71,7 +72,7 @@ export const Filters: FC<FilterPropsInterface> = ({
             id="search-input"
             placeholder="Поиск"
             onChange={(e) => {
-              console.log(e.currentTarget.value);
+              handleSearchChange(e.currentTarget.value);
             }}
           />
           <label className="search-block__label" htmlFor="search-input">

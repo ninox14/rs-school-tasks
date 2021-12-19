@@ -9,6 +9,7 @@ import {
   saveToLocalStorage,
   getSavedFilters,
   sortData,
+  searchData,
 } from './components/logic';
 //components
 import { Shop } from './components/Shop/Shop';
@@ -29,6 +30,7 @@ function App() {
     itemYearMax,
   ]);
   const [favourites, setFavourites] = useState<number[]>([]);
+  const [activeSearch, setActiveSearch] = useState('');
 
   const handleAddFormFilter = (toyForm: ToyForm) => {
     setActiveFormFilters((state) => [...state, toyForm]);
@@ -74,6 +76,10 @@ function App() {
     setFavourites((state) => state.filter((i) => i !== indx));
   };
 
+  const handleSearchChange = (search: string) => {
+    setActiveSearch(search);
+  };
+
   const saveFilters = () => {
     console.log('saved');
   };
@@ -93,13 +99,10 @@ function App() {
       onlyFavourite,
       favourites
     );
-    if (activeSort.length) {
-      const sortedData = sortData(data, activeSort);
-      setData(sortedData);
-      // console.log(sortedData.map((i) => i.name));
-    } else {
-      setData(data);
-    }
+    const sortedData = sortData(data, activeSort);
+    const searchedData = searchData(sortedData, activeSearch);
+    setData(searchedData);
+    console.log(activeSearch);
   }, [
     activeFormFilters,
     activeColorFilters,
@@ -109,6 +112,7 @@ function App() {
     onlyFavourite,
     favourites,
     activeSort,
+    activeSearch,
   ]);
 
   useEffect(() => {
@@ -121,8 +125,6 @@ function App() {
     setItemCountRange(statesObject.conutRange);
     setOnlyFavourite(statesObject.isFavourite);
 
-    // set filters from Local Storage
-    // set favourites from local storage
     const favouriteState = getFavouriteState();
     setFavourites(favouriteState);
   }, []);
@@ -170,6 +172,7 @@ function App() {
         favourites={favourites}
         handleAddFavourite={handleAddFavourite}
         handleRemoveFavourite={handleRemoveFavourite}
+        handleSearchChange={handleSearchChange}
       />
     </>
   );
