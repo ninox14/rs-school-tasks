@@ -78,7 +78,6 @@ interface FilterPropsInterface {
   onlyFavourite: boolean;
   setOnlyFavourite: React.Dispatch<React.SetStateAction<boolean>>;
   setDefaultFilters: () => void;
-  saveFilters: () => void;
   activeSort: SortValue;
   handleSortChange: (sort: SortValue) => void;
   itemCountRange: number[];

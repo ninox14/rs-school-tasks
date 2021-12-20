@@ -22,7 +22,6 @@ export const Shop: FC<ShopPropsInterface> = ({
   handleDeleteSizeFilter,
   onlyFavourite,
   setOnlyFavourite,
-  saveFilters,
   setDefaultFilters,
   activeSort,
   handleSortChange,
@@ -49,7 +48,6 @@ export const Shop: FC<ShopPropsInterface> = ({
       handleDeleteSizeFilter={handleDeleteSizeFilter}
       onlyFavourite={onlyFavourite}
       setOnlyFavourite={setOnlyFavourite}
-      saveFilters={saveFilters}
       setDefaultFilters={setDefaultFilters}
       activeSort={activeSort}
       handleSortChange={handleSortChange}

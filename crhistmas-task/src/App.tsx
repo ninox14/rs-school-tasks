@@ -10,6 +10,7 @@ import {
   getSavedFilters,
   sortData,
   searchData,
+  DEFAULT_FILTERS,
 } from './components/logic';
 //components
 import { Shop } from './components/Shop/Shop';
@@ -80,12 +81,18 @@ function App() {
     setActiveSearch(search);
   };
 
-  const saveFilters = () => {
-    console.log('saved');
+  const setAllFilterStates = (statesObject: LSDataInterface) => {
+    setActiveFormFilters(statesObject.formFilters);
+    setActiveSizeFilters(statesObject.sizeFilters);
+    setActiveColorFilters(statesObject.colorFilters);
+    setActiveSort(statesObject.sort);
+    setItemYearRange(statesObject.yearRange);
+    setItemCountRange(statesObject.conutRange);
+    setOnlyFavourite(statesObject.isFavourite);
   };
 
   const setDefaultFilters = () => {
-    console.log('reset filters');
+    setAllFilterStates(DEFAULT_FILTERS);
   };
 
   useEffect(() => {
@@ -102,7 +109,6 @@ function App() {
     const sortedData = sortData(data, activeSort);
     const searchedData = searchData(sortedData, activeSearch);
     setData(searchedData);
-    console.log(activeSearch);
   }, [
     activeFormFilters,
     activeColorFilters,
@@ -117,14 +123,7 @@ function App() {
 
   useEffect(() => {
     const statesObject = getSavedFilters();
-    setActiveFormFilters(statesObject.formFilters);
-    setActiveSizeFilters(statesObject.sizeFilters);
-    setActiveColorFilters(statesObject.colorFilters);
-    setActiveSort(statesObject.sort);
-    setItemYearRange(statesObject.yearRange);
-    setItemCountRange(statesObject.conutRange);
-    setOnlyFavourite(statesObject.isFavourite);
-
+    setAllFilterStates(statesObject);
     const favouriteState = getFavouriteState();
     setFavourites(favouriteState);
   }, []);
@@ -160,7 +159,6 @@ function App() {
         handleDeleteSizeFilter={handleDeleteSizeFilter}
         onlyFavourite={onlyFavourite}
         setOnlyFavourite={setOnlyFavourite}
-        saveFilters={saveFilters}
         setDefaultFilters={setDefaultFilters}
         activeSort={activeSort}
         handleSortChange={handleSortChange}

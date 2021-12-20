@@ -37,7 +37,6 @@ export const Filters: FC<FilterPropsInterface> = ({
   handleDeleteSizeFilter,
   onlyFavourite,
   setOnlyFavourite,
-  saveFilters,
   setDefaultFilters,
   activeSort,
   handleSortChange,
@@ -177,11 +176,6 @@ export const Filters: FC<FilterPropsInterface> = ({
           className="setup__btn blur-bg"
           InnerElem={() => <>Сбросить фильты</>}
           onClick={setDefaultFilters}
-        />
-        <Button
-          className="setup__btn blur-bg"
-          InnerElem={() => <>Сохранить фильты</>}
-          onClick={saveFilters}
         />
       </div>
     </div>

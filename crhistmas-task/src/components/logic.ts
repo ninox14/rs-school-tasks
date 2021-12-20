@@ -51,7 +51,7 @@ export const possibleSizes: ToySize[] = ['большой', 'средний', 'м
 export const [itemCountMin, itemCountMax] = getItemsRanges('count');
 export const [itemYearMin, itemYearMax] = getItemsRanges('year');
 
-const DEFAULT_FILTERS: LSDataInterface = {
+export const DEFAULT_FILTERS: LSDataInterface = {
   formFilters: [],
   colorFilters: [],
   sizeFilters: [],
