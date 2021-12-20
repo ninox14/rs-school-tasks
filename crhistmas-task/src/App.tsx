@@ -72,7 +72,7 @@ function App() {
   };
 
   const handleAddFavourite = (indx: number) => {
-    favourites.length < 21
+    favourites.length < 20
       ? setFavourites((state) => [...state, indx])
       : setShowFullNotif(true);
   };
@@ -85,18 +85,24 @@ function App() {
     setActiveSearch(search);
   };
 
-  const setAllFilterStates = (statesObject: LSDataInterface) => {
+  const setAllFilterStates = (
+    statesObject: LSDataInterface,
+    isReset = false
+  ) => {
     setActiveFormFilters(statesObject.formFilters);
     setActiveSizeFilters(statesObject.sizeFilters);
     setActiveColorFilters(statesObject.colorFilters);
-    setActiveSort(statesObject.sort);
+    if (!isReset) {
+      setActiveSort(statesObject.sort);
+    }
     setItemYearRange(statesObject.yearRange);
     setItemCountRange(statesObject.conutRange);
     setOnlyFavourite(statesObject.isFavourite);
   };
 
   const setDefaultFilters = () => {
-    setAllFilterStates(DEFAULT_FILTERS);
+    setAllFilterStates(DEFAULT_FILTERS, true);
+    saveToLocalStorage(DEFAULT_FILTERS);
   };
 
   useEffect(() => {
