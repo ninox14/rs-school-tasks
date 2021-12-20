@@ -88,8 +88,7 @@ button {
 .full-notif {
   position: fixed;
   left: 50%;
-  right: 50%;
-  bottom: 10%;
+  bottom: 30%;
   background-color: #694233;
   padding: 10px;
   z-index: 100000;
@@ -97,6 +96,8 @@ button {
   width: 200px;
   border-radius: 30px;
   font-size: 25px;
+  border: #030303 solid 2px;
+  transform: translateX(-50%);
 }
 .notification {
   position: fixed;
@@ -109,10 +110,11 @@ button {
   color: #030303;
   z-index: 1000;
   left: 50%;
-  right: 50%;
   top: 10%;
   opacity: 0;
   pointer-events: none;
+  border: #030303 solid 2px;
+  transform: translateX(-50%);
   transition: opacity 0.3s linear;
   &.active {
     opacity: 1;
