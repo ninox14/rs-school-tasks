@@ -34,6 +34,7 @@ export const Shop: FC<ShopPropsInterface> = ({
   handleRemoveFavourite,
   favourites,
   handleSearchChange,
+  showFullNotif,
 }) => (
   <main className="content">
     <Filters
@@ -58,6 +59,9 @@ export const Shop: FC<ShopPropsInterface> = ({
       handleSearchChange={handleSearchChange}
       toyData={toyData}
     />
+    {showFullNotif && (
+      <div className="full-notif">Больше игрушек выбрать нельзя :(</div>
+    )}
     <div className="shop-items">
       <h2 className="shop-items__title">Игрушки</h2>
       <div className="shop-items__wrapper cards">

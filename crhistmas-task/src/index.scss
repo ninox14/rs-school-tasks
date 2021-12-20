@@ -85,7 +85,19 @@ button {
     border: 2px solid #2299eb;
   }
 }
-
+.full-notif {
+  position: fixed;
+  left: 50%;
+  right: 50%;
+  bottom: 10%;
+  background-color: #694233;
+  padding: 10px;
+  z-index: 100000;
+  text-align: center;
+  width: 200px;
+  border-radius: 30px;
+  font-size: 25px;
+}
 .notification {
   position: fixed;
   font-size: 20px;
@@ -140,7 +152,7 @@ button {
   stroke: #529ce0;
 }
 
-.st0 {
+.footer .st0 {
   fill: transparent;
 }
 .st1 {

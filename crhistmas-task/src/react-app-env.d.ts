@@ -62,6 +62,7 @@ interface ShopPropsInterface extends FilterPropsInterface {
   favourites: number[];
   handleAddFavourite: (indx: number) => void;
   handleRemoveFavourite: (indx: number) => void;
+  showFullNotif: boolean;
 }
 
 interface FilterPropsInterface {

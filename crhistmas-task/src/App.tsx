@@ -33,6 +33,7 @@ function App() {
   ]);
   const [favourites, setFavourites] = useState<number[]>([]);
   const [activeSearch, setActiveSearch] = useState('');
+  const [showFullNotif, setShowFullNotif] = useState(false);
 
   const handleAddFormFilter = (toyForm: ToyForm) => {
     setActiveFormFilters((state) => [...state, toyForm]);
@@ -71,7 +72,9 @@ function App() {
   };
 
   const handleAddFavourite = (indx: number) => {
-    setFavourites((state) => [...state, indx]);
+    favourites.length < 21
+      ? setFavourites((state) => [...state, indx])
+      : setShowFullNotif(true);
   };
 
   const handleRemoveFavourite = (indx: number) => {
@@ -123,6 +126,14 @@ function App() {
   ]);
 
   useEffect(() => {
+    if (showFullNotif) {
+      setTimeout(() => {
+        setShowFullNotif(false);
+      }, 1500);
+    }
+  }, [showFullNotif]);
+
+  useEffect(() => {
     const statesObject = getSavedFilters();
     setAllFilterStates(statesObject);
     const favouriteState = getFavouriteState();
@@ -148,6 +159,7 @@ function App() {
         </h1>
         <button className="welcome__button blur-bg">Начать</button>
       </div> */}
+
       <Shop
         activeFormFilters={activeFormFilters}
         handleAddFormFilter={handleAddFormFilter}
@@ -172,6 +184,7 @@ function App() {
         handleAddFavourite={handleAddFavourite}
         handleRemoveFavourite={handleRemoveFavourite}
         handleSearchChange={handleSearchChange}
+        showFullNotif={showFullNotif}
       />
       <footer className="footer">
         <div className="footer__item">
