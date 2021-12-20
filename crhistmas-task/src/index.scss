@@ -85,3 +85,80 @@ button {
     border: 2px solid #2299eb;
   }
 }
+
+.notification {
+  position: fixed;
+  font-size: 20px;
+  width: 200px;
+  text-align: center;
+  padding: 10px 10px;
+  border-radius: 30px;
+  background-color: #be9e58;
+  color: #030303;
+  z-index: 1000;
+  left: 50%;
+  right: 50%;
+  top: 10%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s linear;
+  &.active {
+    opacity: 1;
+  }
+}
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 40px;
+  align-items: center;
+  background-color: #141c1c;
+}
+
+.footer__svg {
+  width: 40px;
+  height: 40px;
+}
+.footer__svg-rs {
+  margin-top: 5px;
+  width: 80px;
+  height: auto;
+}
+.footer__svg svg {
+  fill: #d8d8d8;
+
+  transition: fill 0.2s linear;
+}
+.footer__svg-rs svg {
+  stroke: #d8d8d8;
+  transition: stroke 0.2s linear;
+}
+
+.footer__link:hover svg {
+  fill: #529ce0;
+}
+.footer__svg-rs:hover svg {
+  stroke: #529ce0;
+}
+
+.st0 {
+  fill: transparent;
+}
+.st1 {
+  clip-path: url(#SVGID_2_);
+}
+.st2 {
+  clip-path: url(#SVGID_4_);
+}
+.st3 {
+  clip-path: url(#SVGID_6_);
+}
+.st4 {
+  clip-path: url(#SVGID_8_);
+}
+
+.st7 {
+  fill: none;
+  stroke: inherit;
+  stroke-width: 4;
+  stroke-miterlimit: 10;
+}
