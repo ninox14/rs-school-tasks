@@ -56,8 +56,8 @@ export const Shop: FC<ShopPropsInterface> = ({
       itemYearRange={itemYearRange}
       handleYearRangeChange={handleYearRangeChange}
       handleSearchChange={handleSearchChange}
+      toyData={toyData}
     />
-
     <div className="shop-items">
       <h2 className="shop-items__title">Игрушки</h2>
       <div className="shop-items__wrapper cards">

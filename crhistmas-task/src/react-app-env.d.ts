@@ -59,7 +59,6 @@ interface ColorButtonsProps {
 }
 
 interface ShopPropsInterface extends FilterPropsInterface {
-  toyData: ToyItemInterface[];
   favourites: number[];
   handleAddFavourite: (indx: number) => void;
   handleRemoveFavourite: (indx: number) => void;
@@ -85,6 +84,7 @@ interface FilterPropsInterface {
   itemYearRange: number[];
   handleYearRangeChange: (range: number[]) => void;
   handleSearchChange: (search: string) => void;
+  toyData: ToyItemInterface[];
 }
 
 interface PossibleFormsInterface {
