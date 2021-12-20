@@ -69,13 +69,50 @@
       background: none;
       padding: 0;
       border: none;
+      width: calc(100% - 30px);
+      justify-self: center;
+
+      &:hover svg {
+        opacity: 0.8;
+        // fill: #123;
+        transform: rotate(180deg);
+      }
       & svg {
         fill: #d1aa3e;
+        transition: opacity 0.3s linear, transform 0.3s linear;
       }
     }
     &__caption b {
       font-weight: 700;
       color: #94ff51;
     }
+  }
+}
+@media (max-width: 1024px) {
+  .content {
+    padding: 30px;
+  }
+  // .filters {
+  //   width: 34% !important;
+  // }
+}
+
+@media (max-width: 570px) {
+  .content {
+    // width: 100% !important;
+    padding: 60px 60px 0 60px;
+    flex-wrap: wrap;
+    row-gap: 30px;
+  }
+  .filters .setup {
+    justify-content: center;
+  }
+  .shop-items__title {
+    text-align: center;
+  }
+  .shop-items__wrapper {
+    justify-content: center;
+    // align-content: center;
+    // align-items: center;
   }
 }

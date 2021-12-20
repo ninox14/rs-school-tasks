@@ -2,14 +2,18 @@
   background-color: transparent;
   border: none;
   padding: 0;
+  &:hover svg {
+    opacity: 0.7;
+  }
   svg {
     width: 42px;
     height: 42px;
+    transition: opacity 0.2s linear;
   }
   &.active {
     svg {
       path {
-        fill: #000 !important;
+        fill: #8bca8b !important;
       }
     }
   }

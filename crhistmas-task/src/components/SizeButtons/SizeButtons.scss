@@ -1,6 +1,10 @@
 .size-button {
   background: none;
   border: none;
+  transition: opacity 0.3s linear;
+  &:hover {
+    opacity: 0.7;
+  }
   &__caption {
     color: #fff;
     text-transform: capitalize;
@@ -14,7 +18,7 @@
   &.active {
     svg {
       path {
-        fill: #000;
+        fill: #8bca8b !important;
       }
     }
   }
