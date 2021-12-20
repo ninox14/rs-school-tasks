@@ -80,6 +80,8 @@ export const Filters: FC<FilterPropsInterface> = ({
               onChange={(e) => {
                 handleSearchChange(e.currentTarget.value);
               }}
+              autoFocus={true}
+              autoComplete="off"
             />
             <label className="search-block__label" htmlFor="search-input">
               <img
