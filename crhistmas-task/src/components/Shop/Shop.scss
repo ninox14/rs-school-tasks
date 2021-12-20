@@ -8,6 +8,9 @@
 }
 
 .shop-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   width: 100%;
   &__title {
     font-size: 42px;
@@ -19,6 +22,27 @@
     display: flex;
     flex-wrap: wrap;
     gap: 25px;
+  }
+  .fav-count {
+    width: 48px;
+    height: 60px;
+    background-image: url('../../assets/svg/ball-2.svg');
+    background-size: 48px 60px;
+    background-position: left -8px;
+    background-repeat: no-repeat;
+    transition: 0.3s;
+    & span {
+      display: inline-block;
+      min-width: 40px;
+      height: 40px;
+      margin-top: 10px;
+      margin-left: 4px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 40px;
+      font-size: 20px;
+      background-color: #278d9f;
+    }
   }
 }
 
@@ -74,8 +98,7 @@
 
       &:hover svg {
         opacity: 0.8;
-        // fill: #123;
-        transform: rotate(180deg);
+        transform: rotate(144deg);
       }
       & svg {
         fill: #d1aa3e;
@@ -91,15 +114,12 @@
 @media (max-width: 1024px) {
   .content {
     padding: 30px;
+    column-gap: 60px;
   }
-  // .filters {
-  //   width: 34% !important;
-  // }
 }
 
 @media (max-width: 570px) {
   .content {
-    // width: 100% !important;
     padding: 60px 60px 10px 60px;
     flex-wrap: wrap;
     row-gap: 30px;
@@ -112,7 +132,5 @@
   }
   .shop-items__wrapper {
     justify-content: center;
-    // align-content: center;
-    // align-items: center;
   }
 }

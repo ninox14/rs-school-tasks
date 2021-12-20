@@ -64,6 +64,9 @@ export const Shop: FC<ShopPropsInterface> = ({
     )}
     <div className="shop-items">
       <h2 className="shop-items__title">Игрушки</h2>
+      <div className="shop-items__fav-count fav-count">
+        <span>{favourites.length}</span>
+      </div>
       <div className="shop-items__wrapper cards">
         {toyData.map(
           ({ year, color, count, size, favorite, num, name, shape }) => {
@@ -96,7 +99,7 @@ export const Shop: FC<ShopPropsInterface> = ({
                     Размер: <b>{size}</b>
                   </p>
                   <p className="card__caption">
-                    Любимая: <b>{favorite ? 'да' : 'нет'}</b>
+                    Любимая: <b>{isFavourite ? 'да' : 'нет'}</b>
                   </p>
                 </div>
                 <button className="card__btn" onClick={onClick}>
