@@ -63,9 +63,11 @@ export const Shop: FC<ShopPropsInterface> = ({
       <div className="full-notif">Больше игрушек выбрать нельзя :(</div>
     )}
     <div className="shop-items">
-      <h2 className="shop-items__title">Игрушки</h2>
-      <div className="shop-items__fav-count fav-count">
-        <span>{favourites.length}</span>
+      <div className="shop-items__top-wrap">
+        <h2 className="shop-items__title">Игрушки</h2>
+        <div className="shop-items__fav-count fav-count">
+          <span>{favourites.length}</span>
+        </div>
       </div>
       <div className="shop-items__wrapper cards">
         {toyData.map(
