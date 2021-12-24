@@ -88,6 +88,19 @@ interface FilterPropsInterface {
   toyData: ToyItemInterface[];
 }
 
+interface HeaderPropsInterface {
+  setIsOnTree: React.Dispatch<React.SetStateAction<boolean>>;
+  setIsOnStart: React.Dispatch<React.SetStateAction<boolean>>;
+  isOnTree: boolean;
+  isOnStart: boolean;
+  favourites: number[];
+}
+
+interface TreePagePropsInterface {
+  handleTreeBgChange: (num: number) => void;
+  treeBgIndx: number;
+}
+
 interface PossibleFormsInterface {
   SvgBall: ToyForm;
   SvgBell: ToyForm;
