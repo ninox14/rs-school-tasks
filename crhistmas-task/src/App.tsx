@@ -16,6 +16,8 @@ import {
 } from './components/logic';
 //components
 import { Shop } from './components/Shop/Shop';
+import { Header } from './components/Header/Header';
+import { Tree } from './components/Tree/Tree';
 
 function App() {
   const [data, setData] = useState<ToyItemInterface[]>([]);
@@ -36,6 +38,7 @@ function App() {
   const [activeSearch, setActiveSearch] = useState('');
   const [showFullNotif, setShowFullNotif] = useState(false);
   const [isOnStart, setIsOnStart] = useState(true);
+  const [isOnTree, setIsOnTree] = useState(false);
 
   const handleAddFormFilter = (toyForm: ToyForm) => {
     setActiveFormFilters((state) => [...state, toyForm]);
@@ -161,6 +164,12 @@ function App() {
   );
   return (
     <>
+      <Header
+        setIsOnTree={setIsOnTree}
+        isOnStart={isOnStart}
+        isOnTree={isOnTree}
+        favourites={favourites}
+      />
       {isOnStart ? (
         <div className="welcome text-center clear d-flex flex-column justify-center align-center">
           <h1 className="welcome__title blur-bg text-uppercase ">
@@ -177,7 +186,7 @@ function App() {
         </div>
       ) : null}
 
-      {!isOnStart ? (
+      {!isOnStart && !isOnTree ? (
         <Shop
           activeFormFilters={activeFormFilters}
           handleAddFormFilter={handleAddFormFilter}
@@ -205,6 +214,7 @@ function App() {
           showFullNotif={showFullNotif}
         />
       ) : null}
+      {isOnTree ? <Tree /> : null}
     </>
   );
 }
