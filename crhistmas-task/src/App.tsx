@@ -39,6 +39,7 @@ function App() {
   const [showFullNotif, setShowFullNotif] = useState(false);
   const [isOnStart, setIsOnStart] = useState(true);
   const [isOnTree, setIsOnTree] = useState(false);
+  const [treeBgIndx, setTreeBgIndx] = useState(0);
 
   const handleAddFormFilter = (toyForm: ToyForm) => {
     setActiveFormFilters((state) => [...state, toyForm]);
@@ -110,6 +111,10 @@ function App() {
     saveToLocalStorage(DEFAULT_FILTERS);
   };
 
+  const handleTreeBgChange = (idx: number) => {
+    setTreeBgIndx(idx);
+  };
+
   useEffect(() => {
     // Создать GetData,
     const data = getData(
@@ -166,11 +171,12 @@ function App() {
     <>
       <Header
         setIsOnTree={setIsOnTree}
+        setIsOnStart={setIsOnStart}
         isOnStart={isOnStart}
         isOnTree={isOnTree}
         favourites={favourites}
       />
-      {isOnStart ? (
+      {isOnStart && !isOnTree ? (
         <div className="welcome text-center clear d-flex flex-column justify-center align-center">
           <h1 className="welcome__title blur-bg text-uppercase ">
             Помогите бабушке нарядить елку
@@ -214,7 +220,9 @@ function App() {
           showFullNotif={showFullNotif}
         />
       ) : null}
-      {isOnTree ? <Tree /> : null}
+      {isOnTree ? (
+        <Tree treeBgIndx={treeBgIndx} handleTreeBgChange={handleTreeBgChange} />
+      ) : null}
     </>
   );
 }
