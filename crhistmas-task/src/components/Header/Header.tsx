@@ -6,12 +6,16 @@ export const Header: FC<HeaderPropsInterface> = ({
   isOnStart,
   isOnTree,
   favourites,
+  setIsOnStart,
 }) => (
   <header className="header">
     <nav className="nav">
       <button
         className={`nav__btn ${!isOnStart && !isOnTree ? 'active' : null}`}
-        onClick={() => setIsOnTree(false)}
+        onClick={() => {
+          setIsOnTree(false);
+          setIsOnStart(false);
+        }}
       >
         Игрушки
       </button>
