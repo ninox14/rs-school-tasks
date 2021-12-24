@@ -99,6 +99,8 @@ interface HeaderPropsInterface {
 interface TreePagePropsInterface {
   handleTreeBgChange: (num: number) => void;
   treeBgIndx: number;
+  handleTreePngChange: (num: number) => void;
+  treePngIndx: number;
 }
 
 interface PossibleFormsInterface {

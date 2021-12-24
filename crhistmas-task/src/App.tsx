@@ -40,6 +40,7 @@ function App() {
   const [isOnStart, setIsOnStart] = useState(true);
   const [isOnTree, setIsOnTree] = useState(false);
   const [treeBgIndx, setTreeBgIndx] = useState(0);
+  const [treePngIndx, setTreePngIndx] = useState(0);
 
   const handleAddFormFilter = (toyForm: ToyForm) => {
     setActiveFormFilters((state) => [...state, toyForm]);
@@ -115,6 +116,9 @@ function App() {
     setTreeBgIndx(idx);
   };
 
+  const handleTreePngChange = (idx: number) => {
+    setTreePngIndx(idx);
+  };
   useEffect(() => {
     // Создать GetData,
     const data = getData(
@@ -221,7 +225,12 @@ function App() {
         />
       ) : null}
       {isOnTree ? (
-        <Tree treeBgIndx={treeBgIndx} handleTreeBgChange={handleTreeBgChange} />
+        <Tree
+          treeBgIndx={treeBgIndx}
+          handleTreeBgChange={handleTreeBgChange}
+          treePngIndx={treePngIndx}
+          handleTreePngChange={handleTreePngChange}
+        />
       ) : null}
     </>
   );

@@ -1,19 +1,19 @@
 import { FC } from 'react';
 import './Tree.scss';
 
-import TreePng from '../../assets/tree/1.png';
 import { Audio, Snow } from '../../assets/svg-comps/index';
 
 import { Footer } from '../Footer';
-import { treeBgsArr } from '../tree-logic';
-
-console.log(treeBgsArr);
-
+import { treeBgsArr, treePngArr } from '../tree-logic';
+import Snowfall from 'react-snowfall';
 export const Tree: FC<TreePagePropsInterface> = ({
   treeBgIndx,
   handleTreeBgChange,
+  treePngIndx,
+  handleTreePngChange,
 }) => {
   const currBgLink = treeBgsArr[treeBgIndx].link;
+  const currPngLink = treePngArr[treePngIndx].link;
   return (
     <>
       <div className="tree-page">
@@ -30,16 +30,32 @@ export const Tree: FC<TreePagePropsInterface> = ({
           <div className="left__bg bgs">
             {treeBgsArr.map((i) => (
               <button
-                className="left__bg_link"
+                className={`left__bg_link ${
+                  treeBgIndx === i.id ? 'active' : ''
+                }`}
                 style={{
                   backgroundImage: `url(${i.link})`,
                 }}
-                value={i.id}
                 key={i.id}
-                onClick={(e) => {
-                  handleTreeBgChange(+e.currentTarget.value);
+                onClick={() => {
+                  handleTreeBgChange(i.id);
                 }}
               />
+            ))}
+          </div>
+          <div className="tree-page__caption">Выбор ёлки</div>
+          <div className="left__bg pngs">
+            {treePngArr.map((i) => (
+              <button
+                className={`left__bg_link pngs__link ${
+                  i.id === treePngIndx ? 'active' : ''
+                }`}
+                style={{
+                  backgroundImage: `url(${i.link})`,
+                }}
+                key={i.id}
+                onClick={() => handleTreePngChange(i.id)}
+              ></button>
             ))}
           </div>
         </div>
@@ -49,8 +65,11 @@ export const Tree: FC<TreePagePropsInterface> = ({
             backgroundImage: `url(${currBgLink})`,
           }}
         >
+          <div className="snow">
+            <Snowfall />
+          </div>
           <div className="tree__cover">
-            <img className="tree__img" src={TreePng} alt="132123" />
+            <img className="tree__img" src={currPngLink} alt="Tree Png" />
           </div>
         </div>
         <div className="tree-page__side right">123</div>
