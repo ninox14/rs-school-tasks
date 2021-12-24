@@ -26,23 +26,6 @@
     flex-wrap: wrap;
     justify-content: start !important;
     row-gap: 10px;
-    &__btn {
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      padding: 0;
-      width: 36px;
-      height: 36px;
-      &:hover {
-        svg {
-          opacity: 0.7;
-        }
-      }
-    }
-    &__sound,
-    &__snow {
-      transition: opacity 0.3s linear;
-    }
     .search-block {
       padding: 6px 10px 6px 14px;
       display: flex;

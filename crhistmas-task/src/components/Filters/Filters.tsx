@@ -15,7 +15,7 @@ import { Button } from '../Button/Button';
 
 // Assets
 import SearchSvg from '../../assets/svg/search.svg';
-import { Audio, Snow } from '../../assets/svg-comps/index';
+
 import { itemCountMax, itemCountMin, itemYearMin, itemYearMax } from '../logic';
 
 const sortOptions: SelectOptionInterface[] = [
@@ -64,12 +64,6 @@ export const Filters: FC<FilterPropsInterface> = ({
       </div>
       <div className={`filters`}>
         <div className="filters__item top-panel">
-          <button className="top-panel__btn">
-            <Audio className="top-panel__sound" width={36} height={36} />
-          </button>
-          <button className="top-panel__btn">
-            <Snow className="top-panel__snow" width={36} height={36} />
-          </button>
           <div className="top-panel__search search-block blur-bg">
             <input
               className="search-block__search-input"
