@@ -2,10 +2,6 @@
   height: calc(100vh - 144px);
   display: flex;
 
-  &__sound,
-  &__snow {
-    transition: opacity 0.3s linear;
-  }
   &__side {
     height: 100%;
     width: calc(100% / 2);
@@ -35,6 +31,11 @@
       &:hover {
         svg {
           opacity: 0.7;
+        }
+      }
+      &.active {
+        svg path {
+          fill: #000;
         }
       }
     }
@@ -67,6 +68,26 @@
       }
     }
   }
+  .right {
+    padding: 20px 40px 20px 20px;
+  }
+  .toys {
+    display: flex;
+
+    gap: 10px;
+    flex-wrap: wrap;
+    &__item {
+      position: relative;
+      width: 60px;
+      height: 60px;
+    }
+    &__png {
+      position: absolute;
+      display: block;
+      width: 60px;
+      height: 60px;
+    }
+  }
   &__tree {
     background-size: cover;
     background-position: center;
@@ -80,14 +101,39 @@
       left: 0;
       width: 100%;
       height: 100%;
+      z-index: -1000;
     }
-
+    &__lights {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      height: 100%;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 500;
+    }
     &__cover {
-      margin-top: 30px;
+      // margin-bottom: 30px;
+      width: 100%;
+      // margin: 0 auto;
       text-align: center;
+      position: absolute;
+      left: 0;
+      bottom: 30px;
     }
     &__img {
-      width: calc(100% - 55px);
+      width: calc(100% - 10vw - 30px);
+      // height: 100%;
+      display: block;
+      // margin: 100px auto;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    &__map {
+      cursor: pointer;
     }
   }
 }

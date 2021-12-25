@@ -7,7 +7,7 @@ import { Footer } from '../Footer';
 import { ReactComponent as HollowStar } from '../../assets/svg/star_hollow.svg';
 import { ReactComponent as FillStar } from '../../assets/svg/star_fill.svg';
 
-const images = importAll(
+export const images = importAll(
   require.context('../../assets/toys', false, /\.(png|jpe?g|svg)$/)
 );
 

@@ -1,7 +1,7 @@
 // import React from 'react';
 import data from '../data';
 
-const initialData = data as ToyItemInterface[];
+export const initialData = data as ToyItemInterface[];
 // const initialData = setInitialData(data);
 const LS_SUFFIX = 'Saved';
 

@@ -18,6 +18,8 @@ import {
 import { Shop } from './components/Shop/Shop';
 import { Header } from './components/Header/Header';
 import { Tree } from './components/Tree/Tree';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 
 function App() {
   const [data, setData] = useState<ToyItemInterface[]>([]);
@@ -41,6 +43,7 @@ function App() {
   const [isOnTree, setIsOnTree] = useState(false);
   const [treeBgIndx, setTreeBgIndx] = useState(0);
   const [treePngIndx, setTreePngIndx] = useState(0);
+  const [isSnow, setIsSnow] = useState(false);
 
   const handleAddFormFilter = (toyForm: ToyForm) => {
     setActiveFormFilters((state) => [...state, toyForm]);
@@ -118,6 +121,10 @@ function App() {
 
   const handleTreePngChange = (idx: number) => {
     setTreePngIndx(idx);
+  };
+
+  const handleSnowChange = () => {
+    setIsSnow(!isSnow);
   };
   useEffect(() => {
     // Создать GetData,
@@ -225,12 +232,17 @@ function App() {
         />
       ) : null}
       {isOnTree ? (
-        <Tree
-          treeBgIndx={treeBgIndx}
-          handleTreeBgChange={handleTreeBgChange}
-          treePngIndx={treePngIndx}
-          handleTreePngChange={handleTreePngChange}
-        />
+        <DndProvider backend={HTML5Backend}>
+          <Tree
+            treeBgIndx={treeBgIndx}
+            handleTreeBgChange={handleTreeBgChange}
+            treePngIndx={treePngIndx}
+            handleTreePngChange={handleTreePngChange}
+            isSnow={isSnow}
+            handleSnowChange={handleSnowChange}
+            favourites={favourites}
+          />{' '}
+        </DndProvider>
       ) : null}
     </>
   );

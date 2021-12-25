@@ -96,13 +96,32 @@ interface HeaderPropsInterface {
   favourites: number[];
 }
 
+interface CoordDataInterface {
+  top: number;
+  left: number;
+}
 interface TreePagePropsInterface {
   handleTreeBgChange: (num: number) => void;
   treeBgIndx: number;
   handleTreePngChange: (num: number) => void;
   treePngIndx: number;
+  isSnow: boolean;
+  handleSnowChange: () => void;
+  favourites: number[];
+}
+interface DragItemInterface {
+  link: string;
+  used: number;
+  available: number;
+  coords: CoordinatesInterface;
 }
 
+interface DragItemDataInterface {
+  [id: string]: DragItemInterface;
+}
+interface CoordinatesInterface {
+  [idx: string]: CoordDataInterface;
+}
 interface PossibleFormsInterface {
   SvgBall: ToyForm;
   SvgBell: ToyForm;
@@ -148,5 +167,5 @@ interface LSDataInterface {
   favourite: number[];
   sort: SortValue;
 }
-
+type DragItem = { name: string; coordIdx: string };
 type SaveToLSFunc = (states: LSDataInterface) => void;
