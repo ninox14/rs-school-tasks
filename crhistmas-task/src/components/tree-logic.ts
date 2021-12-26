@@ -26,6 +26,7 @@ export const treePngArr = Object.keys(treePngsImport).map((i, indx) => {
 
 export const createDataForDnd = (favs: number[]) => {
   const shape: DragItemDataInterface = {};
+  // eslint-disable-next-line array-callback-return
   favs.map((i) => {
     shape[`${i + 1}.png`] = {
       link: images[`${i + 1}.png`].default,

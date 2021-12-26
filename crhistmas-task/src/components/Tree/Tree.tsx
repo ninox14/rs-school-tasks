@@ -4,8 +4,6 @@ import './Tree.scss';
 import './Lights.scss';
 import { Audio, Snow } from '../../assets/svg-comps/index';
 
-import ToyPng from '../../assets/toys/1.png';
-
 import { Footer } from '../Footer';
 import {
   createDataForDnd,
@@ -35,19 +33,52 @@ export const Tree: FC<TreePagePropsInterface> = ({
 
   useEffect(() => {
     setToysMap(dataForDnd);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   const moveToy = useCallback(
-    (id: string, left: number, top: number, idx: string) => {
-      setToysMap(
-        update(toysMap, {
-          [id]: {
-            used: { $set: toysMap[id].used + 1 },
-            coords: {
-              [idx]: { $set: { left, top } },
+    (
+      id: string,
+      left: number,
+      top: number,
+      idx: string,
+      isFromTree?: boolean,
+      isOver?: boolean
+    ) => {
+      if (isFromTree && isOver) {
+        setToysMap(
+          update(toysMap, {
+            [id]: {
+              // used: { $set: toysMap[id].used + 1 },
+              coords: {
+                [idx]: { $set: { left, top } },
+              },
             },
-          },
-        })
-      );
+          })
+        );
+      } else if (isFromTree && !isOver) {
+        setToysMap(
+          update(toysMap, {
+            [id]: {
+              used: { $set: toysMap[id].used - 1 },
+              coords: {
+                $unset: [idx],
+              },
+            },
+          })
+        );
+      } else if (!isFromTree && isOver) {
+        setToysMap(
+          update(toysMap, {
+            [id]: {
+              used: { $set: toysMap[id].used + 1 },
+              coords: {
+                [idx]: { $set: { left, top } },
+              },
+            },
+          })
+        );
+      }
     },
     [toysMap]
   );
@@ -61,22 +92,38 @@ export const Tree: FC<TreePagePropsInterface> = ({
           x: number;
           y: number;
         };
-        // console.log('Coord to try', {
-        //   x: clientOffset.x - rect.x /* - 30 */,
-        //   y: clientOffset.y - rect.y /* - 30 */,
-        // });
+
         moveToy(
           item.name,
           clientOffset.x - rect.x - 30,
           clientOffset.y - rect.y - 30,
-          item.coordIdx
+          item.coordIdx,
+          item.isFromTree,
+          monitor.isOver()
         );
         return undefined;
       },
     }),
     [moveToy]
   );
-
+  const [, outside] = useDrop(
+    () => ({
+      accept: ItemType.TOY,
+      drop(item: DragItem, monitor) {
+        moveToy(item.name, 0, 0, item.coordIdx, item.isFromTree, false);
+      },
+    }),
+    [moveToy]
+  );
+  const [, outsideTree] = useDrop(
+    () => ({
+      accept: ItemType.TOY,
+      drop(item: DragItem, monitor) {
+        moveToy(item.name, 0, 0, item.coordIdx, item.isFromTree, false);
+      },
+    }),
+    [moveToy]
+  );
   return (
     <>
       <div className="tree-page">
@@ -169,50 +216,51 @@ export const Tree: FC<TreePagePropsInterface> = ({
             src={currPngLink}
             alt="Tree Png"
             useMap="#image-map"
+            ref={outsideTree}
           />
-          <map
-            ref={drop}
-            className="tree__map"
-            name="image-map"
-            onClick={(e) => {
-              console.log(e.clientX, e.clientY);
-            }}
-          >
+          <map className="tree__map" name="image-map">
             <area
               alt="TreeMap"
               coords="246,1,24,606,147,679,380,670,491,616"
               shape="poly"
+              ref={drop}
             />
-            {/* <img
-              // className="toy__png"
-              src={ToyPng}
-              alt=""
-              width={60}
-              height={60}
-              style={{ position: 'absolute', left: 566, top: 692 }}
-            /> */}
-            {Object.keys(toysMap).map((key) => {
-              const coords = toysMap[key].coords;
-              const coordKeys = Object.keys(coords);
-              if (coordKeys.length) {
-                return (
-                  <>
-                    {coordKeys.map((idx) => (
-                      <img
-                        className="toys__png"
-                        style={{ left: coords[idx].left, top: coords[idx].top }}
-                        src={toysMap[key].link}
-                        alt="Toy"
-                      />
-                    ))}
-                  </>
-                );
-              }
-            })}
+            {
+              // eslint-disable-next-line array-callback-return
+              Object.keys(toysMap).map((key) => {
+                const coords = toysMap[key].coords;
+                const coordKeys = Object.keys(coords);
+                if (coordKeys.length) {
+                  return (
+                    <>
+                      {coordKeys.map((idx) => (
+                        //TODO Image as dragable component
+                        // <img
+                        //   className="toys__png"
+                        //   style={{ left: coords[idx].left, top: coords[idx].top }}
+                        //   src={toysMap[key].link}
+                        //   alt="Toy"
+                        // />
+                        <DragableToy
+                          className="toys__png"
+                          isFromTree={true}
+                          isDraggable={true}
+                          name={key}
+                          src={toysMap[key].link}
+                          coordIdx={idx}
+                          styles={{
+                            left: coords[idx].left,
+                            top: coords[idx].top,
+                          }}
+                        />
+                      ))}
+                    </>
+                  );
+                }
+              })
+            }
           </map>
-          {/* <div className="tree__cover">
-
-          </div> */}
+          <div ref={outside} className="tree__cover"></div>
         </div>
         <div className="tree-page__side right">
           <div className="tree-page__caption">Игрушки</div>
@@ -229,6 +277,9 @@ export const Tree: FC<TreePagePropsInterface> = ({
                     isDraggable={isDraggable}
                     coordIdx={`${coordIdx}`}
                   />
+                  <div className="toys__count">
+                    {toysMap[key].available - toysMap[key].used}
+                  </div>
                 </div>
               );
             })}

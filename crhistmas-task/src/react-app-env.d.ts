@@ -96,10 +96,6 @@ interface HeaderPropsInterface {
   favourites: number[];
 }
 
-interface CoordDataInterface {
-  top: number;
-  left: number;
-}
 interface TreePagePropsInterface {
   handleTreeBgChange: (num: number) => void;
   treeBgIndx: number;
@@ -109,6 +105,11 @@ interface TreePagePropsInterface {
   handleSnowChange: () => void;
   favourites: number[];
 }
+interface CoordDataInterface {
+  top: number;
+  left: number;
+}
+
 interface DragItemInterface {
   link: string;
   used: number;
@@ -167,5 +168,5 @@ interface LSDataInterface {
   favourite: number[];
   sort: SortValue;
 }
-type DragItem = { name: string; coordIdx: string };
+type DragItem = { name: string; coordIdx: string; isFromTree: boolean };
 type SaveToLSFunc = (states: LSDataInterface) => void;

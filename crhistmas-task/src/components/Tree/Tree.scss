@@ -21,6 +21,7 @@
     &__btn {
       background: transparent;
       border: none;
+      // cursor: pointer;
       &:nth-child(2) {
         margin-left: 30px;
       }
@@ -59,13 +60,13 @@
         }
       }
     }
-    .pngs {
-      &__link {
-        width: 90px;
-        height: 90px;
-        background-size: contain;
-        background-color: #25464b;
-      }
+  }
+  .pngs {
+    &__link {
+      width: 90px;
+      height: 90px;
+      background-size: contain;
+      background-color: #25464b;
     }
   }
   .right {
@@ -78,31 +79,53 @@
     flex-wrap: wrap;
     &__item {
       position: relative;
-      width: 60px;
-      height: 60px;
+      display: flex;
+      width: 70px;
+      height: 70px;
+      background-color: #3999b6;
+      // padding: 10px;
+      border-radius: 13px;
+      justify-content: center;
+      align-items: center;
     }
     &__png {
       position: absolute;
       display: block;
       width: 60px;
       height: 60px;
+      cursor: move;
+      z-index: 1;
+    }
+    &__count {
+      text-align: center;
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      top: 0;
+      right: 0;
+      padding: 5px;
+      background-color: #9b791c;
+      color: #030303;
+      border: #000 1px solid;
+      border-radius: 50%;
+      z-index: 3;
     }
   }
   &__tree {
     background-size: cover;
     background-position: center;
   }
+  .snow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
   .tree {
     position: relative;
+    min-width: 768px;
 
-    .snow {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1000;
-    }
     &__lights {
       position: absolute;
       display: flex;
@@ -114,26 +137,26 @@
       z-index: 500;
     }
     &__cover {
-      // margin-bottom: 30px;
       width: 100%;
-      // margin: 0 auto;
-      text-align: center;
-      position: absolute;
-      left: 0;
-      bottom: 30px;
+      height: 100%;
+      position: relative;
     }
     &__img {
-      width: calc(100% - 10vw - 30px);
+      // width: calc(100% - 10vw - 30px);
       // height: 100%;
+      width: 500px;
       display: block;
       // margin: 100px auto;
       position: absolute;
+      z-index: 100;
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
     }
     &__map {
       cursor: pointer;
+      position: relative;
+      z-index: 100;
     }
   }
 }

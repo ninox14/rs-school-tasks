@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { CSSProperties, FC } from 'react';
 import { useDrag } from 'react-dnd';
 import { ItemType } from '../tree-logic';
 
@@ -8,6 +8,8 @@ interface DragableItemProps {
   className: string;
   src: string;
   isDraggable: boolean;
+  isFromTree?: boolean;
+  styles?: CSSProperties;
 }
 
 export const DragableToy: FC<DragableItemProps> = ({
@@ -16,14 +18,17 @@ export const DragableToy: FC<DragableItemProps> = ({
   src,
   className,
   isDraggable,
+  isFromTree = false,
+  styles = {},
 }) => {
   const [, drag] = useDrag(
     () => ({
       type: ItemType.TOY,
-      item: { name, coordIdx },
+      item: { name, coordIdx, isFromTree },
     }),
-    [name, coordIdx]
+    [name, coordIdx, isFromTree]
   );
+
   return (
     <img
       ref={drag}
@@ -32,6 +37,7 @@ export const DragableToy: FC<DragableItemProps> = ({
       id={name}
       alt="Toy"
       draggable={isDraggable}
+      style={styles}
     />
   );
 };
