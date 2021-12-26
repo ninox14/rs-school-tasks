@@ -1,8 +1,8 @@
-// import React from 'react';
+/* eslint-disable array-callback-return */
 import data from '../data';
 
 export const initialData = data as ToyItemInterface[];
-// const initialData = setInitialData(data);
+
 const LS_SUFFIX = 'Saved';
 
 const YEAR_RANGE_KEY: keyof ToyItemInterface = 'year';
