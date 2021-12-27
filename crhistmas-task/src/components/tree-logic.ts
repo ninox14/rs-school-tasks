@@ -39,10 +39,24 @@ export const treePngArr = Object.keys(treePngsImport).map((i, indx) => {
   };
 });
 
+const fillEmptyFavs = (favs: number[]) => {
+  const result = favs;
+  let idx = 0;
+  while (result.length < 20) {
+    if (!result.includes(idx)) {
+      result.push(idx);
+    } else {
+      idx++;
+    }
+  }
+  return result;
+};
+
 export const createDataForDnd = (favs: number[]) => {
+  const favourites = favs.length < 20 ? fillEmptyFavs(favs) : favs;
   const shape: DragItemDataInterface = {};
   // eslint-disable-next-line array-callback-return
-  favs.map((i) => {
+  favourites.map((i) => {
     shape[`${i + 1}.png`] = {
       link: images[`${i + 1}.png`].default,
       used: 0,
