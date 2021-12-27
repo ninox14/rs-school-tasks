@@ -1,5 +1,6 @@
 .tree-page {
   height: calc(100vh - 144px);
+
   display: flex;
 
   &__side {
@@ -281,6 +282,10 @@
 }
 
 @media (max-width: 1475px) {
+  .tree-page {
+    max-height: calc(100% - 152px);
+    min-height: auto;
+  }
   .left {
     overflow-y: scroll;
   }

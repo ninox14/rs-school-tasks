@@ -40,7 +40,7 @@ export const treePngArr = Object.keys(treePngsImport).map((i, indx) => {
 });
 
 const fillEmptyFavs = (favs: number[]) => {
-  const result = favs;
+  const result = [...favs];
   let idx = 0;
   while (result.length < 20) {
     if (!result.includes(idx)) {
@@ -54,6 +54,7 @@ const fillEmptyFavs = (favs: number[]) => {
 
 export const createDataForDnd = (favs: number[]) => {
   const favourites = favs.length < 20 ? fillEmptyFavs(favs) : favs;
+  console.log(favourites);
   const shape: DragItemDataInterface = {};
   // eslint-disable-next-line array-callback-return
   favourites.map((i) => {
@@ -64,6 +65,7 @@ export const createDataForDnd = (favs: number[]) => {
       coords: {},
     };
   });
+  console.log(shape);
   return shape;
 };
 

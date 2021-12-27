@@ -54,31 +54,31 @@
 }
 
 .lightrope li.red {
-  animation-name: red;
+  animation-name: red1;
 }
 .lightrope li.green {
-  animation-name: green;
+  animation-name: green1;
 }
 .lightrope li.blue {
-  animation-name: blue;
+  animation-name: blue1;
 }
 .lightrope li.yellow {
-  animation-name: yellow;
+  animation-name: yellow1;
 }
 
 .lightrope li.multicolor:nth-child(1n + 1) {
-  animation-name: red;
+  animation-name: red1;
 }
 .lightrope li:nth-child(2n + 2).multicolor {
-  animation-name: green;
+  animation-name: green1;
 }
 .lightrope li:nth-child(3n + 3).multicolor {
-  animation-name: blue;
+  animation-name: blue1;
 }
 .lightrope li:nth-child(4n + 4).multicolor {
-  animation-name: yellow;
+  animation-name: yellow1;
 }
-@keyframes green {
+@keyframes green1 {
   0%,
   100% {
     background: rgba(0, 247, 165, 1);
@@ -89,7 +89,7 @@
     box-shadow: 0px 2px 12px 2px rgba(0, 247, 165, 0.2);
   }
 }
-@keyframes blue {
+@keyframes blue1 {
   0%,
   100% {
     background: rgba(0, 255, 255, 1);
@@ -100,7 +100,7 @@
     box-shadow: 0px 2px 12px 2px rgba(0, 255, 255, 0.2);
   }
 }
-@keyframes red {
+@keyframes red1 {
   0%,
   100% {
     background: rgba(247, 0, 118, 1);
@@ -111,7 +111,7 @@
     box-shadow: 0px 2px 12px 2px rgba(247, 0, 118, 0.2);
   }
 }
-@keyframes yellow {
+@keyframes yellow1 {
   0%,
   100% {
     background: rgba(255, 255, 0, 1);

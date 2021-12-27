@@ -41,10 +41,11 @@ export const Tree: FC<TreePagePropsInterface> = ({
 
   const currBgLink = treeBgsArr[treeBgIndx].link;
   const currPngLink = treePngArr[treePngIndx].link;
-  const dataForDnd = createDataForDnd(favourites);
+
   const containerRef = useRef<HTMLDivElement>(null);
   const startWidth = 120;
   useEffect(() => {
+    const dataForDnd = createDataForDnd(favourites);
     setToysMap(dataForDnd);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -108,6 +109,8 @@ export const Tree: FC<TreePagePropsInterface> = ({
 
         moveToy(
           item.name,
+          // ((clientOffset.x - rect.x - 30) / rect.width) * 100,
+          // ((clientOffset.y - rect.y - 30) / rect.height) * 100,
           clientOffset.x - rect.x - 30,
           clientOffset.y - rect.y - 30,
           item.coordIdx,
@@ -221,8 +224,6 @@ export const Tree: FC<TreePagePropsInterface> = ({
             InnerElem={() => <>Сбросить настройки</>}
             onClick={setDefaultTreeState}
           />
-          {/* <div className="left__reset-btn">
-          </div> */}
         </div>
         <div
           className="tree-page__tree tree"
