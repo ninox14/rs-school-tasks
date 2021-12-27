@@ -29,6 +29,9 @@
       padding: 0;
       width: 36px;
       height: 36px;
+      svg {
+        transition: opacity 0.3s linear;
+      }
       &:hover {
         svg {
           opacity: 0.7;
@@ -36,7 +39,7 @@
       }
       &.active {
         svg path {
-          fill: #000;
+          fill: #3ba6d8;
         }
       }
     }
@@ -55,6 +58,10 @@
         background-repeat: no-repeat;
         background-position: center;
         cursor: pointer;
+        transition: transform 0.3s ease-in-out;
+        &:hover {
+          transform: scale(1.1);
+        }
         &.active {
           border: #c5a241 4px solid;
         }
@@ -132,6 +139,10 @@
       border-radius: 50%;
       background-color: transparent;
       border: #fff 2px solid;
+      transition: all 0.3s linear;
+      &:hover {
+        transform: scale(1.2);
+      }
       &.active {
         border: #13100a 4px solid;
       }
@@ -248,6 +259,10 @@
     transform-origin: 50% 50%;
     cursor: pointer;
     background-color: #3b3b3b;
+    transition: border 0.3s ease-in-out;
+    &:hover {
+      border: #a5a286 3px solid;
+    }
     &:before {
       transition: transform 0.75s ease;
       transition-delay: 0.5s;
