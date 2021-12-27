@@ -20,6 +20,11 @@ import { Header } from './components/Header/Header';
 import { Tree } from './components/Tree/Tree';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
+import {
+  DEFAULT_TREE_DATA,
+  retrieveTreeDataFromLS,
+  saveTreeDataToLs,
+} from './components/tree-logic';
 
 function App() {
   const [data, setData] = useState<ToyItemInterface[]>([]);
@@ -142,6 +147,24 @@ function App() {
     setIsPlaying(val);
   };
 
+  const setTreeStates: SetTreeStates = ({
+    isLights,
+    isPlaying,
+    isSnow,
+    lightsColor,
+    treeBgIndx,
+    treePngIndx,
+  }) => {
+    setIsPlaying(isPlaying);
+    setIsSnow(isSnow);
+    setIsLights(isLights);
+    setLightsColor(lightsColor);
+    setTreeBgIndx(treeBgIndx);
+    setTreePngIndx(treePngIndx);
+  };
+  const setDefaultTreeState = () => {
+    setTreeStates(DEFAULT_TREE_DATA);
+  };
   useEffect(() => {
     // Создать GetData,
     const data = getData(
@@ -181,8 +204,11 @@ function App() {
     setAllFilterStates(statesObject);
     const favouriteState = getFavouriteState();
     setFavourites(favouriteState);
+    const treeData = retrieveTreeDataFromLS();
+    setTreeStates(treeData);
   }, []);
-  window.addEventListener('beforeunload', () =>
+
+  window.addEventListener('beforeunload', () => {
     saveToLocalStorage({
       favourite: favourites,
       conutRange: itemCountRange,
@@ -192,8 +218,17 @@ function App() {
       sizeFilters: activeSizeFilters,
       colorFilters: activeColorFilters,
       formFilters: activeFormFilters,
-    })
-  );
+    });
+    saveTreeDataToLs({
+      isLights: isLights,
+      isPlaying: isPlaying,
+      isSnow: isSnow,
+      treeBgIndx: treeBgIndx,
+      treePngIndx: treePngIndx,
+      lightsColor: lightsColor,
+    });
+  });
+
   return (
     <>
       <Header
@@ -263,6 +298,7 @@ function App() {
             handleLightsColorChange={handleLightsColorChange}
             isPlaying={isPlaying}
             handlePlayerChange={handlePlayerChange}
+            setDefaultTreeState={setDefaultTreeState}
           />{' '}
         </DndProvider>
       ) : null}

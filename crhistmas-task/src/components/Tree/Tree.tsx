@@ -3,7 +3,7 @@ import update from 'immutability-helper';
 import './Tree.scss';
 import './Lights.scss';
 import { Snow } from '../../assets/svg-comps/index';
-// import Mp3File from '../../assets/audio/nice.mp3';
+
 import { Footer } from '../Footer';
 import {
   createDataForDnd,
@@ -12,11 +12,12 @@ import {
   treeBgsArr,
   treePngArr,
 } from '../tree-logic';
-import Snowfall from 'react-snowfall';
 import { useDrop } from 'react-dnd';
 import { DragableToy } from './DragableToy';
 import { TreeLights } from './TreeLights';
+import Snowfall from 'react-snowfall';
 import Player from './Player';
+import { Button } from '../Button/Button';
 
 const Mp3File: esModuleInterface = require('../../assets/audio/nice.mp3');
 
@@ -34,6 +35,7 @@ export const Tree: FC<TreePagePropsInterface> = ({
   handleLightsColorChange,
   isPlaying,
   handlePlayerChange,
+  setDefaultTreeState,
 }) => {
   const [toysMap, setToysMap] = useState<DragItemDataInterface>({});
 
@@ -44,7 +46,6 @@ export const Tree: FC<TreePagePropsInterface> = ({
   const startWidth = 120;
   useEffect(() => {
     setToysMap(dataForDnd);
-    console.count('useEffect');
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -215,6 +216,13 @@ export const Tree: FC<TreePagePropsInterface> = ({
               ))}
             </div>
           </div>
+          <Button
+            className="left__reset-btn blur-bg"
+            InnerElem={() => <>Сбросить настройки</>}
+            onClick={setDefaultTreeState}
+          />
+          {/* <div className="left__reset-btn">
+          </div> */}
         </div>
         <div
           className="tree-page__tree tree"

@@ -11,7 +11,15 @@ export const POSSIBLE_LIGHTS: PossibleLights[] = [
   'green',
   'yellow',
 ];
-
+const LS_TREE_DATA_KEY = 'TreeSaved';
+export const DEFAULT_TREE_DATA: TreeLSDataInterface = {
+  isLights: false,
+  isPlaying: false,
+  isSnow: false,
+  lightsColor: 'multicolor',
+  treeBgIndx: 0,
+  treePngIndx: 0,
+};
 const treeBgsImport = importAll(
   require.context('../assets/bg', false, /\.(png|jpe?g|svg)$/)
 );
@@ -43,4 +51,13 @@ export const createDataForDnd = (favs: number[]) => {
     };
   });
   return shape;
+};
+
+export const saveTreeDataToLs: SaveToLSTreeData = (obj) => {
+  localStorage.setItem(LS_TREE_DATA_KEY, JSON.stringify(obj));
+};
+
+export const retrieveTreeDataFromLS = () => {
+  const data = localStorage.getItem(LS_TREE_DATA_KEY);
+  return data ? (JSON.parse(data) as TreeLSDataInterface) : DEFAULT_TREE_DATA;
 };

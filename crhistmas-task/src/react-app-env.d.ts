@@ -110,6 +110,7 @@ interface TreePagePropsInterface {
   lightsColor: PossibleLights;
   isPlaying: boolean;
   handlePlayerChange: (val: boolean) => void;
+  setDefaultTreeState: () => void;
 }
 interface CoordDataInterface {
   top: number;
@@ -174,5 +175,17 @@ interface LSDataInterface {
   favourite: number[];
   sort: SortValue;
 }
+
+interface TreeLSDataInterface {
+  isSnow: boolean;
+  isPlaying: boolean;
+  isLights: boolean;
+  lightsColor: PossibleLights;
+  treeBgIndx: number;
+  treePngIndx: number;
+}
+
 type DragItem = { name: string; coordIdx: string; isFromTree: boolean };
 type SaveToLSFunc = (states: LSDataInterface) => void;
+type SaveToLSTreeData = (obj: TreeLSDataInterface) => void;
+type SetTreeStates = (obj: TreeLSDataInterface) => void;
