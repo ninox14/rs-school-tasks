@@ -44,6 +44,8 @@ function App() {
   const [treeBgIndx, setTreeBgIndx] = useState(0);
   const [treePngIndx, setTreePngIndx] = useState(0);
   const [isSnow, setIsSnow] = useState(false);
+  const [isLights, setIsLights] = useState(false);
+  const [lightsColor, setLightsColor] = useState<PossibleLights>('multicolor');
 
   const handleAddFormFilter = (toyForm: ToyForm) => {
     setActiveFormFilters((state) => [...state, toyForm]);
@@ -125,6 +127,14 @@ function App() {
 
   const handleSnowChange = () => {
     setIsSnow(!isSnow);
+  };
+
+  const handleLightsChange = (value: boolean) => {
+    setIsLights(value);
+  };
+
+  const handleLightsColorChange = (color: PossibleLights) => {
+    setLightsColor(color);
   };
   useEffect(() => {
     // Создать GetData,
@@ -241,6 +251,10 @@ function App() {
             isSnow={isSnow}
             handleSnowChange={handleSnowChange}
             favourites={favourites}
+            isLights={isLights}
+            handleLightsChange={handleLightsChange}
+            lightsColor={lightsColor}
+            handleLightsColorChange={handleLightsColorChange}
           />{' '}
         </DndProvider>
       ) : null}

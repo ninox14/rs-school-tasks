@@ -4,6 +4,13 @@ import { images } from './Shop/Shop';
 export const ItemType = {
   TOY: 'toy',
 };
+export const POSSIBLE_LIGHTS: PossibleLights[] = [
+  'multicolor',
+  'red',
+  'blue',
+  'green',
+  'yellow',
+];
 
 const treeBgsImport = importAll(
   require.context('../assets/bg', false, /\.(png|jpe?g|svg)$/)

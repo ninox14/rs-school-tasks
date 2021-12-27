@@ -8,12 +8,14 @@ import { Footer } from '../Footer';
 import {
   createDataForDnd,
   ItemType,
+  POSSIBLE_LIGHTS,
   treeBgsArr,
   treePngArr,
 } from '../tree-logic';
 import Snowfall from 'react-snowfall';
 import { useDrop } from 'react-dnd';
 import { DragableToy } from './DragableToy';
+import { TreeLights } from './TreeLights';
 
 export const Tree: FC<TreePagePropsInterface> = ({
   treeBgIndx,
@@ -23,6 +25,10 @@ export const Tree: FC<TreePagePropsInterface> = ({
   isSnow,
   handleSnowChange,
   favourites,
+  isLights,
+  handleLightsChange,
+  lightsColor,
+  handleLightsColorChange,
 }) => {
   const [toysMap, setToysMap] = useState<DragItemDataInterface>({});
 
@@ -30,9 +36,10 @@ export const Tree: FC<TreePagePropsInterface> = ({
   const currPngLink = treePngArr[treePngIndx].link;
   const dataForDnd = createDataForDnd(favourites);
   const containerRef = useRef<HTMLDivElement>(null);
-
+  const startWidth = 120;
   useEffect(() => {
     setToysMap(dataForDnd);
+    console.count('useEffect');
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -124,6 +131,7 @@ export const Tree: FC<TreePagePropsInterface> = ({
     }),
     [moveToy]
   );
+
   return (
     <>
       <div className="tree-page">
@@ -171,6 +179,35 @@ export const Tree: FC<TreePagePropsInterface> = ({
               ></button>
             ))}
           </div>
+          <div className="tree-page__caption">Гирлянда</div>
+          <div className="left__lights lights">
+            <div className="switch">
+              <input
+                className="switch__input"
+                type="checkbox"
+                id="toggle"
+                checked={isLights}
+                onChange={() => {
+                  handleLightsChange(!isLights);
+                }}
+              />
+              <label className="switch__lable" htmlFor="toggle"></label>
+            </div>
+            <div className="lights__btns">
+              {POSSIBLE_LIGHTS.map((color) => (
+                <button
+                  key={color}
+                  className={`lights__btn ${color} ${
+                    color === lightsColor && isLights ? 'active' : ''
+                  }`}
+                  onClick={() => {
+                    handleLightsColorChange(color);
+                    handleLightsChange(true);
+                  }}
+                ></button>
+              ))}
+            </div>
+          </div>
         </div>
         <div
           className="tree-page__tree tree"
@@ -181,35 +218,18 @@ export const Tree: FC<TreePagePropsInterface> = ({
         >
           <div className="snow">{isSnow ? <Snowfall /> : null}</div>
           <div className="tree__lights">
-            {/* {Array(8)
-              .fill(8)
-              .map((_, i) => {
-                const height = 60 * (i + 1);
-                return (
-                  <ul
-                    className="lightrope"
-                    key={i}
-                    style={{
-                      // height: height,
-                      // width: height * 0.66,
-                      top: `${(i + 1) * 10}%`,
-                    }}
-                  >
-                    {Array((i + 1) * 5 - (i + 1) * 2)
-                      .fill(i)
-                      .map((_, idx) => (
-                        <li
-                          key={idx}
-                          style={
-                            {
-                              // transform: `translate(${height / 2}px)`,
-                            }
-                          }
-                        ></li>
-                      ))}
-                  </ul>
-                );
-              })} */}
+            {isLights
+              ? [...Array(12)].map((_, i) => {
+                  return (
+                    <TreeLights
+                      key={i}
+                      color={lightsColor}
+                      widthL={startWidth + i * 50}
+                      amount={i + 5}
+                    />
+                  );
+                })
+              : null}
           </div>
           <img
             className="tree__img"
@@ -234,13 +254,6 @@ export const Tree: FC<TreePagePropsInterface> = ({
                   return (
                     <>
                       {coordKeys.map((idx) => (
-                        //TODO Image as dragable component
-                        // <img
-                        //   className="toys__png"
-                        //   style={{ left: coords[idx].left, top: coords[idx].top }}
-                        //   src={toysMap[key].link}
-                        //   alt="Toy"
-                        // />
                         <DragableToy
                           className="toys__png"
                           isFromTree={true}
@@ -267,7 +280,7 @@ export const Tree: FC<TreePagePropsInterface> = ({
           <div className="right__toys toys">
             {Object.keys(toysMap).map((key) => {
               const isDraggable = toysMap[key].used < toysMap[key].available;
-              const coordIdx = toysMap[key].available - toysMap[key].used;
+
               return (
                 <div key={key} className="toys__item">
                   <DragableToy
@@ -275,7 +288,7 @@ export const Tree: FC<TreePagePropsInterface> = ({
                     src={toysMap[key].link}
                     name={key}
                     isDraggable={isDraggable}
-                    coordIdx={`${coordIdx}`}
+                    coordIdx={Math.random().toString().slice(-5)}
                   />
                   <div className="toys__count">
                     {toysMap[key].available - toysMap[key].used}

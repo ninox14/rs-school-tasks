@@ -11,7 +11,7 @@ type SortValue =
   | 'yearAscending'
   | 'yearDescending'
   | '';
-
+type PossibleLights = 'multicolor' | 'red' | 'green' | 'blue' | 'yellow';
 interface SvgComponentsInterface {
   [svgKey: string]: (props: React.SVGProps<SVGSVGElement>) => JSX.Element;
 }
@@ -104,6 +104,10 @@ interface TreePagePropsInterface {
   isSnow: boolean;
   handleSnowChange: () => void;
   favourites: number[];
+  handleLightsChange: (value: boolean) => void;
+  isLights: boolean;
+  handleLightsColorChange: (color: PossibleLights) => void;
+  lightsColor: PossibleLights;
 }
 interface CoordDataInterface {
   top: number;

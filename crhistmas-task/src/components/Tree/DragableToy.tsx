@@ -37,7 +37,7 @@ export const DragableToy: FC<DragableItemProps> = ({
       id={name}
       alt="Toy"
       draggable={isDraggable}
-      style={styles}
+      style={{ ...styles, cursor: !isDraggable ? 'not-allowed' : '' }}
     />
   );
 };
