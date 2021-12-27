@@ -8,6 +8,18 @@
   .nav {
     display: flex;
     column-gap: 10px;
+    &__svg-btn {
+      background-color: transparent;
+      border: none;
+    }
+    &__svg {
+      & path {
+        transition: fill 0.3s ease-in-out;
+      }
+      &:hover path {
+        fill: #278d9f;
+      }
+    }
     &__btn {
       // border-radius: 20px;
       color: #fff;
@@ -21,6 +33,22 @@
       &:hover {
         opacity: 0.7;
       }
+      &:hover::before {
+        opacity: 1;
+      }
+      &::before {
+        content: '';
+        height: 4px;
+        width: 100%;
+        border-radius: 6px;
+        position: absolute;
+        left: 0;
+        bottom: 10px;
+        bottom: 7px;
+        background-color: #fff;
+        opacity: 0;
+        transition: opacity 0.3s linear;
+      }
       &.active::before {
         content: '';
         height: 4px;
@@ -28,8 +56,9 @@
         border-radius: 6px;
         position: absolute;
         left: 0;
-        bottom: -5px;
-        background-color: #fff;
+        bottom: 7px;
+        background-color: #5fb1c0;
+        opacity: 1;
       }
     }
   }

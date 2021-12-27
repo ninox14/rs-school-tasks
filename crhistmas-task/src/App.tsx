@@ -239,7 +239,7 @@ function App() {
         favourites={favourites}
       />
       {isOnStart && !isOnTree ? (
-        <div className="welcome text-center clear d-flex flex-column justify-center align-center">
+        <div className="welcome text-center d-flex flex-column justify-center align-center">
           <h1 className="welcome__title blur-bg text-uppercase ">
             Помогите бабушке нарядить елку
           </h1>

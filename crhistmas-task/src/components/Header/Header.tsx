@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import './Header.scss';
-
+import { Tree } from '../../assets/svg-comps';
 export const Header: FC<HeaderPropsInterface> = ({
   setIsOnTree,
   isOnStart,
@@ -10,6 +10,15 @@ export const Header: FC<HeaderPropsInterface> = ({
 }) => (
   <header className="header">
     <nav className="nav">
+      <button
+        className="nav__svg-btn"
+        onClick={() => {
+          setIsOnTree(false);
+          setIsOnStart(true);
+        }}
+      >
+        <Tree className="nav__svg" width={44} height={44} />
+      </button>
       <button
         className={`nav__btn ${!isOnStart && !isOnTree ? 'active' : null}`}
         onClick={() => {
