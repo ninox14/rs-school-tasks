@@ -124,6 +124,7 @@
     &__btns {
       display: flex;
       column-gap: 6px;
+      flex-wrap: wrap;
     }
     &__btn {
       width: 20px;
@@ -260,6 +261,44 @@
       border-radius: 50%;
       top: 1px;
       left: 1px;
+    }
+  }
+}
+
+@media (max-width: 1475px) {
+  .left {
+    overflow-y: scroll;
+  }
+
+  .right {
+    overflow-y: scroll;
+  }
+}
+
+@media (max-width: 1205px) {
+  .tree-page {
+    flex-direction: column-reverse;
+    height: auto;
+    .right {
+      width: 100%;
+    }
+    .left {
+      width: 100%;
+    }
+    .tree {
+      width: 100%;
+      min-height: 825px;
+    }
+  }
+}
+@media (max-width: 767px) {
+  .tree-page {
+    .tree {
+      width: 100vw;
+      min-width: auto;
+      &__img {
+        width: calc(100% - 100px);
+      }
     }
   }
 }
