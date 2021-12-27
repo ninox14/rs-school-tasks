@@ -108,6 +108,8 @@ interface TreePagePropsInterface {
   isLights: boolean;
   handleLightsColorChange: (color: PossibleLights) => void;
   lightsColor: PossibleLights;
+  isPlaying: boolean;
+  handlePlayerChange: (val: boolean) => void;
 }
 interface CoordDataInterface {
   top: number;

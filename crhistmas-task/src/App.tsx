@@ -46,6 +46,7 @@ function App() {
   const [isSnow, setIsSnow] = useState(false);
   const [isLights, setIsLights] = useState(false);
   const [lightsColor, setLightsColor] = useState<PossibleLights>('multicolor');
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const handleAddFormFilter = (toyForm: ToyForm) => {
     setActiveFormFilters((state) => [...state, toyForm]);
@@ -136,6 +137,11 @@ function App() {
   const handleLightsColorChange = (color: PossibleLights) => {
     setLightsColor(color);
   };
+
+  const handlePlayerChange = (val: boolean) => {
+    setIsPlaying(val);
+  };
+
   useEffect(() => {
     // Создать GetData,
     const data = getData(
@@ -255,6 +261,8 @@ function App() {
             handleLightsChange={handleLightsChange}
             lightsColor={lightsColor}
             handleLightsColorChange={handleLightsColorChange}
+            isPlaying={isPlaying}
+            handlePlayerChange={handlePlayerChange}
           />{' '}
         </DndProvider>
       ) : null}

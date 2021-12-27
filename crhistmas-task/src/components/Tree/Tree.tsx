@@ -2,8 +2,8 @@ import { FC, useCallback, useEffect, useRef, useState } from 'react';
 import update from 'immutability-helper';
 import './Tree.scss';
 import './Lights.scss';
-import { Audio, Snow } from '../../assets/svg-comps/index';
-
+import { Snow } from '../../assets/svg-comps/index';
+// import Mp3File from '../../assets/audio/nice.mp3';
 import { Footer } from '../Footer';
 import {
   createDataForDnd,
@@ -16,6 +16,9 @@ import Snowfall from 'react-snowfall';
 import { useDrop } from 'react-dnd';
 import { DragableToy } from './DragableToy';
 import { TreeLights } from './TreeLights';
+import Player from './Player';
+
+const Mp3File: esModuleInterface = require('../../assets/audio/nice.mp3');
 
 export const Tree: FC<TreePagePropsInterface> = ({
   treeBgIndx,
@@ -29,6 +32,8 @@ export const Tree: FC<TreePagePropsInterface> = ({
   handleLightsChange,
   lightsColor,
   handleLightsColorChange,
+  isPlaying,
+  handlePlayerChange,
 }) => {
   const [toysMap, setToysMap] = useState<DragItemDataInterface>({});
 
@@ -137,9 +142,11 @@ export const Tree: FC<TreePagePropsInterface> = ({
       <div className="tree-page">
         <div className="tree-page__side left">
           <div className="left__btns">
-            <button className="left__btn">
-              <Audio className="left__sound" width={36} height={36} />
-            </button>
+            <Player
+              url={Mp3File.default}
+              handlePlayerChange={handlePlayerChange}
+              isPlaying={isPlaying}
+            />
             <button
               className={`left__btn ${isSnow ? 'active' : ''}`}
               onClick={handleSnowChange}

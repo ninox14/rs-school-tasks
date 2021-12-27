@@ -1,5 +1,5 @@
 export { default as ArrowDown } from './ArrowDown';
-export { default as Audio } from './Audio';
+export { default as AudioSvg } from './Audio';
 export { default as Ball2 } from './Ball2';
 // export { default as Ball } from "./Ball";
 // export { default as Bell } from "./Bell";
