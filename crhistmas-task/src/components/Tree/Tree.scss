@@ -1,5 +1,5 @@
 .tree-page {
-  height: calc(100vh - 144px);
+  height: calc(100vh - 151px);
 
   display: flex;
 
@@ -258,11 +258,10 @@
     border: #c5c5c5 3px solid;
     border-radius: 99em;
     position: relative;
-    transition: transform 0.75s ease-in-out;
+    transition: transform 0.75s ease-in-out, border 0.3s ease-in-out;
     transform-origin: 50% 50%;
     cursor: pointer;
     background-color: #3b3b3b;
-    transition: border 0.3s ease-in-out;
     &:hover {
       border: #a5a286 3px solid;
     }
