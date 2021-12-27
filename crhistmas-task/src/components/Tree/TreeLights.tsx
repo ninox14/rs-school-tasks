@@ -7,7 +7,7 @@ interface LightsProps {
 }
 
 export const TreeLights: FC<LightsProps> = ({ widthL, amount, color }) => {
-  let radius = 60;
+  let radius = 64;
   return (
     <ul className="lightrope" style={{ width: widthL, height: widthL }}>
       {[...Array(amount)].map((_, i) => {
