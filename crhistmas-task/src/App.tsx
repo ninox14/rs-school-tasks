@@ -26,6 +26,8 @@ import {
   saveTreeDataToLs,
 } from './components/tree-logic';
 
+const Mp3File: esModuleInterface = require('./assets/audio/nice.mp3');
+
 function App() {
   const [data, setData] = useState<ToyItemInterface[]>([]);
   const [activeFormFilters, setActiveFormFilters] = useState<ToyForm[]>([]);
@@ -52,6 +54,7 @@ function App() {
   const [isLights, setIsLights] = useState(false);
   const [lightsColor, setLightsColor] = useState<PossibleLights>('multicolor');
   const [isPlaying, setIsPlaying] = useState(false);
+  const [audio] = useState(new Audio(Mp3File.default));
 
   const handleAddFormFilter = (toyForm: ToyForm) => {
     setActiveFormFilters((state) => [...state, toyForm]);
@@ -145,6 +148,10 @@ function App() {
 
   const handlePlayerChange = (val: boolean) => {
     setIsPlaying(val);
+    console.log(val);
+    if (!val) {
+      audio.pause();
+    }
   };
 
   const setTreeStates: SetTreeStates = ({
@@ -237,6 +244,7 @@ function App() {
         isOnStart={isOnStart}
         isOnTree={isOnTree}
         favourites={favourites}
+        handlePlayerChange={handlePlayerChange}
       />
       {isOnStart && !isOnTree ? (
         <div className="welcome text-center d-flex flex-column justify-center align-center">
@@ -299,6 +307,7 @@ function App() {
             isPlaying={isPlaying}
             handlePlayerChange={handlePlayerChange}
             setDefaultTreeState={setDefaultTreeState}
+            audio={audio}
           />{' '}
         </DndProvider>
       ) : null}

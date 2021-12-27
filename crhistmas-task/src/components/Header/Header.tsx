@@ -7,6 +7,7 @@ export const Header: FC<HeaderPropsInterface> = ({
   isOnTree,
   favourites,
   setIsOnStart,
+  handlePlayerChange,
 }) => (
   <header className="header">
     <nav className="nav">
@@ -15,6 +16,7 @@ export const Header: FC<HeaderPropsInterface> = ({
         onClick={() => {
           setIsOnTree(false);
           setIsOnStart(true);
+          handlePlayerChange(false);
         }}
       >
         <Tree className="nav__svg" width={44} height={44} />
@@ -24,6 +26,7 @@ export const Header: FC<HeaderPropsInterface> = ({
         onClick={() => {
           setIsOnTree(false);
           setIsOnStart(false);
+          handlePlayerChange(false);
         }}
       >
         Игрушки

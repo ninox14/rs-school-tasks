@@ -19,7 +19,7 @@ import Snowfall from 'react-snowfall';
 import Player from './Player';
 import { Button } from '../Button/Button';
 
-const Mp3File: esModuleInterface = require('../../assets/audio/nice.mp3');
+// const Mp3File: esModuleInterface = require('../../assets/audio/nice.mp3');
 
 export const Tree: FC<TreePagePropsInterface> = ({
   treeBgIndx,
@@ -36,6 +36,7 @@ export const Tree: FC<TreePagePropsInterface> = ({
   isPlaying,
   handlePlayerChange,
   setDefaultTreeState,
+  audio,
 }) => {
   const [toysMap, setToysMap] = useState<DragItemDataInterface>({});
 
@@ -147,9 +148,10 @@ export const Tree: FC<TreePagePropsInterface> = ({
         <div className="tree-page__side left">
           <div className="left__btns">
             <Player
-              url={Mp3File.default}
+              // url={Mp3File.default}
               handlePlayerChange={handlePlayerChange}
               isPlaying={isPlaying}
+              audio={audio}
             />
             <button
               className={`left__btn ${isSnow ? 'active' : ''}`}
@@ -232,7 +234,9 @@ export const Tree: FC<TreePagePropsInterface> = ({
             backgroundImage: `url(${currBgLink})`,
           }}
         >
-          <div className="snow">{isSnow ? <Snowfall /> : null}</div>
+          <div className="snow">
+            {isSnow ? <Snowfall style={{ pointerEvents: 'none' }} /> : null}
+          </div>
           <div className="tree__lights">
             {isLights
               ? [...Array(12)].map((_, i) => {

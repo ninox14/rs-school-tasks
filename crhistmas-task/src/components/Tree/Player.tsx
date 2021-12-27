@@ -4,17 +4,19 @@ import { FC, useState, useEffect } from 'react';
 import { AudioSvg, Mute } from '../../assets/svg-comps/index';
 
 interface PlayerPropsInterface {
-  url: string;
+  // url: string;
   isPlaying: boolean;
   handlePlayerChange: (val: boolean) => void;
+  audio: HTMLAudioElement;
 }
 
 const useAudio = (
-  url: string,
+  // url: string,
   isPlaying: boolean,
-  handlePlayerChange: (val: boolean) => void
+  handlePlayerChange: (val: boolean) => void,
+  audio: HTMLAudioElement
 ): [boolean, () => void] => {
-  const [audio] = useState(new Audio(url));
+  // const [audio] = useState(new Audio(url));
   const [playing, setPlaying] = useState(isPlaying);
 
   const toggle = () => {
@@ -40,11 +42,12 @@ const useAudio = (
 };
 
 const Player: FC<PlayerPropsInterface> = ({
-  url,
+  // url,
   isPlaying,
   handlePlayerChange,
+  audio,
 }) => {
-  const [playing, toggle] = useAudio(url, isPlaying, handlePlayerChange);
+  const [playing, toggle] = useAudio(isPlaying, handlePlayerChange, audio);
 
   return (
     <button className="left__btn" onClick={toggle}>

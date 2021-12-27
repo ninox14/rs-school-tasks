@@ -94,6 +94,7 @@ interface HeaderPropsInterface {
   isOnTree: boolean;
   isOnStart: boolean;
   favourites: number[];
+  handlePlayerChange: (val: boolean) => void;
 }
 
 interface TreePagePropsInterface {
@@ -111,6 +112,7 @@ interface TreePagePropsInterface {
   isPlaying: boolean;
   handlePlayerChange: (val: boolean) => void;
   setDefaultTreeState: () => void;
+  audio: HTMLAudioElement;
 }
 interface CoordDataInterface {
   top: number;
