@@ -1,0 +1,11 @@
+.button {
+  background-color: #0056a7;
+  border-radius: 5px;
+  font-size: 22px;
+  outline: 3px solid #0056a7;
+  text-transform: capitalize;
+  &.secondary {
+    background-color: transparent;
+    outline: 3px solid #0056a7;
+  }
+}
