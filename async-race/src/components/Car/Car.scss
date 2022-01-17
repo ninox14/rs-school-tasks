@@ -1,0 +1,31 @@
+.car {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+  &-name {
+    font-size: 20px;
+    color: #aaa33c;
+  }
+  &-top {
+    display: flex;
+    column-gap: 15px;
+  }
+  &-track {
+    display: flex;
+    align-items: center;
+  }
+  &-btn {
+    width: 30px;
+    height: 30px;
+    &__start {
+      color: #75c266;
+      outline-color: #75c266 !important;
+      margin-right: 15px;
+    }
+    &__reset {
+      color: #a02b22;
+      outline-color: #a02b22 !important;
+      margin-right: 15px;
+    }
+  }
+}
