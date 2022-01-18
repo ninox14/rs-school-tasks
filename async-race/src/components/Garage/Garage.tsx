@@ -89,7 +89,10 @@ export const Garage = observer(() => {
         <div className="controls-btns">
           <Button label="race" />
           <Button label="reset" />
-          <Button label="generate cars" />
+          <Button
+            label="generate cars"
+            onClick={() => garageS.generateCars()}
+          />
         </div>
       </div>
       <div className="garage">

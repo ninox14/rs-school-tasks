@@ -1,3 +1,7 @@
 export const Winners = () => {
-  return (<></>)
-}
+  return (
+    <>
+      <div>{`table`}</div>
+    </>
+  );
+};

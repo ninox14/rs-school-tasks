@@ -1,5 +1,11 @@
 import { makeAutoObservable } from 'mobx';
-import { getCarsOnPage, addNewCar, deleteCar, updateCar } from '../utility/api';
+import {
+  getCarsOnPage,
+  addNewCar,
+  deleteCar,
+  updateCar,
+  generateCars,
+} from '../utility/api';
 
 class Garage {
   cars: CarInterface[] = [];
@@ -12,6 +18,8 @@ class Garage {
   updateCarId: number | null = null;
   updateName: string = '';
   updateColor: string = '';
+
+  isGenerationInProgress = false;
 
   constructor() {
     makeAutoObservable(this);
@@ -42,18 +50,19 @@ class Garage {
     this.updateCarId = id;
     this.updateName = name;
     this.updateColor = color;
-    console.log('selected ', this.updateColor);
   }
 
   getCars() {
-    getCarsOnPage(this.currentPage).then((data) => {
-      if (data?.cars && data?.totalCars) {
-        this.cars = data.cars;
-        this.totalCount = data.totalCars;
-      } else {
-        throw new Error('There is no data in response');
-      }
-    });
+    getCarsOnPage(this.currentPage)
+      .then((data) => {
+        if (data?.cars && data?.totalCars) {
+          this.cars = data.cars;
+          this.totalCount = data.totalCars;
+        } else {
+          throw new Error('There is no data in response');
+        }
+      })
+      .catch((err) => console.error(err));
   }
 
   async createCar() {
@@ -79,6 +88,13 @@ class Garage {
     this.updateColor = '';
     this.updateName = '';
     this.getCars();
+  }
+
+  async generateCars() {
+    this.isGenerationInProgress = true;
+    await generateCars();
+    this.getCars();
+    this.isGenerationInProgress = false;
   }
 }
 
