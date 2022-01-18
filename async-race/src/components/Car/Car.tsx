@@ -16,7 +16,12 @@ export const Car: FC<CarPropsInterface> = ({ color, name, id }) => {
   return (
     <div className="car">
       <div className="car-top">
-        <Button label="select" />
+        <Button
+          label="select"
+          onClick={() => {
+            garageS.handleSelectCar({ id, color, name });
+          }}
+        />
         <Button
           label="delete"
           onClick={() => {

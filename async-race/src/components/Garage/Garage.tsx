@@ -5,22 +5,36 @@ import garageS from '../../state/GarageState';
 import debounce from 'lodash.debounce';
 import { Button } from '../Button/Button';
 import { Car } from '../Car/Car';
-import { useMemo } from 'react';
+import { useMemo, useRef } from 'react';
 
 export const Garage = observer(() => {
+  const updateColorInputRef = useRef(null);
+
   const debouncedCreateColorChangeHandler = useMemo(
     () =>
       debounce((e: React.FormEvent<HTMLInputElement>) => {
-        garageS.handleColorChange(e);
+        garageS.handleCreateColorChange(e);
       }, 100),
     []
   );
+  const debouncedUpdateColorChangeHandler = useMemo(
+    () =>
+      debounce((e: React.FormEvent<HTMLInputElement>) => {
+        garageS.handleUpdateColorChange(
+          // updateColorInputRef.current as unknown as HTMLInputElement
+          e.target as HTMLInputElement
+        );
+      }, 100),
+    []
+  );
+
   return (
     <>
       <div className="controls">
         <form
           onSubmit={(e) => {
             e.preventDefault();
+            garageS.createCar();
           }}
           className="controls-inputs"
         >
@@ -29,8 +43,9 @@ export const Garage = observer(() => {
             minLength={1}
             maxLength={16}
             pattern="[a-zA-Zа-яА-Я 0-9]{1,16}"
+            value={garageS.createName}
             onInput={(e) => {
-              garageS.handleNameChange(e.currentTarget.value);
+              garageS.handleCreateNameChange(e.currentTarget.value);
             }}
           />
           <input
@@ -39,27 +54,36 @@ export const Garage = observer(() => {
             id="create_color"
             onChange={debouncedCreateColorChangeHandler}
           />
-          <Button
-            type="submit"
-            label="create"
-            onClick={() => {
-              garageS.createCar();
-            }}
-          />
+          <Button type="submit" label="create" />
         </form>
         <form
           className="controls-inputs"
           onSubmit={(e) => {
             e.preventDefault();
+            garageS.updateCar();
           }}
         >
           <input
             type="text"
             minLength={1}
             maxLength={16}
-            pattern="[a-zA-Z 1-9]"
+            pattern="[a-zA-Z 0-9]{1,16}"
+            value={garageS.updateName || ''}
+            onInput={(e) => {
+              garageS.handleUpdateNameChange(e.currentTarget.value);
+            }}
+            disabled={!garageS.updateName ? true : false}
           />
-          <input type="color" name="create_color" id="create_color" />
+          <input
+            type="color"
+            ref={updateColorInputRef}
+            name="create_color"
+            id="create_color"
+            // value={garageS.updateColor || ''}
+            // defaultValue={garageS.updateColor}
+            onInput={debouncedUpdateColorChangeHandler}
+            disabled={!garageS.updateColor ? true : false}
+          />
           <Button label="update" type="submit" />
         </form>
         <div className="controls-btns">
