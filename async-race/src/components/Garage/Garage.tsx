@@ -103,6 +103,18 @@ export const Garage = observer(() => {
             return <Car key={i.id} name={i.name} id={i.id} color={i.color} />;
           })}
         </div>
+        <div className="garage-pagination">
+          <Button
+            label="< prev"
+            className="garage-pagination_btn"
+            onClick={() => garageS.handlePagePrevChange()}
+          />
+          <Button
+            label="Next >"
+            className="garage-pagination_btn"
+            onClick={() => garageS.handlePageNextChange()}
+          />
+        </div>
       </div>
     </>
   );

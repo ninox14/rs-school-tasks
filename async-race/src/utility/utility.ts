@@ -5,7 +5,7 @@ const MAX_COLOR_NUM = 16777214;
 const HEX_RADIX = 16;
 
 export const getRandomNumber = (max: number) => {
-  return Math.floor(Math.random() * (max + 1));
+  return Math.floor(Math.random() * max);
 };
 
 export const getRandomCarName = () => {
@@ -15,7 +15,8 @@ export const getRandomCarName = () => {
 };
 
 export const getRandomCarColor = () => {
-  return `#${getRandomNumber(MAX_COLOR_NUM).toString(HEX_RADIX)}`;
+  const color = `#${getRandomNumber(MAX_COLOR_NUM).toString(HEX_RADIX)}`;
+  return color.length < 7 ? color.padEnd(7, '0') : color;
 };
 
 export const generateRandomCar = (): CreateCarDTO => {

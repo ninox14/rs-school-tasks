@@ -5,12 +5,14 @@ import {
   deleteCar,
   updateCar,
   generateCars,
+  PAGE_LIMIT,
 } from '../utility/api';
 
 class Garage {
   cars: CarInterface[] = [];
   currentPage = 1;
   totalCount: string = '';
+  maxPages = 1;
 
   createName: string = '';
   createColor: string = '';
@@ -52,12 +54,25 @@ class Garage {
     this.updateColor = color;
   }
 
+  handlePageNextChange() {
+    const nextPage = this.currentPage + 1;
+    this.currentPage = nextPage > this.maxPages ? 1 : nextPage;
+    this.getCars();
+  }
+
+  handlePagePrevChange() {
+    const nextPage = this.currentPage - 1;
+    this.currentPage = !nextPage ? this.maxPages : nextPage;
+    this.getCars();
+  }
+
   getCars() {
     getCarsOnPage(this.currentPage)
       .then((data) => {
         if (data?.cars && data?.totalCars) {
           this.cars = data.cars;
           this.totalCount = data.totalCars;
+          this.maxPages = Math.ceil(+data.totalCars / PAGE_LIMIT);
         } else {
           throw new Error('There is no data in response');
         }

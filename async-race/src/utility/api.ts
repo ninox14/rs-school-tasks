@@ -4,7 +4,7 @@ import { generateRandomCar } from './utility';
 axios.defaults.baseURL = 'http://localhost:3000/';
 axios.defaults.timeout = 5000;
 
-const PAGE_LIMIT = 7;
+export const PAGE_LIMIT = 7;
 const TOTAL_COUNT_KEY = 'x-total-count';
 const GARAGE_ENDPOINT = '/garage';
 
