@@ -7,6 +7,7 @@ axios.defaults.timeout = 5000;
 export const PAGE_LIMIT = 7;
 const TOTAL_COUNT_KEY = 'x-total-count';
 const GARAGE_ENDPOINT = '/garage';
+const ENGINE_ENDPOINT = '/engine';
 
 export const getCarsOnPage = async (page: number) => {
   try {
@@ -67,4 +68,24 @@ export const generateCars = async () => {
   } catch (err) {
     console.error(err);
   }
+};
+
+export const patchEngineRequest = async (
+  id: number,
+  query: EngineQuery,
+  timeout?: number
+) => {
+  const response = await axios.patch<EngineResponseInterface>(
+    ENGINE_ENDPOINT,
+    undefined,
+    {
+      params: {
+        id,
+        status: query,
+      },
+      timeout: timeout ? timeout + 5000 : 10000,
+    }
+  );
+
+  return response;
 };

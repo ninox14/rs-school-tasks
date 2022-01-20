@@ -1,4 +1,4 @@
-import { makeAutoObservable } from 'mobx';
+import { runInAction, makeAutoObservable } from 'mobx';
 import {
   getCarsOnPage,
   addNewCar,
@@ -9,7 +9,7 @@ import {
 } from '../utility/api';
 
 class Garage {
-  cars: CarInterface[] = [];
+  cars: GarageCarInterface[] = [];
   currentPage = 1;
   totalCount: string = '';
   maxPages = 1;
@@ -66,13 +66,17 @@ class Garage {
     this.getCars();
   }
 
+  handleStartRace() {}
+
   getCars() {
     getCarsOnPage(this.currentPage)
       .then((data) => {
         if (data?.cars && data?.totalCars) {
-          this.cars = data.cars;
-          this.totalCount = data.totalCars;
-          this.maxPages = Math.ceil(+data.totalCars / PAGE_LIMIT);
+          runInAction(() => {
+            this.cars = data.cars;
+            this.totalCount = data.totalCars;
+            this.maxPages = Math.ceil(+data.totalCars / PAGE_LIMIT);
+          });
         } else {
           throw new Error('There is no data in response');
         }

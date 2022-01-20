@@ -28,4 +28,38 @@
       margin-right: 15px;
     }
   }
+  &-road {
+    width: 100%;
+  }
+  &-svg {
+    position: relative;
+  }
+  &-flag {
+    width: 150px;
+    &_img {
+      width: 20px;
+      height: 20px;
+      background: crimson;
+      transform: translateX(-100%);
+    }
+  }
+  &-wrapp {
+    display: flex;
+    width: 100%;
+    border-bottom: 2px solid #fff;
+  }
+}
+
+.animation {
+  animation: drive linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes drive {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: 100%;
+  }
 }

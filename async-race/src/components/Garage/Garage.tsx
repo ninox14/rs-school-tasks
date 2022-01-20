@@ -99,8 +99,18 @@ export const Garage = observer(() => {
         <h2 className="garage-title">Garage ({garageS.totalCount})</h2>
         <h3 className="garage-page">Page #{garageS.currentPage}</h3>
         <div className="garage-cars">
-          {garageS.cars.map((i) => {
-            return <Car key={i.id} name={i.name} id={i.id} color={i.color} />;
+          {garageS.cars.map((i, idx) => {
+            return (
+              <Car
+                key={i.id}
+                name={i.name}
+                id={i.id}
+                color={i.color}
+                objIndex={idx}
+                animationTime={i.animationTime}
+                isInPause={i.isInPause}
+              />
+            );
           })}
         </div>
         <div className="garage-pagination">
