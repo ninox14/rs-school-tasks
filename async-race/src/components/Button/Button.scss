@@ -5,7 +5,19 @@
   outline: 3px solid #0056a7;
   text-transform: capitalize;
   &.secondary {
-    background-color: transparent;
+    background-color: transparent !important;
     outline: 3px solid #0056a7;
+  }
+  &.secondart:disabled,
+  &.secondary[disabled] {
+    opacity: 0.8;
+    color: #4d4d4d;
+    outline: 3px solid #4d4d4d !important;
+  }
+  &:disabled,
+  &[disabled] {
+    opacity: 0.8;
+    background-color: #4d4d4d;
+    outline: 3px solid #4d4d4d;
   }
 }

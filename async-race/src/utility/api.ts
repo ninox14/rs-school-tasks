@@ -8,6 +8,7 @@ export const PAGE_LIMIT = 7;
 const TOTAL_COUNT_KEY = 'x-total-count';
 const GARAGE_ENDPOINT = '/garage';
 const ENGINE_ENDPOINT = '/engine';
+const WINNERS_ENDPOINT = '/winners';
 
 export const getCarsOnPage = async (page: number) => {
   try {
@@ -88,4 +89,38 @@ export const patchEngineRequest = async (
   );
 
   return response;
+};
+
+export const getWinner = async (
+  id: number
+): Promise<WinnerResponseInterface> => {
+  try {
+    const endpoint = `${WINNERS_ENDPOINT}/${id}`;
+    const response = await axios
+      .get<WinnerResponseInterface>(endpoint)
+      .then((data) => data.data);
+    return response;
+  } catch (err) {
+    return {
+      id: id,
+      wins: 0,
+      time: Infinity,
+    };
+  }
+};
+
+export const updateWinner = async ({
+  id,
+  time,
+  wins,
+}: WinnerResponseInterface) => {
+  const endpoint = `${WINNERS_ENDPOINT}/${id}`;
+  try {
+    const response = await axios.put(endpoint, { time, wins });
+    return response;
+  } catch (err) {
+    console.error(err);
+    const response = await axios.post(endpoint, { id, time, wins });
+    return response;
+  }
 };

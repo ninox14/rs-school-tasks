@@ -87,8 +87,16 @@ export const Garage = observer(() => {
           <Button label="update" type="submit" />
         </form>
         <div className="controls-btns">
-          <Button label="race" />
-          <Button label="reset" />
+          <Button
+            label="race"
+            onClick={() => garageS.handleStartRace()}
+            disabled={garageS.isRaceInProgress}
+          />
+          <Button
+            label="reset"
+            onClick={() => garageS.handleResetRace()}
+            disabled={!garageS.isRaceInProgress}
+          />
           <Button
             label="generate cars"
             onClick={() => garageS.generateCars()}

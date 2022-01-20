@@ -23,4 +23,13 @@ interface EngineResponseInterface {
   success?: true;
 }
 
-interface EngineDriveResponseInterface {}
+interface WinnerResponseInterface {
+  id: number;
+  wins: number;
+  time: number;
+}
+
+interface WinnerDTO {
+  id: number;
+  time: number;
+}

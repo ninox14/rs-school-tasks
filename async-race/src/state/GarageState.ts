@@ -1,4 +1,7 @@
 import { runInAction, makeAutoObservable } from 'mobx';
+
+import winnerS from './WinnersState';
+
 import {
   getCarsOnPage,
   addNewCar,
@@ -6,8 +9,8 @@ import {
   updateCar,
   generateCars,
   PAGE_LIMIT,
+  patchEngineRequest,
 } from '../utility/api';
-
 class Garage {
   cars: GarageCarInterface[] = [];
   currentPage = 1;
@@ -22,6 +25,10 @@ class Garage {
   updateColor: string = '';
 
   isGenerationInProgress = false;
+
+  isRaceInProgress = false;
+
+  currentWinner: WinnerDTO | null = null;
 
   constructor() {
     makeAutoObservable(this);
@@ -66,7 +73,43 @@ class Garage {
     this.getCars();
   }
 
-  handleStartRace() {}
+  handleStartRace() {
+    this.isRaceInProgress = true;
+    this.cars.forEach(async (i) => {
+      await patchEngineRequest(i.id, 'started').then((resp) => {
+        if (resp.data) {
+          i.animationTime = resp.data.distance / resp.data.velocity;
+        }
+      });
+      try {
+        const resp = await patchEngineRequest(i.id, 'drive', i.animationTime);
+        console.log(resp);
+        if (!this.currentWinner) {
+          this.currentWinner = { id: i.id, time: i.animationTime as number };
+          await winnerS.handleNewWinner(
+            i.id,
+            (i.animationTime as number) / 1000
+          );
+        }
+      } catch (err) {
+        i.isInPause = true;
+      }
+    });
+  }
+
+  handleResetRace() {
+    if (this.isRaceInProgress) {
+      this.cars.forEach(async (i) => {
+        i.isInPause = true;
+        const response = await patchEngineRequest(i.id, 'stopped');
+        console.log(response);
+        i.animationTime = undefined;
+        i.isInPause = false;
+      });
+      this.isRaceInProgress = false;
+      this.currentWinner = null;
+    }
+  }
 
   getCars() {
     getCarsOnPage(this.currentPage)

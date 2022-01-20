@@ -25,7 +25,7 @@ export const Car: FC<CarPropsInterface> = ({
 }) => {
   const handleStartCar = async () => {
     await patchEngineRequest(id, 'started').then((response) => {
-      if (response?.data) {
+      if (response.data) {
         garageS.cars[objIndex].animationTime =
           response.data.distance / response.data.velocity;
       }
@@ -72,11 +72,13 @@ export const Car: FC<CarPropsInterface> = ({
           label="S"
           className="car-btn car-btn__start secondary"
           onClick={() => handleStartCar()}
+          disabled={!!animationTime}
         />
         <Button
           label="R"
           className="car-btn car-btn__reset secondary"
           onClick={() => handleResetCar()}
+          disabled={!animationTime}
         />
         <div className="car-wrapp">
           <div className="car-road">
