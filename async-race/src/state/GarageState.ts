@@ -78,21 +78,25 @@ class Garage {
     this.cars.forEach(async (i) => {
       await patchEngineRequest(i.id, 'started').then((resp) => {
         if (resp.data) {
-          i.animationTime = resp.data.distance / resp.data.velocity;
+          runInAction(
+            () => (i.animationTime = resp.data.distance / resp.data.velocity)
+          );
         }
       });
       try {
         const resp = await patchEngineRequest(i.id, 'drive', i.animationTime);
         console.log(resp);
-        if (!this.currentWinner) {
-          this.currentWinner = { id: i.id, time: i.animationTime as number };
+        if (!this.currentWinner && this.isRaceInProgress) {
+          runInAction(() => {
+            this.currentWinner = { id: i.id, time: i.animationTime as number };
+          });
           await winnerS.handleNewWinner(
             i.id,
             (i.animationTime as number) / 1000
           );
         }
       } catch (err) {
-        i.isInPause = true;
+        runInAction(() => (i.isInPause = true));
       }
     });
   }
@@ -100,14 +104,18 @@ class Garage {
   handleResetRace() {
     if (this.isRaceInProgress) {
       this.cars.forEach(async (i) => {
-        i.isInPause = true;
+        runInAction(() => (i.isInPause = true));
         const response = await patchEngineRequest(i.id, 'stopped');
         console.log(response);
-        i.animationTime = undefined;
-        i.isInPause = false;
+        runInAction(() => {
+          i.animationTime = undefined;
+          i.isInPause = false;
+        });
       });
-      this.isRaceInProgress = false;
-      this.currentWinner = null;
+      runInAction(() => {
+        this.isRaceInProgress = false;
+        this.currentWinner = null;
+      });
     }
   }
 

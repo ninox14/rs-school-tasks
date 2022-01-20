@@ -6,6 +6,7 @@ import { Button } from '../Button/Button';
 
 import garageS from '../../state/GarageState';
 import { patchEngineRequest } from '../../utility/api';
+import { runInAction } from 'mobx';
 interface CarPropsInterface {
   name: string;
   id: number;
@@ -26,8 +27,11 @@ export const Car: FC<CarPropsInterface> = ({
   const handleStartCar = async () => {
     await patchEngineRequest(id, 'started').then((response) => {
       if (response.data) {
-        garageS.cars[objIndex].animationTime =
-          response.data.distance / response.data.velocity;
+        runInAction(
+          () =>
+            (garageS.cars[objIndex].animationTime =
+              response.data.distance / response.data.velocity)
+        );
       }
     });
 
@@ -38,16 +42,18 @@ export const Car: FC<CarPropsInterface> = ({
         garageS.cars[objIndex].animationTime
       );
     } catch (err) {
-      garageS.cars[objIndex].isInPause = true;
+      runInAction(() => (garageS.cars[objIndex].isInPause = true));
     }
   };
   const handleResetCar = async () => {
     const currCar = garageS.cars[objIndex];
-    currCar.isInPause = true;
+    runInAction(() => (currCar.isInPause = true));
     const response = await patchEngineRequest(id, 'stopped');
     console.log(response);
-    currCar.animationTime = undefined;
-    currCar.isInPause = false;
+    runInAction(() => {
+      currCar.animationTime = undefined;
+      currCar.isInPause = false;
+    });
   };
 
   return (
