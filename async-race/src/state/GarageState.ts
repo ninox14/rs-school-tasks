@@ -13,22 +13,30 @@ import {
 } from '../utility/api';
 class Garage {
   cars: GarageCarInterface[] = [];
+
   currentPage = 1;
-  totalCount: string = '';
+
+  totalCount = '';
+
   maxPages = 1;
 
-  createName: string = '';
-  createColor: string = '';
+  createName = '';
+
+  createColor = '';
 
   updateCarId: number | null = null;
-  updateName: string = '';
-  updateColor: string = '';
+
+  updateName = '';
+
+  updateColor = '';
 
   isGenerationInProgress = false;
 
   isRaceInProgress = false;
 
-  currentWinner: WinnerDTO | null = null;
+  currentWinner: WinnerInterface | null = null;
+
+  isShowWinnerNotif = false;
 
   constructor() {
     makeAutoObservable(this);
@@ -84,10 +92,15 @@ class Garage {
         }
       });
       try {
-        const resp = await patchEngineRequest(i.id, 'drive', i.animationTime);
+        await patchEngineRequest(i.id, 'drive', i.animationTime);
         if (!this.currentWinner && this.isRaceInProgress) {
           runInAction(() => {
-            this.currentWinner = { id: i.id, time: i.animationTime as number };
+            this.currentWinner = {
+              id: i.id,
+              time: i.animationTime as number,
+              name: i.name,
+            };
+            this.isShowWinnerNotif = true;
           });
           await winnerS.handleNewWinner(
             i.id,

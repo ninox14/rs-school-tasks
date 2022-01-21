@@ -1,3 +1,15 @@
 .main {
   padding: 10px;
 }
+
+.notif {
+  position: fixed;
+  left: 50%;
+  top: 25%;
+  background-color: #33806c;
+  font-weight: 700;
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 10px;
+  outline: 3px solid #fff;
+}

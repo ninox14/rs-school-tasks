@@ -33,3 +33,7 @@ interface WinnerDTO {
   id: number;
   time: number;
 }
+
+interface WinnerInterface extends WinnerDTO {
+  name: string;
+}
