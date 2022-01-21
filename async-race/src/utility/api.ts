@@ -119,8 +119,7 @@ export const updateWinner = async ({
     const response = await axios.put(endpoint, { time, wins });
     return response;
   } catch (err) {
-    console.error(err);
-    const response = await axios.post(endpoint, { id, time, wins });
+    const response = await axios.post(WINNERS_ENDPOINT, { id, time, wins });
     return response;
   }
 };

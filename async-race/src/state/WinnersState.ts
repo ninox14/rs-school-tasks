@@ -3,7 +3,9 @@ import { getWinner, updateWinner } from '../utility/api';
 
 class Winners {
   winners: WinnerResponseInterface[] = [];
+
   currentPage = 1;
+
   maxPages = 1;
 
   constructor() {
@@ -17,7 +19,6 @@ class Winners {
       time: winnerObj.time < time ? winnerObj.time : time,
       wins: winnerObj.wins + 1,
     };
-    // console.log(updatedWinner);
     await updateWinner(updatedWinner);
   }
 }

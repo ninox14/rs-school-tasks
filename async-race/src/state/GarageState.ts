@@ -85,7 +85,6 @@ class Garage {
       });
       try {
         const resp = await patchEngineRequest(i.id, 'drive', i.animationTime);
-        console.log(resp);
         if (!this.currentWinner && this.isRaceInProgress) {
           runInAction(() => {
             this.currentWinner = { id: i.id, time: i.animationTime as number };
