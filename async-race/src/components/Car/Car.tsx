@@ -48,8 +48,8 @@ export const Car: FC<CarPropsInterface> = ({
   const handleResetCar = async () => {
     const currCar = garageS.cars[objIndex];
     runInAction(() => (currCar.isInPause = true));
-    const response = await patchEngineRequest(id, 'stopped');
-    console.log(response);
+    await patchEngineRequest(id, 'stopped');
+    // console.log(response);
     runInAction(() => {
       currCar.animationTime = undefined;
       currCar.isInPause = false;

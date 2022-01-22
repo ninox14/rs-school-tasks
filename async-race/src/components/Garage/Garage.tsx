@@ -8,7 +8,7 @@ import { Car } from '../Car/Car';
 import { useMemo, useRef } from 'react';
 
 export const Garage = observer(() => {
-  const updateColorInputRef = useRef(null);
+  const updateColorInputRef = useRef<HTMLInputElement>(null);
 
   const debouncedCreateColorChangeHandler = useMemo(
     () =>
@@ -19,10 +19,10 @@ export const Garage = observer(() => {
   );
   const debouncedUpdateColorChangeHandler = useMemo(
     () =>
-      debounce((e: React.FormEvent<HTMLInputElement>) => {
+      debounce((e: React.ChangeEvent<HTMLInputElement>) => {
         garageS.handleUpdateColorChange(
           // updateColorInputRef.current as unknown as HTMLInputElement
-          e.target as HTMLInputElement
+          e.target
         );
       }, 100),
     []
@@ -121,16 +121,18 @@ export const Garage = observer(() => {
             );
           })}
         </div>
-        <div className="garage-pagination">
+        <div className="pagination">
           <Button
             label="< prev"
-            className="garage-pagination_btn"
+            className="pagination_btn"
             onClick={() => garageS.handlePagePrevChange()}
+            disabled={garageS.maxPages === 1}
           />
           <Button
             label="Next >"
-            className="garage-pagination_btn"
+            className="pagination_btn"
             onClick={() => garageS.handlePageNextChange()}
+            disabled={garageS.maxPages === 1}
           />
         </div>
       </div>

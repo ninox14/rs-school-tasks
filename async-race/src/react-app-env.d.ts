@@ -37,3 +37,11 @@ interface WinnerDTO {
 interface WinnerInterface extends WinnerDTO {
   name: string;
 }
+
+type Order = 'ASC' | 'DESC';
+type Sort = 'id' | 'wins' | 'time';
+interface FetchWinnersArgumentsInterface {
+  order: Order;
+  page: number;
+  sortBy: Sort;
+}

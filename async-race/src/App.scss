@@ -13,3 +13,12 @@
   border-radius: 10px;
   outline: 3px solid #fff;
 }
+
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  column-gap: 20px;
+  &_btn {
+    text-transform: uppercase;
+  }
+}

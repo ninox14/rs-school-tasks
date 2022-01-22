@@ -4,7 +4,8 @@ import { generateRandomCar } from './utility';
 axios.defaults.baseURL = 'http://localhost:3000/';
 axios.defaults.timeout = 5000;
 
-export const PAGE_LIMIT = 7;
+export const CAR_PAGE_LIMIT = 7;
+export const WINNERS_PAGE_LIMIT = 10;
 const TOTAL_COUNT_KEY = 'x-total-count';
 const GARAGE_ENDPOINT = '/garage';
 const ENGINE_ENDPOINT = '/engine';
@@ -15,7 +16,7 @@ export const getCarsOnPage = async (page: number) => {
     const data = await axios.get<CarInterface[]>(GARAGE_ENDPOINT, {
       params: {
         _page: page,
-        _limit: PAGE_LIMIT,
+        _limit: CAR_PAGE_LIMIT,
       },
     });
 
@@ -23,6 +24,18 @@ export const getCarsOnPage = async (page: number) => {
       cars: data.data,
       totalCars: data.headers[TOTAL_COUNT_KEY],
     };
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const getCar = async (id: number) => {
+  try {
+    const endpoint = `${GARAGE_ENDPOINT}/${id}`;
+    const data = await axios
+      .get<CarInterface>(endpoint)
+      .then((resp) => resp.data);
+    return data;
   } catch (err) {
     console.error(err);
   }
@@ -40,7 +53,7 @@ export const addNewCar = async (carDto: CreateCarDTO) => {
 export const deleteCar = async (id: number) => {
   try {
     const endpoint = `${GARAGE_ENDPOINT}/${id}`;
-    const response = await axios.delete<{}>(endpoint);
+    const response = await axios.delete<Record<string, unknown>>(endpoint);
     return response;
   } catch (err) {
     console.error(err);
@@ -114,12 +127,46 @@ export const updateWinner = async ({
   time,
   wins,
 }: WinnerResponseInterface) => {
-  const endpoint = `${WINNERS_ENDPOINT}/${id}`;
   try {
+    const endpoint = `${WINNERS_ENDPOINT}/${id}`;
     const response = await axios.put(endpoint, { time, wins });
     return response;
   } catch (err) {
     const response = await axios.post(WINNERS_ENDPOINT, { id, time, wins });
     return response;
+  }
+};
+
+export const getWinnersOnPage = async ({
+  page,
+  sortBy,
+  order,
+}: FetchWinnersArgumentsInterface) => {
+  try {
+    const data = await axios.get<WinnerResponseInterface[]>(WINNERS_ENDPOINT, {
+      params: {
+        _page: page,
+        _limit: WINNERS_PAGE_LIMIT,
+        _sort: sortBy,
+        _order: order,
+      },
+    });
+
+    return {
+      winners: data.data,
+      totalWinners: data.headers[TOTAL_COUNT_KEY],
+    };
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const deleteWinner = async (id: number) => {
+  try {
+    const endpoint = `${WINNERS_ENDPOINT}/${id}`;
+    const response = await axios.delete(endpoint);
+    return response;
+  } catch (err) {
+    console.error(err);
   }
 };

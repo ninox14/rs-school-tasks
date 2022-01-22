@@ -8,35 +8,28 @@ import {
   deleteCar,
   updateCar,
   generateCars,
-  PAGE_LIMIT,
+  CAR_PAGE_LIMIT,
   patchEngineRequest,
 } from '../utility/api';
 class Garage {
   cars: GarageCarInterface[] = [];
 
   currentPage = 1;
-
   totalCount = '';
-
   maxPages = 1;
 
   createName = '';
-
   createColor = '';
 
   updateCarId: number | null = null;
-
   updateName = '';
-
   updateColor = '';
 
   isGenerationInProgress = false;
-
   isRaceInProgress = false;
+  isShowWinnerNotif = false;
 
   currentWinner: WinnerInterface | null = null;
-
-  isShowWinnerNotif = false;
 
   constructor() {
     makeAutoObservable(this);
@@ -59,8 +52,10 @@ class Garage {
     // console.log(ref);
     // this.updateColor = e.currentTarget.value;
     // this.updateColor = (e.target as HTMLInputElement).value;
-    this.updateColor = ref.value;
-    console.log('Changed to ', this.updateColor);
+    runInAction(() => {
+      this.updateColor = ref.value;
+    });
+    // console.log('Changed to ', this.updateColor);
   }
 
   handleSelectCar({ id, name, color }: CarInterface) {
@@ -95,9 +90,14 @@ class Garage {
         await patchEngineRequest(i.id, 'drive', i.animationTime);
         if (!this.currentWinner && this.isRaceInProgress) {
           runInAction(() => {
+            if (!i.animationTime) {
+              throw new Error(
+                `something gone wrong ${i.animationTime}, isRaceInProgress ${this.isRaceInProgress}, currentWinner ${this.currentWinner}`
+              );
+            }
             this.currentWinner = {
               id: i.id,
-              time: i.animationTime as number,
+              time: i.animationTime,
               name: i.name,
             };
             this.isShowWinnerNotif = true;
@@ -138,7 +138,7 @@ class Garage {
           runInAction(() => {
             this.cars = data.cars;
             this.totalCount = data.totalCars;
-            this.maxPages = Math.ceil(+data.totalCars / PAGE_LIMIT);
+            this.maxPages = Math.ceil(+data.totalCars / CAR_PAGE_LIMIT);
           });
         } else {
           throw new Error('There is no data in response');
@@ -155,6 +155,7 @@ class Garage {
   async deleteCar(id: number) {
     await deleteCar(id);
     this.getCars();
+    await winnerS.deleteWinner(id);
   }
 
   async updateCar() {

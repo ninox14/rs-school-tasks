@@ -4,7 +4,7 @@ import { Button } from '../Button/Button';
 import { FC } from 'react';
 import navigation from '../../state/Navigation';
 
-const HeaderComponent: FC<{}> = () => {
+const HeaderComponent: FC<Record<string, unknown>> = () => {
   return (
     <header className="header">
       <nav className="nav">

@@ -13,13 +13,6 @@
   }
 }
 .garage {
-  &-pagination {
-    display: flex;
-    column-gap: 20px;
-    &_btn {
-      text-transform: uppercase;
-    }
-  }
   &-cars {
     display: flex;
     flex-direction: column;
