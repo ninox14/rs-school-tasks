@@ -37,8 +37,23 @@ const App = observer(() => {
       ) : null}
       <Header />
       <main className="main">
-        {navigation.isOnGarage ? <Garage /> : null}
-        {navigation.isOnWinners ? <Winners /> : null}
+        <div
+          style={{
+            visibility: navigation.isOnWinners ? 'hidden' : 'initial',
+            height: navigation.isOnWinners ? '0' : 'auto',
+          }}
+        >
+          <Garage />
+        </div>
+
+        <div
+          style={{
+            visibility: navigation.isOnGarage ? 'hidden' : 'initial',
+            height: navigation.isOnGarage ? '0' : 'auto',
+          }}
+        >
+          <Winners />
+        </div>
       </main>
     </>
   );

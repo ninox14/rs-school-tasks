@@ -1,7 +1,8 @@
 import axios from 'axios';
 import { generateRandomCar } from './utility';
 
-axios.defaults.baseURL = 'http://localhost:3000/';
+// axios.defaults.baseURL = 'https://ninox-race-api.herokuapp.com/';
+axios.defaults.baseURL = 'http://localhost:3000';
 axios.defaults.timeout = 5000;
 
 export const CAR_PAGE_LIMIT = 7;
@@ -164,6 +165,16 @@ export const getWinnersOnPage = async ({
 export const deleteWinner = async (id: number) => {
   try {
     const endpoint = `${WINNERS_ENDPOINT}/${id}`;
+    const response = await axios.delete(endpoint);
+    return response;
+  } catch (err) {
+    // console.error(err);
+  }
+};
+
+export const deletAll = async () => {
+  try {
+    const endpoint = '/delete/all';
     const response = await axios.delete(endpoint);
     return response;
   } catch (err) {

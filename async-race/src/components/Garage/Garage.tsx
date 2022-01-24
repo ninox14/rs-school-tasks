@@ -5,9 +5,10 @@ import garageS from '../../state/GarageState';
 import debounce from 'lodash.debounce';
 import { Button } from '../Button/Button';
 import { Car } from '../Car/Car';
-import { useMemo, useRef } from 'react';
+import { FC, useMemo, useRef } from 'react';
+// import { deletAll } from '../../utility/api';
 
-export const Garage = observer(() => {
+export const Garage: FC<Record<string, unknown>> = observer(() => {
   const updateColorInputRef = useRef<HTMLInputElement>(null);
 
   const debouncedCreateColorChangeHandler = useMemo(
@@ -27,7 +28,6 @@ export const Garage = observer(() => {
       }, 100),
     []
   );
-
   return (
     <>
       <div className="controls">
@@ -42,8 +42,8 @@ export const Garage = observer(() => {
             type="text"
             minLength={1}
             maxLength={16}
-            pattern="[a-zA-Zа-яА-Я 0-9]{1,16}"
-            value={garageS.createName}
+            pattern="[a-zA-Z а-яА-Я0-9]{1,16}"
+            value={garageS.createName || ''}
             onInput={(e) => {
               garageS.handleCreateNameChange(e.currentTarget.value);
             }}
@@ -67,7 +67,7 @@ export const Garage = observer(() => {
             type="text"
             minLength={1}
             maxLength={16}
-            pattern="[a-zA-Z 0-9]{1,16}"
+            pattern="[a-zA-Z а-яА-Я0-9]{1,16}"
             value={garageS.updateName || ''}
             onInput={(e) => {
               garageS.handleUpdateNameChange(e.currentTarget.value);
@@ -101,6 +101,13 @@ export const Garage = observer(() => {
             label="generate cars"
             onClick={() => garageS.generateCars()}
           />
+          {/* <Button
+            label="delete almost all cars"
+            onClick={async () => {
+              await deletAll();
+              garageS.getCars();
+            }}
+          /> */}
         </div>
       </div>
       <div className="garage">

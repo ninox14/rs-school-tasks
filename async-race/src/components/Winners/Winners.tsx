@@ -44,7 +44,7 @@ export const Winners: FC<Record<string, unknown>> = observer(() => {
           </tr>
           {winnersS.winners.map((i, idx) => {
             const numberInTable =
-              (winnersS.maxPages - 1) * WINNERS_PAGE_LIMIT + idx + 1;
+              (winnersS.currentPage - 1) * WINNERS_PAGE_LIMIT + idx + 1;
             return (
               <Winner
                 key={i.id}

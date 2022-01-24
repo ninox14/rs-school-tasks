@@ -5,6 +5,7 @@
 .notif {
   position: fixed;
   left: 50%;
+  transform: (translateX(-50%));
   top: 25%;
   background-color: #33806c;
   font-weight: 700;

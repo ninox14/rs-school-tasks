@@ -102,10 +102,12 @@ class Garage {
             };
             this.isShowWinnerNotif = true;
           });
-          await winnerS.handleNewWinner(
-            i.id,
-            (i.animationTime as number) / 1000
-          );
+          if (!i.animationTime) {
+            throw new Error(
+              `something gone wrong ${i.animationTime}, isRaceInProgress ${this.isRaceInProgress}, currentWinner ${this.currentWinner}`
+            );
+          }
+          await winnerS.handleNewWinner(i.id, i.animationTime / 1000);
         }
       } catch (err) {
         runInAction(() => (i.isInPause = true));
@@ -148,8 +150,10 @@ class Garage {
   }
 
   async createCar() {
-    await addNewCar({ name: this.createName, color: this.createColor });
-    this.getCars();
+    if (/[a-zA-Z а-яА-Я0-9]{1,16}/.test(this.createName)) {
+      await addNewCar({ name: this.createName, color: this.createColor });
+      this.getCars();
+    }
   }
 
   async deleteCar(id: number) {

@@ -84,7 +84,7 @@ export const Car: FC<CarPropsInterface> = ({
           label="R"
           className="car-btn car-btn__reset secondary"
           onClick={() => handleResetCar()}
-          disabled={!animationTime}
+          disabled={!animationTime || garageS.isRaceInProgress}
         />
         <div className="car-wrapp">
           <div className="car-road">
