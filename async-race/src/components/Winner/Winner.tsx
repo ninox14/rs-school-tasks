@@ -13,11 +13,6 @@ export const Winner: FC<WinnerPropsInterface> = ({
   time,
   wins,
 }) => {
-  // {
-  //   id: 0,
-  //   name: '',
-  //   color: '',
-  // }
   const [carData, setCarData] = useState<CarInterface | null>(null);
   useEffect(() => {
     const getWinnerCarData = async () => {

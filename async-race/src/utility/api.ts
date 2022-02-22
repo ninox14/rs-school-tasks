@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { generateRandomCar } from './utility';
 
-// axios.defaults.baseURL = 'https://ninox-race-api.herokuapp.com/';
-axios.defaults.baseURL = 'http://localhost:3000';
+axios.defaults.baseURL = 'https://ninox-race-api.herokuapp.com/';
+// axios.defaults.baseURL = 'http://localhost:3000';
 axios.defaults.timeout = 5000;
 
 export const CAR_PAGE_LIMIT = 7;

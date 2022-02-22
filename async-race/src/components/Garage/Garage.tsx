@@ -6,7 +6,7 @@ import debounce from 'lodash.debounce';
 import { Button } from '../Button/Button';
 import { Car } from '../Car/Car';
 import { FC, useMemo, useRef } from 'react';
-// import { deletAll } from '../../utility/api';
+import { deletAll } from '../../utility/api';
 
 export const Garage: FC<Record<string, unknown>> = observer(() => {
   const updateColorInputRef = useRef<HTMLInputElement>(null);
@@ -101,13 +101,13 @@ export const Garage: FC<Record<string, unknown>> = observer(() => {
             label="generate cars"
             onClick={() => garageS.generateCars()}
           />
-          {/* <Button
+          <Button
             label="delete almost all cars"
             onClick={async () => {
               await deletAll();
               garageS.getCars();
             }}
-          /> */}
+          />
         </div>
       </div>
       <div className="garage">
