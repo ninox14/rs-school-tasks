@@ -1,0 +1,25 @@
+.size-button {
+  background: none;
+  border: none;
+  transition: opacity 0.3s linear;
+  &:hover {
+    opacity: 0.7;
+  }
+  &__caption {
+    color: #fff;
+    text-transform: capitalize;
+  }
+  &.medium {
+    width: 62px;
+  }
+  &.small {
+    width: 53px;
+  }
+  &.active {
+    svg {
+      path {
+        fill: #8bca8b !important;
+      }
+    }
+  }
+}
