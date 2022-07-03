@@ -1,0 +1,98 @@
+.category {
+  padding-top: 20px;
+
+  grid-gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
+  grid-auto-rows: 1fr;
+  &::before {
+    content: '';
+    width: 0;
+    padding-bottom: 100%;
+    grid-row: 1 / 1;
+    grid-column: 1 / 1;
+  }
+  & > *:first-child {
+    grid-row: 1 / 1;
+    grid-column: 1 / 1;
+  }
+
+
+
+  &-item {
+    padding: 10px;
+    aspect-ratio: 1;
+    background-color: $bg-color;
+    border-radius: 5px;
+    position: relative;
+    display: block;
+    cursor: pointer;
+    overflow: hidden;
+    transition: background-color .3s linear;
+
+    &:hover {
+      background-color: #478fe0;
+    }
+    &-type {
+      font-size: 70px;
+    }
+
+
+    &-score {
+      position: absolute;
+      top: 10px;
+      right: -70px;
+      display: block;
+      transition: right .2s linear;
+
+      & span {
+        font-size: 75px;
+        color: #fcd62d;
+        opacity: .3;
+        transition: opacity .2s linear;
+      }
+      &:hover span {
+        opacity: 1;
+      }
+    }
+    &:hover &-score {
+      right: 10px;
+    }
+
+    &-number {
+      font-size: 55px;
+      text-align: end;
+      line-height: 1;
+      position: absolute;
+
+      bottom: 3px;
+      right: 6px;
+    }
+    &-complete {
+      position: absolute;
+      display: block;
+      font-size: 35px;
+      left: 10px;
+      bottom: 10px;
+      color: #73bd12;
+    }
+    &.played {
+      background-color: #2e527c;
+      &.complete::before {
+        content: '✓';
+        display: block;
+        position: absolute;
+        top: 13px;
+        right: 13px;
+        font-size: 25px;
+        font-weight: 800;
+      }
+
+      &:hover {
+        background-color: #478fe0;
+      }
+
+    }
+  }
+}
+
