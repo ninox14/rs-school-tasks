@@ -5,7 +5,7 @@
 
 1. [Christmas task 1](https://github.com/ninox14/rs-school-tasks/pull/1)
 2. [Christmas task 2](https://github.com/ninox14/rs-school-tasks/pull/2)
-3. [Async race](https://github.com/ninox14/rs-school-tasks/pull/2)
+3. [Async race](https://github.com/ninox14/rs-school-tasks/pull/6)
 4. [Art quiz](https://github.com/ninox14/rs-school-tasks/pull/3)
 5. [Migration to typescript](https://github.com/ninox14/rs-school-tasks/pull/8)
 6. [Museum](https://github.com/ninox14/rs-school-tasks/pull/7)
