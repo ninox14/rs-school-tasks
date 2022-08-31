@@ -1,0 +1,37 @@
+.color-button {
+  width: 30px;
+  height: 30px;
+  border: none;
+  background-color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+  transition: opacity 0.3s linear;
+  &:hover {
+    opacity: 0.7;
+  }
+  &.active {
+    border: 5px solid #030303;
+    &::before {
+      position: absolute;
+      top: -4px;
+      left: 3px;
+      content: '✓';
+      color: #030303;
+      font-size: 20px;
+      font-weight: 700;
+    }
+  }
+  &.yellow {
+    background-color: #dbd473;
+  }
+  &.blue {
+    background-color: #2875da;
+  }
+  &.green {
+    background-color: #358639;
+  }
+  &.red {
+    background-color: #af412d;
+  }
+}
