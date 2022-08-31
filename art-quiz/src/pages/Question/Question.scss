@@ -1,0 +1,199 @@
+.question {
+  padding-top: 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+
+  position: relative;
+  &-bar {
+    display: flex;
+    margin-bottom: 10px;
+    justify-content: space-between;
+
+    row-gap: 10px;
+    &-timer {
+      font-size: 30px;
+      font-weight: 800;
+      color: #ffde3f;
+    }
+    &-button {
+      max-width: 125px;
+      display: block;
+    }
+  }
+  &-image {
+    margin-top: 10px;
+    width: 100%;
+    display: block;
+    height: 90vw;
+    border-radius: 5px;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    transition: background .5s linear;
+
+  }
+  &-answers-artists {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+
+    justify-content: center;
+  }
+
+  &-answer-artists {
+    cursor: pointer;
+    text-transform: uppercase;
+    padding: 5px;
+    background: $button-bg;
+    border-radius: 5px;
+    width: calc(50% - 5px);
+    font-size: 16px;
+    font-weight: 600;
+    word-wrap: break-word;
+    vertical-align: middle;
+    transition: transform  .3s linear,
+                background .3s linear,
+                color .3s linear;
+    &:hover {
+      transform: scale(1.1);
+      background-color: #51a2d6;
+      color: #ffe97b;
+    }
+  }
+  &-answers-images {
+    margin-top: 10px;
+    font-size: 0;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 15px;
+
+  }
+  &-answer-images {
+    cursor: pointer;
+    background-image: url("https://raw.githubusercontent.com/ninox14/image-data/master/full/0full.jpg");
+    height: 280px;
+    width: 48%;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 5px;
+    transition: transform  .3s linear,
+                background .3s linear;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(1.15);
+
+  transition:
+    transform 0.4s cubic-bezier(0.465, 0.183, 0.153, 0.946),
+    opacity 0.4s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+  will-change: transform, opacity;
+  text-align: center;
+  &-content {
+    background: $bg-color;
+    z-index: 55;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    padding: 15px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+
+    max-width: 700px;
+    max-height: 80vh;
+  }
+  &.visible {
+    pointer-events: auto;
+    opacity: 1;
+    transform: scale(1);
+    z-index: 4;
+    transition:
+      transform 0.7s cubic-bezier(0.465, 0.183, 0.153, 0.946),
+      opacity 0.7s cubic-bezier(0.465, 0.183, 0.153, 0.946);
+  }
+
+  &-image {
+    margin-top: 10px;
+    width: 100%;
+    display: block;
+    border-radius: 5px;
+
+    height: 80vw;
+
+    width: 100%;
+
+
+
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  &-correct {
+    font-size: 30px;
+    color: green;
+  }
+  &-btn {
+    margin-top: 10px;
+    max-width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  &-wrong {
+    font-size: 30px;
+    color: red;
+  }
+  &-caption {
+    text-transform: uppercase;
+    margin-top: 10px;
+    font-weight: 600;
+  }
+  &-star-wrap {
+    font-size: 60px;
+
+    & svg {
+      width: 70px;
+      height: 70px;
+      fill: #dac44d;
+    }
+  }
+  &-btn-wrap {
+    display: flex;
+    column-gap: 10px;
+    & .button {
+      width: 119px;
+    }
+  }
+  & .question-score {
+    font-weight: 700;
+    font-size: 70px;
+  }
+  & .nice {
+    font-size: 50px;
+  }
+}
+
+
