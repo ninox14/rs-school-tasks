@@ -1,0 +1,46 @@
+{
+    "env": {
+        "es6": true,
+        "browser": true,
+        "node": true
+    },
+    "extends": [
+        "plugin:prettier/recommended",
+        "prettier",
+        "eslint:recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        // Базовые правила для TypeScript
+        "plugin:@typescript-eslint/recommended",
+        // Правила TS, требующие инфо о типах
+        "plugin:@typescript-eslint/recommended-requiring-type-checking"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": 2020,
+        "sourceType": "module",
+        "project": "tsconfig.json",
+        "tsconfigRootDir": "."
+    },
+    "plugins": [
+        "prettier",
+        "import",
+        "@typescript-eslint"
+    ],
+    "rules": {
+        "no-debugger": "off",
+        "no-console": 0,
+        "class-methods-use-this": "off",
+        "linebreak-style": "off",
+        "@typescript-eslint/no-explicit-any": "error",
+        "prettier/prettier": [
+            "error",
+            {},
+            {
+                "endOfLine": "auto"
+            }
+        ]
+    },
+    "ignorePatterns": [
+        "tsconfig.json"
+    ]
+}
